@@ -1,0 +1,25 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限
+</div>
+<div class="well">
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active in">
+			<form id="myform" name="myform" method="post" action="/admin/role/addAct">
+				<label for="alias">别名:</label>
+				<input type="text" name="alias" id="alias" class="input-xlarge" required="required" />
+				<label for="name">账号:</label>
+				<input type="text" name="name" id="name" class="input-xlarge" required="required" />
+				<label>密码:</label>
+				<input type="text" name="password" id="password" class="input-xlarge" value="123456" />
+				<div class="btn-toolbar">
+					<button type="submit" name="dosubmit" id="submitBtn" class="btn btn-primary"><strong>提交</strong></button>
+					<a href="/admin/role" class="btn btn-primary">返回</a>
+					<div class="btn-group"></div>
+				</div>
+			</form>
+        </div>
+    </div>
+</div>

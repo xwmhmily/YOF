@@ -1,0 +1,46 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav pull-right">
+            <li id="fat-menu">
+				<a target="_blank" href="<?php echo SERVER_DOMAIN ?>">
+					<i class="icon-home"></i>&nbsp;网站首页
+				</a>
+			</li>
+
+            <!--li id="fat-menu" class="dropdown">
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-cog"></i>快捷菜单<i class="icon-caret-down"></i>
+				</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/admin/system">网站设置</a></li>
+					<li><a href="/admin/system/tool/?type=clearCache">清除缓存</a></li>
+					<li><a href="/admin/privilege">管理权限</a></li>
+					<li><a href="/admin/log/?type=system&title=系统日志">系统日志</a></li>
+                </ul>
+            </li-->
+			
+			<li id="fat-menu" class="dropdown">
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-user"></i> <?php echo $_SESSION['adminName'] ?>
+                    <i class="icon-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="/admin/index/reset">修改密码</a></li>
+                    <li><a tabindex="-1" href="/admin/login/logout">登出</a></li>
+                </ul>
+            </li>
+			
+			<li id="fat-menu">
+				<a href="javascript:void(0)" data-toggle="modal">
+					<?php echo CUR_DATE ?> &nbsp; <?php echo date('l') ?>
+				</a>
+			</li>
+            
+        </ul>
+        <a class="brand" href="/admin/index/main">
+			<span class="first"></span>
+			<span class="second"><?php echo APP_NAME ?>管理中心</span>
+		</a>
+    </div>
+</div>

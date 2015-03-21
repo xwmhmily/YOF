@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	function action(url) {
+		var alertDiv = $("<div></div>").css({
+			"width" : "100%",
+			"height" : $(window).height(),
+			"line-height" : $(window).height() + "px",
+			"background-color" : "#000",
+			"color" : "#fff",
+			"font-size" : "25px",
+			"opacity" : "0.7",
+			"position" : "absolute",
+			"top" : 0,
+			"left" : 0,
+			"text-align" : "center"
+		});
+		alertDiv.html("加载中...");
+		$("body").append(alertDiv);
+
+		$.post(url, '', function(msg){ //alert(msg.status);return;
+			if(msg.status) {
+				alert('更新成功');
+				alertDiv.remove();
+			} else {
+				alert("清理失败");
+			}
+		}, 'json');
+	}
+</script>

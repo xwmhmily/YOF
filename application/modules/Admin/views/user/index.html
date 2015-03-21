@@ -1,0 +1,41 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;用户管理
+</div>
+<div class="btn-toolbar" style="padding:10px;">
+  <a href="#" class="btn btn-primary"><i class="icon-plus"></i>新用户</a>
+</div>
+<div class="block">
+    <a href="#page-stats" class="block-heading" data-toggle="collapse">用户列表</a>
+    <div id="page-stats" class="block-body collapse in">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>用户名</th>
+          <th>姓名</th>
+          <th>省</th>
+          <th>市</th>
+          <th>区</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if($users) { ?>
+          <?php foreach($users as $key => $val){ ?>
+            <tr align="center">
+              <td><?php echo $val['id'] ?></td>
+              <td><?php echo $val['username'] ?></td>
+              <td><?php echo $val['realname'] ?></td>
+              <td><?php echo $val['province'] ?></td>
+              <td><?php echo $val['city'] ?></td>
+              <td><?php echo $val['region'] ?></td>
+            </tr>
+          <?php } ?>
+        <?php } ?>
+      </tbody>
+    </table>
+    <div class="pagination"><?php echo $pageNav ?></div>
+    </div>
+</div>

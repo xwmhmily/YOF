@@ -1,0 +1,96 @@
+#Approval,
+#Manage{ width: 500px; position: absolute;  left:8px; top: 49px; overflow: hidden;}
+.tips{ width: 430px; padding: 14px 10px 16px 60px; background:#fef7e5 url(../images/store/dialog_tips_icon.png) no-repeat 22px center; line-height: 24px; font-size: 14px; color: #b28f62;}
+
+.A-radio{ padding: 36px 0 0 66px; width: 100%}
+.A-radio .radio_off,
+.A-radio .radio_on{  display: block; float: left; margin:7px 7px 0 0; }
+.A-radio input{ visibility: hidden;}
+.A-radio label div { line-height: 30px; color: #555555; font-size: 14px; padding-left: 22px}
+.A-radio .radio_sex{ display: block; float: left; margin-right: 59px}
+.A-radio .f_green{ color: #30a32b;}
+.A-radio .f_red{ color: #d65858;}
+
+.A-btn{ padding: 42px 0 38px 0; float: left; width: 100%}
+.A-btn input{ width: 104px; height: 37px; margin: 0 auto ; display: block; font-size: 14px; font-weight: bold; text-align: center;  border: 0 none; background: url(../images/store/dialog_tips_btn_bg.png) no-repeat; cursor: pointer;}
+.A-btn input.A-normal{background-position: 0 0; color: #ffffff }
+.A-btn input.A-hover{ background-position: 0 -50px; color: #ffffff}
+.A-btn input.A-disabled{ background-position: 0 -100px; color: #c8c8c8}
+
+
+.M-checkbox{ padding:46px 0 0 71px; width: 100%;}
+.M-checkbox input{ display: inline-block; margin-right: 7px; vertical-align: middle;}
+.M-checkbox label{ display: inline-block;  font-size: 14px; color: #6b6b6b;  vertical-align: middle; line-height: 26px}
+
+#AddManage{ width: 551px; position: absolute; left: 8px; top: 49px; overflow: hidden;}
+#AddManage .tips{ width: 481px;}
+
+.AM-checkbox{ padding: 46px 0 0 58px; position: relative;}
+#AddManage .AM-checkbox label{ font-size: 14px; color: #6b6b6b; line-height: 33px; float: left; padding-right: 6px}
+#AddManage .AM-checkbox input{ width:178px; height: 18px; line-height: 18px }
+#AddManage .backstage_form .item_box{ float: none}
+#AddManage .backstage_form .item_box .input_tips{ width: 158px; height: 19px; line-height: 19px; font-size: 14px; color: #c7c7c7; position: absolute; left: 121px; top: 47px; cursor: text; padding: 6px 10px;}
+#AddManage .backstage_form .item_box input{ width: 158px; height: 19px; line-height: 19px; padding: 6px 10px;}
+#AddManage .backstage_form .item_box div{ font-size: 14px; line-height: 31px}
+#AddManage .onError { padding-left: 33px; color: #ec7070; background: url("../images/store/form_icon.png") no-repeat 15px -35px;}
+#AddManage .onFocus { padding-left: 33px; color: #e8a456; background: url("../images/store/form_icon.png") no-repeat 19px -70px;}
+#AddManage .onRight {width: 14px;height: 14px;margin: 10px 0 0 15px;background: url("../images/store/form_icon.png") no-repeat 0 -10px;}
+#AddManage .A-btn{ padding: 36px 0 38px 0}
+#AddManage .A-btn input{ margin:  0 0 0 119px;}
+
+#News-Tip{ width: 100%}
+#News-Tip h2{ width: 435px; height: 30px; display: block; margin: 57px auto 0; font: normal 20px/30px 'Microsoft Yahei' ; padding-left: 38px; background: url(../images/store/dialog_tips_icon2.png) no-repeat 0 center;}
+#News-Tip p{ width: 460px; line-height: 25px; font-size: 14px; color: #cfa570; display: block; margin: 15px auto 0}
+#News-Tip .A-btn{ padding: 36px 0 60px 0; float: left; width: 100%}
+#News-Tip .A-btn input{ margin: 0 auto;}
+
+#Captcha { width: 473px; position: absolute; left: 8px; top: 49px; overflow: hidden;}
+#Captcha .tips{ width: 403px;}
+#Captcha .AM-checkbox{ padding:31px 0 0 0}
+#Captcha .AM-checkbox li{ line-height: 58px; font-size: 14px; width: 100%; float: left }
+#Captcha .AM-checkbox span{ float: left; display: block; width: 126px; text-align: right; font-size: 14px; color: #6b6b6b ; font-weight: normal}
+#Captcha .AM-checkbox input{ width: 121px; height: 18px; line-height: 18px}
+#Captcha .AM-checkbox em{ font-style: normal; font-weight: bold; color: #393838; font-family: Arial; display: block; float: left; padding-right: 60px}
+#Captcha .AM-checkbox .getcode{ height: 34px; background: url(../images/store/getCode_btn_bg.png) no-repeat; border: 0 none; padding:0; margin-top: 12px; font-size: 14px;float: left; cursor: pointer;}
+#Captcha .AM-checkbox .GC-normal{ width: 106px;  background-position: 0 -50px; color: #444444}
+#Captcha .AM-checkbox .GC-hover{ width: 106px;  background-position: 0 -50px; color: #f37822 }
+#Captcha .AM-checkbox .GC-disabled{ width: 130px; background-position: 0 0; color:#d6d6d6; }
+#Captcha #verify{ padding: 8px 9px 8px 9px; width:103px; margin-top:11px; font-size: 14px; }
+#Captcha #verifyS{ margin-top: 11px}
+#Captcha #verifyS.onRight{ margin: 22px 0 0 15px}
+#Captcha .item_box{ height: auto}
+#Captcha .posr{ position: relative;}
+#Captcha .item_box .input_tips{ width: 105px; height: 36px; padding: 0 9px; position: absolute; font-size: 14px; color: #c7c7c7; left: 126px; top: 11px}
+#Captcha .A-btn{ padding: 14px 0 0 126px; width: auto;}
+#Captcha .onError{ padding-left: 33px; color: #ec7070; background: url("../images/store/form_icon.png") no-repeat 15px -33px;}
+#Captcha .onFocus { padding-left: 33px; color: #e8a456; background: url("../images/store/form_icon.png") no-repeat 19px -67px;}
+#Captcha .onRight {width: 14px;height: 14px;margin: 10px 0 0 15px;background: url("../images/store/form_icon.png") no-repeat 0 -10px;}
+
+#result{ width: 110px; height: 50px; position: absolute; background: url(../images/result_bg.png) no-repeat; color: #ffffff; font-size: 14px; padding-left: 54px; display: none; line-height: 50px; z-index: 9999}
+#result.R-wrong{ background-position: 0 -76px}
+
+#ImageList{ width: 805px; position: absolute; left: 8px; top: 49px; overflow: hidden;}
+#ImageList .tips{ width: 775px; color: #b28f62; background-image: none; padding-left: 20px;}
+.IL-box{ padding: 20px 0 0 20px; position: relative; height: 300px; width: 785px; overflow: hidden;}
+.IL-box ul{ position: absolute; width: 965px}
+.IL-box ul li{ width: 172px; height: 122px; border:1px solid #f1f1f1; padding: 3px; overflow: hidden; margin: 18px 14px 0 0; float: left; position: relative; cursor: pointer; }
+.IL-box ul li.current{ border-color: #72da67}
+.IL-box ul li.current span{ display: block;}
+.IL-box ul li img{ width: 172px; height: 122px;}
+.IL-box ul li a,
+.IL-box ul li span{ width: 16px; height: 16px; display: block; position: absolute;  background:url(../images/store/Image_List_Icons.png) no-repeat; z-index: 2; display: none}
+.IL-box ul li a{top: 4px; right: 4px;}
+.IL-box ul li span{ background-position: 0 -20px; bottom: 4px; right: 4px;}
+.IL-box ul li div{ width: 180px; line-height: 26px; color: #b5b5b5; position: absolute; bottom:-26px; left: 0px; background: url(../images/store/Image_List_Tips_bg.png) repeat; text-align: center; padding-bottom: 4px; z-index: 1; display: none }
+
+#IL-Page{ width: 100%; margin-top: 37px; text-align: center;}
+#IL-Page a{ width: 39px; height: 39px; display: inline-block; text-align: center; line-height: 39px; font-size: 20px; font-family: Arial; color: #f2f2f2; background: #a1a0a0; margin-right: 14px}
+#IL-Page .ILP-prev,
+#IL-Page .ILP-next,
+#IL-Page .ILP-prev-disabled,
+#IL-Page .ILP-next-disabled{ text-indent: -99999px; background: url(../images/store/Image_List_Icons.png) no-repeat;}
+#IL-Page .ILP-prev{ background-position: -115px 0;}
+#IL-Page .ILP-next{ background-position: -160px 0;}
+#IL-Page .ILP-prev-disabled{ background-position: -25px 0; cursor: default;}
+#IL-Page .ILP-next-disabled{ background-position: -70px 0; cursor: default;}
+#IL-Page a.current{ background: #f2f2f2; color: #a1a0a0; cursor: default;}

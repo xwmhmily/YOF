@@ -1,0 +1,83 @@
+/*
+author: kudy
+site: www.kudystudio.com
+date: 2012-06-20
+版权所有：本岛工作室 [使用此后台模板必须保留此信息]
+*/
+
+body { background-color: #F7F8F9;}
+.container { margin:0px auto; padding:0px; width:99%; height:auto;}
+/*#395a7b*/
+
+.location { height:30px; line-height:30px; color:#666666; border-bottom:1px solid #CCCCCC;}
+
+.box {margin:0px auto; padding:0px; width:100%; min-height:65px; height:auto; border: 1px solid #CCCCCC;}
+.box-title { height:27px; line-height:27px; text-indent:7px; background:url(../images/box-title.gif) repeat-x; }
+.box-content { height:auto; padding:7px; line-height:20px;}
+
+.line{ margin:0px auto; height:1px; background:#ccc;}
+.blank10{ margin:0px auto; height:10px; overflow:hidden;}
+
+/* 通用图标 */
+.icon-sprite{background-image:url(../images/icons.png); background-repeat:no-repeat; width:16px; height:16px; display:inline-block; position:absolute; top:50%; margin-top:-8px; left:10px;}
+.icon-alarm{background-position:0px -2px;}
+.icon-list{background-position:-21px -1px;}
+.icon-magnifier{background-position:-41px -1px;}
+.icon-edit{background-position:-63px -1px;}
+.icon-delete{background-position:-83px -2px;}
+
+.block{position:relative; width:99.8%; border:1px solid #CDCDCD; background-color:#F7F7F7; margin:auto;}
+.block .corner{background-image:url(../images/block-corner.png); background-repeat:no-repeat; position:absolute;}
+.block .tl{width:8px; height:32px; top:-1px; left:-1px; background-position:0px 0px;}
+.block .tr{width:8px; height:32px; top:-1px; right:-1px; _right:-2px;  background-position:-8px 0px;}
+.block .bl{width:8px; height:12px; bottom:-1px; _bottom:-3px; left:-1px; background-position:0px -32px;}
+.block .br{width:8px; height:12px; bottom:-1px; _bottom:-3px; right:-1px; _right:-2px; background-position:-8px -32px;}
+.block .h{background:url(../images/block-h.gif) repeat-x; height:32px; position:absolute; top:-1px; width:100%;}
+.block .h h3{line-height:32px; text-indent:35px; font-size:10pt; color:#666666; font-weight:normal;}
+.block .cnt-wp{padding:	35px 10px 10px; display:block; _display:inline-block;}
+.block .cnt-wp .cnt{border:1px solid #DDDDDD; background-color:#FFFFFF;}
+.block .cnt-wp .form{padding:5px;}
+.block .h .bar{position:absolute; top:0px; right:10px; text-align:right; padding-top:6px;}
+.block .h .bar a,.block .h .bar select,.search-bar a{vertical-align:middle;}
+
+/* 搜索表单 */
+.search .cnt{background-color:#FFFFFF;}
+.search-bar{text-align:left; padding:10px;}
+.search label{padding-left:10px;}
+.search label.first{padding-left:0px;}
+
+/* 数据表单 */
+.data-form{width:100%; border:0px;}
+.data-form tr{height:35px; line-height:35px;}
+.data-form th{width:200px; color:#4b4a4a; text-align:right; font-weight:normal;}
+.data-form td{padding-left:5px;}
+.data-form #tip,.search #tip{ padding-left:5px; font-weight:bold; color:#FF6600;}
+
+/* 数据表格 */
+.data-table{width:100%; border:0px;}
+.data-table th{background:url(../images/data-table-th.gif) repeat-x; height:31px; line-height:31px; color:#456b0a; font-weight:bold; font-size:12px;}
+.data-table .even{background-color:#F2F2F2;}
+.data-table td{height:25px; line-height:25px; border-right:1px solid #DDDDDD;}
+.data-table td.l{text-align:left;}
+.data-table td.c{text-align:center;}
+.data-table td.r{text-align:right;}
+.data-table td.txt{text-indent:5px;}
+.data-table td.chk{text-indent:1px;width:40px;text-align:center;}
+.data-table td.txt40{text-indent:5px; width:40px;}
+.data-table td.txt80{text-indent:5px; width:80px;}
+.data-table td.txt120{text-indent:5px; width:120px;}
+.data-table td.txt160{text-indent:5px; width:160px;}
+.data-table td.txt200{text-indent:5px; width:200px;}
+.data-table td.icon{width:40px; text-align:center;}
+.data-table td.tail{border-right:0 none;}
+.data-table .opt{position:relative; width:35px; display:block; height:25px; text-align:center; cursor:pointer;}
+
+/* 分页条 */
+.pager-bar{height:25px; line-height:25px; color:#5b5959; text-align:right; padding-top:10px;}
+.pager-bar .msg{float:left;}
+.pager-bar .input-small{width:30px; border:1px solid #D3E5B6; margin:0px 4px;}
+
+/* 分页按钮 */
+.button-white{display:inline-block; height:26px; line-height:26px; text-align:center; border:none; background-image:url(../images/button-white.gif); background-repeat:no-repeat; background-position:0px 0px; padding:0px 0px 0px 12px; text-decoration:none; font-weight:normal; color:#5b5959; /*text-shadow:0px 1px #FFFFFF;*/}
+.button-white span{display:block; padding:0px 12px 0px 0px; background-image:url(../images/button-white.gif); background-repeat:no-repeat; background-position:right 0px; font-size:12px; font-family:"微软雅黑","宋体";}
+

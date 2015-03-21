@@ -1,0 +1,44 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限
+</div>
+<div class="btn-toolbar" style="padding:10px;">
+	<a href="/admin/role/add" class="btn btn-primary"><i class="icon-plus"></i> 新角色</a>
+</div>
+<div class="block">
+    <a href="#page-stats" class="block-heading" data-toggle="collapse">角色列表</a>
+    <div id="page-stats" class="block-body collapse in">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>角色别名</th>
+					<th>角色账号</th>
+					<th>添加时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if($roles) { ?>
+					<?php foreach($roles as $key => $val){ ?>
+						<tr align="center">
+							<td><?php echo $val['id'] ?></td>
+							<td><?php echo $val['alias'] ?></td>
+							<td><?php echo $val['username'] ?></td>
+							<td><?php echo date('Y-m-d', $val['addTime']) ?></td>
+							<td>
+								<a href="/admin/role/edit?roleID=<?php echo $val['id'] ?>" title= "编辑" ><i class="icon-pencil"></i></a> |
+								<a data-toggle="modal" href="#myModal" title= "删除"><i href="/admin/role/delete?roleID=<?php echo $val['id'] ?>" class="icon-trash confirm" tip="确定删除该角色吗？"></i></a> |
+								<a data-toggle="modal" href="/admin/role/assign?roleID=<?php echo $val['id'] ?>" title= "权限" ><i class="icon-edit"></i></a>
+							</td>
+						</tr>
+					<?php } ?>
+				<?php } ?>
+			</tbody>
+		</table>
+		<div class="pagination"><?php echo $pageNav ?></div>
+    </div>
+</div>
+<?php include APP_PATH."/public/admin/jsConfirm.html" ?>

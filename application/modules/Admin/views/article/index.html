@@ -1,0 +1,49 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+  <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;文章管理
+</div>
+<div class="btn-toolbar" style="padding:10px;">
+  <a href="#" class="btn btn-primary"><i class="icon-plus"></i>新文章</a>
+</div>
+<div class="block">
+  <a href="#page-stats" class="block-heading" data-toggle="collapse">文章列表</a>
+  <div id="page-stats" class="block-body collapse in">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Status</th>
+        <th>Add Time</th>
+        <th>_OP_</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if($articles) { ?>
+        <?php foreach($articles as $key => $val){ ?>
+          <tr align="center">
+            <td><?php echo $val['id'] ?></td>
+            <td><?php echo $val['title'] ?></td>
+            <td><?php echo $val['content'] ?></td>
+            <td>
+              <?php if($val['status'] == 0){ ?>
+                待审核&nbsp;|&nbsp;<a href="/admin/article/verify?articleID=<?php echo $val['id'] ?>">审核</a>
+              <?php }else{ ?>
+                正常
+              <?php } ?>
+            </td>
+            <td><?php echo date('Y-m-d', $val['addTime']) ?></td>
+            <td>
+              <a href="/admin/article/del?articleID=<?php echo $val['id'] ?>">Del</a>
+            </td>
+          </tr>
+        <?php } ?>
+      <?php } ?>
+    </tbody>
+  </table>
+  <div class="pagination"><?php echo $pageNav ?></div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<script>
+	$('.confirm').live("click", function(){
+		var href=$(this).attr('href');
+		var tip = $(this).attr("tip") ? $(this).attr("tip") : "确定要这么做吗？";
+		bootbox.confirm(tip, function(result) {
+			if(result){
+				location.replace(href);
+			}
+		});		
+	})
+</script>

@@ -1,0 +1,2 @@
+[17-Mar-2015 16:00:54 PRC] PHP Fatal error:  Call to a member function query() on a non-object in /usr/www/yaf/application/library/M_Model.pdo.php on line 506
+[17-Mar-2015 16:00:55 PRC] PHP Fatal error:  Call to a member function query() on a non-object in /usr/www/yaf/application/library/M_Model.pdo.php on line 506

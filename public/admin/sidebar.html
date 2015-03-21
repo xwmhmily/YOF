@@ -1,0 +1,25 @@
+<div class="sidebar-nav">
+	<?php foreach($_SESSION['menu'] as $key => $val) {?>
+		<a href="#sidebar_menu_<?php echo $key ?>" class="nav-header collapsed icon-th-large" data-toggle="collapse">
+			<i class="<?php echo $val['module_icon'] ?>"></i>
+			&nbsp; <?php echo $val['name'] ?> <i class="icon-chevron-up"></i>
+		</a>
+		<ul id="sidebar_menu_<?php echo $key ?>" class="nav nav-list nav nav-list in">
+				<?php foreach($val['sub'] as $k => $v) {?>
+				<li>
+					<a href="<?php echo $v['url'] ?>" style="padding-left:30px;">
+						<i class="icon-arrow-right"></i><?php echo $v['name'] ?>
+					</a>
+				</li>
+			<?php } ?>
+		</ul>
+	<?php } ?>
+</div>
+	
+<!--- 以上为左侧菜单栏 sidebar --->
+<div class="content">
+	<div class="header">
+		<div class="stats">
+			<p class="stat"><!--span class="number"></span--></p>
+		</div>
+	</div>

@@ -1,0 +1,29 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="block">
+	<a data-toggle="collapse" class="block-heading" href="#page-stats">修改密码</a>
+	<div class="block-body collapse in" id="page-stats">
+		<form method="post" action="/admin/index/resetAct" id="resetPassForm">
+			<table class="table table-striped" cellspacing="0" cellpadding="0">
+				<tbody>
+					<tr>
+						<th scope="row" width="150"><label>新密码：</label></th>
+						<td><input value="" type="password" name="t[newPass]" id="newPass" class="input-xlarge" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label>确认密码：</label></th>
+						<td><input value="" type="password" name="t[confirmPass]" id="confirmPass" class="input-xlarge" /></td>
+					</tr>
+					<div style="color:red; margin-left:150px;" id="tips"></div>
+					<tr>
+						<th scope="row">&nbsp;</th>
+						<td>
+							<button class="btn btn-primary" href="javascript:;" id="submit"><span>确定</span></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+@charset "utf-8";
+* { margin: 0; padding: 0; }
+
+/********       表格样式       *****/
+table { border-collapse: collapse; border-spacing: 0; font-size: 12px; width: 100%; }
+table th, table td { border-bottom: 1px solid #EEEEEE; padding: 4px 0 4px 6px; }
+
+
+.Btable th { background: #FBFBFB; height: 30px; border-bottom: 1px solid #DEDEDE; border-top: 1px solid #DEDEDE; color: #333333; font-weight: normal; }
+.Btable td { text-align: center; }
+
+
+.Ftable { border-top: 1px solid #EEEEEE; }
+.Ftable th { text-align: right; font-weight: normal; color: #777777; }
+
+
+
+
+
+input { height: 18px; }
+input[type="image"] { height: auto; }
+select { height: 24px; padding-right: 4px; }
+
+input[type="text"], input[type="password"], select, textarea { border: 1px solid #D0D0D0; font-family: Verdana,Geneva,sans-serif,"宋体"; font-size: 12px; padding: 2px 0 2px 5px; margin-right: 12px; }
+input[type="submit"], input[type="reset"], input[type="button"] { cursor: pointer; padding: 0.25em; background: #DDDDDD; height: 24px; border-top: 0; border-left: 0; border-bottom: 1px solid #666; border-right: 1px solid #666; padding:3px 6px; }
+input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active { border-color: #666666 -moz-use-text-color -moz-use-text-color #666666; border-style: solid none none solid; border-width: 1px 0 0 1px; }
+input[type="text"]:hover, input[type="password"]:hover, select:hover, textarea:hover { border-color: #6BBDFF; }
+input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus { border-color: #0093F9; outline-color: #9DE0FF; }
+input[type="radio"], input[type="checkbox"] { vertical-align: -5px; }
+
+select { background: #F9F9F9; border-color: #666666 #CCCCCC #CCCCCC #666666; border-style: solid; border-width: 1px; color: #333333; padding: 2px; vertical-align: middle; }
+
+.error input { border: 1px solid #CC0000; }
+.success input { border: 1px solid #D0D0D0; }
+.fTable tr:hover { background: #FBFFE4; }
+.fTable tr th { text-align: right; }
+
+.fTable2 tr:hover { background: none; }
+
+/*---弹窗 2012-11-12 ---*/
+.dialog-overlay{ opacity:0.5; filter:alpha(opacity:50); background:#ccc; width:100%;height:100%;}
+.dialog{ border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px; padding:5px;  background:url(../images/regbg01.png); _background:none #c6c6c6;}
+.dialog_inner{ float:left; border:1px solid #ACACAC; background:#FFF} 
+.dialog .bar{ position:relative; cursor:move; height:37px; line-height:37px; padding:0 10px; border:1px solid #FFF; background:url(../images/regbg02.png) repeat-x; overflow:hidden;}
+.dialog .bar .title{ float:left; white-space:nowrap; font-weight:700; font-size:14px; color:#ff6600;}
+.dialog .bar .title .gray{ font-size:12px; font-weight:normal;}
+.dialog .bar .close{ color:#fff; cursor:pointer; text-decoration: none;  text-indent:-9999px; z-index:10; float:right; display:inline; margin:5px 0; width:20px; height:20px;  overflow:hidden; background:url(../images/regbg02.png) 0 -38px;}
+.dialog .Dcontent{  float:left; padding:0px; background:#fff; border:1px solid #FFF; border-top:none;}
+.dialog .Dcontent iframe{ float:left; vertical-align: bottom;}

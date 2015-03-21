@@ -1,0 +1,15 @@
+<html>
+ 	<head>
+   		<title>Edit Article</title>
+ 	</head>
+ 	<body>
+  		<h2>Edit Article</h2>
+  		<form id="editForm" name="editForm" method="post" action="/article/editAct">
+  			<input type="text" id="title" name="title" value="<?php echo $article['title'] ?>" /> <br /><br />
+  			<input type="text" id="content" name="content" value="<?php echo $article['content'] ?>" size="100" /><br /><br />
+  			<input type="submit" id="submit" name="submit" value="Submit" />
+  			<input type="hidden" id="articleID" name="articleID" value="<?php echo $article['id'] ?>" />
+  		</form>
+  		<a href="/">Back</a>
+	</body>
+</html>

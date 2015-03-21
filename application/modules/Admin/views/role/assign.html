@@ -1,0 +1,57 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限&nbsp;&nbsp;/&nbsp;&nbsp;编辑权限
+</div>
+<style>
+	.selectall b { font-weight: normal; }
+	.selectall b:hover { text-decoration: underline; }
+</style>
+<div class="well">
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active in">
+		<form name="assignForm" id="assignForm" method="post" action="/admin/role/assignAct">
+			<?php foreach($menu as $key => $val){ ?>
+				<div class="block">
+					<a href="#page-stats_<?php echo $key ?>" class="block-heading selectall" data-for="key<?php echo $key ?>"><?php echo $val['name'] ?> <b>[全选]</b></a>
+					<div id="page-stats_<?php echo $key ?>" class="block-body collapse in">
+						<ul style="margin: 0;">
+							<?php foreach($val['sub'] as $k => $v) { ?>
+								<li style="float:left; padding:0 0 0 30px;list-style-type:none; line-height: 30px;">
+									<label>
+										<input type="checkbox" data-name="key<?php echo $key ?>" name="sub_<?php echo $key ?>[]" id="subItem_<?php echo $k ?>" value="<?php echo $k ?>" onclick="checkParent('<?php echo $k ?>', '<?php echo $key ?>', '<?php echo $v['dep']?>');" title="<?php echo $v['dep']?>_<?php echo $k ?>" 
+
+										<?php if(in_array($k, $priv)) { ?>
+											checked="checked"
+										<?php } ?>
+										> <?php echo $v['name'] ?>
+									</label>
+								</li>
+								&nbsp;
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			<?php } ?>
+			<div>
+				<input type="hidden" id="roleID" name="roleID" value="<?php echo $roleID ?>" />
+				<button class="btn btn-primary">更新</button>
+				<a class="btn" href="/admin/role"><span>返回</span></a>
+			</div>
+		</form>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(".selectall").click(function(){
+		var key = $(this).attr("data-for");
+		var inputSelecter = "input[data-name=" + key +"]";
+		if($(inputSelecter).toArray().length == $(inputSelecter + ":checked").toArray().length){
+			$(inputSelecter).removeAttr("checked", "");
+		} else {
+			$(inputSelecter).attr("checked", "checked");
+		}
+		return false;
+	});
+</script>

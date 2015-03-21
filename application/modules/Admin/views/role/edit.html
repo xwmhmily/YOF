@@ -1,0 +1,27 @@
+<?php include APP_PATH."/public/admin/header.html" ?>
+<?php include APP_PATH."/public/admin/navibar.html" ?>
+<?php include APP_PATH."/public/admin/sidebar.html" ?>
+<div class="breadcrumb">
+    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限&nbsp;&nbsp;/&nbsp;&nbsp;编辑角色
+</div>
+<div class="well">
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active in">
+			<form id="myform" name="myform" method="post" action="/admin/role/editAct">
+				<label for="alias">别名:</label>
+				<input type="text" name="alias" id="alias" class="input-xlarge" required="required" value="<?php echo $role['alias'] ?>" />
+				<label for="name">账号:</label>
+				<input type="text" name="name" id="name" class="input-xlarge" required="required" value="<?php echo $role['username'] ?>" />
+				<label for="password">密码:</label>
+				<input type="text" name="password" id="password" class="input-xlarge" value="123456" required="required" />
+				<label><input type="checkbox" id="newPassword" name="newPassword" style="margin-top: -4px;">&nbsp;&nbsp;更改密码</label>
+				<input type="hidden" id="roleID" name="roleID" value="<?php echo $roleID ?>" />
+				<div class="btn-toolbar">
+					<button type="submit" name="dosubmit" id="submitBtn" class="btn btn-primary"><strong>提交</strong></button>
+					<a class="btn" href="/admin/role"><span>返回</span></a>
+					<div class="btn-group"></div>
+				</div>
+			</form>
+        </div>
+    </div>
+</div>
