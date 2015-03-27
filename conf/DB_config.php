@@ -28,7 +28,7 @@ if('DEV' == strtoupper(ENVIRONMENT)){
 
 		'Default'  => 'dym',
 	);
-}else if('WWW' == strtoupper(ENVIRONMENT)){
+}else {
 	$DB_Config = array(
 		'TYPE' => 'mysql',
 		'READ_HOST' => '127.0.0.1',
