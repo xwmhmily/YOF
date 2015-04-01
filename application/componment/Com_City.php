@@ -9,7 +9,7 @@
 
 class Com_City {
 
-	// 生成的四级联动中 select 的名称与ID
+	// 生成的三级联动中 select 的名称与ID
 	private $cityID     = 'areaCity';
 	private $provinceID = 'areaProvince';
 	private $regionID   = 'areaRegion';
@@ -184,7 +184,7 @@ $str = <<< EOF
 		})
 
 		/**
-		 *  Functionality: 四级联动
+		 *  Functionality: 三级联动
 		 *  targetID: 省份ID 、 城市ID
 		 *  flag: p 、 c
 		 *  r: 从根目录开始搜索控制器, 不走分组
