@@ -214,15 +214,6 @@ EOF;
 
 		$str .= $regionStr;
 
-		$districtStr = "function regionChange() {
-				 // 区域查版块
-				 var selectedRegionID = $('#areaRegion').val();
-				 if('' != selectedRegionID){
-					   pcAjax(selectedRegionID, 'r');
-				   }
-			}";
-		$str .= $districtStr;
-
 		$str .= '</script>';
 
 		//  ======  Step 1: 取得所有的省份, 组成 SELECT, ====== //
