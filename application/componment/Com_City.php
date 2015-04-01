@@ -1,7 +1,7 @@
 <?php
 /**
  * File: C_City.php
- * Functionality: 省市区板块三级联动
+ * Functionality: 省市区三级联动
  * Author: Nic XIE
  * Date: 2013-6-2
  * Remark:
