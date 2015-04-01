@@ -1,7 +1,7 @@
 <?php
 /**
  * File: C_City.php
- * Functionality: 省市区板块四级联动
+ * Functionality: 省市区板块三级联动
  * Author: Nic XIE
  * Date: 2013-6-2
  * Remark:
@@ -13,7 +13,6 @@ class Com_City {
 	private $cityID     = 'areaCity';
 	private $provinceID = 'areaProvince';
 	private $regionID   = 'areaRegion';
-	private $districtID = 'areaDistrict';
 
 	private $m_city = null;
 	private $m_region = null;
@@ -23,12 +22,11 @@ class Com_City {
 		$this->m_city     = Helper::load('City');
 		$this->m_region   = Helper::load('Region');
 		$this->m_province = Helper::load('Province');
-		$this->m_district = Helper::load('District');
 	}
 
 
 	/**
-	 * 生成省市区版块四级联动菜单
+	 * 生成省市区块三级联动菜单
 	 * 
 	 * @param $PROVINCE 默认选中的省份
 	 * @param $CITY     默认选中的城市
