@@ -18,6 +18,11 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 		define('FUNC_PATH',    APP_PATH.'/application/function');
 		define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
 
+		// CSS, JS, IMG PATH
+		define('CSS_PATH', '/css');
+		define('JS_PATH',  '/js');
+		define('IMG_PATH',  '/img');
+
 		// Admin CSS, JS PATH
 		define('ADMIN_CSS_PATH', '/admin/css');
 		define('ADMIN_JS_PATH',  '/admin/js');

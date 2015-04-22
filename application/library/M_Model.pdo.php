@@ -376,7 +376,7 @@ abstract class M_Model {
 	}
 
 	// 根据ID获取某个字段
-	public function getFieldByID($field, $id){
+	public function SelectFieldByID($field, $id){
 		$where = array('id' => $id);
 		$data = $this->Field($field)->Where($where)->SelectOne();
 		return $data[$field];
