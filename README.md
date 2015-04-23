@@ -58,7 +58,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > applicatoin => 程序主目录
 
-> componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
+>> componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
 
 > controllers => 不使用modules 情况下的控制器目录
 
