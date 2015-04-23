@@ -188,6 +188,8 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
         . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
         return $this->Query($sql);
     }
+
+    控制器里调用: $data = Helper::load('Admin')->getUserArticles($userID)
 ###
 >>> 2:通用的方法,如经常会调用到的 SQL 语句, 请在模型里封装, 如 M_City.php 里的 getCityNameById()
 
