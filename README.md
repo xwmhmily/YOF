@@ -79,96 +79,96 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
     > public => 公用文件, JS, CSS 等一般位于此
 
 <H3>内置常量</H3>
-    > APP_PATH => 根目录
+> APP_PATH => 根目录
 
-    > ENVIRONMENT => 运行环境
+> ENVIRONMENT => 运行环境
 
-    > TB_PREFIX => 表前缀
+> TB_PREFIX => 表前缀
 
-    > APP_NAME => APP 名称
+> APP_NAME => APP 名称
 
-    > CONFIG_PATH => 配置文件的目录, 即 APP_PATH.'/conf'
-    
-    > LIB_PATH => 类目录, 即 APP_PATH.'/application/library'
+> CONFIG_PATH => 配置文件的目录, 即 APP_PATH.'/conf'
 
-    > MODEL_PATH => 模型目录, 即 APP_PATH.'/application/model'
+> LIB_PATH => 类目录, 即 APP_PATH.'/application/library'
 
-    > FUNC_PATH => 函数目录, 即 APP_PATH.'/application/function'
+> MODEL_PATH => 模型目录, 即 APP_PATH.'/application/model'
 
-    > ADMIN_PATH => Admin 模块目录, APP_PATH.'/application/modules/Admin'
+> FUNC_PATH => 函数目录, 即 APP_PATH.'/application/function'
 
-    > CSS_PATH => CSS 路径, 即 /css 
+> ADMIN_PATH => Admin 模块目录, APP_PATH.'/application/modules/Admin'
 
-    > JS_PATH => JS 路径, 即 /js
+> CSS_PATH => CSS 路径, 即 /css 
 
-    > IMG_PATH => IMG 路径, 即 /img
-    
-    > ADMIN_CSS_PATH => 管理后台 CSS 路径, '/admin/css'
+> JS_PATH => JS 路径, 即 /js
 
-    > ADMIN_JS_PATH => 管理后台 JS 路径, '/admin/js'
+> IMG_PATH => IMG 路径, 即 /img
 
-    > CUR_DATE => 当前日期, 格式 Y-m-d
+> ADMIN_CSS_PATH => 管理后台 CSS 路径, '/admin/css'
 
-    > CUR_TIMESTAMP => 当前时间戳
+> ADMIN_JS_PATH => 管理后台 JS 路径, '/admin/js'
 
-    > SERVER_DOMAIN => 网站域名
+> CUR_DATE => 当前日期, 格式 Y-m-d
 
-    > STATIC_DOMAIN => 静态文件域名
+> CUR_TIMESTAMP => 当前时间戳
 
-    > IMG_DOMAIN => 图片域名
+> SERVER_DOMAIN => 网站域名
 
-    > SITE_PROVINCE => 三级联动中默认显示的省份, 440000 是广东
+> STATIC_DOMAIN => 静态文件域名
 
-    > SITE_CITY => 三级联动中默认显示的城市, 440100 是广州
+> IMG_DOMAIN => 图片域名
 
-    > SITE_REGION => 三级联动中默认显示的省份, 440106 是珠江新城
+> SITE_PROVINCE => 三级联动中默认显示的省份, 440000 是广东
+
+> SITE_CITY => 三级联动中默认显示的城市, 440100 是广州
+
+> SITE_REGION => 三级联动中默认显示的省份, 440106 是珠江新城
 
 <H3>使用</H3>
 
 一: 控制器
     
-    > 不是模块下的情况: 在 APP_PATH.'/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 Article.php
-    
-    > 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
+> 不是模块下的情况: 在 APP_PATH.'/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 Article.php
+
+> 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
 
 二: 模型
     
-    > 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 如示例中的 M_Admin, M_Role.php等
-    
-    > 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
+> 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 如示例中的 M_Admin, M_Role.php等
 
-    > 模型的调用: 控制器中使用助手类加载, 
-    
-        > 常规模型: $this->m_role = Helper::load('Role');
+> 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
-        > 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
+> 模型的调用: 控制器中使用助手类加载, 
 
-    > 执行 CURD
-    
-        > 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
-        
-        > 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
-        
-            > Select:如示例 Index控制器Select 出登录用户的 10 个文章:
-            
-            > $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+    > 常规模型: $this->m_role = Helper::load('Role');
 
-            > Update:示例中的修改个人资料使用了 UpdateByID
+    > 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
-            > $code = $this->m_user->UpdateByID($m, USER_ID);
+> 执行 CURD
 
-            > Insert: 示例中的添加文章
+    > 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
 
-            > $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
+    > 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
 
-            > Delete: 示例中的删除文章使用了 DeleteByID
+        > Select:如示例 Index控制器Select 出登录用户的 10 个文章:
 
-            > $code = $this->m_article->DeleteByID($articleID);
+        > $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+
+        > Update:示例中的修改个人资料使用了 UpdateByID
+
+        > $code = $this->m_user->UpdateByID($m, USER_ID);
+
+        > Insert: 示例中的添加文章
+
+        > $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
+
+        > Delete: 示例中的删除文章使用了 DeleteByID
+
+        > $code = $this->m_article->DeleteByID($articleID);
 
 三: 视图
     
-    > 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
+> 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
 
-    > 控制器调用 $this->getView()->assign($buffer);即可
+> 控制器调用 $this->getView()->assign($buffer);即可
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
