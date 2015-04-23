@@ -153,6 +153,14 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
 
+>> <H5>登录的Select</H5>
+
+>> $field = array('id');
+
+>> $where = array('username' => $username, 'password' => $password);
+
+>> $data = $this->m_user->Field($field)->Where($where)->SelectOne();
+
 >> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
 
 >> $code = $this->m_user->UpdateByID($m, USER_ID);
