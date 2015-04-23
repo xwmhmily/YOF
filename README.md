@@ -70,7 +70,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
 
->> plugins => YAF 默认的插件位置, 示例有 Router.php
+>> plugins => YAF 默认的插件位置, 示例有 Router.php, Admin.php
 
 >> views => 视力文件默认目录
 
