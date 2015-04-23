@@ -9,7 +9,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 3: 支持多种运行环境, 根据运行环境决定域名常量,MySQL参数, 错误报告等
 
-> 4: 支持默认控制器, 默认模型 [可以不创建模型文件也能对表进行CURD] 
+> 4: 支持默认模型 [可以不创建模型文件也能对表进行CURD] 
 
 > 5: DEMO 中包括用户的简单登录,注册,注销.文章的发布,管理,分页.个人资料修改
 
@@ -159,19 +159,19 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> $where = array('username' => $username, 'password' => $password);
 
->> $data = $this->m_user->Field($field)->Where($where)->SelectOne();
+>> $data = $this->m_user->Field($field)->Where($where)->SelectOne(); 
 
 >> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
 
->> $code = $this->m_user->UpdateByID($m, USER_ID);
+>> $code = $this->m_user->UpdateByID($m, USER_ID); // $code 是所影响的行数
 
 >> <H5>Insert: 示例中的添加文章</H5>
 
->> $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
+>> $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名, $articleID 是返回的自增长ID
 
 >> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
 
->> $code = $this->m_article->DeleteByID($articleID);
+>> $code = $this->m_article->DeleteByID($articleID); // $code 是所影响的行数
 
 > 三: 视图
     
