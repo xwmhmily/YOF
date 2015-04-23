@@ -125,50 +125,50 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 <H3>使用</H3>
 
-一: 控制器
+> 一: 控制器
     
-> A:不是模块下的情况: 在 APP_PATH.'/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 Article.php
+>> A:不是模块下的情况: 在 APP_PATH.'/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 Article.php
 
-> B: 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
+>> B: 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
 
-二: 模型
+> 二: 模型
     
-> A: 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 如示例中的 M_Admin, M_Role.php等
+>> A: 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 如示例中的 M_Admin, M_Role.php等
 
-> B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
+>> B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
-> <H5>模型的调用: 控制器中使用助手类加载 </H5>
+>> <H5>模型的调用: 控制器中使用助手类加载 </H5>
 
-> A: 常规模型: $this->m_role = Helper::load('Role');
+>> A: 常规模型: $this->m_role = Helper::load('Role');
 
-> B: 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
+>> B: 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
-> <H5>执行 CURD</H5>
+>> <H5>执行 CURD</H5>
 
-> 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
+>> 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
 
-> 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
+>> 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
 
-> <H5>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H5>
+>> <H5>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H5>
 
-> $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+>> $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
 
-> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
+>> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
 
-> $code = $this->m_user->UpdateByID($m, USER_ID);
+>> $code = $this->m_user->UpdateByID($m, USER_ID);
 
-> <H5>Insert: 示例中的添加文章</H5>
+>> <H5>Insert: 示例中的添加文章</H5>
 
-> $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
+>> $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
 
-> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
+>> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
 
-> $code = $this->m_article->DeleteByID($articleID);
+>> $code = $this->m_article->DeleteByID($articleID);
 
-三: 视图
+> 三: 视图
     
-> A: 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
+>> A: 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
 
-> B: 控制器调用 $this->getView()->assign($buffer);即可
+>> B: 控制器调用 $this->getView()->assign($buffer);即可
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
