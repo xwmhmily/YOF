@@ -7,7 +7,7 @@
  * Remark:
  */
 
-class CityController extends Yaf_Controller_Abstract {
+class CityController extends BasicController {
 	
 	// 生成的三级联动中 select 的名称与ID
 	private $cityID     = 'areaCity';
@@ -19,9 +19,9 @@ class CityController extends Yaf_Controller_Abstract {
 	private $m_province = null;
 
 	function init(){		
-		$this->m_city     = Helper::load('City');
-		$this->m_region   = Helper::load('Region');
-		$this->m_province = Helper::load('Province');
+		$this->m_city     = $this->load('City');
+		$this->m_region   = $this->load('Region');
+		$this->m_province = $this->load('Province');
 	}
 
 	/**
@@ -29,8 +29,8 @@ class CityController extends Yaf_Controller_Abstract {
 	  */
 	public function pcAjaxAction() {
 		Helper::import('Array');
-		$flag = $this->getRequest()->getQuery('flag');
-		$targetID = $this->getRequest()->getQuery('targetID');
+		$flag = $this->getQuery('flag');
+		$targetID = $this->getQuery('targetID');
 
 		switch($flag){
 			case 'p':

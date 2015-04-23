@@ -1,32 +1,27 @@
 <?php
 
-class IndexController extends Yaf_Controller_Abstract {
-
-	private $session = null;
-	private $request = null;
+class IndexController extends BasicController {
 
 	public function init(){
-        $this->session = Yaf_Session::getInstance();  // SESSION 不需要 start
-        $this->request = $this->getRequest();
+        $userID = $this->getSession('userID');
 
-        $userID = $this->session->__get('userID');
         if($userID){
     	   define('USER_ID', $userID);
         }
 	}
 
 	public function indexAction() {
-        $m_article = Helper::load('Article');
+        $m_article = $this->load('Article');
+        $userID = $this->getSession('userID');
 
-        $userID = $this->session->__get('userID');
         if($userID){
-            $buffer['username'] = $this->session->__get('username');
+            $buffer['username'] = $this->getSession('username');
 
             // User Aritcles
             $where = array('userID' => USER_ID);
             $total = $m_article->Where($where)->Total();
 
-            $page = $this->request->get('page');
+            $page = $this->get('page');
             $page = $page ? $page : 1;
 
             $size  = 10;

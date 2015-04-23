@@ -1,16 +1,11 @@
 <?php
 
-class ArticleController extends Yaf_Controller_Abstract {
+class ArticleController extends BasicController {
 
-	private $m_article  = null;
-	private $request = null;
-	private $session = null;
+	private $m_article;
 
 	private function init(){
-		$this->request = $this->getRequest();
-		$this->session = Yaf_Session::getInstance();
-
-		$this->m_article = Helper::load('Article');
+		$this->m_article = $this->load('Article');
 	}
 
 	public function indexAction(){
@@ -19,7 +14,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 	}
 
 	public function detailAction(){
-		$articleID = $this->request->getQuery('articleID');
+		$articleID = $this->getQuery('articleID');
 		echo $articleID; die;
 	}
 	

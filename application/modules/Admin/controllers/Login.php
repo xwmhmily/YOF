@@ -1,18 +1,14 @@
 <?php
 
-class LoginController extends Yaf_Controller_Abstract {
+class LoginController extends BasicController {
 
-	private $m_admin = null;
-	private $m_role  = null;
-	private $request = null;
-  	private $session = null;
+	private $m_admin;
+	private $m_role;
   	private $adminAccount = 'superAdmin';
 
 	private function init(){
-		$this->m_admin = Helper::load('Admin');
-		$this->m_role  = Helper::load('Role');
-		$this->request = $this->getRequest();
-		$this->session = Yaf_Session::getInstance();
+		$this->m_admin = $this->load('Admin');
+		$this->m_role  = $this->load('Role');
 
 		$this->homeUrl = '/admin/login';
 	}
@@ -22,15 +18,15 @@ class LoginController extends Yaf_Controller_Abstract {
 	}
 
 	public function checkLoginAction(){
-		$username = $this->request->getPost('username');
-		$password = $this->request->getPost('password');
-		$captcha  = $this->request->getPost('captcha');
+		$username = $this->getPost('username');
+		$password = $this->getPost('password');
+		$captcha  = $this->getPost('captcha');
 		
 		if(!$username || !$password || !$captcha){
 			jsAlert('信息不完整!');
 			jsRedirect($this->homeUrl);
 		}else{
-			if(strtolower($captcha) != strtolower($_SESSION['adminCaptcha'])){
+			if(strtolower($captcha) != strtolower($this->getSession('adminCaptcha'))){
 				jsAlert('验证码不正确!');
 				jsRedirect($this->homeUrl);
 			}
@@ -51,12 +47,12 @@ class LoginController extends Yaf_Controller_Abstract {
 			jsRedirect($this->homeUrl);
 		}else{
 			// Login OK, log this action and find privileges
-			$this->session->__set('adminID', $data['id']);
-			$this->session->__set('adminName', $username);
+			$this->setSession('adminID', $data['id']);
+			$this->setSession('adminName', $username);
 			
 			// admin 拥有所有的权限
 			if($this->adminAccount == $username){
-				$this->session->__set('priv', 'ALL');
+				$this->setSession('priv', 'ALL');
 			}else{
 				// 不是管理员, 记录其 roleID, 用于查找权限
 				// 1: 取得登录的角色所拥有的权限
@@ -67,7 +63,7 @@ class LoginController extends Yaf_Controller_Abstract {
 					jsAlert('您还没有任何权限, 请联系管理员!');
 					jsRedirect($this->homeUrl);
 				}else{
-					$this->session->__set('priv', $priv);
+					$this->setSession('priv', $priv);
 				}
 			}
 		}
@@ -76,8 +72,8 @@ class LoginController extends Yaf_Controller_Abstract {
 	}
 
 	public function logoutAction(){
-		$this->session->__unset('adminID');
-		$this->session->__unset('adminName');
+		$this->unsetSession('adminID');
+		$this->unsetSession('adminName');
 
 		jsRedirect($this->homeUrl);
 	}

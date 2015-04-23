@@ -1,16 +1,11 @@
 <?php
 
-class ArticleController extends Yaf_Controller_Abstract {
+class ArticleController extends BasicController {
   
-  private $m_article = null;
-  private $request = null;
-  private $session = null;
+  private $m_article;
 
   private function init(){
-    $this->request = $this->getRequest();
-    $this->session = Yaf_Session::getInstance();
-
-    $this->m_article = Helper::load('Article');
+    $this->m_article = $this->load('Article');
   }
 
   public function indexAction(){
@@ -22,9 +17,9 @@ class ArticleController extends Yaf_Controller_Abstract {
   }
 
   public function addActAction(){
-    $m['title']   = $this->request->getPost('title');
-    $m['content'] = $this->request->getPost('content');
-    $m['userID']  = $this->session->__get('userID');
+    $m['title']   = $this->getPost('title');
+    $m['content'] = $this->getPost('content');
+    $m['userID']  = $this->getSession('userID');
     $m['addTime'] = CUR_TIMESTAMP;
 
     $articleID = $this->m_article->Insert($m);
@@ -39,7 +34,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 
   public function editAction(){
     // URL 中带的参数用 getQuery
-    $articleID = $this->request->getQuery('articleID');
+    $articleID = $this->getQuery('articleID');
     $buffer['article'] = $this->m_article->SelectByID('', $articleID);
 
     $this->getView()->assign($buffer);
@@ -47,9 +42,9 @@ class ArticleController extends Yaf_Controller_Abstract {
 
   public function editActAction(){
     // POST 过来的用 getPost
-    $articleID = $this->request->getPost('articleID');
-    $m['title']   = $this->request->getPost('title');
-    $m['content'] = $this->request->getPost('content');
+    $articleID = $this->getPost('articleID');
+    $m['title']   = $this->getPost('title');
+    $m['content'] = $this->getPost('content');
 
     $code = $this->m_article->UpdateById($m, $articleID);
 
@@ -62,7 +57,7 @@ class ArticleController extends Yaf_Controller_Abstract {
   }
 
   public function delAction(){
-    $articleID = $this->request->getQuery('articleID');
+    $articleID = $this->getQuery('articleID');
     $code = $this->m_article->DeleteById($articleID);
 
     if(!$code){
@@ -74,7 +69,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 
   // 测试URL 路由 [伪静态]
   public function detailAction(){
-    $articleID = $this->request->get('articleID');
+    $articleID = $this->get('articleID');
     $buffer['article'] = $this->m_article->SelectByID('', $articleID);
 
     pr($buffer['article']); die;

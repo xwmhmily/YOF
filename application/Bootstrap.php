@@ -50,6 +50,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         $router->addRoute('regex', $route);
     }
 
+    public function __initController(){
+        include APP_PATH.'/controllers/Basic.php';
+    }
+
     public function _initPlugin(Yaf_Dispatcher $dispatcher) {
         $router = new RouterPlugin();
         $dispatcher->registerPlugin($router);

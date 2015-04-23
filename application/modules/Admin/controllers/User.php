@@ -1,23 +1,19 @@
 <?php
 
-class UserController extends Yaf_Controller_Abstract {
+class UserController extends BasicController {
 
-	private $m_user  = null;
-	private $request = null;
-  	private $session = null;
+	private $m_user;
 
 	private function init(){
 		Yaf_Registry::get('adminPlugin')->checkLogin();
 		
-        $this->m_user  = Helper::load('User');
-        $this->request = $this->getRequest();
-        $this->session = Yaf_Session::getInstance();
+        $this->m_user  = $this->load('User');
 	}
 
 	public function indexAction(){
 		$total = $this->m_user->Total();
 
-		$page = $this->request->get('page');
+		$page = $this->get('page');
 		$page = $page ? $page : 1;
 
 		$size  = 10;

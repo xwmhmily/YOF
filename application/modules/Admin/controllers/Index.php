@@ -1,20 +1,17 @@
 <?php
 
-class IndexController extends Yaf_Controller_Abstract {
+class IndexController extends BasicController {
 
-	private $request = null;
-  	private $session = null;
   	private $adminAccount = 'superAdmin';
 
 	private function init(){
-		$this->request = $this->getRequest();
-		$this->session = Yaf_Session::getInstance();
+		
 	}
 
 	public function mainAction(){
 		include APP_PATH.'/application/modules/Admin/menu.php';
-		if($this->adminAccount != $this->session->__get('adminName')){
-			$priv = $this->session->__get('priv');
+		if($this->adminAccount != $this->getSession('adminName')){
+			$priv = $this->getSession('priv');
 			$priv = explode(',', $priv['privilege']);
 			
 			// 1: 与大菜单对比, 删除会员没有权限的菜单
@@ -39,7 +36,7 @@ class IndexController extends Yaf_Controller_Abstract {
 		}
 
 		$buffer['menu'] = $menu;
-		$this->session->__set('menu', $menu);
+		$this->setSession('menu', $menu);
 		$this->getView()->assign($buffer);
 	}
 
@@ -48,13 +45,13 @@ class IndexController extends Yaf_Controller_Abstract {
 	}
 
 	public function resetActAction(){
-		$t = $this->request->getPost('t');
+		$t = $this->getPost('t');
 		$m = array();
 		$m['password'] = md5($t['newPass']);
-		$where = ' where `username` = "' . $_SESSION['adminName'] . '" LIMIT 1';
+		$where = ' WHERE `username` = "' . $_SESSION['adminName'] . '" LIMIT 1';
 		
 		if($this->adminAccount == $_SESSION['adminName']){
-			$data = Helper::load('Admin')->Update($m, $where);
+			$data = $this->load('Admin')->Update($m, $where);
 		}
 		
 		if($data !== FALSE){

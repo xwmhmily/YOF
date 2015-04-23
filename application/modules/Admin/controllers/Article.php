@@ -1,25 +1,20 @@
 <?php
 
-class ArticleController extends Yaf_Controller_Abstract {
+class ArticleController extends BasicController {
 
-	private $m_article = null;
-	private $request = null;
-  	private $session = null;
+	private $m_article;
 
 	private function init(){
 		Yaf_Registry::get('adminPlugin')->checkLogin();
 
-		$this->m_article  = Helper::load('Article');
-		$this->request = $this->getRequest();
-		$this->session = Yaf_Session::getInstance();
-
+		$this->m_article = $this->load('Article');
 		$this->homeUrl = '/admin/article';
 	}
 
 	public function indexAction(){
 		$total = $this->m_article->Total();
 
-		$page = $this->request->get('page');
+		$page = $this->get('page');
 		$page = $page ? $page : 1;
 
 		$size  = 10;
@@ -35,7 +30,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 	}
 
 	public function verifyAction(){
-		$articleID = $this->request->get('articleID');
+		$articleID = $this->get('articleID');
 		$m['status'] = 1;
 
 		$code = $this->m_article->UpdateByID($m, $articleID);
@@ -43,7 +38,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 	}
 
 	public function delAction(){
-		$articleID = $this->request->get('articleID');
+		$articleID = $this->get('articleID');
 		$code = $this->m_article->DeleteByID($articleID);
 		jsRedirect($this->homeUrl);
 	}

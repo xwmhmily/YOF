@@ -1,18 +1,13 @@
 <?php
 
-class RoleController extends Yaf_Controller_Abstract {
+class RoleController extends BasicController {
 	
-	private $m_role  = null;
-	private $request = null;
-  	private $session = null;
+	private $m_role;
 
 	private function init(){
 		Yaf_Registry::get('adminPlugin')->checkLogin();
 		
-        $this->m_role  = Helper::load('Role');
-        $this->request = $this->getRequest();
-        $this->session = Yaf_Session::getInstance();
-
+        $this->m_role  = $this->load('Role');
         $this->homeUrl = '/admin/role';
 	}
 
@@ -21,7 +16,7 @@ class RoleController extends Yaf_Controller_Abstract {
 	 *  Index : list all roles
 	 */
 	public function indexAction(){
-		$page = $this->request->get('page');
+		$page = $this->get('page');
 		$page = isset($page) ? $page : 1;
 		
 		$total = $this->m_role->Total();
@@ -53,9 +48,9 @@ class RoleController extends Yaf_Controller_Abstract {
 	 * Add new role action
 	 */
 	public function addActAction(){
-		$mapping['username'] = $this->request->getPost('name');
-		$mapping['password'] = md5($this->request->getPost('password'));
-		$mapping['alias']    = $this->request->getPost('alias');
+		$mapping['username'] = $this->getPost('name');
+		$mapping['password'] = md5($this->getPost('password'));
+		$mapping['alias']    = $this->getPost('alias');
 		$mapping['addTime']  = CUR_TIMESTAMP;
 		
 		$id = $this->m_role->Insert($mapping);
@@ -72,7 +67,7 @@ class RoleController extends Yaf_Controller_Abstract {
 	 * Eidt a role
 	 */
 	public function editAction(){
-		$buffer['roleID'] = $this->request->get('roleID');
+		$buffer['roleID'] = $this->get('roleID');
 		$buffer['role'] = $this->m_role->SelectByID('', $buffer['roleID']);
 		$this->getView()->assign($buffer);
 	}
@@ -82,14 +77,14 @@ class RoleController extends Yaf_Controller_Abstract {
 	 * Edit role action
 	 */
 	public function editActAction(){
-		$id = $this->request->getPost('roleID');
-		$m['username'] = $this->request->getPost('name');
-		$m['alias']    = $this->request->getPost('alias');
-		$resetPassword = $this->request->getPost('newPassword');
+		$id = $this->getPost('roleID');
+		$m['username'] = $this->getPost('name');
+		$m['alias']    = $this->getPost('alias');
+		$resetPassword = $this->getPost('newPassword');
 		
 		// 选择了修改密码
 		if('on' == $resetPassword){
-			$m['password'] = md5($this->request->getPost('password'));
+			$m['password'] = md5($this->getPost('password'));
 		}
 		
 		$result = $this->m_role->UpdateByID($m, $id);
@@ -106,7 +101,7 @@ class RoleController extends Yaf_Controller_Abstract {
 	 * Delete
 	 */
 	public function deleteAction(){
-		$roleID = $this->request->get('roleID');
+		$roleID = $this->get('roleID');
 		$result = $this->m_role->DeleteByID($roleID);
 		
 		if(!$result){
@@ -122,7 +117,7 @@ class RoleController extends Yaf_Controller_Abstract {
 	 */
 	public function assignAction(){
 		include APP_PATH.'/application/modules/Admin/menu.php';
-		$buffer['roleID'] = $this->request->get('roleID');
+		$buffer['roleID'] = $this->get('roleID');
 		
 		$priv = $this->m_role->getPrivilegeByRoleID($buffer['roleID']);
 		$priv = $priv['privilege'];
@@ -147,7 +142,7 @@ class RoleController extends Yaf_Controller_Abstract {
 			}
 		}
 		 
-		$roleID = $this->request->getPost('roleID');
+		$roleID = $this->getPost('roleID');
 		$privilege = implode(',', $finalArr);
 
 		$data = $this->m_role->updatePrivilegeByRoleID($roleID, $privilege);
