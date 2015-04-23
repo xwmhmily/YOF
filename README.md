@@ -183,10 +183,9 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 ###
     // 查询文章列表 [建议将此方法写在 M_Article 里]
     public function getUserArticles($userID){
-    $sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
-     . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
-     . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
-
+        $sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
+        . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
+        . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
         return $this->Query($sql);
     }
 ###
