@@ -180,7 +180,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 >> 由于鄙人觉得复杂的 SQL 用函数来拼接有以下问题 1: 新手难以掌握, 2: 学习成本高  3: 效率低和难以维护, 故复杂的SQL, 如联表查询等用如下方式实现
 
 >>> 1: 在模型里新建一个方法, 接收参数, 写原生的SQL, 并调用 Query($sql) , 如 M_Admin.php 的
-    
+###
 	// 查询文章列表 [建议将此方法写在 M_Article 里]
 	public function getUserArticles($userID){
 	$sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
@@ -189,7 +189,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
             
 	return $this->Query($sql);
 	}
-
+###
 >>> 2:通用的方法,如经常会调用到的 SQL 语句, 请在模型里封装, 如 M_City.php 里的 getCityNameById()
 
 > 三: 视图
