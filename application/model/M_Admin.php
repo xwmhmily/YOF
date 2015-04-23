@@ -26,4 +26,13 @@ class M_Admin extends M_Model {
 		$where = array('username' => $username, 'password' => md5($password));
 		return $this->Field($field)->Where($where)->SelectOne();
 	}
+        
+        // 查询文章列表
+        public function getUserArticles($userID){
+            $sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
+                    . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
+                    . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
+            
+            return $this->Query($sql);
+        }
 }

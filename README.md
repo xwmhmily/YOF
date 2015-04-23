@@ -133,7 +133,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 二: 模型
     
->> A: 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 如示例中的 M_Admin, M_Role.php等
+>> A: 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 指定对应的表, 如示例中的 M_Admin, M_Role.php等
 
 >> B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
@@ -174,6 +174,23 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 >> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
 
 >> $code = $this->m_article->DeleteByID($articleID); // $code 是所影响的行数
+
+>> <H5>通用的方法, 联表查询或复杂的SQL 语句</H5>
+
+>> 由于鄙人觉得复杂的 SQL 用函数来拼接有以下问题 1: 新手难以掌握, 2: 学习成本高  3: 效率低和难以维护, 故复杂的SQL, 如联表查询等用如下方式实现
+
+>>> 1: 在模型里新建一个方法, 接收参数, 写原生的SQL, 并调用 Query($sql) , 如 M_Admin.php 的
+    
+    // 查询文章列表 [建议将此方法写在 M_Article 里]
+    public function getUserArticles($userID){
+        $sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
+                . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
+                . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
+            
+        return $this->Query($sql);
+    }
+
+>>> 2:通用的方法,如经常会调用到的 SQL 语句, 请在模型里封装, 如 M_City.php 里的 getCityNameById()
 
 > 三: 视图
     
