@@ -7,10 +7,11 @@ class ArticleController extends Yaf_Controller_Abstract {
   	private $session = null;
 
 	private function init(){
+		Yaf_Registry::get('adminPlugin')->checkLogin();
+
 		$this->m_article  = Helper::load('Article');
 		$this->request = $this->getRequest();
 		$this->session = Yaf_Session::getInstance();
-		include ADMIN_PATH.'/checkAdminLogin.php';
 
 		$this->homeUrl = '/admin/article';
 	}

@@ -20,26 +20,26 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
     	$action     = $uriInfo[3];
 
     	if(!in_array($module, $modules)){
-    		$module = 'index';
-    		$controller = $uriInfo[1];
-    		$action     = $uriInfo[2];
+            $module = 'index';
+            $controller = $uriInfo[1];
+            $action     = $uriInfo[2];
     	}
 
     	$request->setModuleName(ucfirst($module));
 
     	if(!$controller){
-    		$controller = 'index';
+            $controller = 'index';
     	}
 
     	$request->setControllerName(ucfirst($controller));
 
     	if(!$action){
-    		$action = 'index';
+            $action = 'index';
     	}
 
     	$request->setActionName($action);
 
-	    //pr($request);
+	//pr($request);
     }
 
 }

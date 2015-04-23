@@ -53,6 +53,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
     public function _initPlugin(Yaf_Dispatcher $dispatcher) {
         $router = new RouterPlugin();
         $dispatcher->registerPlugin($router);
+
+        $admin = new AdminPlugin();
+        $dispatcher->registerPlugin($admin);
+        Yaf_Registry::set('adminPlugin', $admin);
     }
 
 }

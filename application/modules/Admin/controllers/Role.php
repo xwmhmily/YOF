@@ -7,12 +7,13 @@ class RoleController extends Yaf_Controller_Abstract {
   	private $session = null;
 
 	private function init(){
-            $this->m_role  = Helper::load('Role');
-            $this->request = $this->getRequest();
-            $this->session = Yaf_Session::getInstance();
-            include ADMIN_PATH.'/checkAdminLogin.php';
+		Yaf_Registry::get('adminPlugin')->checkLogin();
+		
+        $this->m_role  = Helper::load('Role');
+        $this->request = $this->getRequest();
+        $this->session = Yaf_Session::getInstance();
 
-            $this->homeUrl = '/admin/role';
+        $this->homeUrl = '/admin/role';
 	}
 
 	
