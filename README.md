@@ -143,7 +143,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> B: 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
->> <H5>执行 CURD</H5>
+>> <H5>执行 CUID</H5>
 
 >> 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
 
