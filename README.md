@@ -179,4 +179,8 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> B: 控制器调用 $this->getView()->assign($buffer);即可
 
+> 四: function 目录里文件的引用
+
+>> 如要导入 F_File.php 里的函数, 使用 Helper::import('File') 即可
+
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
