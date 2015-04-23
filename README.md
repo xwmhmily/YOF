@@ -54,4 +54,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
    > 请打开 init.php, 根据 DEV, TEST, WWW 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
 
 
+
+
+
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
