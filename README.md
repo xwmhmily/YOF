@@ -58,21 +58,21 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > applicatoin => 程序主目录
 
-    > componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
+> componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
 
-    > controllers => 不使用modules 情况下的控制器目录
+> controllers => 不使用modules 情况下的控制器目录
 
-    > function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
+> function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
 
-    > library => 封装好的类库, 包括助手类 Helper.class.php, 短信示例类 L_SMS.class.php, PDO 类 M_Model.pdo.php
+> library => 封装好的类库, 包括助手类 Helper.class.php, 短信示例类 L_SMS.class.php, PDO 类 M_Model.pdo.php
 
-    > model => 模型文件, 默认一个模型对应一个表
+> model => 模型文件, 默认一个模型对应一个表
 
-    > modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
+> modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
 
-    > plugins => YAF 默认的插件位置, 示例有 Router.php
+> plugins => YAF 默认的插件位置, 示例有 Router.php
 
-    > views => 视力文件默认目录
+> views => 视力文件默认目录
 
 > conf => 配置文件目录, application.ini, DB_config.php
 
@@ -137,13 +137,13 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
-> 模型的调用: 控制器中使用助手类加载, 
+> <H5>模型的调用: 控制器中使用助手类加载 </H5>
 
 > A: 常规模型: $this->m_role = Helper::load('Role');
 
 > B: 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
-> 执行 CURD
+> <H5>执行 CURD</H5>
 
 > 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
 
