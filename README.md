@@ -22,12 +22,12 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 设置<br />
 1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 或不分离, 设置为一样的值即可<br />
 2: 环境设置: environment.php => <br />
-   nbsp;nbsp;开发环境请设置为 DEV, 此时所有错误将打印出来<br />
-   nbsp;nbsp;线上测试环境设置为 TEST, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log<br />
-   nbsp;nbsp;正式生产环境设置为 WWW, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log<br />
-   nbsp;nbsp;维护情况下设置为 MAINTAINCE, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些<br />
+   > 开发环境请设置为 DEV, 此时所有错误将打印出来<br />
+   > 线上测试环境设置为 TEST, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log<br />
+   > 正式生产环境设置为 WWW, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log<br />
+   > 维护情况下设置为 MAINTAINCE, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些<br />
 注:正式生产环境千万不能设置为 DEV, 切记!!!<br />
 3: 配置网站域名, 图片域名, 静态文件域名等, 避免硬编码<br />
-   nbsp;nbsp;请打开 init.php, 根据 DEV, TEST, WWW 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
+   > 请打开 init.php, 根据 DEV, TEST, WWW 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
