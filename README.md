@@ -179,7 +179,9 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
     
 >> A: 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
 
->> B: 控制器调用 $this->getView()->assign($buffer);即可
+>> B: 控制器调用 $this->getView()->assign($buffer);
+
+>> C: 视图文件里用模板引擎或原生PHP 展示数据就可以了
 
 > 四: function 目录里文件的引用
 
