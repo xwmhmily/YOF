@@ -25,13 +25,13 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 <H3>安装 [建议在Linux下使用]</H3>
 
-1: 安装YAF 扩展
+> 1: 安装YAF 扩展
 
-2: 配置好 conf/DB_config.php 里的MySQL参数并将 dym.sql 导入自己的数据库
+> 2: 配置好 conf/DB_config.php 里的MySQL参数并将 dym.sql 导入自己的数据库
 
-3: 配置虚拟主机, 写对应的HOSTS
+> 3: 配置虚拟主机, 写对应的HOSTS
 
-4: 运行
+> 4: 解压文件至指定目录,运行
 
 
 <H3>设置</H3>
