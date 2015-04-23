@@ -23,7 +23,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 10: 一些常用的函数封装,位于 function 目录
 
-安装 [建议在Linux下使用]
+<H3>安装 [建议在Linux下使用]</H3>
 
 1: 安装YAF 扩展
 
@@ -34,7 +34,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 4: 运行
 
 
-设置<br />
+<H3>设置</H3>
 1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 或不分离, 设置为一样的值即可
 
 2: 环境设置: environment.php => 
@@ -52,5 +52,6 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 3: 配置网站域名, 图片域名, 静态文件域名等, 避免硬编码
 
    > 请打开 init.php, 根据 DEV, TEST, WWW 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
+
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
