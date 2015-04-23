@@ -181,14 +181,14 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >>> 1: 在模型里新建一个方法, 接收参数, 写原生的SQL, 并调用 Query($sql) , 如 M_Admin.php 的
     
-    // 查询文章列表 [建议将此方法写在 M_Article 里]
-    public function getUserArticles($userID){
-        $sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
-                . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
-                . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
+	// 查询文章列表 [建议将此方法写在 M_Article 里]
+	public function getUserArticles($userID){
+	$sql = 'SELECT u.username, a.* FROM '.TB_PREFIX.'user AS u '
+	 . ' LEFT JOIN '.TB_PREFIX.'article AS a ON a.userID = u.id '
+	 . ' WHERE a.userID = "'.$userID.'" ORDER BY a.addTime DESC LIMIT 10';
             
-        return $this->Query($sql);
-    }
+	return $this->Query($sql);
+	}
 
 >>> 2:通用的方法,如经常会调用到的 SQL 语句, 请在模型里封装, 如 M_City.php 里的 getCityNameById()
 
