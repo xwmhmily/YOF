@@ -20,7 +20,8 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 4: 运行<br />
 
 设置<br />
-1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 或不分离, 设置为一样的值即可<br />
+1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 或不分离, 设置为一样的值即可
+
 2: 环境设置: environment.php => <br />
    > 开发环境请设置为 DEV, 此时所有错误将打印出来<br />
    > 线上测试环境设置为 TEST, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log<br />
