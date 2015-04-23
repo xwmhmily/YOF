@@ -149,7 +149,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> 2: 调用 Select, SelectOne, Update, Delete, Insert
 
->> 3: 特殊方法: SelectByID($field, $id), UpdateByID($m, $id), DeleteByID($id), SelectFieldByID($field, $id), 
+>> 3: 便捷方法: SelectByID($field, $id), UpdateByID($m, $id), DeleteByID($id), SelectFieldByID($field, $id), 
 
 >> <H5>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H5>
 
