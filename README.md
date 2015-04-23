@@ -149,19 +149,19 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
 
-> <H4>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H4>
+> <H5>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H5>
 
 > $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
 
-> <H4>Update:示例中的修改个人资料使用了 UpdateByID</H4>
+> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
 
 > $code = $this->m_user->UpdateByID($m, USER_ID);
 
-> <H4>Insert: 示例中的添加文章</H4>
+> <H5>Insert: 示例中的添加文章</H5>
 
 > $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
 
-> <H4>Delete: 示例中的删除文章使用了 DeleteByID</H4>
+> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
 
 > $code = $this->m_article->DeleteByID($articleID);
 
