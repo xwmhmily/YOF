@@ -78,5 +78,49 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
     > public => 公用文件, JS, CSS 等一般位于此
 
+<H3>内置常量</H3>
+    > APP_PATH => 根目录
+
+    > ENVIRONMENT => 运行环境
+
+    > TB_PREFIX => 表前缀
+
+    > APP_NAME => APP 名称
+
+    > CONFIG_PATH => 配置文件的目录, 即 APP_PATH.'/conf'
+    
+    > LIB_PATH => 类目录, 即 APP_PATH.'/application/library'
+
+    > MODEL_PATH => 模型目录, 即 APP_PATH.'/application/model'
+
+    > FUNC_PATH => 函数目录, 即 APP_PATH.'/application/function'
+
+    > ADMIN_PATH => Admin 模块目录, APP_PATH.'/application/modules/Admin'
+
+    > CSS_PATH => CSS 路径, 即 /css 
+
+    > JS_PATH => JS 路径, 即 /js
+
+    > IMG_PATH => IMG 路径, 即 /img
+    
+    > ADMIN_CSS_PATH => 管理后台 CSS 路径, '/admin/css'
+
+    > ADMIN_JS_PATH => 管理后台 JS 路径, '/admin/js'
+
+    > CUR_DATE => 当前日期, 格式 Y-m-d
+
+    > CUR_TIMESTAMP => 当前时间戳
+
+    > SERVER_DOMAIN => 网站域名
+
+    > STATIC_DOMAIN => 静态文件域名
+
+    > IMG_DOMAIN => 图片域名
+
+    > SITE_PROVINCE => 三级联动中默认显示的省份, 440000 是广东
+
+    > SITE_CITY => 三级联动中默认显示的城市, 440100 是广州
+
+    > SITE_REGION => 三级联动中默认显示的省份, 440106 是珠江新城
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
