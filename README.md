@@ -60,19 +60,19 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
 
-> controllers => 不使用modules 情况下的控制器目录
+>> controllers => 不使用modules 情况下的控制器目录
 
-> function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
+>> function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
 
-> library => 封装好的类库, 包括助手类 Helper.class.php, 短信示例类 L_SMS.class.php, PDO 类 M_Model.pdo.php
+>> library => 封装好的类库, 包括助手类 Helper.class.php, 短信示例类 L_SMS.class.php, PDO 类 M_Model.pdo.php
 
-> model => 模型文件, 默认一个模型对应一个表
+>> model => 模型文件, 默认一个模型对应一个表
 
-> modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
+>> modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
 
-> plugins => YAF 默认的插件位置, 示例有 Router.php
+>> plugins => YAF 默认的插件位置, 示例有 Router.php
 
-> views => 视力文件默认目录
+>> views => 视力文件默认目录
 
 > conf => 配置文件目录, application.ini, DB_config.php
 
