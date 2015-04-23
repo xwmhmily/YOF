@@ -165,6 +165,10 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
             > $code = $this->m_article->DeleteByID($articleID);
 
-三: 
+三: 视图
+    
+    > 在 YAF 指定的视图目录里创建与 Action 一样的文件名.php|.html
+
+    > 控制器调用 $this->getView()->assign($buffer);即可
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
