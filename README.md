@@ -185,7 +185,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> 如要导入 F_File.php 里的函数, 使用 Helper::import('File') 即可
 
-> 组件 Componment 的使用
+> 五: 组件 Componment 的使用
 
 >> A; 加载 => 控制器中使用 Helper::loadComponment($组件名), 如示例中修改个人资料的省市区三级联动
 
