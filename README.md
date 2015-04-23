@@ -141,15 +141,29 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
     
         > 常规模型: $this->m_role = Helper::load('Role');
 
-        > 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'_article'
+        > 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
     > 执行 CURD
     
-        > 1:先借助 Field($array), Where($where), Order($order), Limit($limt)拼接好 SQL 语句
+        > 1:先借助 Field($field), Where($where), Order($order), Limit($limt)拼接好 SQL 语句, 不调用这几个方法代表不设置对应的条件
         
-        > 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID
+        > 2: 调用 Select, SelectOne, Update, Delete, Insert, SelectByID, UpdateByID, DeletByID, SelectFieldByID, 
+        
+            > Select:如示例 Index控制器Select 出登录用户的 10 个文章:
+            
+            > $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
 
-        > 3:
+            > Update:示例中的修改个人资料使用了 UpdateByID
+
+            > $code = $this->m_user->UpdateByID($m, USER_ID);
+
+            > Insert: 示例中的添加文章
+
+            > $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名
+
+            > Delete: 示例中的删除文章使用了 DeleteByID
+
+            > $code = $this->m_article->DeleteByID($articleID);
 
 三: 
 
