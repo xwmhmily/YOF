@@ -131,6 +131,8 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> B: 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
 
+>> C: 基本控制器: APP_PATH.'/controllers/Basic.php', 对 request, session 中的方法进行了简易封装, 令业务控制器可以少写不少的代码!
+
 > 二: 模型
     
 >> A: 常规模型: 在 APP_PATH.'/model' 目录下按 M_$模型名称.php 规则创建, 指定对应的表, 如示例中的 M_Admin, M_Role.php等
@@ -139,9 +141,9 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> <H5>模型的调用: 控制器中使用助手类加载 </H5>
 
->> A: 常规模型: $this->m_role = Helper::load('Role');
+>> A: 常规模型: $this->m_role = $this->load('Role');
 
->> B: 默认模型: $this->m_article = Helper::load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
+>> B: 默认模型: $this->m_article = $this->load('Article');, 示例中并没有 M_Articles.php 也可以加载, 但参数 Article 必须与表名对应, 即对应的表名必须是 TB_PREFIX.'article'
 
 >> <H5>执行 CUID</H5>
 
