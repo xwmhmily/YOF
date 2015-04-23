@@ -24,6 +24,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
             define('IMG_PATH',  '/img');
 
             // Admin CSS, JS PATH
+            define('ADMIN_PATH',  APP_PATH.'/application/modules/Admin');
             define('ADMIN_CSS_PATH', '/admin/css');
             define('ADMIN_JS_PATH',  '/admin/js');
 

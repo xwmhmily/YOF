@@ -7,10 +7,10 @@ class UserController extends Yaf_Controller_Abstract {
   	private $session = null;
 
 	private function init(){
-		$this->m_user  = Helper::load('User');
-		$this->request = $this->getRequest();
-		$this->session = Yaf_Session::getInstance();
-		include APP_PATH.'/application/modules/Admin/checkAdminLogin.php';
+            $this->m_user  = Helper::load('User');
+            $this->request = $this->getRequest();
+            $this->session = Yaf_Session::getInstance();
+            include ADMIN_PATH.'/checkAdminLogin.php';
 	}
 
 	public function indexAction(){

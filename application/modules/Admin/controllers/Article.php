@@ -10,7 +10,7 @@ class ArticleController extends Yaf_Controller_Abstract {
 		$this->m_article  = Helper::load('Article');
 		$this->request = $this->getRequest();
 		$this->session = Yaf_Session::getInstance();
-		include APP_PATH.'/application/modules/Admin/checkAdminLogin.php';
+		include ADMIN_PATH.'/checkAdminLogin.php';
 
 		$this->homeUrl = '/admin/article';
 	}
