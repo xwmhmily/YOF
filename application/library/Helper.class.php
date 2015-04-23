@@ -151,7 +151,7 @@ abstract class Helper {
 		echo $data;
 		
 		if($die){
-			die;
+                    die;
 		}
 	}
 
@@ -165,46 +165,46 @@ abstract class Helper {
 	 * @return null
 	 */
 	public static function raiseError($traceInfo, $error, $sql = '') {
-		$errorMsg = "<h2 style='color:red'>Error occured !</h2>";
-		$errorMsg .= '<h3>' . $error . '</h3>';
-		if ($sql) {
-			$errorMsg .= 'SQL: ' . $sql . '<br /><br />';
-		}
+            $errorMsg = "<h2 style='color:red'>Error occured !</h2>";
+            $errorMsg .= '<h3>' . $error . '</h3>';
+            if ($sql) {
+                $errorMsg .= 'SQL: ' . $sql . '<br /><br />';
+            }
 
-		$errorMsg .= 'The following table shows trace info: <table border=1 width=100%>';
-		$errorMsg .= "<tr style='text-align:center;color:red;background-color:yellow'>";
-		$errorMsg .= '<th>NO</th><th>File</th><th>Line</th><th>Function</th></tr>';
+            $errorMsg .= 'The following table shows trace info: <table border=1 width=100%>';
+            $errorMsg .= "<tr style='text-align:center;color:red;background-color:yellow'>";
+            $errorMsg .= '<th>NO</th><th>File</th><th>Line</th><th>Function</th></tr>';
 
-		$i = 1;
-		foreach ($traceInfo as $v) {
-			$errorMsg .= '<tr height=40>';
-			$errorMsg .= '<td align="center">' . $i . '</td>';
-			$errorMsg .= '<td>' . $v['file'] . '</td>';
-			$errorMsg .= '<td align="center">&nbsp;' . $v['line'] . '</td>';
-			$errorMsg .= '<td align="center">&nbsp;' . $v['function'] . '()</td>';
-			$errorMsg .= '</tr>';
-			$i++;
-		}
+            $i = 1;
+            foreach ($traceInfo as $v) {
+                $errorMsg .= '<tr height=40>';
+                $errorMsg .= '<td align="center">' . $i . '</td>';
+                $errorMsg .= '<td>' . $v['file'] . '</td>';
+                $errorMsg .= '<td align="center">&nbsp;' . $v['line'] . '</td>';
+                $errorMsg .= '<td align="center">&nbsp;' . $v['function'] . '()</td>';
+                $errorMsg .= '</tr>';
+                $i++;
+            }
 
-		$errorMsg .= '</table>';
-		$errorMsg .= '<h2>Please check and correct it, then try again ! Good Luck !</h2><hr />';
-		unset($traceInfo, $v, $sql, $i);
+            $errorMsg .= '</table>';
+            $errorMsg .= '<h2>Please check and correct it, then try again ! Good Luck !</h2><hr />';
+            unset($traceInfo, $v, $sql, $i);
 
-		if(ENVIRONMENT == 'DEV'){
-			die($errorMsg);
-		}else{
-			// PRODUCTION: 500 Error
-			header('HTTP/1.1 500 Internal Server Error');
+            if(ENVIRONMENT == 'DEV'){
+                die($errorMsg);
+            }else{
+                // PRODUCTION: 500 Error
+                header('HTTP/1.1 500 Internal Server Error');
 
-	        $html = '<html>
-						<head><title>500 Internal Server Error</title></head>
-						<body bgcolor="white">
-						<center><h1>500 Internal Server Error</h1></center>
-						<hr>
-						</body>
-					</html>';
-	        die($html);
-		}
+                $html = '<html>
+                    <head><title>500 Internal Server Error</title></head>
+                    <body bgcolor="white">
+                    <center><h1>500 Internal Server Error</h1></center>
+                    <hr>
+                    </body>
+                </html>';
+                die($html);
+            }
 	}
 
 }

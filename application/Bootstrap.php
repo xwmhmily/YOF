@@ -10,28 +10,28 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
     // Load libaray, MySQL model, function
 	public function _initCore() {
-		define('TB_PREFIX',    'zt_');
-		define('APP_NAME'   ,  'YOF-DEMO');
-		define('CONFIG_PATH',  APP_PATH.'/conf');
-        define('LIB_PATH',     APP_PATH.'/application/library');
-		define('MODEL_PATH',   APP_PATH.'/application/model');
-		define('FUNC_PATH',    APP_PATH.'/application/function');
-		define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
+            define('TB_PREFIX',    'zt_');
+            define('APP_NAME'   ,  'YOF-DEMO');
+            define('CONFIG_PATH',  APP_PATH.'/conf');
+            define('LIB_PATH',     APP_PATH.'/application/library');
+            define('MODEL_PATH',   APP_PATH.'/application/model');
+            define('FUNC_PATH',    APP_PATH.'/application/function');
+            define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
 
-		// CSS, JS, IMG PATH
-		define('CSS_PATH', '/css');
-		define('JS_PATH',  '/js');
-		define('IMG_PATH',  '/img');
+            // CSS, JS, IMG PATH
+            define('CSS_PATH', '/css');
+            define('JS_PATH',  '/js');
+            define('IMG_PATH',  '/img');
 
-		// Admin CSS, JS PATH
-		define('ADMIN_CSS_PATH', '/admin/css');
-		define('ADMIN_JS_PATH',  '/admin/js');
+            // Admin CSS, JS PATH
+            define('ADMIN_CSS_PATH', '/admin/css');
+            define('ADMIN_JS_PATH',  '/admin/js');
 
-        Yaf_Loader::import('M_Model.pdo.php');
-		Yaf_Loader::import('Helper.class.php');
+            Yaf_Loader::import('M_Model.pdo.php');
+            Yaf_Loader::import('Helper.class.php');
 
-		Helper::import('Basic');
-		Helper::import('Network');
+            Helper::import('Basic');
+            Helper::import('Network');
 	}
 
 
