@@ -43,7 +43,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 ###
 
 <H3>设置</H3>
-> 1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 若不分离, 设置为一样的值即可
+> 1: MySQL 参数 conf/DB_config.php: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
 > 2: 环境设置: environment.php
 
