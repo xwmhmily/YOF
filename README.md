@@ -55,7 +55,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> D: 维护情况下设置为 MAINTAINCE, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些
 
->> 注:正式生产环境千万不能设置为 DEV, 切记!!!
+>> <b>注:正式生产环境千万不能设置为 DEV, 切记!!!</b>
 
 > 3: 配置网站域名, 图片域名, 静态文件域名等, 避免硬编码
 
