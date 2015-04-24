@@ -139,7 +139,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
->> <H5>模型的调用: 控制器中调用基础控制器的 load($模型名)  </H5>
+>> <H5>模型的调用: 控制器中调用基础控制器 C_Basic.php 的 load($模型名)  </H5>
 
 >> A: 常规模型: $this->m_role = $this->load('Role');
 
