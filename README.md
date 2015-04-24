@@ -229,4 +229,16 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > DEMO 中处理方式是增加一个Module, 名为 Api, 按照基本的 MVC 模式去写就好了, 当然了别忘了给接口作安全验证
 
+<H3>事务支持</H3>
+
+> 1: 先加载一个模型,比如 $m_article = $this->load('Article');
+
+> 2: 启动事务: $m_article->beginTransaction();
+
+> 3: 执行业务 SQL ....
+
+> 4: 调用 Commit: $m_article->Commit(); 或 Rollback : $m_article->Rollback();
+
+
+
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
