@@ -139,7 +139,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 >> B: 不创建模型, 使用默认模型, 这种情况下不需要创建模型文件. 如示例中并没有 M_Articles.php,也可以操作 article 表, 按默认模型的方式调用即可
 
->> <H5>模型的调用: 控制器中使用助手类加载 </H5>
+>> <H5>模型的调用: 控制器中调用基础控制器的 load($模型名)  </H5>
 
 >> A: 常规模型: $this->m_role = $this->load('Role');
 
@@ -154,8 +154,9 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 >> 3: 便捷方法: SelectByID($field, $id), UpdateByID($m, $id), DeleteByID($id), SelectFieldByID($field, $id), 
 
 >> <H5>Select:如示例 Index控制器Select 出登录用户的 10 个文章:</H5>
-
->> $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+###
+    $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+###
 
 >> <H5>登录的Select</H5>
 ###
@@ -164,17 +165,17 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
     $data = $this->m_user->Field($field)->Where($where)->SelectOne(); 
 ###
 >> <H5>Update:示例中的修改个人资料使用了 UpdateByID</H5>
-
->> $code = $this->m_user->UpdateByID($m, USER_ID); // $code 是所影响的行数
-
+###
+    $code = $this->m_user->UpdateByID($m, USER_ID); // $code 是所影响的行数
+###
 >> <H5>Insert: 示例中的添加文章</H5>
-
->> $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名, $articleID 是返回的自增长ID
-
+###
+    $articleID = $this->m_article->Insert($m); // $m 是一个数组, key 是表中的字段名, $articleID 是返回的自增长ID
+###
 >> <H5>Delete: 示例中的删除文章使用了 DeleteByID</H5>
-
->> $code = $this->m_article->DeleteByID($articleID); // $code 是所影响的行数
-
+###
+    $code = $this->m_article->DeleteByID($articleID); // $code 是所影响的行数
+###
 >> <H5>通用的方法, 联表查询或复杂的SQL 语句</H5>
 
 >> 由于鄙人觉得复杂的 SQL 用函数来拼接有以下问题 1: 新手难以掌握, 2: 学习成本高  3: 效率低和难以维护, 故复杂的SQL, 如联表查询等用如下方式实现
@@ -189,7 +190,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
         return $this->Query($sql);
     }
 ###
->>> 控制器里调用: $data = Helper::load('Admin')->getUserArticles($userID)
+>>> 控制器里调用: $data = $this->load('Admin')->getUserArticles($userID)
 
 >>> 2:通用的方法,如经常会调用到的 SQL 语句, 请在模型里封装, 如 M_City.php 里的 getCityNameById()
 
@@ -208,7 +209,8 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 > 五: 组件 Componment 的使用
 
 >> A; 加载 => 控制器中使用 Helper::loadComponment($组件名), 如示例中修改个人资料的省市区三级联动
-
->> $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
+###
+    $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
+###
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢

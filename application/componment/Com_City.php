@@ -14,9 +14,9 @@ class Com_City {
 	private $provinceID = 'areaProvince';
 	private $regionID   = 'areaRegion';
 
-	private $m_city = null;
-	private $m_region = null;
-	private $m_province = null;
+	private $m_city;
+	private $m_region;
+	private $m_province;
 
 	function __construct(){		
 		$this->m_city     = Helper::load('City');
