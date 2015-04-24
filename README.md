@@ -225,13 +225,13 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > DEMO 中处理方式是增加一个Module, 名为 Admin, 按照基本的 MVC 模式去写就好了
 
-> Q:如果又有网站,又有 APP,还要出手机端网站,如果只调用一次数据就能满足?
-
-> A: 借助 Componment, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Componment 中的方法即可
-
 <H3>API </H3>
 
 > DEMO 中处理方式是增加一个Module, 名为 Api, 按照基本的 MVC 模式去写就好了, 当然了别忘了给接口作安全验证
+
+> Q:如果又有网站,又有 APP,还要出手机端网站,如果只调用一次数据就能满足?
+
+> A: 借助 Componment, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Componment 中的方法即可
 
 <H3>事务支持</H3>
 
