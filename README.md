@@ -33,7 +33,14 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 4: 解压文件至指定目录,运行
 
-
+> 5: WEB 服务器开启 URL Rewrite 功能, Apache 下有 .htaccess, Nginx 下按如下需配置
+###
+    location / {
+        if (!-e $request_filename) {
+            rewrite ^/(.*)$ /index.php?$1 last;
+        }
+    }
+###
 <H3>设置</H3>
 > 1: MySQL 参数 conf/DB_config.php => 默认支持读写分离, 若不分离, 设置为一样的值即可
 
