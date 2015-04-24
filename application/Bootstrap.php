@@ -32,6 +32,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
         Helper::import('Basic');
         Helper::import('Network');
+        
+        Yaf_Loader::import('C_Basic.php');
     }
 
 
@@ -48,10 +50,6 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         );
 
         $router->addRoute('regex', $route);
-    }
-
-    public function __initController(){
-        include APP_PATH.'/controllers/Basic.php';
     }
 
     public function _initPlugin(Yaf_Dispatcher $dispatcher) {
