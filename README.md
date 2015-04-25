@@ -221,6 +221,19 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
     $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
 ###
 
+<H3>模块的调用 </H3>
+
+> 1: 先在 APP_PATH.'/conf/application.ini' 中添加模拟, DEMO 中有 Index,User,Admin,Api 四个模块. 注 Index模块 必不可少
+
+> 2: 在 APP_PATH.'/application/modules' 中创建模块目录, 比如说DEMO 中的 Api 
+
+> 3: 建立 controllers, views 模块
+
+> 4: 按 http://你的域名/模块名/控制器/方法 的规则调用, 如调用 Api 模块 Article 中的index 
+###
+    http://dev.yaf.com/api/article/index
+###
+
 <H3>管理后台 Admin </H3>
 
 > DEMO 中处理方式是增加一个Module, 名为 Admin, 按照基本的 MVC 模式去写就好了
