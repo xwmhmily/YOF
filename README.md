@@ -288,6 +288,6 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 根据 YAF 规则扩展插件
 
-> 自行编写或加入类库
+> 自行编写类库
 
 其他: 若发现有BUG 或更好的建议,请联系 xwmhmily@126.com, 谢谢
