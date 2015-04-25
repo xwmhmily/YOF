@@ -261,6 +261,27 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 4: 调用 Commit: $m_article->Commit(); 或 Rollback : $m_article->Rollback();
 
+<H3>关于M_Model.pdo.php</H3>
+
+> 1:该文件是 MySQL 的PDO 封装类
+
+> 2:读者可能有这么一个疑问, 复杂的 WHERE 该如何调用呢? 我的回答是: 自行写原生的 WHERE. 如查询 username 为 abc, password 为 cba 的 WHERE 可以用
+###
+    $where = array('username' => 'abc', 'password' => 'cba');
+###
+> 但如果是 username 为 abc 或 cba, ID < 100 的 WHERE 呢? 用字符串模式
+###
+    $where = ' `username` = "abc" OR `username` = "cba" '
+    $where = ' `id` < "100"'
+###
+
+> 3: 特殊的 Update 语句, 比如 id 为 1 的文章的阅读数要加 1, 按如下方式调用
+###
+    $m = array('views' => 'views+1');
+    $where = array('id' => 1);
+    $this->m_article->Where($where)->Update($m, TRUE); // Update 加第二个参数: TRUE
+###
+
 <H3>扩展</H3>
 
 > 可自行扩展组件 Componment
