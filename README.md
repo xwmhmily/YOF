@@ -279,7 +279,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 ###
     $m = array('views' => 'views+1');
     $where = array('id' => 1);
-    $this->m_article->Where($where)->Update($m, TRUE); // Update 加第二个参数: TRUE
+    $this->m_article->Where($where)->Limit(1)->Update($m, TRUE); // Update 加第二个参数: TRUE
 ###
 
 <H3>扩展</H3>
