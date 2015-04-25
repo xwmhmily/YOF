@@ -246,7 +246,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > A: 借助 Componment, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Componment 中的方法即可
 
-> B: 如 AP_PATH.'/application/modules/User/controllers/User.php' 中的 ProfileAction 中的省市区三级联动
+> B: 如 APP_PATH.'/application/modules/User/controllers/User.php' 中的 ProfileAction 调用省市区三级联动
 ###
     $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
 ###
