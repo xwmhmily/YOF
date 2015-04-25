@@ -227,7 +227,7 @@ A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logo
 
 > 2: 在 APP_PATH.'/application/modules' 中创建模块目录, 比如说DEMO 中的 Api 
 
-> 3: 建立 controllers, views 模块
+> 3: 建立 controllers, views 目录
 
 > 4: 按 http://你的域名/模块名/控制器/方法 的规则调用, 如调用 Api 模块 Article 中的index 
 ###
