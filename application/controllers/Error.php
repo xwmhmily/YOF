@@ -17,7 +17,7 @@ class ErrorController extends Yaf_Controller_Abstract {
 
                 default :
                     echo 0, ":", $exception->getMessage();
-                break;
+                break; 
             }
         }
     }
