@@ -5,7 +5,7 @@
 
 class ErrorController extends Yaf_Controller_Abstract {
 
-	public function errorAction($exception){
+    public function errorAction($exception){
         if(ENVIRONMENT == 'DEV'){ // only display errors under DEV
             switch ($exception->getCode()) {
                 case YAF_ERR_NOTFOUND_MODULE:
@@ -16,11 +16,9 @@ class ErrorController extends Yaf_Controller_Abstract {
                 break;
 
                 default :
-                    $message = $exception->getMessage();
                     echo 0, ":", $exception->getMessage();
                 break;
             }
         }
-	}
-
+    }
 }

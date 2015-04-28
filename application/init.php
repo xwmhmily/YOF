@@ -21,7 +21,7 @@ switch(strtoupper(ENVIRONMENT)) {
         $logFile = APP_PATH.'/'.CUR_DATE.'_php.log';
 
         if(!file_exists($logFile)){
-                touch($logFile);
+            touch($logFile);
         }
 
         ini_set('display_errors', 'off');
