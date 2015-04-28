@@ -55,6 +55,8 @@ switch(strtoupper(ENVIRONMENT)) {
     break;
 }
 
+define('LOG_FILE', $logFile);
+
 define('SERVER_DOMAIN', $SERVER_DOMAIN);
 define('STATIC_DOMAIN', $STATIC_DOMAIN);
 define('IMG_DOMAIN',    $IMG_DOMAIN);

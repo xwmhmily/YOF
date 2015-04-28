@@ -5,20 +5,27 @@
 
 class ErrorController extends Yaf_Controller_Abstract {
 
+    // only display errors under DEV
     public function errorAction($exception){
-        if(ENVIRONMENT == 'DEV'){ // only display errors under DEV
-            switch ($exception->getCode()) {
-                case YAF_ERR_NOTFOUND_MODULE:
-                case YAF_ERR_NOTFOUND_CONTROLLER:
-                case YAF_ERR_NOTFOUND_ACTION:
-                case YAF_ERR_NOTFOUND_VIEW:
+        switch ($exception->getCode()) {
+            case YAF_ERR_NOTFOUND_MODULE:
+            case YAF_ERR_NOTFOUND_CONTROLLER:
+            case YAF_ERR_NOTFOUND_ACTION:
+            case YAF_ERR_NOTFOUND_VIEW:
+                if(ENVIRONMENT == 'DEV'){
                     echo 404, ":", $exception->getMessage();
-                break;
+                }else{
+                    file_put_contents(LOG_FILE, $exception->getMessage().PHP_EOL, FILE_APPEND);
+                }    
+            break;
 
-                default :
+            default :
+                if(ENVIRONMENT == 'DEV'){
                     echo 0, ":", $exception->getMessage();
-                break; 
-            }
+                }else{
+                    file_put_contents(LOG_FILE, $exception->getMessage().PHP_EOL, FILE_APPEND);
+                }      
+            break; 
         }
     }
 }
