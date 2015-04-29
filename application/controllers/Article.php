@@ -25,7 +25,7 @@ class ArticleController extends BasicController {
     $articleID = $this->m_article->Insert($m);
 
     if($articleID){
-      $this->redirect('/');
+      $this->redirect('/user/user');
     }else{
       jsAlert('发布文章失败, 请重试');
       $this->redirect('/article/add');
@@ -49,7 +49,7 @@ class ArticleController extends BasicController {
     $code = $this->m_article->UpdateById($m, $articleID);
 
     if($code){
-      $this->redirect('/');
+      $this->redirect('/user/user');
     }else{
       jsAlert('编辑文章失败, 请重试');
       $this->redirect('/article/edit?articleID='.$articleID);
@@ -64,7 +64,7 @@ class ArticleController extends BasicController {
       jsAlert('删除文章失败, 请重试');
     }
 
-    $this->redirect('/');
+    $this->redirect('/user/user');
   }
 
   // 测试URL 路由 [伪静态]
