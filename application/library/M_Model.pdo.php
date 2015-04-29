@@ -82,7 +82,7 @@ abstract class M_Model {
 			if(ENVIRONMENT == 'DEV'){
 				Helper::raiseError(debug_backtrace(), $e->getMessage());
 			}else{
-				file_put_contents($this->logFile, $e->getMessage(), FILE_APPEND);
+				file_put_contents($this->logFile, $e->getMessage().PHP_EOL, FILE_APPEND);
 			}
 		}
 	}
@@ -573,11 +573,11 @@ abstract class M_Model {
 				Helper::raiseError($traceInfo, $error[2], $this->sql);
 			} else {
 				// Log error SQL and reason for debug
-				$errorMsg = getClientIP(). ' | ' .date('Y-m-d H:i:s') .NL;
-				$errorMsg .= 'SQL: '. $this->sql .NL;
-				$errorMsg .= 'Error: '.$error[2]. NL;
+				$errorMsg = getClientIP(). ' | ' .date('Y-m-d H:i:s') .PHP_EOL;
+				$errorMsg .= 'SQL: '. $this->sql .PHP_EOL;
+				$errorMsg .= 'Error: '.$error[2]. PHP_EOL;
 
-				$title =  'LINE__________FUNCTION__________FILE______________________________________'.NL;
+				$title =  'LINE__________FUNCTION__________FILE______________________________________'.PHP_EOL;
 				$errorMsg .= $title;
 
 				foreach ($traceInfo as $v) {
@@ -585,10 +585,10 @@ abstract class M_Model {
 					$errorMsg .= $this->getUnderscore(10, strlen($v['line']));
 					$errorMsg .= $v['function'];
 					$errorMsg .= $this->getUnderscore(20, strlen($v['function']));
-					$errorMsg .= $v['file'].NL;
+					$errorMsg .= $v['file'].PHP_EOL;
 				}
 
-				file_put_contents($this->logFile, NL.$errorMsg, FILE_APPEND);
+				file_put_contents($this->logFile, PHP_EOL.$errorMsg, FILE_APPEND);
 
 				return FALSE;
 			}
