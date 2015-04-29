@@ -6,7 +6,7 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
 
     }
 
-    // 去掉另了 Module 后的 index
+    // 去掉 Module 后的 index
     public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {
     	//pr($request);
 
