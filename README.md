@@ -1,5 +1,3 @@
-# YOF
-
 ![Index](http://sz.ctfs.ftn.qq.com/ftn_handler/6c88868db2c9affd06047176c5e2cb2e5ee17e042c0488ae297b6ba24e802085/?fname=*.png&pictype=scaled&size=800*600 "Title")
 
 A Fast, Simple PHP Framework based on YAF&amp; Orange with a login/register/logout, aritcle publish, admin control panel DEMO
