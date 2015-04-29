@@ -1,55 +1,86 @@
-<html>
- 	<head>
-   		<title>Welcome to YOF</title>
- 	</head>
- 	<body>
-  	<?php if($username) { ?>
-  		<h2>Welcome: <a href="/user/user/profile"><?php echo $username ?></a></h2>
-  		<table border="1" width="1024">
-  			<tr>
-  				<th>ID</th>
-  				<th>Title</th>
-  				<th>Content</th>
-  				<th>Status</th>
-  				<th>Add Time</th>
-  				<th>__OP__</th>
-  			</tr>
-  			<?php if($articles){ ?>
-  				<?php foreach($articles as $key => $val) { ?>
-  					<tr align="center">
-  						<td>
-                <a href="/article/detail/<?php echo $val['id'] ?>">
-                  <?php echo $val['id'] ?>
-                </a>
-              </td>
-  						<td><?php echo $val['title'] ?></td>
-  						<td><?php echo $val['content'] ?></td>
-  						<td>
-  							<?php if($val['status'] == 0 ) { ?>
-  								待审核
-  							<?php }else{ ?>
-  								正常
-  							<?php } ?>
-  						</td>
-  						<td><?php echo date('Y-m-d', $val['addTime']) ?></td>
-  						<td>
-  							<a href="/article/edit?articleID=<?php echo $val['id'] ?>">Edit</a>
-  							&nbsp;|&nbsp;
-  							<a href="/article/del?articleID=<?php echo $val['id'] ?>">Del</a>
-  						</td>
-  					</tr>	
-  				<?php } ?>
-  			<?php } ?>
-  		</table>
-  		<br />
-  		<a href="/article/add">New Article</a>&nbsp;|&nbsp;<a href="/user/user/logout">Logout</a>
-  		&nbsp;|&nbsp;<?php echo $pageNav ?>
-  	<?php }else{ ?>
-      <center style="padding-top: 20px;">
-        <h2>Welcome to Yof, a PHP Framework based on YAF and Orange</h2>
-        <h2>It's quite fast and easy to use </h2>
-        <h2>Click <a href="/user/user/login">Login</a> to try .... [hope you like it] </h2>
-      </center>
-  	<?php } ?>
- 	</body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>YOF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YOF 是一个基于YAF 和 Orange 组合的框架, 简单, 快速, 高效">
+    <meta name="keywords" content="YAF, YOF">
+    <meta name="author" content="Nic XIE">
+
+    <!-- Le styles -->
+    <link href="<?php echo CSS_PATH ?>/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>/docs.css" rel="stylesheet">
+<style>
+body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+</style>
+    <link href="<?php echo CSS_PATH ?>/prettify.css" rel="stylesheet">
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="/">首页</a>
+              </li>
+              <?php if($_SESSION['userID']) { ?>
+                <li class="active">
+                  <a href="/user/user"><?php echo $_SESSION['username'] ?></a>
+                </li>
+                <li class="">
+                  <a href="/user/user/logout">退出</a>
+                </li>
+              <?php }else{ ?>
+                <li class="">
+                  <a href="/user/user/login">登录</a>
+                </li>
+                <li class="">
+                  <a href="/user/user/register">注册</a>
+                </li>
+              <?php } ?>  
+              <li class="">
+                <a href="/admin/login">管理后台</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1>YOF</h1>
+    <p>简洁，易用，高效的PHP 开发框架，让PHP 开发更简单</p>
+    <p>
+      <a href="https://github.com/xwmhmily/YOF" class="btn btn-primary btn-large" >下载YOF</a>
+    </p>
+    <ul class="masthead-links">
+      <li>
+        <a href="https://github.com/xwmhmily/YOF" >GitHub project</a>
+      </li>
+      <li>
+        Version 1.5
+      </li>
+    </ul>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="container">
+        <p>Designed by 大眼猫 QQ: 381345509</p>
+      </div>
+    </footer>
+
+    <script src="<?php echo JS_PATH ?>/jquery.min.js"></script>
+    <script src="<?php echo JS_PATH ?>/bootstrap.min.js"></script>
+  </body>
 </html>

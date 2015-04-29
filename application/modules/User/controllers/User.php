@@ -14,7 +14,33 @@ class UserController extends BasicController {
 	}
 
 	public function indexAction(){
-		echo 'User index'; die;
+		$m_article = $this->load('Article');
+        $userID = $this->getSession('userID');
+
+        if($userID){
+            $buffer['username'] = $this->getSession('username');
+
+            // User Aritcles
+            $where = array('userID' => USER_ID);
+            $total = $m_article->Where($where)->Total();
+
+            $page = $this->get('page');
+            $page = $page ? $page : 1;
+
+            $size  = 10;
+            $pages = ceil($total/$size);
+            $order = array('addTime' => 'DESC');
+            $start = ($page-1)*$size;
+            $limit = $start.','.$size;
+
+            $url = '/user/user';
+            $buffer['pageNav'] = generatePageLink($page, $pages, $url, $total);
+            $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
+        }else{
+        	$this->redirect('/');
+        }
+
+        $this->getView()->assign($buffer);
 	}
 
 	// Login
@@ -36,7 +62,7 @@ class UserController extends BasicController {
 			$this->setSession('userID', $userID);
 			$this->setSession('username', $username);
 
-			$this->redirect('/'); // 会令 jsAlert失效
+			$this->redirect('/user/user'); // 会令 jsAlert失效
 		}else{
 			jsAlert('登录失败, 请检查用户名和密码');
 			jsRedirect('/user/user/login');
@@ -103,6 +129,6 @@ class UserController extends BasicController {
 			jsRedirect('/user/user/profile');
 		}
 
-		$this->redirect('/');
+		$this->redirect('/user/user');
 	}
 }
