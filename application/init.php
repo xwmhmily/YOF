@@ -11,10 +11,10 @@ switch(strtoupper(ENVIRONMENT)) {
         error_reporting(E_ALL ^E_NOTICE);
         ini_set('display_errors', 'on');
 
-        $SERVER_DOMAIN = 'http://dev.yaf.com';
-        //$STATIC_DOMAIN = 'http://devStatic.yaf.com';
+        $SERVER_DOMAIN = 'http://dev.yof.com';
+        //$STATIC_DOMAIN = 'http://devStatic.yof.com';
         $STATIC_DOMAIN = '';
-        $IMG_DOMAIN    = 'http://devImg.yaf.com';
+        $IMG_DOMAIN    = 'http://devImg.yof.com';
     break;
 
     case 'TEST':
@@ -29,9 +29,9 @@ switch(strtoupper(ENVIRONMENT)) {
         ini_set('log_errors', 'on');
         ini_set('error_log', $logFile);
 
-        $SERVER_DOMAIN = 'http://test.yaf.com';
-        $STATIC_DOMAIN = 'http://testStatic.yaf.com';
-        $IMG_DOMAIN    = 'http://testImg.yaf.com';
+        $SERVER_DOMAIN = 'http://test.yof.com';
+        $STATIC_DOMAIN = 'http://testStatic.yof.com';
+        $IMG_DOMAIN    = 'http://testImg.yof.com';
     break;
 
     case 'WWW':
@@ -46,9 +46,9 @@ switch(strtoupper(ENVIRONMENT)) {
         ini_set('log_errors', 'on');
         ini_set('error_log', $logFile);
 
-        $SERVER_DOMAIN = 'http://www.yaf.com';
-        $STATIC_DOMAIN = 'http://static.yaf.com';
-        $IMG_DOMAIN    = 'http://img.yaf.com';
+        $SERVER_DOMAIN = 'http://www.yof.com';
+        $STATIC_DOMAIN = 'http://static.yof.com';
+        $IMG_DOMAIN    = 'http://img.yof.com';
     break;
 
     case 'MAINTAINCE':
