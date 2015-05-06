@@ -32,7 +32,7 @@ switch(strtoupper(ENVIRONMENT)) {
         $SERVER_DOMAIN = 'http://test.yaf.com';
         $STATIC_DOMAIN = 'http://testStatic.yaf.com';
         $IMG_DOMAIN    = 'http://testImg.yaf.com';
-    break; 
+    break;
 
     case 'WWW':
         error_reporting(E_ALL ^E_NOTICE);
