@@ -2,7 +2,7 @@
 
 /*
  * ************************ IMPORTANT ************************************
- *	README: this const determines display errors,
+ *  README: this const determines display errors,
        exceptions, warmings etc on page or not if they occur when processing
  *
  *  For UAT: please set to DEV [内部开发机]
