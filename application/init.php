@@ -2,6 +2,7 @@
 
 require APP_PATH.'/application/environment.php';
 
+date_default_timezone_set('Asia/Chongqing');
 define('CUR_DATE', date('Y-m-d'));
 define('CUR_TIMESTAMP', time());
 
@@ -18,7 +19,7 @@ switch(strtoupper(ENVIRONMENT)) {
 
     case 'TEST':
         error_reporting(E_ALL ^E_NOTICE);
-        $logFile = APP_PATH.'/'.CUR_DATE.'_php.log';
+        $logFile = APP_PATH.'/log/php/'.CUR_DATE.'.log';
 
         if(!file_exists($logFile)){
             touch($logFile);
@@ -35,7 +36,7 @@ switch(strtoupper(ENVIRONMENT)) {
 
     case 'WWW':
         error_reporting(E_ALL ^E_NOTICE);
-        $logFile = APP_PATH.'/'.CUR_DATE.'_php.log';
+        $logFile = APP_PATH.'/log/php/'.CUR_DATE.'.log';
 
         if(!file_exists($logFile)){
             touch($logFile);

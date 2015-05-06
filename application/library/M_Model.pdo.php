@@ -36,7 +36,7 @@ abstract class M_Model {
 	 * @return NULL
 	 */
 	function __construct($db = '') {
-		$this->logFile = APP_PATH. '/'.CUR_DATE.'_sql.log';
+		$this->logFile = APP_PATH. '/log/sql/'.CUR_DATE.'.log';
 		if(!file_exists($this->logFile) && ENVIRONMENT != 'DEV'){
 			touch($this->logFile);
 		}
