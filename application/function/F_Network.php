@@ -218,25 +218,25 @@ function executeHTTPRequest($url, $params, $timeout = 0) {
  *  @return string  $message    发送成功或失败消息
  */
 function sendMail($toMail, $subject, $body) {
-	include BASE_PATH . '/plugin/PHPMailer/class.phpmailer.php';
-	include BASE_PATH . '/plugin/PHPMailer/class.smtp.php';
-	include CONFIG_PATH. '/Mail_config.php';
+	Yaf_loader::import(APP_PATH . '/plugin/PHPMailer/class.phpmailer.php');
+	Yaf_Loader::import(APP_PATH . '/plugin/PHPMailer/class.smtp.php');
+	$config = Yaf_Application::app()->getConfig();
 
 	$mail = new PHPMailer();
-	if(1 == $Config['mailConfig']['type']){
-		$mail->IsSMTP();                                        // 经smtp发送  
-		$mail->SMTPAuth = true;                                 // 打开SMTP 认证  
-		$mail->Host     = $Config['mailConfig']['server'];      // SMTP 服务器  
-		$mail->Port     = $Config['mailConfig']['port'];        // SMTP 端口
-		$mail->Username = $Config['mailConfig']['user'];        // 用户名  
-		$mail->Password = $Config['mailConfig']['password'];    // 密码  
-		$mail->From     = $Config['mailConfig']['from'];        // 发信人  
-		$mail->FromName = $Config['mailConfig']['name'];        // 发信人别名  
+	if(1 == $config['mail_type']){
+		$mail->IsSMTP();                               // 经smtp发送  
+		$mail->SMTPAuth = true;                        // 打开SMTP 认证  
+		$mail->Host     = $config['mail_server'];      // SMTP 服务器  
+		$mail->Port     = $config['mail_port'];        // SMTP 端口
+		$mail->Username = $config['mail_user'];        // 用户名  
+		$mail->Password = $config['mail_password'];    // 密码  
+		$mail->From     = $config['mail_from'];        // 发信人  
+		$mail->FromName = $config['mail_name'];        // 发信人别名  
 	}else{
-		$mail->IsSendmail();                                    // 系统自带的 SENDMAIL 发送
-		$mail->From     = $Config['mailConfig']['sender'];      // 发信人       					    
-		$mail->FromName = $Config['mailConfig']['name'];       // 发信人别名 
-		$mail->AddAddress($toMail);								//设置发件人的姓名	
+		$mail->IsSendmail();                           // 系统自带的 SENDMAIL 发送
+		$mail->From     = $config['mail_sender'];      // 发信人       					    
+		$mail->FromName = $config['mail_name'];        // 发信人别名 
+		$mail->AddAddress($toMail);					   //设置发件人的姓名	
 	}
 
 	$mail->AddAddress($toMail);                             // 收信人  

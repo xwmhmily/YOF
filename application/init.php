@@ -1,10 +1,10 @@
 <?php
 
-require APP_PATH.'/application/environment.php';
-
 date_default_timezone_set('Asia/Chongqing');
 define('CUR_DATE', date('Y-m-d'));
 define('CUR_TIMESTAMP', time());
+
+define('ENVIRONMENT', ini_get('yaf.environ'));
 
 switch(strtoupper(ENVIRONMENT)) {
     case 'DEV':

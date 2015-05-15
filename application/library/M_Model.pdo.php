@@ -57,14 +57,14 @@ abstract class M_Model {
 	 * @return NULL
 	 */
 	private function connect($type = 'WRITE') {
-		include CONFIG_PATH.'/DB_config.php';
-		$db     = $DB_Config['Default'];
-		$driver = $DB_Config['TYPE'];
-
-		$host = $DB_Config[$type.'_HOST'];
-		$port = $DB_Config[$type.'_PORT'];
-		$user = $DB_Config[$type.'_USER'];
-		$pswd = $DB_Config[$type.'_PSWD'];
+		$config = Yaf_Application::app()->getConfig();
+		
+		$db     = $config['Default'];
+		$driver = $config['TYPE'];
+		$host   = $config[$type.'_HOST'];
+		$port   = $config[$type.'_PORT'];
+		$user   = $config[$type.'_USER'];
+		$pswd   = $config[$type.'_PSWD'];
 
 		if(!$port){
 			$port = 3306;

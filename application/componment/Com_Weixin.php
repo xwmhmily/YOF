@@ -10,20 +10,18 @@ class Com_weixin {
 
 	const WX_TOKEN = 'ABCDE';
 
-	private $wxSDK = null;
-	private $wxConfig = array();
-
+	private $wxSDK;
+	
 	public function __construct(){
-		include CONFIG_PATH .'/Weixin_config.php';
-		$this->wxConfig = $Config['weixin'];
+		$config = Yaf_Application::app()->getConfig();
 		Yaf_Loader::import('L_Wechat');
 
 		$options = array(
-			'token' => self::WX_TOKEN,
-			'appid' => $this->wxConfig['appID'],
-			'appsecret' => $this->wxConfig['appsecret'],
-			'access_token' => $this->wxConfig['access_token'],
-			'expires' => $this->wxConfig['expires']
+			'token'        => self::WX_TOKEN,
+			'appid'        => $config['wx_appID'],
+			'appsecret'    => $config['wx_appsecret'],
+			'access_token' => $config['wx_access_token'],
+			'expires'      => $config['wx_expires']
 		);
 
 		$this->wxSDK = new L_Wechat($options);
@@ -34,13 +32,6 @@ class Com_weixin {
 	 */
 	public function getSDK(){
 		return $this->wxSDK;
-	}
-
-	/**
-	 * 返回微信配置信息
-	 */
-	public function getConfig(){
-		return $this->wxConfig;
 	}
 
 

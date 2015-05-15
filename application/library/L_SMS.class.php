@@ -15,12 +15,12 @@ class L_SMS {
 	private $msg;
 
 	function __construct($mobile = '', $msg = '') {
-		include CONFIG_PATH.'/SMS_config.php';
-		$this->username = $Config['smsConfig']['username'];
-		$this->password = $Config['smsConfig']['password'];
+		$config = Yaf_Application::app()->getConfig();
+		$this->username = $config['sms_username'];
+		$this->password = $config['sms_password'];
 		$this->mobile   = $mobile;
 		$this->msg      = $msg;
-		$this->url      = $Config['smsConfig']['url'];
+		$this->url      = $config['sms_url'];
 	}
 
 

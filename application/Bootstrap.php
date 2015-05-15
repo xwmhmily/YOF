@@ -12,7 +12,6 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
     public function _initCore() {
         define('TB_PREFIX',    'zt_');
         define('APP_NAME'   ,  'YOF-DEMO');
-        define('CONFIG_PATH',  APP_PATH.'/conf');
         define('LIB_PATH',     APP_PATH.'/application/library');
         define('MODEL_PATH',   APP_PATH.'/application/model');
         define('FUNC_PATH',    APP_PATH.'/application/function');
