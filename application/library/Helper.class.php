@@ -23,7 +23,7 @@ abstract class Helper {
 		$f_file   = FUNC_PATH.'/'.$function.'.php';
 
 		if(file_exists($f_file)){
-			require_once $f_file;
+			Yaf_Loader::import($f_file);
 			unset($file, $function, $f_file);
 		}else{
 			$traceInfo = debug_backtrace();
@@ -48,7 +48,7 @@ abstract class Helper {
 		$file = APP_PATH .'/application/componment/' . $componment .'.php';
 		
 		if(file_exists($file)){
-			require_once $file;
+			Yaf_Loader::import($file);
 		} else {
 			$traceInfo = debug_backtrace();
 			$error = 'Componment '.$componment.' NOT FOUND !';
@@ -99,7 +99,7 @@ abstract class Helper {
 			$file    = MODEL_PATH.'/'.$model.'.php';
 		}
 
-		require_once $file;
+		Yaf_Loader::import($file);
 
 		try{
 			if($default){
@@ -151,7 +151,7 @@ abstract class Helper {
 		echo $data;
 		
 		if($die){
-                    die;
+            die;
 		}
 	}
 
