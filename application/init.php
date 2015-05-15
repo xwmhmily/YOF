@@ -12,7 +12,6 @@ switch(strtoupper(ENVIRONMENT)) {
         ini_set('display_errors', 'on');
 
         $SERVER_DOMAIN = 'http://dev.yof.com';
-        //$STATIC_DOMAIN = 'http://devStatic.yof.com';
         $STATIC_DOMAIN = '';
         $IMG_DOMAIN    = 'http://devImg.yof.com';
     break;
