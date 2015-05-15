@@ -26,7 +26,7 @@
 
 > 1: 安装YAF 扩展
 
-> 2: 配置好 conf/DB_config.php 里的MySQL参数并将 dym.sql 导入自己的数据库
+> 2: 配置好 application.ini 里的MySQL参数并将 dym.sql 导入自己的数据库
 
 > 3: 配置虚拟主机, 写对应的HOSTS
 
@@ -42,23 +42,23 @@
 ###
 
 <H3>设置</H3>
-> 1: MySQL 参数 conf/DB_config.php: 默认支持读写分离, 若不分离, 设置为一样的值即可
+> 1: MySQL 参数 application.ini: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
-> 2: 环境设置: environment.php
+> 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, www 和 maintaince
 
->> A: 开发环境请设置为 DEV, 此时所有错误将打印出来
+>> A: 开发环境请设置为 dev, 此时所有错误将打印出来
 
->> B: 线上测试环境设置为 TEST, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
+>> B: 线上测试环境设置为 test, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
->> C: 正式生产环境设置为 WWW, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
+>> C: 正式生产环境设置为 www, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
->> D: 维护情况下设置为 MAINTAINCE, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些
+>> D: 维护情况下设置为 maintaince, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些
 
->> <b>注:正式生产环境千万不能设置为 DEV, 切记!!!</b>
+>> <b>注:正式生产环境千万不能设置为 dev, 切记!!!</b>
 
 > 3: 配置网站域名, 图片域名, 静态文件域名等, 避免硬编码
 
->> 请打开 init.php, 根据 DEV, TEST, WWW 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
+>> 请打开 init.php, 根据 dev, test, www 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
 
 
 <H3>目录结构</H3>
@@ -81,7 +81,7 @@
 
 >> views => 视力文件默认目录
 
-> conf => 配置文件目录, application.ini, DB_config.php
+> conf => 配置文件目录, application.ini
 
 > public => 公用文件, JS, CSS 等一般位于此
 
@@ -93,8 +93,6 @@
 > TB_PREFIX => 表前缀
 
 > APP_NAME => APP 名称
-
-> CONFIG_PATH => 配置文件的目录, 即 APP_PATH.'/conf'
 
 > LIB_PATH => 类目录, 即 APP_PATH.'/application/library'
 
