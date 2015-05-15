@@ -25,6 +25,7 @@ switch(strtoupper(ENVIRONMENT)) {
             touch($logFile);
         }
 
+        ini_set('yaf.cache_config', 1);
         ini_set('display_errors', 'off');
         ini_set('log_errors', 'on');
         ini_set('error_log', $logFile);
@@ -42,6 +43,7 @@ switch(strtoupper(ENVIRONMENT)) {
             touch($logFile);
         }
 
+        ini_set('yaf.cache_config', 1);
         ini_set('display_errors', 'off');
         ini_set('log_errors', 'on');
         ini_set('error_log', $logFile);
