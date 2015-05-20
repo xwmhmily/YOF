@@ -4,9 +4,9 @@ date_default_timezone_set('Asia/Chongqing');
 define('CUR_DATE', date('Y-m-d'));
 define('CUR_TIMESTAMP', time());
 
-define('ENVIRONMENT', ini_get('yaf.environ'));
+define('ENVIRONMENT', strtoupper(ini_get('yaf.environ')));
 
-switch(strtoupper(ENVIRONMENT)) {
+switch(ENVIRONMENT) {
     case 'DEV':
         error_reporting(E_ALL ^E_NOTICE);
         ini_set('display_errors', 'on');
