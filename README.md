@@ -32,7 +32,7 @@
 
 > 4: 解压文件至指定目录,运行
 
-> 5: WEB 服务器开启 URL Rewrite 功能, Apache 下有 .htaccess, Nginx 下按如下需配置
+> 5: WEB 服务器开启 URL Rewrite 功能, Apache 下有 .htaccess [该文件默认为隐藏文件], Nginx 的虚拟主机需要加如下代码
 ###
     location / {
         if (!-e $request_filename) {
@@ -46,13 +46,13 @@
 
 > 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, www 和 maintaince
 
->> A: 开发环境请设置为 dev, 此时所有错误将打印出来
+>> A: 开发环境请设置为 dev, 此时所有错误将打印出来方便调试
 
 >> B: 线上测试环境设置为 test, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
 >> C: 正式生产环境设置为 www, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
->> D: 维护情况下设置为 maintaince, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 当时可以自定义得更好些
+>> D: 维护情况下设置为 maintaince, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 
 
 >> <b>注:正式生产环境千万不能设置为 dev, 切记!!!</b>
 
@@ -185,7 +185,7 @@
 
 >> 由于鄙人觉得复杂的 SQL 用函数来拼接有以下问题 1: 新手难以掌握, 2: 学习成本高  3: 效率低和难以维护, 故复杂的SQL, 如联表查询等用如下方式实现
 
->>> 1: 在模型里新建一个方法, 接收参数, 写原生的SQL, 并调用 Query($sql) , 如 M_Admin.php 的
+>>> 1: 在模型里新建一个方法, 接收参数, 写原生的SQL, 并调用 Query($sql), 这样比较直观. 如 M_Admin.php 的
 ###
     // 查询文章列表 [建议将此方法写在 M_Article 里]
     public function getUserArticles($userID){
@@ -239,7 +239,7 @@
 
 > DEMO 中处理方式是增加一个Module, 名为 Api, 按照基本的 MVC 模式去写就好了, 当然了别忘了给接口作安全验证
 
-> Q:如果又有网站,又有 APP,还要出手机端网站,如果只调用一次数据就能满足?
+> Q:如果又有网站, 又有 APP, 还要出手机端网站,如果只调用一次数据就能满足?
 
 > A: 借助 Componment, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Componment 中的方法即可
 
