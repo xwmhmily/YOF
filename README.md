@@ -14,7 +14,7 @@
 
 > 6: 后台管理登录,注销,修改密码, 文章&用户管理, 权限分配 
 
-> 7: dev 下MySQL 和PHP 错误全部都打印出来, 方便调试, test , www 下将不打印, 分别记录在对应的文件里 
+> 7: dev 下MySQL 和PHP 错误全部都打印出来, 方便调试, test , product 下将不打印, 分别记录在对应的文件里 
 
 > 8: 简易省市区三级联动
 
@@ -44,13 +44,13 @@
 <H3>设置</H3>
 > 1: MySQL 参数 application.ini: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
-> 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, www 和 maintaince
+> 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, product 和 maintaince
 
 >> A: 开发环境请设置为 dev, 此时所有错误将打印出来方便调试
 
 >> B: 线上测试环境设置为 test, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
->> C: 正式生产环境设置为 www, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
+>> C: 正式生产环境设置为 product, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
 
 >> D: 维护情况下设置为 maintaince, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 
 
@@ -58,7 +58,7 @@
 
 > 3: 配置网站域名, 图片域名, 静态文件域名等, 避免硬编码
 
->> 请打开 init.php, 根据 dev, test, www 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
+>> 请打开 init.php, 根据 dev, test, product 自行对 $SERVER_DOMAIN, $STATIC_DOMAIN, $IMG_DOMAIN 根据情况设置
 
 
 <H3>目录结构</H3>
