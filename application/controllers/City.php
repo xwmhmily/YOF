@@ -64,7 +64,7 @@ class CityController extends BasicController {
 			break;
 
 			case 'c';
-				$finalStr = "<select errorDiv=\"region_error\" eleType='select' tipsDiv=\"city_tips\" id='".$this->regionID."' name='".$this->regionID."' class='select_box selecttxt3' onchange='javascript:regionChange();' data-required=\"true\">";
+				$finalStr = "<select errorDiv=\"region_error\" eleType='select' tipsDiv=\"city_tips\" id='".$this->regionID."' name='".$this->regionID."' class='select_box selecttxt3' onchange='javascript:regionChange();'>";
 				$finalStr .= "<option value=''>请选择区域</option>";
 
 				if(isMultiArray($finalArr)){
