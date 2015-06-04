@@ -1,0 +1,2237 @@
+
+<!DOCTYPE html> 
+<html lang="zh-CN"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <title>基本CSS样式 · Bootstrap</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="Bootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap中文网致力于为广大国内开发者提供详尽的中文文档、代码实例等，助力开发者掌握并使用这一框架。">
+
+<meta name="keywords" content="Bootstrap,CSS,CSS框架,CSS framework,javascript,bootcss,bootstrap开发,bootstrap代码,bootstrap入门"> 
+    <meta name="author" content="Bootstrap中文网"> 
+ 
+    <!-- Le styles --> 
+    <link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet"> 
+    <link href="/css/docs.css" rel="stylesheet">
+
+<style>
+
+body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;}
+
+</style> 
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"> 
+ 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --> 
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+    <![endif]--> 
+ 
+    <!-- Le fav and touch icons --> 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"> 
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"> 
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"> 
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"> 
+                                   <link rel="shortcut icon" href="assets/ico/favicon.png"> 
+ 
+  </head> 
+ 
+  <body data-spy="scroll" data-target=".bs-docs-sidebar"> 
+ 
+    <!-- Navbar
+    ================================================== --> 
+    <div class="navbar navbar-inverse navbar-fixed-top"> 
+      <div class="navbar-inner"> 
+        <div class="container"> 
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+          </button> 
+          <a class="brand" href="./index.html">Bootstrap</a> 
+          <div class="nav-collapse collapse"> 
+            <ul class="nav"> 
+              <li class=""> 
+                <a href="./index.html">首页</a> 
+              </li> 
+              <li class=""> 
+                <a href="./getting-started.html">起步</a> 
+              </li> 
+              <li class=""> 
+                <a href="./scaffolding.html">脚手架</a> 
+              </li> 
+              <li class="active"> 
+                <a href="./base-css.html">基本CSS样式</a> 
+              </li> 
+              <li class=""> 
+                <a href="./components.html">组件</a> 
+              </li> 
+              <li class=""> 
+                <a href="./javascript.html">JavaScript插件</a> 
+              </li> 
+              <li class=""> 
+                <a href="./customize.html">定制</a> 
+              </li> 
+              <li> 
+                <a href="http://expo.bootcss.com" target="_blank">网站实例</a> 
+              </li> 
+            </ul> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+ 
+<!-- Subhead
+================================================== --> 
+<header class="jumbotron subhead" id="overview"> 
+  <div class="container"> 
+    <h1>基本CSS样式</h1> 
+    <p class="lead">对HTML基本元素进行样式定义，并利用可扩展的class增强其展示效果。</p> 
+  </div> 
+</header> 
+ 
+ 
+  <div class="container"> 
+ 
+    <!-- Docs nav
+    ================================================== --> 
+    <div class="row"> 
+      <div class="span3 bs-docs-sidebar"> 
+        <ul class="nav nav-list bs-docs-sidenav"> 
+          <li><a href="#typography"><i class="icon-chevron-right"></i> 排版</a></li> 
+          <li><a href="#code"><i class="icon-chevron-right"></i> 代码</a></li> 
+          <li><a href="#tables"><i class="icon-chevron-right"></i> 表格</a></li> 
+          <li><a href="#forms"><i class="icon-chevron-right"></i> 表单</a></li> 
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> 按钮</a></li> 
+          <li><a href="#images"><i class="icon-chevron-right"></i> 图片</a></li> 
+          <li><a href="#icons"><i class="icon-chevron-right"></i> 由Glyphicons提供的图标</a></li> 
+        </ul> 
+      </div> 
+      <div class="span9"> 
+ 
+ 
+ 
+        <!-- Typography
+        ================================================== --> 
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>排版</h1> 
+          </div> 
+ 
+          <h2 id="headings">标题</h2> 
+          <p>HTML中定义的所有标题标签, 从<code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 都是可用的。</p> 
+          <div class="bs-docs-example"> 
+            <h1>h1. Heading 1</h1> 
+            <h2>h2. Heading 2</h2> 
+            <h3>h3. Heading 3</h3> 
+            <h4>h4. Heading 4</h4> 
+            <h5>h5. Heading 5</h5> 
+            <h6>h6. Heading 6</h6> 
+          </div> 
+ 
+          <h2 id="body-copy">Body copy</h2> 
+          <p>Bootstrap定义的全局 <code>font-size</code> 是 <strong>14px</strong>，<code>line-height</code> 是 <strong>20px</strong>。这些样式应用到了 <code>&lt;body&gt;</code> 和所有的段落上。另外，对 <code>&lt;p&gt;</code> (段落)还定义了1/2行高(默认为10px)的底部外边距(margin)属性。</p> 
+          <div class="bs-docs-example"> 
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p> 
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p> 
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre> 
+ 
+          <h3>Lead body copy</h3> 
+          <p>通过添加 <code>.lead</code> 让段落突出显示</p> 
+          <div class="bs-docs-example"> 
+            <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre> 
+ 
+          <h3>使用Less工具构建</h3> 
+          <p><strong>variables.less</strong>文件中定义的两个LESS变量决定了排版尺寸: <code>@baseFontSize</code> 和 <code>@baseLineHeight</code>。第一个变量定义了全局font-size基准，第二个变量是line-height基准。我们使用这些变量和一些简单的公式计算出其它所有页面元素的margin、
+          padding和line-height。自定义这些变量即可改变Bootstrap的默认样式。</p> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2 id="emphasis">强调</h2> 
+          <p>直接使用HTML中用于标注强调的标签，并给他们赋予少许的样式。</p> 
+ 
+          <h3><code>&lt;small&gt;</code></h3> 
+          <p>对于不需要强调的inline或block类型的文本，<small>使用small标签。</small></p> 
+          <div class="bs-docs-example"> 
+            <p><small>This line of text is meant to be treated as fine print.</small></p> 
+          </div> 
+<pre class="prettyprint"> 
+&lt;p&gt;
+  &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+&lt;/p&gt;
+</pre> 
+ 
+          <h3>加粗</h3> 
+          <p>用增加font-weight值的方式加粗强调一段文本。</p> 
+          <div class="bs-docs-example"> 
+            <p>The following snippet of text is <strong>rendered as bold text</strong>.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre> 
+ 
+          <h3>斜体</h3> 
+          <p>用斜体字强调一段文本。</p> 
+          <div class="bs-docs-example"> 
+            <p>The following snippet of text is <em>rendered as italicized text</em>.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre> 
+ 
+          <p><span class="label label-info">注意！</span> 在HTML5中可任意使用<code>&lt;b&gt;</code> 和 <code>&lt;i&gt;</code>。<code>&lt;b&gt;</code>是为了高亮词或短语而不会赋予重要含义，<code>&lt;i&gt;</code>主要被用来表示发言、技术术语等。</p> 
+ 
+          <h3>对齐类</h3> 
+          <p>简单方便将文字对齐的类。</p> 
+          <div class="bs-docs-example"> 
+            <p class="text-left">左对齐文字。</p> 
+            <p class="text-center">中间对其文字。</p> 
+            <p class="text-right">右侧对其文字。</p> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
+&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
+&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
+</pre> 
+ 
+          <h3>强调类</h3> 
+          <p>这些用去强调的工具类通过颜色来表示强调。</p> 
+          <div class="bs-docs-example"> 
+            <p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p> 
+            <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p> 
+            <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p> 
+            <p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p> 
+            <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;p class="muted"&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
+&lt;p class="text-warning"&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
+&lt;p class="text-error"&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+&lt;p class="text-info"&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.&lt;/p&gt;
+&lt;p class="text-success"&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2 id="abbreviations">缩略语</h2> 
+          <p>当鼠标悬停在缩写和缩写词上时就会显示完整内容，Bootstrap实现了对HTML <code>&lt;abbr&gt;</code>元素的增强样式。缩略语元素带有<code>title</code>属性，外观表现为带有较浅的虚线框，鼠标移至上面时会变成带有“问号”的指针。</p> 
+ 
+          <h3><code>&lt;abbr&gt;</code></h3> 
+          <p>如想看完整的内容可把鼠标悬停在缩略语上, 但需要包含<code>title</code>属性。</p> 
+          <div class="bs-docs-example"> 
+            <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre> 
+ 
+          <h3><code>&lt;abbr class="initialism"&gt;</code></h3> 
+          <p>为 <code>&lt;abbr&gt;</code> 标签添加 <code>.initialism</code> 类使其使用更小一些的字号。</p> 
+          <div class="bs-docs-example"> 
+            <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p> 
+          </div> 
+          <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2 id="addresses">地址</h2> 
+          <p>让联系信息以最接近日常使用的格式呈现。</p> 
+ 
+          <h3><code>&lt;address&gt;</code></h3> 
+          <p>在每行结尾添加<code>&lt;br&gt;</code>可以保留需要的样式。</p> 
+          <div class="bs-docs-example"> 
+            <address> 
+              <strong>Twitter, Inc.</strong><br> 
+              795 Folsom Ave, Suite 600<br> 
+              San Francisco, CA 94107<br> 
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address> 
+            <address> 
+              <strong>Full Name</strong><br> 
+              <a href="mailto:#">first.last@example.com</a> 
+            </address> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  795 Folsom Ave, Suite 600&lt;br&gt;
+  San Francisco, CA 94107&lt;br&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
+ 
+&lt;address&gt;
+  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
+  &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
+&lt;/address&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2 id="blockquotes">引用</h2> 
+          <p>在你的文档中引用其他来源的内容。</p> 
+ 
+          <h3>默认引用</h3> 
+          <p>将任何<abbr title="HyperText Markup Language">HTML</abbr>包裹在<code>&lt;blockquote&gt;</code>之中即可表现为引用。对于直接引用，我们建议用<code>&lt;p&gt;</code>标签。</p> 
+          <div class="bs-docs-example"> 
+            <blockquote> 
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> 
+            </blockquote> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</pre> 
+ 
+          <h3>引用选项</h3> 
+          <p>在标准的引用里，可以很简单的改变风格和内容。</p> 
+ 
+          <h4>命名来源</h4> 
+          <p>添加<code>&lt;small&gt;</code>标签来注明引用来源。来源名称可以放在<code>&lt;cite&gt;</code> 标签里面。</p> 
+          <div class="bs-docs-example"> 
+            <blockquote> 
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> 
+              <small>Someone famous in <cite title="Source Title">Source Title</cite></small> 
+            </blockquote> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre> 
+ 
+          <h4>另一种展示风格</h4> 
+          <p>使用<code>.pull-right</code>类，可以让引用展现出向右侧移动、对齐的效果。</p> 
+          <div class="bs-docs-example" style="overflow: hidden;"> 
+            <blockquote class="pull-right"> 
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p> 
+              <small>Someone famous in <cite title="Source Title">Source Title</cite></small> 
+            </blockquote> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;blockquote class="pull-right"&gt;
+  ...
+&lt;/blockquote&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <!-- Lists --> 
+          <h2 id="lists">列表</h2> 
+ 
+          <h3>无序列表</h3> 
+          <p>无序列表是 <em>不关心</em> 先后顺序的一组元素的集合。</p> 
+          <div class="bs-docs-example"> 
+            <ul> 
+              <li>Lorem ipsum dolor sit amet</li> 
+              <li>Consectetur adipiscing elit</li> 
+              <li>Integer molestie lorem at massa</li> 
+              <li>Facilisis in pretium nisl aliquet</li> 
+              <li>Nulla volutpat aliquam velit
+                <ul> 
+                  <li>Phasellus iaculis neque</li> 
+                  <li>Purus sodales ultricies</li> 
+                  <li>Vestibulum laoreet porttitor sem</li> 
+                  <li>Ac tristique libero volutpat at</li> 
+                </ul> 
+              </li> 
+              <li>Faucibus porta lacus fringilla vel</li> 
+              <li>Aenean sit amet erat nunc</li> 
+              <li>Eget porttitor lorem</li> 
+            </ul> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre> 
+ 
+          <h3>有序列表</h3> 
+          <p>有序列表是 <em>强调</em> 顺序的一组元素的集合。</p> 
+          <div class="bs-docs-example"> 
+            <ol> 
+              <li>Lorem ipsum dolor sit amet</li> 
+              <li>Consectetur adipiscing elit</li> 
+              <li>Integer molestie lorem at massa</li> 
+              <li>Facilisis in pretium nisl aliquet</li> 
+              <li>Nulla volutpat aliquam velit</li> 
+              <li>Faucibus porta lacus fringilla vel</li> 
+              <li>Aenean sit amet erat nunc</li> 
+              <li>Eget porttitor lorem</li> 
+            </ol> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre> 
+ 
+        <h3>无样式列表</h3> 
+        <p>移除了默认的<code>list-style</code>，并左侧填充列表(只对直接子节点项有效)。</p> 
+        <div class="bs-docs-example"> 
+          <ul class="unstyled"> 
+            <li>Lorem ipsum dolor sit amet</li> 
+            <li>Consectetur adipiscing elit</li> 
+            <li>Integer molestie lorem at massa</li> 
+            <li>Facilisis in pretium nisl aliquet</li> 
+            <li>Nulla volutpat aliquam velit
+              <ul> 
+                <li>Phasellus iaculis neque</li> 
+                <li>Purus sodales ultricies</li> 
+                <li>Vestibulum laoreet porttitor sem</li> 
+                <li>Ac tristique libero volutpat at</li> 
+              </ul> 
+            </li> 
+            <li>Faucibus porta lacus fringilla vel</li> 
+            <li>Aenean sit amet erat nunc</li> 
+            <li>Eget porttitor lorem</li> 
+          </ul> 
+        </div> 
+<pre class="prettyprint linenums"> 
+&lt;ul class="unstyled"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre> 
+ 
+        <h3>行内列表</h3> 
+        <p>使用<code>inline-block</code>让列表项水平排列一行，同时每项都有少量的内补（padding）。</p> 
+        <div class="bs-docs-example"> 
+          <ul class="inline"> 
+            <li>Lorem ipsum</li> 
+            <li>Phasellus iaculis</li> 
+            <li>Nulla volutpat</li> 
+          </ul> 
+        </div> 
+<pre class="prettyprint linenums"> 
+&lt;ul class="inline"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre> 
+ 
+        <h3>描述</h3> 
+        <p>对一个列表（条目）进行关联描述。</p> 
+        <div class="bs-docs-example"> 
+          <dl> 
+            <dt>Description lists</dt> 
+            <dd>A description list is perfect for defining terms.</dd> 
+            <dt>Euismod</dt> 
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd> 
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd> 
+            <dt>Malesuada porta</dt> 
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd> 
+          </dl> 
+        </div> 
+<pre class="prettyprint linenums"> 
+&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre> 
+ 
+        <h4>水平描述</h4> 
+        <p>使<code>&lt;dl&gt;</code>中的每个条目和其描述一对一水平显示。</p> 
+        <div class="bs-docs-example"> 
+          <dl class="dl-horizontal"> 
+            <dt>Description lists</dt> 
+            <dd>A description list is perfect for defining terms.</dd> 
+            <dt>Euismod</dt> 
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd> 
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd> 
+            <dt>Malesuada porta</dt> 
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd> 
+            <dt>Felis euismod semper eget lacinia</dt> 
+            <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd> 
+          </dl> 
+        </div> 
+<pre class="prettyprint linenums"> 
+&lt;dl class="dl-horizontal"&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre> 
+        <p> 
+          <span class="label label-info">注意！</span> 
+          通过加入<code>text-overflow</code>，水平描述列表将会对过长而无法在左栏中完全显示的列名截断掉一部分。而在较窄的视口（宽度）中，会改变成垂直(形式)表述，来适应当前屏幕。
+        </p> 
+      </section> 
+ 
+ 
+ 
+        <!-- Code
+        ================================================== --> 
+        <section id="code"> 
+          <div class="page-header"> 
+            <h1>代码</h1> 
+          </div> 
+ 
+          <h2>行内代码</h2> 
+          <p>通过<code>&lt;code&gt;</code>标签内嵌一小段代码。</p> 
+<div class="bs-docs-example"> 
+  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+</div> 
+<pre class="prettyprint linenums"> 
+For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
+</pre> 
+ 
+          <h2>基本代码块</h2> 
+          <p>使用<code>&lt;pre&gt;</code>展示多行代码。为了能够正确展示，务必将代码中的任何尖括号做转义。</p> 
+<div class="bs-docs-example"> 
+  <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre> 
+</div> 
+<pre class="prettyprint linenums" style="margin-bottom: 9px;"> 
+&lt;pre&gt;
+  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre> 
+          <p><span class="label label-info">注意！</span>  因为在<code>&lt;pre&gt;</code>标签里, tab会被算进去, 所以要保持代码尽可能的靠左侧</p> 
+          <p>你也可以添加<code>.pre-scrollable</code>类，把该区域设置成最大高度为350px并带有一个Y轴滚动条。</p> 
+        </section> 
+ 
+ 
+ 
+        <!-- Tables
+        ================================================== --> 
+        <section id="tables"> 
+          <div class="page-header"> 
+            <h1>表格</h1> 
+          </div> 
+ 
+          <h2>默认样式</h2> 
+          <p>为 <code>&lt;table&gt;</code> 标签增加基本样式--很少的内补(padding)并只增加水平分隔线--只要为其增加 <code>.table</code> 类即可。</p> 
+          <div class="bs-docs-example"> 
+            <table class="table"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Username</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr> 
+                  <td>1</td> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                  <td>2</td> 
+                  <td>Jacob</td> 
+                  <td>Thornton</td> 
+                  <td>@fat</td> 
+                </tr> 
+                <tr> 
+                  <td>3</td> 
+                  <td>Larry</td> 
+                  <td>the Bird</td> 
+                  <td>@twitter</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;table class="table"&gt;
+  …
+&lt;/table&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>可选的类</h2> 
+          <p>下面所列出的类是为了补充  <code>.table</code> 类的基本样式的。</p> 
+ 
+          <h3><code>.table-striped</code></h3> 
+          <p>在<code>&lt;tbody&gt;</code>内，通过<code>:nth-child</code> CSS选择器 (IE7-8不支持)为表格中的行添加斑马纹样式。</p> 
+          <div class="bs-docs-example"> 
+            <table class="table table-striped"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Username</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr> 
+                  <td>1</td> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                  <td>2</td> 
+                  <td>Jacob</td> 
+                  <td>Thornton</td> 
+                  <td>@fat</td> 
+                </tr> 
+                <tr> 
+                  <td>3</td> 
+                  <td>Larry</td> 
+                  <td>the Bird</td> 
+                  <td>@twitter</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums" style="margin-bottom: 18px;"> 
+&lt;table class="table table-striped"&gt;
+  …
+&lt;/table&gt;
+</pre> 
+ 
+          <h3><code>.table-bordered</code></h3> 
+          <p>为表格增加边框(border)和圆角(rounded corner)。</p> 
+          <div class="bs-docs-example"> 
+            <table class="table table-bordered"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Username</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr> 
+                  <td rowspan="2">1</td> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@TwBootstrap</td> 
+                </tr> 
+                <tr> 
+                  <td>2</td> 
+                  <td>Jacob</td> 
+                  <td>Thornton</td> 
+                  <td>@fat</td> 
+                </tr> 
+                <tr> 
+                  <td>3</td> 
+                  <td colspan="2">Larry the Bird</td> 
+                  <td>@twitter</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;table class="table table-bordered"&gt;
+  …
+&lt;/table&gt;
+</pre> 
+ 
+          <h3><code>.table-hover</code></h3> 
+          <p>为 <code>&lt;tbody&gt;</code> 中的每一行赋予鼠标悬停样式。</p> 
+          <div class="bs-docs-example"> 
+            <table class="table table-hover"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Username</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr> 
+                  <td>1</td> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                  <td>2</td> 
+                  <td>Jacob</td> 
+                  <td>Thornton</td> 
+                  <td>@fat</td> 
+                </tr> 
+                <tr> 
+                  <td>3</td> 
+                  <td colspan="2">Larry the Bird</td> 
+                  <td>@twitter</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums" style="margin-bottom: 18px;"> 
+&lt;table class="table table-hover"&gt;
+  …
+&lt;/table&gt;
+</pre> 
+ 
+          <h3><code>.table-condensed</code></h3> 
+          <p>每个单元格的内补(padding)减半可使表格更紧凑。</p> 
+          <div class="bs-docs-example"> 
+            <table class="table table-condensed"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>First Name</th> 
+                  <th>Last Name</th> 
+                  <th>Username</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr> 
+                  <td>1</td> 
+                  <td>Mark</td> 
+                  <td>Otto</td> 
+                  <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                  <td>2</td> 
+                  <td>Jacob</td> 
+                  <td>Thornton</td> 
+                  <td>@fat</td> 
+                </tr> 
+                <tr> 
+                  <td>3</td> 
+                  <td colspan="2">Larry the Bird</td> 
+                  <td>@twitter</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums" style="margin-bottom: 18px;"> 
+&lt;table class="table table-condensed"&gt;
+  …
+&lt;/table&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>可选的行属性</h2> 
+          <p>选择情景(contextual)类为表格添加颜色。</p> 
+          <table class="table table-bordered table-striped"> 
+            <colgroup> 
+              <col class="span1"> 
+              <col class="span7"> 
+            </colgroup> 
+            <thead> 
+              <tr> 
+                <th>Class</th> 
+                <th>Description</th> 
+              </tr> 
+            </thead> 
+            <tbody> 
+              <tr> 
+                <td> 
+                  <code>.success</code> 
+                </td> 
+                <td>表示成功或积极的行为。</td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>.error</code> 
+                </td> 
+                <td>表示一个危险或存有潜在危险的行为。</td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>.warning</code> 
+                </td> 
+                <td>表示警告，可能需要注意。</td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>.info</code> 
+                </td> 
+                <td>作为一个默认样式的一个替代样式。</td> 
+              </tr> 
+            </tbody> 
+          </table> 
+          <div class="bs-docs-example"> 
+            <table class="table"> 
+              <thead> 
+                <tr> 
+                  <th>#</th> 
+                  <th>Product</th> 
+                  <th>Payment Taken</th> 
+                  <th>Status</th> 
+                </tr> 
+              </thead> 
+              <tbody> 
+                <tr class="success"> 
+                  <td>1</td> 
+                  <td>TB - Monthly</td> 
+                  <td>01/04/2012</td> 
+                  <td>Approved</td> 
+                </tr> 
+                <tr class="error"> 
+                  <td>2</td> 
+                  <td>TB - Monthly</td> 
+                  <td>02/04/2012</td> 
+                  <td>Declined</td> 
+                </tr> 
+                <tr class="warning"> 
+                  <td>3</td> 
+                  <td>TB - Monthly</td> 
+                  <td>03/04/2012</td> 
+                  <td>Pending</td> 
+                </tr> 
+                <tr class="info"> 
+                  <td>4</td> 
+                  <td>TB - Monthly</td> 
+                  <td>04/04/2012</td> 
+                  <td>Call in to confirm</td> 
+                </tr> 
+              </tbody> 
+            </table> 
+          </div> 
+<pre class="prettyprint linenums"> 
+...
+  &lt;tr class="success"&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;TB - Monthly&lt;/td&gt;
+    &lt;td&gt;01/04/2012&lt;/td&gt;
+    &lt;td&gt;Approved&lt;/td&gt;
+  &lt;/tr&gt;
+...
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>受支持的表格标签</h2> 
+          <p>受支持的表格标签列表以及使用方法。</p> 
+          <table class="table table-bordered table-striped"> 
+            <colgroup> 
+              <col class="span1"> 
+              <col class="span7"> 
+            </colgroup> 
+            <thead> 
+              <tr> 
+                <th>标签</th> 
+                <th>描述</th> 
+              </tr> 
+            </thead> 
+            <tbody> 
+              <tr> 
+                <td> 
+                  <code>&lt;table&gt;</code> 
+                </td> 
+                <td> 
+                  包裹以表格形式展示数据的元素
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;thead&gt;</code> 
+                </td> 
+                <td> 
+                  包含表头(<code>&lt;tr&gt;</code>) 的容器
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;tbody&gt;</code> 
+                </td> 
+                <td> 
+                  包含表格内容(<code>&lt;tr&gt;</code>)的容器
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;tr&gt;</code> 
+                </td> 
+                <td> 
+                  单元格 (<code>&lt;td&gt;</code> 或 <code>&lt;th&gt;</code>) 容器
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;td&gt;</code> 
+                </td> 
+                <td> 
+                  默认的单元格
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;th&gt;</code> 
+                </td> 
+                <td> 
+                  每列(或行，依赖于放置的位置)所对应的的label 
+                </td> 
+              </tr> 
+              <tr> 
+                <td> 
+                  <code>&lt;caption&gt;</code> 
+                </td> 
+                <td> 
+                  用于对表的描述或总结，对屏幕阅读器特别有用
+                </td> 
+              </tr> 
+            </tbody> 
+          </table> 
+<pre class="prettyprint linenums"> 
+&lt;table&gt;
+  &lt;caption&gt;...&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- Forms
+        ================================================== --> 
+        <section id="forms"> 
+          <div class="page-header"> 
+            <h1>表单</h1> 
+          </div> 
+ 
+          <h2>默认样式</h2> 
+          <p>无需对<code>&lt;form&gt;</code>添加任何类或改变标签结构，每个单独的表单控件都已经被赋予了样式。默认是堆叠、label左侧对齐并在控件之上。</p> 
+          <form class="bs-docs-example"> 
+            <fieldset> 
+              <legend>Legend</legend> 
+              <label>Label name</label> 
+              <input type="text" placeholder="Type something…"> 
+              <span class="help-block">Example block-level help text here.</span> 
+              <label class="checkbox"> 
+                <input type="checkbox"> Check me out
+              </label> 
+              <button type="submit" class="btn">Submit</button> 
+            </fieldset> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Legend&lt;/legend&gt;
+    &lt;label&gt;Label name&lt;/label&gt;
+    &lt;input type="text" placeholder="Type something…"&gt;
+    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;label class="checkbox"&gt;
+      &lt;input type="checkbox"&gt; Check me out
+    &lt;/label&gt;
+    &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>可选布局</h2> 
+          <p>Bootstrap包含3个可选的常用表单布局。</p> 
+ 
+          <h3>搜索表单</h3> 
+          <p>为表单增加<code>.form-search</code>类，并为<code>&lt;input&gt;</code>增加<code>.search-query</code>类，可将输入框变成圆角状。</p> 
+          <form class="bs-docs-example form-search"> 
+            <input type="text" class="input-medium search-query"> 
+            <button type="submit" class="btn">Search</button> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form class="form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</pre> 
+ 
+          <h3>行内表单</h3> 
+          <p>为表单增加<code>.form-inline</code>类， 结果是一个压缩型排列的表单，其中label左侧对齐、控件为inline-block类型。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <input type="text" class="input-small" placeholder="Email"> 
+            <input type="password" class="input-small" placeholder="Password"> 
+            <label class="checkbox"> 
+              <input type="checkbox"> Remember me
+            </label> 
+            <button type="submit" class="btn">Sign in</button> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form class="form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="Email"&gt;
+  &lt;input type="password" class="input-small" placeholder="Password"&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; Remember me
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+&lt;/form&gt;
+</pre> 
+ 
+          <h3>水平表单</h3> 
+          <p>右侧对齐并且左侧浮动的label和控件排列在同一行。这需要对默认的表单格式做修改：R</p> 
+          <ul> 
+            <li>为表单添加<code>.form-horizontal</code>类</li> 
+            <li>将label和控件包裹在<code>.control-group</code>中</li> 
+            <li>为label添加<code>.control-label</code>类</li> 
+            <li>将任何相关的控件包裹在<code>.controls</code>中，以确保最佳的对齐</li> 
+          </ul> 
+          <form class="bs-docs-example form-horizontal"> 
+            <div class="control-group"> 
+              <label class="control-label" for="inputEmail">Email</label> 
+              <div class="controls"> 
+                <input type="text" id="inputEmail" placeholder="Email"> 
+              </div> 
+            </div> 
+            <div class="control-group"> 
+              <label class="control-label" for="inputPassword">Password</label> 
+              <div class="controls"> 
+                <input type="password" id="inputPassword" placeholder="Password"> 
+              </div> 
+            </div> 
+            <div class="control-group"> 
+              <div class="controls"> 
+                <label class="checkbox"> 
+                  <input type="checkbox"> Remember me
+                </label> 
+                <button type="submit" class="btn">Sign in</button> 
+              </div> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="control-group"&gt;
+    &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+    &lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+    &lt;div class="controls"&gt;
+      &lt;label class="checkbox"&gt;
+        &lt;input type="checkbox"&gt; Remember me
+      &lt;/label&gt;
+      &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>支持的表单控件</h2> 
+          <p>在此表单布局案例中包含了所被支持的标准表单控件。</p> 
+ 
+          <h3>输入框（Input）</h3> 
+          <p>大部分常用的表单控件、文本输入控件。包括所有HTML5所支持的：text、password、datetime、 datetime-local、date、 month、time、week、number、email、url、search、tel 和 color。</p> 
+          <p>任何时候都需要指定<code>type</code>属性。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <input type="text" placeholder="Text input"> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input type="text" placeholder="Text input"&gt;
+</pre> 
+ 
+          <h3>文本域（Textarea）</h3> 
+          <p>此表单控件支持多行文本。可根据需要修改<code>rows</code>属性。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <textarea rows="3"></textarea> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;textarea rows="3"&gt;&lt;/textarea&gt;
+</pre> 
+ 
+          <h3>复选框和单选框</h3> 
+          <p>复选框是用于在一个列表中选择一个或多个选项，而单选框是在众多选择中选择一个选项。</p> 
+          <h4>默认（堆叠式）</h4> 
+          <form class="bs-docs-example"> 
+            <label class="checkbox"> 
+              <input type="checkbox" value=""> 
+              Option one is this and that&mdash;be sure to include why it's great
+            </label> 
+            <br> 
+            <label class="radio"> 
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 
+              Option one is this and that&mdash;be sure to include why it's great
+            </label> 
+            <label class="radio"> 
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 
+              Option two can be something else and selecting it will deselect option one
+            </label> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;label class="checkbox"&gt;
+  &lt;input type="checkbox" value=""&gt;
+  Option one is this and that&mdash;be sure to include why it's great
+&lt;/label&gt;
+ 
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
+  Option one is this and that&mdash;be sure to include why it's great
+&lt;/label&gt;
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
+  Option two can be something else and selecting it will deselect option one
+&lt;/label&gt;
+</pre> 
+ 
+          <h4>行内复选框</h4> 
+          <p>为复选框或单选框控件添加<code>.inline</code>类，使他们排列在同一行。</p> 
+          <form class="bs-docs-example"> 
+            <label class="checkbox inline"> 
+              <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+            </label> 
+            <label class="checkbox inline"> 
+              <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+            </label> 
+            <label class="checkbox inline"> 
+              <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+            </label> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
+&lt;/label&gt;
+</pre> 
+ 
+          <h3>下拉框</h3> 
+          <p>可使用默认的选项或者指定<code>multiple="multiple"</code>属性一次显示多个选项。</p> 
+          <form class="bs-docs-example"> 
+            <select> 
+              <option>1</option> 
+              <option>2</option> 
+              <option>3</option> 
+              <option>4</option> 
+              <option>5</option> 
+            </select> 
+            <br> 
+            <select multiple="multiple"> 
+              <option>1</option> 
+              <option>2</option> 
+              <option>3</option> 
+              <option>4</option> 
+              <option>5</option> 
+            </select> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;select&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+ 
+&lt;select multiple="multiple"&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>扩展表单控件</h2> 
+          <p>除了现有的浏览器控件，Bootstrap还额外包含了一些有用的表单组件。</p> 
+ 
+          <h3>前缀和附加输入框</h3> 
+          <p>在任何文本输入框之前或之后添加文本或按钮。注意，<code>select</code>控件不支持。</p> 
+ 
+          <h4>默认选项</h4> 
+          <p>将<code>.add-on</code>和<code>input</code>进行组合，可以将文本放倒输入框前或后面。</p> 
+          <form class="bs-docs-example"> 
+            <div class="input-prepend"> 
+              <span class="add-on">@</span> 
+              <input class="span2" id="prependedInput" type="text" placeholder="Username"> 
+            </div> 
+            <br> 
+            <div class="input-append"> 
+              <input class="span2" id="appendedInput" type="text"> 
+              <span class="add-on">.00</span> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-prepend"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;
+  &lt;input class="span2" id="prependedInput" type="text" placeholder="Username"&gt;
+&lt;/div&gt;
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h4>组合</h4> 
+          <p>同时使用两个类，并将两个<code>.add-on</code>放在输入框的前与后。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <div class="input-prepend input-append"> 
+              <span class="add-on">$</span> 
+              <input class="span2" id="appendedPrependedInput" type="text"> 
+              <span class="add-on">.00</span> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-prepend input-append"&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;
+  &lt;input class="span2" id="appendedPrependedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h4>按钮的情况</h4> 
+          <p>用<code>.btn</code>代替<code>&lt;span&gt;</code>即可将一个（或两个）按钮添加到输入框前或后。</p> 
+          <form class="bs-docs-example"> 
+            <div class="input-append"> 
+              <input class="span2" id="appendedInputButton" type="text"> 
+              <button class="btn" type="button">Go!</button> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButton" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;/div&gt;
+</pre> 
+          <form class="bs-docs-example"> 
+            <div class="input-append"> 
+              <input class="span2" id="appendedInputButtons" type="text"> 
+              <button class="btn" type="button">Search</button> 
+              <button class="btn" type="button">Options</button> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButtons" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h4>按钮下拉菜单</h4> 
+          <p></p> 
+          <form class="bs-docs-example"> 
+            <div class="input-append"> 
+              <input class="span2" id="appendedDropdownButton" type="text"> 
+              <div class="btn-group"> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div><!-- /btn-group --> 
+            </div><!-- /input-append --> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      Action
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <form class="bs-docs-example"> 
+            <div class="input-prepend"> 
+              <div class="btn-group"> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div><!-- /btn-group --> 
+              <input class="span2" id="prependedDropdownButton" type="text"> 
+            </div><!-- /input-prepend --> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-prepend"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      Action
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;input class="span2" id="prependedDropdownButton" type="text"&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <form class="bs-docs-example"> 
+            <div class="input-prepend input-append"> 
+              <div class="btn-group"> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div><!-- /btn-group --> 
+              <input class="span2" id="appendedPrependedDropdownButton" type="text"> 
+              <div class="btn-group"> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div><!-- /btn-group --> 
+            </div><!-- /input-prepend input-append --> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="input-prepend input-append"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      Action
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;input class="span2" id="appendedPrependedDropdownButton" type="text"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      Action
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h4>分段式下拉菜组</h4> 
+          <form class="bs-docs-example"> 
+            <div class="input-prepend"> 
+              <div class="btn-group"> 
+                <button class="btn" tabindex="-1">Action</button> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1"> 
+                  <span class="caret"></span> 
+                </button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div> 
+              <input type="text"> 
+            </div> 
+            <div class="input-append"> 
+              <input type="text"> 
+              <div class="btn-group"> 
+                <button class="btn" tabindex="-1">Action</button> 
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1"> 
+                  <span class="caret"></span> 
+                </button> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Separated link</a></li> 
+                </ul> 
+              </div> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+    &lt;input type="text"&gt;
+  &lt;/div&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre> 
+ 
+          <h4>搜索表单</h4> 
+          <form class="bs-docs-example form-search"> 
+            <div class="input-append"> 
+              <input type="text" class="span2 search-query"> 
+              <button type="submit" class="btn">Search</button> 
+            </div> 
+            <div class="input-prepend"> 
+              <button type="submit" class="btn">Search</button> 
+              <input type="text" class="span2 search-query"> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;form class="form-search"&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre> 
+ 
+          <h3>控件大小</h3> 
+          <p>使用相对大小属性类，例如<code>.input-large</code>或者使用<code>.span*</code>类将输入框调整到网格列的大小。</p> 
+ 
+          <h4>块级输入框</h4> 
+          <p>让任何<code>&lt;input&gt;</code>或<code>&lt;textarea&gt;</code>元素表现为一个块级元素。</p> 
+          <form class="bs-docs-example" style="padding-bottom: 15px;"> 
+            <div class="controls"> 
+              <input class="input-block-level" type="text" placeholder=".input-block-level"> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="input-block-level" type="text" placeholder=".input-block-level"&gt;
+</pre> 
+ 
+          <h4>相对大小</h4> 
+          <form class="bs-docs-example" style="padding-bottom: 15px;"> 
+            <div class="controls docs-input-sizes"> 
+              <input class="input-mini" type="text" placeholder=".input-mini"> 
+              <input class="input-small" type="text" placeholder=".input-small"> 
+              <input class="input-medium" type="text" placeholder=".input-medium"> 
+              <input class="input-large" type="text" placeholder=".input-large"> 
+              <input class="input-xlarge" type="text" placeholder=".input-xlarge"> 
+              <input class="input-xxlarge" type="text" placeholder=".input-xxlarge"> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
+&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
+&lt;input class="input-medium" type="text" placeholder=".input-medium"&gt;
+&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
+&lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
+&lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
+</pre> 
+          <p> 
+            <span class="label label-info">注意！</span> 在未来的版本中，我们将会修改这些类的使用方式，让他们与按钮大小的表示方式一致。例如，<code>.input-large</code>将会使输入框的padding和font-size增大。
+          </p> 
+ 
+          <h4>网格大小</h4> 
+          <p>对输入框使用<code>.span1</code> 到 <code>.span12</code> 可以将输入框的大小对齐到网格大小。</p> 
+          <form class="bs-docs-example" style="padding-bottom: 15px;"> 
+            <div class="controls docs-input-sizes"> 
+              <input class="span1" type="text" placeholder=".span1"> 
+              <input class="span2" type="text" placeholder=".span2"> 
+              <input class="span3" type="text" placeholder=".span3"> 
+              <select class="span1"> 
+                <option>1</option> 
+                <option>2</option> 
+                <option>3</option> 
+                <option>4</option> 
+                <option>5</option> 
+              </select> 
+              <select class="span2"> 
+                <option>1</option> 
+                <option>2</option> 
+                <option>3</option> 
+                <option>4</option> 
+                <option>5</option> 
+              </select> 
+              <select class="span3"> 
+                <option>1</option> 
+                <option>2</option> 
+                <option>3</option> 
+                <option>4</option> 
+                <option>5</option> 
+              </select> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="span1" type="text" placeholder=".span1"&gt;
+&lt;input class="span2" type="text" placeholder=".span2"&gt;
+&lt;input class="span3" type="text" placeholder=".span3"&gt;
+&lt;select class="span1"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span2"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span3"&gt;
+  ...
+&lt;/select&gt;
+</pre> 
+ 
+          <p>对于每行有多个输入框的情况，For multiple grid inputs per line, <strong>使用 <code>.controls-row</code> 类为输入框增加合适的间距</strong>。通过浮动让输入框之间缩减一些空白，设置适当的边距，并清除浮动。</p> 
+          <form class="bs-docs-example" style="padding-bottom: 15px;"> 
+            <div class="controls"> 
+              <input class="span5" type="text" placeholder=".span5"> 
+            </div> 
+            <div class="controls controls-row"> 
+              <input class="span4" type="text" placeholder=".span4"> 
+              <input class="span1" type="text" placeholder=".span1"> 
+            </div> 
+            <div class="controls controls-row"> 
+              <input class="span3" type="text" placeholder=".span3"> 
+              <input class="span2" type="text" placeholder=".span2"> 
+            </div> 
+            <div class="controls controls-row"> 
+              <input class="span2" type="text" placeholder=".span2"> 
+              <input class="span3" type="text" placeholder=".span3"> 
+            </div> 
+            <div class="controls controls-row"> 
+              <input class="span1" type="text" placeholder=".span1"> 
+              <input class="span4" type="text" placeholder=".span4"> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="controls"&gt;
+  &lt;input class="span5" type="text" placeholder=".span5"&gt;
+&lt;/div&gt;
+&lt;div class="controls controls-row"&gt;
+  &lt;input class="span4" type="text" placeholder=".span4"&gt;
+  &lt;input class="span1" type="text" placeholder=".span1"&gt;
+&lt;/div&gt;
+...
+</pre> 
+ 
+          <h3>不可编辑的输入框</h3> 
+          <p>对于在表单中呈现不可编辑的数据，无需使用实际的表单控件。</p> 
+          <form class="bs-docs-example"> 
+            <span class="input-xlarge uneditable-input">Some value here</span> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
+</pre> 
+ 
+          <h3>表单行为</h3> 
+          <p>将一组行为(按钮)放在表单尾部。当他们放置在<code>.form-actions</code>中时，这些按钮将会自动缩进，和其它表单控件对齐。</p> 
+          <form class="bs-docs-example"> 
+            <div class="form-actions"> 
+              <button type="submit" class="btn btn-primary">Save changes</button> 
+              <button type="button" class="btn">Cancel</button> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="form-actions"&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h3>帮助文本</h3> 
+          <p>表单控件周围可以放置行内或块级元素展示帮助文本。</p> 
+          <h4>行内帮助</h4> 
+          <form class="bs-docs-example form-inline"> 
+            <input type="text"> <span class="help-inline">Inline help text</span> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+</pre> 
+ 
+          <h4>块级帮助</h4> 
+          <form class="bs-docs-example form-inline"> 
+            <input type="text"> 
+            <span class="help-block">如果帮助文本过长，可采用块级显示。</span> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+</pre> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>表单控件状态</h2> 
+          <p>改变表单控件和label的反馈状态给用户或者访客提供反馈。</p> 
+ 
+          <h3>输入焦点</h3> 
+          <p>我们为一些表单控件移除了默认的<code>outline</code>样式，并且对他们的<code>:focus</code>状态设置了<code>box-shadow</code>样式。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused..."> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+</pre> 
+ 
+          <h3>无效输入</h3> 
+          <p>为输入框设置<code>:invalid</code>样式从而激发浏览器默认功能。如果输入框是必填的，可以指定一个<code>type</code>和<code>required</code>属性，（如果合适的话）甚至还可以指定<code>pattern</code>属性。</p> 
+          <p>由于Internet Explorer 7-9不支持CSS伪类选择器，因此不能在这些浏览器中使用。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <input class="span3" type="email" placeholder="test@example.com" required> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="span3" type="email" required&gt;
+</pre> 
+ 
+          <h3>被禁用的输入框</h3> 
+          <p>给输入框添加<code>disabled</code>属性可阻止用户输入，并且输入框会呈现稍微不同的外观。</p> 
+          <form class="bs-docs-example form-inline"> 
+            <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
+</pre> 
+ 
+          <h3>验证状态</h3> 
+          <p>Bootstrap包含了（错误）error、（警告）warning、（通知）info和（成功）success信息的样式。为<code>.control-group</code>添加适当的属性即可使用这些样式。</p> 
+ 
+          <form class="bs-docs-example form-horizontal"> 
+            <div class="control-group warning"> 
+              <label class="control-label" for="inputWarning">Input with warning</label> 
+              <div class="controls"> 
+                <input type="text" id="inputWarning"> 
+                <span class="help-inline">Something may have gone wrong</span> 
+              </div> 
+            </div> 
+            <div class="control-group error"> 
+              <label class="control-label" for="inputError">Input with error</label> 
+              <div class="controls"> 
+                <input type="text" id="inputError"> 
+                <span class="help-inline">Please correct the error</span> 
+              </div> 
+            </div> 
+            <div class="control-group info"> 
+              <label class="control-label" for="inputInfo">Input with info</label> 
+              <div class="controls"> 
+                <input type="text" id="inputInfo"> 
+                <span class="help-inline">Username is taken</span> 
+              </div> 
+            </div> 
+            <div class="control-group success"> 
+              <label class="control-label" for="inputSuccess">Input with success</label> 
+              <div class="controls"> 
+                <input type="text" id="inputSuccess"> 
+                <span class="help-inline">Woohoo!</span> 
+              </div> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="control-group warning"&gt;
+  &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputWarning"&gt;
+    &lt;span class="help-inline"&gt;Something may have gone wrong&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;div class="control-group error"&gt;
+  &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputError"&gt;
+    &lt;span class="help-inline"&gt;Please correct the error&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;div class="control-group info"&gt;
+  &lt;label class="control-label" for="inputInfo"&gt;Input with info&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputInfo"&gt;
+    &lt;span class="help-inline"&gt;Username is already taken&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;div class="control-group success"&gt;
+  &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputSuccess"&gt;
+    &lt;span class="help-inline"&gt;Woohoo!&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- Buttons
+        ================================================== --> 
+        <section id="buttons"> 
+          <div class="page-header"> 
+            <h1>按钮</h1> 
+          </div> 
+ 
+          <h2>默认按钮</h2> 
+          <p>任何赋予<code>.btn</code>类的页面元素都会显示按钮样式。不过，通常是用于更好的表现<code>&lt;a&gt;</code> 和 <code>&lt;button&gt;</code> 页面元素。</p> 
+          <table class="table table-bordered table-striped"> 
+            <thead> 
+              <tr> 
+                <th>按钮</th> 
+                <th>class=""</th> 
+                <th>描述</th> 
+              </tr> 
+            </thead> 
+            <tbody> 
+              <tr> 
+                <td><button type="button" class="btn">默认</button></td> 
+                <td><code>btn</code></td> 
+                <td>带渐变的标准灰色按钮</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-primary">主要</button></td> 
+                <td><code>btn btn-primary</code></td> 
+                <td>提供额外的视觉感, 可在一系列的按钮中指出主要操作</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-info">信息</button></td> 
+                <td><code>btn btn-info</code></td> 
+                <td>默认样式的替代样式</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-success">成功</button></td> 
+                <td><code>btn btn-success</code></td> 
+                <td>表示成功或积极的动作</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-warning">警告</button></td> 
+                <td><code>btn btn-warning</code></td> 
+                <td>提醒应该谨慎采取这个动作</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-danger">危险</button></td> 
+                <td><code>btn btn-danger</code></td> 
+                <td>表示这个动作危险或存在危险</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-inverse">反向</button></td> 
+                <td><code>btn btn-inverse</code></td> 
+                <td>备用的暗灰色按钮，不依赖于语义和用途</td> 
+              </tr> 
+              <tr> 
+                <td><button type="button" class="btn btn-link">链接</button></td> 
+                <td><code>btn btn-link</code></td> 
+                <td>简化一个按钮, 使它看起来像一个链接，同时保持按钮的行为</td> 
+              </tr> 
+            </tbody> 
+          </table> 
+ 
+          <h4>浏览器兼容性</h4> 
+          <p>IE9 不支持圆角的背景渐变，所以我们干脆移除了。 IE9 jankifies 禁用了<code>button</code>元素， 显示文本为灰色并带有很垃圾的阴影，这个我们实在无法修复。</p> 
+ 
+ 
+          <h2>按钮大小</h2> 
+          <p>想使用更大或更小的按钮吗？添加<code>.btn-large</code>、<code>.btn-small</code> 或 <code>.btn-mini</code>即可改变按钮大小。</p> 
+          <div class="bs-docs-example"> 
+            <p> 
+              <button type="button" class="btn btn-large btn-primary">Large button</button> 
+              <button type="button" class="btn btn-large">Large button</button> 
+            </p> 
+            <p> 
+              <button type="button" class="btn btn-primary">Default button</button> 
+              <button type="button" class="btn">Default button</button> 
+            </p> 
+            <p> 
+              <button type="button" class="btn btn-small btn-primary">Small button</button> 
+              <button type="button" class="btn btn-small">Small button</button> 
+            </p> 
+            <p> 
+              <button type="button" class="btn btn-mini btn-primary">Mini button</button> 
+              <button type="button" class="btn btn-mini">Mini button</button> 
+            </p> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;p&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;Large button&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;Default button&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;Small button&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Mini button&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+&lt;/p&gt;
+</pre> 
+          <p>通过添加<code>.btn-block</code>类，可使按钮变为块级元素，同时会填充整个父级元素。</p> 
+          <div class="bs-docs-example"> 
+            <div class="well" style="max-width: 400px; margin: 0 auto 10px;"> 
+              <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button> 
+              <button type="button" class="btn btn-large btn-block">Block level button</button> 
+            </div> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Block level button&lt;/button&gt;
+&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;
+</pre> 
+ 
+ 
+          <h2>禁用状态</h2> 
+          <p>颜色淡出50%，让按钮看起来无法点击。</p> 
+ 
+          <h3>链接元素</h3> 
+          <p>给<code>&lt;a&gt;</code>元素添加<code>.disabled</code>类。</p> 
+          <p class="bs-docs-example"> 
+            <a href="#" class="btn btn-large btn-primary disabled">Primary link</a> 
+            <a href="#" class="btn btn-large disabled">Link</a> 
+          </p> 
+<pre class="prettyprint linenums"> 
+&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Primary link&lt;/a&gt;
+&lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
+</pre> 
+          <p> 
+            <span class="label label-info">注意！</span> 
+            我们将<code>.disabled</code>作为一个工具类，和常见的<code>.active</code>类一样，因此无需添加前缀。另外，这个类只是为了美观，你必须自己写JavaScript代码来禁止链接的行为。
+          </p> 
+ 
+          <h3>按钮元素</h3> 
+          <p>给<code>&lt;button&gt;</code>添加<code>disabled</code>属性。</p> 
+          <p class="bs-docs-example"> 
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button> 
+            <button type="button" class="btn btn-large" disabled>Button</button> 
+          </p> 
+<pre class="prettyprint linenums"> 
+&lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
+&lt;button type="button" class="btn btn-large" disabled&gt;Button&lt;/button&gt;
+</pre> 
+ 
+ 
+          <h2>一个类支持多种标签</h2> 
+          <p>可以给<code>&lt;a&gt;</code>、<code>&lt;button&gt;</code>或<code>&lt;input&gt;</code>元素添加<code>.btn</code>类。</p> 
+          <form class="bs-docs-example"> 
+            <a class="btn" href="">Link</a> 
+            <button class="btn" type="submit">Button</button> 
+            <input class="btn" type="button" value="Input"> 
+            <input class="btn" type="submit" value="Submit"> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
+&lt;input class="btn" type="button" value="Input"&gt;
+&lt;input class="btn" type="submit" value="Submit"&gt;
+</pre> 
+          <p>最佳实践是，根据使用环境，尝试找到一个合适的元素，以确保渲染的效果在各个浏览器保存基本一致。如果你正使用着一个<code>input</code>，那么你的按钮可使用 <code>&lt;input type="submit"&gt;</code>。</p> 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- Images
+        ================================================== --> 
+        <section id="images"> 
+          <div class="page-header"> 
+            <h1>图片</h1> 
+          </div> 
+ 
+          <p>为<code>&lt;img&gt;</code>元素添加相应的类就可以很容易的给图片设置样式。</p> 
+          <div class="bs-docs-example bs-docs-example-images"> 
+            <img data-src="holder.js/140x140" class="img-rounded"> 
+            <img data-src="holder.js/140x140" class="img-circle"> 
+            <img data-src="holder.js/140x140" class="img-polaroid"> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;img src="..." class="img-rounded"&gt;
+&lt;img src="..." class="img-circle"&gt;
+&lt;img src="..." class="img-polaroid"&gt;
+</pre> 
+          <p><span class="label label-info">注意！</span> 由于IE7-8不支持<code>border-radius</code>，因此<code>.img-rounded</code> 和 <code>.img-circle</code>无法正常使用。</p> 
+ 
+ 
+        </section> 
+ 
+ 
+ 
+        <!-- Icons
+        ================================================== --> 
+        <section id="icons"> 
+          <div class="page-header"> 
+            <h1>图标 <small>由<a href="http://glyphicons.com" target="_blank">Glyphicons</a>提供</small></h1> 
+          </div> 
+ 
+          <h2>Icon glyphs</h2> 
+          <p>下面展示的140个图标均提供了深灰色（默认）和白色两种颜色。由<a href="http://glyphicons.com" target="_blank">Glyphicons</a>提供。</p> 
+          <ul class="the-icons clearfix"> 
+            <li><i class="icon-glass"></i> icon-glass</li> 
+            <li><i class="icon-music"></i> icon-music</li> 
+            <li><i class="icon-search"></i> icon-search</li> 
+            <li><i class="icon-envelope"></i> icon-envelope</li> 
+            <li><i class="icon-heart"></i> icon-heart</li> 
+            <li><i class="icon-star"></i> icon-star</li> 
+            <li><i class="icon-star-empty"></i> icon-star-empty</li> 
+            <li><i class="icon-user"></i> icon-user</li> 
+            <li><i class="icon-film"></i> icon-film</li> 
+            <li><i class="icon-th-large"></i> icon-th-large</li> 
+            <li><i class="icon-th"></i> icon-th</li> 
+            <li><i class="icon-th-list"></i> icon-th-list</li> 
+            <li><i class="icon-ok"></i> icon-ok</li> 
+            <li><i class="icon-remove"></i> icon-remove</li> 
+            <li><i class="icon-zoom-in"></i> icon-zoom-in</li> 
+            <li><i class="icon-zoom-out"></i> icon-zoom-out</li> 
+            <li><i class="icon-off"></i> icon-off</li> 
+            <li><i class="icon-signal"></i> icon-signal</li> 
+            <li><i class="icon-cog"></i> icon-cog</li> 
+            <li><i class="icon-trash"></i> icon-trash</li> 
+            <li><i class="icon-home"></i> icon-home</li> 
+            <li><i class="icon-file"></i> icon-file</li> 
+            <li><i class="icon-time"></i> icon-time</li> 
+            <li><i class="icon-road"></i> icon-road</li> 
+            <li><i class="icon-download-alt"></i> icon-download-alt</li> 
+            <li><i class="icon-download"></i> icon-download</li> 
+            <li><i class="icon-upload"></i> icon-upload</li> 
+            <li><i class="icon-inbox"></i> icon-inbox</li> 
+ 
+            <li><i class="icon-play-circle"></i> icon-play-circle</li> 
+            <li><i class="icon-repeat"></i> icon-repeat</li> 
+            <li><i class="icon-refresh"></i> icon-refresh</li> 
+            <li><i class="icon-list-alt"></i> icon-list-alt</li> 
+            <li><i class="icon-lock"></i> icon-lock</li> 
+            <li><i class="icon-flag"></i> icon-flag</li> 
+            <li><i class="icon-headphones"></i> icon-headphones</li> 
+            <li><i class="icon-volume-off"></i> icon-volume-off</li> 
+            <li><i class="icon-volume-down"></i> icon-volume-down</li> 
+            <li><i class="icon-volume-up"></i> icon-volume-up</li> 
+            <li><i class="icon-qrcode"></i> icon-qrcode</li> 
+            <li><i class="icon-barcode"></i> icon-barcode</li> 
+            <li><i class="icon-tag"></i> icon-tag</li> 
+            <li><i class="icon-tags"></i> icon-tags</li> 
+            <li><i class="icon-book"></i> icon-book</li> 
+            <li><i class="icon-bookmark"></i> icon-bookmark</li> 
+            <li><i class="icon-print"></i> icon-print</li> 
+            <li><i class="icon-camera"></i> icon-camera</li> 
+            <li><i class="icon-font"></i> icon-font</li> 
+            <li><i class="icon-bold"></i> icon-bold</li> 
+            <li><i class="icon-italic"></i> icon-italic</li> 
+            <li><i class="icon-text-height"></i> icon-text-height</li> 
+            <li><i class="icon-text-width"></i> icon-text-width</li> 
+            <li><i class="icon-align-left"></i> icon-align-left</li> 
+            <li><i class="icon-align-center"></i> icon-align-center</li> 
+            <li><i class="icon-align-right"></i> icon-align-right</li> 
+            <li><i class="icon-align-justify"></i> icon-align-justify</li> 
+            <li><i class="icon-list"></i> icon-list</li> 
+ 
+            <li><i class="icon-indent-left"></i> icon-indent-left</li> 
+            <li><i class="icon-indent-right"></i> icon-indent-right</li> 
+            <li><i class="icon-facetime-video"></i> icon-facetime-video</li> 
+            <li><i class="icon-picture"></i> icon-picture</li> 
+            <li><i class="icon-pencil"></i> icon-pencil</li> 
+            <li><i class="icon-map-marker"></i> icon-map-marker</li> 
+            <li><i class="icon-adjust"></i> icon-adjust</li> 
+            <li><i class="icon-tint"></i> icon-tint</li> 
+            <li><i class="icon-edit"></i> icon-edit</li> 
+            <li><i class="icon-share"></i> icon-share</li> 
+            <li><i class="icon-check"></i> icon-check</li> 
+            <li><i class="icon-move"></i> icon-move</li> 
+            <li><i class="icon-step-backward"></i> icon-step-backward</li> 
+            <li><i class="icon-fast-backward"></i> icon-fast-backward</li> 
+            <li><i class="icon-backward"></i> icon-backward</li> 
+            <li><i class="icon-play"></i> icon-play</li> 
+            <li><i class="icon-pause"></i> icon-pause</li> 
+            <li><i class="icon-stop"></i> icon-stop</li> 
+            <li><i class="icon-forward"></i> icon-forward</li> 
+            <li><i class="icon-fast-forward"></i> icon-fast-forward</li> 
+            <li><i class="icon-step-forward"></i> icon-step-forward</li> 
+            <li><i class="icon-eject"></i> icon-eject</li> 
+            <li><i class="icon-chevron-left"></i> icon-chevron-left</li> 
+            <li><i class="icon-chevron-right"></i> icon-chevron-right</li> 
+            <li><i class="icon-plus-sign"></i> icon-plus-sign</li> 
+            <li><i class="icon-minus-sign"></i> icon-minus-sign</li> 
+            <li><i class="icon-remove-sign"></i> icon-remove-sign</li> 
+            <li><i class="icon-ok-sign"></i> icon-ok-sign</li> 
+ 
+            <li><i class="icon-question-sign"></i> icon-question-sign</li> 
+            <li><i class="icon-info-sign"></i> icon-info-sign</li> 
+            <li><i class="icon-screenshot"></i> icon-screenshot</li> 
+            <li><i class="icon-remove-circle"></i> icon-remove-circle</li> 
+            <li><i class="icon-ok-circle"></i> icon-ok-circle</li> 
+            <li><i class="icon-ban-circle"></i> icon-ban-circle</li> 
+            <li><i class="icon-arrow-left"></i> icon-arrow-left</li> 
+            <li><i class="icon-arrow-right"></i> icon-arrow-right</li> 
+            <li><i class="icon-arrow-up"></i> icon-arrow-up</li> 
+            <li><i class="icon-arrow-down"></i> icon-arrow-down</li> 
+            <li><i class="icon-share-alt"></i> icon-share-alt</li> 
+            <li><i class="icon-resize-full"></i> icon-resize-full</li> 
+            <li><i class="icon-resize-small"></i> icon-resize-small</li> 
+            <li><i class="icon-plus"></i> icon-plus</li> 
+            <li><i class="icon-minus"></i> icon-minus</li> 
+            <li><i class="icon-asterisk"></i> icon-asterisk</li> 
+            <li><i class="icon-exclamation-sign"></i> icon-exclamation-sign</li> 
+            <li><i class="icon-gift"></i> icon-gift</li> 
+            <li><i class="icon-leaf"></i> icon-leaf</li> 
+            <li><i class="icon-fire"></i> icon-fire</li> 
+            <li><i class="icon-eye-open"></i> icon-eye-open</li> 
+            <li><i class="icon-eye-close"></i> icon-eye-close</li> 
+            <li><i class="icon-warning-sign"></i> icon-warning-sign</li> 
+            <li><i class="icon-plane"></i> icon-plane</li> 
+            <li><i class="icon-calendar"></i> icon-calendar</li> 
+            <li><i class="icon-random"></i> icon-random</li> 
+            <li><i class="icon-comment"></i> icon-comment</li> 
+            <li><i class="icon-magnet"></i> icon-magnet</li> 
+ 
+            <li><i class="icon-chevron-up"></i> icon-chevron-up</li> 
+            <li><i class="icon-chevron-down"></i> icon-chevron-down</li> 
+            <li><i class="icon-retweet"></i> icon-retweet</li> 
+            <li><i class="icon-shopping-cart"></i> icon-shopping-cart</li> 
+            <li><i class="icon-folder-close"></i> icon-folder-close</li> 
+            <li><i class="icon-folder-open"></i> icon-folder-open</li> 
+            <li><i class="icon-resize-vertical"></i> icon-resize-vertical</li> 
+            <li><i class="icon-resize-horizontal"></i> icon-resize-horizontal</li> 
+            <li><i class="icon-hdd"></i> icon-hdd</li> 
+            <li><i class="icon-bullhorn"></i> icon-bullhorn</li> 
+            <li><i class="icon-bell"></i> icon-bell</li> 
+            <li><i class="icon-certificate"></i> icon-certificate</li> 
+            <li><i class="icon-thumbs-up"></i> icon-thumbs-up</li> 
+            <li><i class="icon-thumbs-down"></i> icon-thumbs-down</li> 
+            <li><i class="icon-hand-right"></i> icon-hand-right</li> 
+            <li><i class="icon-hand-left"></i> icon-hand-left</li> 
+            <li><i class="icon-hand-up"></i> icon-hand-up</li> 
+            <li><i class="icon-hand-down"></i> icon-hand-down</li> 
+            <li><i class="icon-circle-arrow-right"></i> icon-circle-arrow-right</li> 
+            <li><i class="icon-circle-arrow-left"></i> icon-circle-arrow-left</li> 
+            <li><i class="icon-circle-arrow-up"></i> icon-circle-arrow-up</li> 
+            <li><i class="icon-circle-arrow-down"></i> icon-circle-arrow-down</li> 
+            <li><i class="icon-globe"></i> icon-globe</li> 
+            <li><i class="icon-wrench"></i> icon-wrench</li> 
+            <li><i class="icon-tasks"></i> icon-tasks</li> 
+            <li><i class="icon-filter"></i> icon-filter</li> 
+            <li><i class="icon-briefcase"></i> icon-briefcase</li> 
+            <li><i class="icon-fullscreen"></i> icon-fullscreen</li> 
+          </ul> 
+ 
+          <h3>Glyphicons attribution</h3> 
+          <p><a href="http://glyphicons.com/">Glyphicons</a> Halflings 一般是收费的，但是经过Bootstrap和Glyphicons作者之间的协商，允许开发人员不需要支付费用即可使用。作为对作者的感谢，希望你在使用的时候加个<a href="http://glyphicons.com/">Glyphicons</a>的链接。</p> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>如何使用</h2> 
+          <p>每个图标都需要依附于一个<code>&lt;i&gt;</code>标签，并且赋予一个唯一的类（class）。使用时，将类似下面的代码放到任何需要的地方即可：</p> 
+<pre class="prettyprint linenums"> 
+&lt;i class="icon-search"&gt;&lt;/i&gt;
+</pre> 
+          <p>也可以使用反色（白色）样式的图标，只需增加一个额外的类。我们将具体展示这些属性在导航条和下拉菜单中悬停和活动时候的状态效果。</p> 
+<pre class="prettyprint linenums"> 
+&lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
+</pre> 
+          <p> 
+            <span class="label label-info">注意！</span> 
+            当在文本旁边使用这些图标时，例如按钮或导航链接，务必在<code>&lt;i&gt;</code>标签后面 添加一个空格，这样能确保留有合适的间距。
+          </p> 
+ 
+ 
+          <hr class="bs-docs-separator"> 
+ 
+ 
+          <h2>图标案例</h2> 
+          <p>这些图标可以使用在按钮、工具栏的按钮组、导航或表单的前缀输入框。</p> 
+ 
+          <h4>按钮</h4> 
+ 
+          <h5>工具栏的按钮组</h5> 
+          <div class="bs-docs-example"> 
+            <div class="btn-toolbar"> 
+              <div class="btn-group"> 
+                <a class="btn" href="#"><i class="icon-align-left"></i></a> 
+                <a class="btn" href="#"><i class="icon-align-center"></i></a> 
+                <a class="btn" href="#"><i class="icon-align-right"></i></a> 
+                <a class="btn" href="#"><i class="icon-align-justify"></i></a> 
+              </div> 
+            </div> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;div class="btn-toolbar"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-justify"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h5>按钮组中下拉菜单</h5> 
+          <div class="bs-docs-example"> 
+            <div class="btn-group"> 
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a> 
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a> 
+              <ul class="dropdown-menu"> 
+                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li> 
+                <li><a href="#"><i class="icon-trash"></i> Delete</a></li> 
+                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li> 
+                <li class="divider"></li> 
+                <li><a href="#"><i class="i"></i> Make admin</a></li> 
+              </ul> 
+            </div> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="icon-user icon-white"&gt;&lt;/i&gt; User&lt;/a&gt;
+  &lt;a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Edit&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-trash"&gt;&lt;/i&gt; Delete&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-ban-circle"&gt;&lt;/i&gt; Ban&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Make admin&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre> 
+ 
+          <h5>按钮尺寸</h5> 
+          <div class="bs-docs-example"> 
+            <a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a> 
+            <a class="btn btn-small" href="#"><i class="icon-star"></i> Star</a> 
+            <a class="btn btn-mini" href="#"><i class="icon-star"></i> Star</a> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;a class="btn btn-large" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
+&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
+&lt;a class="btn btn-mini" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
+</pre> 
+ 
+          <h4>导航</h4> 
+          <div class="bs-docs-example"> 
+            <div class="well" style="padding: 8px 0; margin-bottom: 0;"> 
+              <ul class="nav nav-list"> 
+                <li class="active"><a href="#"><i class="icon-home icon-white"></i> 首页</a></li> 
+                <li><a href="#"><i class="icon-book"></i> Library</a></li> 
+                <li><a href="#"><i class="icon-pencil"></i> Applications</a></li> 
+                <li><a href="#"><i class="i"></i> Misc</a></li> 
+              </ul> 
+            </div> 
+          </div> 
+<pre class="prettyprint linenums"> 
+&lt;ul class="nav nav-list"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="icon-home icon-white"&gt;&lt;/i&gt; 首页&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-book"&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Misc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre> 
+ 
+          <h4>表单域</h4> 
+          <form class="bs-docs-example form-horizontal"> 
+            <div class="control-group"> 
+              <label class="control-label" for="inputIcon">Email address</label> 
+              <div class="controls"> 
+                <div class="input-prepend"> 
+                  <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text"> 
+                </div> 
+              </div> 
+            </div> 
+          </form> 
+<pre class="prettyprint linenums"> 
+&lt;div class="control-group"&gt;
+  &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;div class="input-prepend"&gt;
+      &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input class="span2" id="inputIcon" type="text"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre> 
+ 
+        </section> 
+ 
+ 
+ 
+      </div> 
+    </div> 
+ 
+  </div> 
+ 
+ 
+ 
+    <!-- Footer
+    ================================================== --> 
+    <footer class="footer"> 
+      <div class="container"> 
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p> 
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p> 
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p> 
+        <ul class="footer-links"> 
+          <li><a href="http://blog.getbootstrap.com">Blog</a></li> 
+          <li class="muted">&middot;</li> 
+          <li><a href="https://github.com/twbs/bootstrap/issues?state=open">Issues</a></li> 
+          <li class="muted">&middot;</li> 
+          <li><a href="https://github.com/twbs/bootstrap/releases">Changelog</a></li> 
+        </ul> 
+      </div> 
+    </footer> 
+ 
+ 
+ 
+    <!-- Le javascript
+    ================================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+    
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> 
+    <script src="http://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script> 
+ 
+    <script src="http://cdn.bootcss.com/holder/2.0/holder.min.js"></script> 
+    <script src="assets/js/google-code-prettify/prettify.js"></script> 
+ 
+    <script src="assets/js/application.js"></script>
+
+<script type="text/javascript">
+
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff8075d186077efcfbc077b500516e94a' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
+
+
+<!-- 全局统计代码 -->
+
+<script type="text/javascript">
+
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F079fac161efc4b2a6f31e80064f14e82' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
+ 
+ 
+ 
+  </body> 
+</html> 
