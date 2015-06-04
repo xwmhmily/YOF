@@ -34,7 +34,7 @@ switch(ENVIRONMENT) {
         $IMG_DOMAIN    = 'http://testImg.yof.com';
     break;
 
-    case 'WWW':
+    case 'PRODUCT':
         error_reporting(E_ALL ^E_NOTICE);
         $logFile = APP_PATH.'/log/php/'.CUR_DATE.'.log';
 
