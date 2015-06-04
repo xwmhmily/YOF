@@ -2,7 +2,7 @@
 /**
  * File: Helper.class.php
  * Functionality: Controller, library, function loader and raiseError
- * Author: Nic XIE
+ * Author: 大眼猫
  * Date: 2013-5-8
  * ----------------- DO NOT MODIFY THIS FILE UNLESS YOU FULLY UNDERSTAND ! ------------------
  */
