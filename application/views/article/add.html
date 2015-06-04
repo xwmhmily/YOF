@@ -1,14 +1,24 @@
-<html>
- 	<head>
-   		<title>New Article</title>
- 	</head>
- 	<body>
-  		<h2>New Article</h2>
-  		<form id="addForm" name="addForm" method="post" action="/article/addAct">
-  			<input type="text" id="title" name="title" placeholder="title" /> <br /><br />
-  			<input type="text" id="content" name="content" placeholder="content" size="100" /><br /><br />
-  			<input type="submit" id="submit" name="submit" value="Submit" />
-  		</form>
-  		<a href="/user/user">Back</a>
-	</body>
-</html>
+<?php include 'header.html' ?> 
+  <div class="container"> 
+    <div class="row">
+      <?php include 'left.html' ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>新文章</h1> 
+          </div> 
+ 
+          <div class="bs-docs-example"> 
+			<form id="addForm" name="addForm" method="post" action="/article/addAct">
+			<input type="text" id="title" name="title" placeholder="title" /> <br /><br />
+			<input type="text" id="content" name="content" placeholder="content" size="100" /><br /><br />
+			<input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit" />
+			<a href="/user/profile" class="btn primary">Back</a>
+		</form>
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body> 
