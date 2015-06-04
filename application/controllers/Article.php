@@ -5,6 +5,7 @@ class ArticleController extends BasicController {
   private $m_article;
 
   private function init(){
+    $userID = $this->getSession('userID');
     $this->m_article = $this->load('Article');
   }
 
@@ -25,7 +26,7 @@ class ArticleController extends BasicController {
     $articleID = $this->m_article->Insert($m);
 
     if($articleID){
-      $this->redirect('/user/user');
+      $this->redirect('/user/profile');
     }else{
       jsAlert('发布文章失败, 请重试');
       $this->redirect('/article/add');
@@ -49,7 +50,7 @@ class ArticleController extends BasicController {
     $code = $this->m_article->UpdateById($m, $articleID);
 
     if($code){
-      $this->redirect('/user/user');
+      $this->redirect('/user/profile');
     }else{
       jsAlert('编辑文章失败, 请重试');
       $this->redirect('/article/edit?articleID='.$articleID);
@@ -64,7 +65,7 @@ class ArticleController extends BasicController {
       jsAlert('删除文章失败, 请重试');
     }
 
-    $this->redirect('/user/user');
+    $this->redirect('/user/profile');
   }
 
   // 测试URL 路由 [伪静态]
