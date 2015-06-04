@@ -2,7 +2,7 @@
 /**
  * File: M_Model.class.php
  * Functionality: Core PDO model class
- * Author: Nic XIE
+ * Author: 大眼猫
  * Date: 2013-2-28
  * Note:
  *	1 => This class requires PDO support !
@@ -31,23 +31,14 @@ abstract class M_Model {
 	/**
 	 * Constructor
 	 * <br /> 1: Connect to MySQL
-	 *
-	 * @param string => use default DB if parameter is not specified !
-	 * @return NULL
 	 */
-	function __construct($db = '') {
+	function __construct() {
 		$this->logFile = APP_PATH. '/log/sql/'.CUR_DATE.'.log';
 		if(!file_exists($this->logFile) && ENVIRONMENT != 'DEV'){
 			touch($this->logFile);
 		}
-
-		if($db){
-			$this->connect($db);
-		}else{
-			if(!$this->conn){
-				$this->connect();
-			}
-		}
+		
+		$this->connect();
 	}
 
 	/**
@@ -342,7 +333,7 @@ abstract class M_Model {
 			$this->sql = $sql;
 		}
 
-		$this->connect('READ');
+		$this->connect();
 		$this->Execute();
 		$this->checkResult();
 
