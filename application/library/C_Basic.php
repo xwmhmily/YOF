@@ -1,4 +1,10 @@
 <?php
+/**
+ * File: C_Basic.php
+ * Functionality: Basic Controller
+ * Author: 大眼猫
+ * Date: 2015-5-8
+ */
 
 class BasicController extends Yaf_Controller_Abstract {
   
