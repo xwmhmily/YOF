@@ -28,7 +28,7 @@
 
 > 1: 安装YAF 扩展
 
-> 2: 配置好 application.ini 里的MySQL参数并将 dym.sql 导入自己的数据库
+> 2: 配置好 application.ini 里的MySQL参数并将 dym.sql 导入自己的数据库 [导入前记得设置导入编码为UTF8]
 
 > 3: 配置虚拟主机, 写对应的HOSTS
 
