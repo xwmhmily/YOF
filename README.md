@@ -2,6 +2,8 @@
 
 <H3>特点</H3>
 
+> 0: <a target="_blank" href="http://http://yof.mylinuxer.com/">在线DEMO</a>
+
 > 1: 基于YAF 和 Orange 开发的一个PHP 框架, 简单, 易用, 高效
 
 > 2: 底层使用的鸟哥的 YAF, MySQL 封装使用的是 Orange 的PDO 类, 支持链式操作! 调用非常方便
