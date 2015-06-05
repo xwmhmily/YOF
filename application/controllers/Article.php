@@ -19,7 +19,7 @@ class ArticleController extends BasicController {
 
   public function addActAction(){
     $m['title']   = $this->getPost('title');
-    $m['content'] = $this->getPost('content');
+    $m['content'] = $this->getPost('editorValue', FALSE); // DO NOT FILTER
     $m['userID']  = $this->getSession('userID');
     $m['addTime'] = CUR_TIMESTAMP;
 
@@ -42,10 +42,9 @@ class ArticleController extends BasicController {
   }
 
   public function editActAction(){
-    // POST 过来的用 getPost
     $articleID = $this->getPost('articleID');
     $m['title']   = $this->getPost('title');
-    $m['content'] = $this->getPost('content');
+    $m['content'] = $this->getPost('editorValue', FALSE); // DO NOT FILTER
 
     $code = $this->m_article->UpdateById($m, $articleID);
 
