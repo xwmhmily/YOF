@@ -24,7 +24,7 @@
 
 > 10: 一些常用的函数封装,位于 function 目录
 
-> 11: 全面使用 Bootstrap, 集成 UEditor 更有逼格!
+> 11: 全面使用 Bootstrap, 集成 UEditor, 上传功能, 更有逼格!
 
 <H3>安装 [建议在Linux下使用]</H3>
 
