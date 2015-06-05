@@ -2,7 +2,7 @@
 
 <H3>特点</H3>
 
-> 0: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a>
+> 0: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a> 管理后台账号 superAdmin, 密码 123456
 
 > 1: 基于YAF 和 Orange 开发的一个PHP 框架, 简单, 易用, 高效
 
