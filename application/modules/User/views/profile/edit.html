@@ -1,18 +1,27 @@
-<?php include 'header.html' ?> 
+<?php include 'header.html' ?>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
   <div class="container"> 
     <div class="row">
       <?php include 'left.html' ?>
 
       <div class="span9">
         <section id="typography"> 
-          <div class="page-header"> 
+          <div class="page-header">
             <h1>我的资料</h1> 
           </div> 
  
           <div class="bs-docs-example"> 
-      			<form id="profileForm" name="profileForm" method="post" action="/user/profile/profileAct">
+      			<form id="profileForm" name="profileForm" method="post" action="/user/profile/profileAct" enctype="multipart/form-data">
+              <?php if($user['avatar']) { ?>
+                <img src="/upload/<?php echo $user['avatar']?>" width="200" height="175" /><br /><br />
+              <? } ?>
+              头像: &nbsp;<input type="file" id="avatar" name="avatar" /><br /><br />
       				<input type="text" id="realname" name="realname" value="<?php echo $user['realname']?>" placeholder="realname" /><br /><br />
       				<?php echo $cityElement ?><br /><br />
+              <script id="editor" type="text/plain" style="width:700px;height:300px;"></script>
+
+              <br />
       				<input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit" />
               <a href="/user/profile" class="btn">Back</a>
       			</form>
@@ -21,4 +30,4 @@
       </div> 
     </div>
   </div> 
-</body> 
+</body>
