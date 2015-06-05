@@ -3399,9 +3399,10 @@ CREATE TABLE `zt_user` (
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `regionID` mediumint(8) DEFAULT NULL,
   `region` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'avatar',
   PRIMARY KEY (`id`),
   KEY `index_three` (`username`,`password`,`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='����Ա��';
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='����Ա��'
 
 -- ----------------------------
 -- Records of zt_user
