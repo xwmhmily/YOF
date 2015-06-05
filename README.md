@@ -1,4 +1,4 @@
-![Index](http://www.syinchung.com/asset/yof.png "Title")
+![Index](http://www.syinchung.com/asset/yof_new.png "Title")
 
 <H3>特点</H3>
 
