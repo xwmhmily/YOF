@@ -1,4 +1,6 @@
 <?php include 'header.html' ?> 
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
   <div class="container"> 
     <div class="row">
       <?php include 'left.html' ?>
@@ -10,15 +12,21 @@
           </div> 
  
           <div class="bs-docs-example"> 
-			<form id="addForm" name="addForm" method="post" action="/article/addAct">
-			<input type="text" id="title" name="title" placeholder="title" /> <br /><br />
-			<input type="text" id="content" name="content" placeholder="content" size="100" /><br /><br />
-			<input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit" />
-			<a href="/user/profile" class="btn primary">Back</a>
-		</form>
-          </div> 
+    			<form id="addForm" name="addForm" method="post" action="/article/addAct">
+      			<input type="text" id="title" name="title" placeholder="title" /> 
+            <br /><br />
+            <!-- ueditor -->
+            <script id="editor" type="text/plain" style="width:700px;height:300px;"></script>
+            <br /><br />
+      			<input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit" />
+      			<a href="/user/profile" class="btn primary">Back</a>
+      		</form>
+          </div>
         </section>
       </div> 
     </div>
   </div> 
-</body> 
+</body>
+<script type="text/javascript">
+  var ue = UE.getEditor('editor');
+</script>
