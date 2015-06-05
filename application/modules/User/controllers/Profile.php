@@ -43,54 +43,6 @@ class ProfileController extends BasicController {
         $this->getView()->assign($buffer);
 	}
 
-	// Login
-	public function loginAction(){
-		
-	}
-
-	public function loginActAction(){
-		$username = $this->getPost('username');
-		$password = $this->getPost('password');
-
-		$field = array('id');
-		$where = array('username' => $username, 'password' => $password);
-		$data  = $this->m_user->Field($field)->Where($where)->SelectOne();
-		$userID = $data['id'];
-
-		if($userID){
-			// Set to session
-			$this->setSession('userID', $userID);
-			$this->setSession('username', $username);
-
-			$this->redirect('/user/profile'); // 会令 jsAlert失效
-		}else{
-			jsAlert('登录失败, 请检查用户名和密码');
-			jsRedirect('/user/profile/login');
-		}
-	}
-
-	// Register
-	public function registerAction(){
-
-	}
-
-	public function registerActAction(){
-		$m['username'] = $this->getPost('username');
-		$m['password'] = $this->getPost('password');
-		
-		$userID = $this->m_user->Insert($m);
-		if(!$userID){
-			$msg = '注册失败,请重试';
-			$url = '/user/profile/register';
-		}else{
-			$msg = '注册成功,请登录';
-			$url = '/user/profile/login';
-		}
-
-		jsAlert($msg);
-		jsRedirect($url);
-	}
-
 	// Logout
 	public function logoutAction(){
 		$this->unsetSession('userID');
