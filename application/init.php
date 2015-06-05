@@ -66,3 +66,6 @@ define('IMG_DOMAIN',    $IMG_DOMAIN);
 define('SITE_PROVINCE', 440000);
 define('SITE_CITY',     440100);
 define('SITE_REGION',   440106);
+
+define('TMP_PATH', APP_PATH.'/tmp');
+define('UPLOAD_PATH', APP_PATH.'/public/upload');
