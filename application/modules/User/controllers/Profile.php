@@ -74,9 +74,27 @@ class ProfileController extends BasicController {
 		if($m['regionID']){
 			$m['region'] = $this->load('Region')->getRegionNameByID($m['regionID']);
 		}
-		
+
 		$code = $this->m_user->UpdateByID($m, USER_ID);
-		if(FALSE === $code){
+
+		// Upload avatar if selected
+		if($_FILES['avatar']['name']){
+			Helper::import('File');
+            Yaf_Loader::import('L_Upload.class.php');
+
+            $fileName = CUR_TIMESTAMP;
+            $up = new L_Upload($_FILES['avatar'], UPLOAD_PATH.'/');
+            $result = $up->upload($fileName);
+
+            if($result == 1){
+            	$m['avatar'] = $fileName.'.'.$up->extension;
+            	$this->m_user->UpdateByID($m, USER_ID);
+            }else{
+            	jsAlert($result);
+            }
+        }
+		
+		if(FALSE === $code && $result != 1){
 			jsAlert('编辑个人信息失败, 请重试');
 		}
 
