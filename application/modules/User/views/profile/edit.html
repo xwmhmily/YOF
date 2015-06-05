@@ -15,7 +15,7 @@
       			<form id="profileForm" name="profileForm" method="post" action="/user/profile/profileAct" enctype="multipart/form-data">
               <?php if($user['avatar']) { ?>
                 <img src="/upload/<?php echo $user['avatar']?>" width="200" height="175" /><br /><br />
-              <? } ?>
+              <?php } ?>
               头像: &nbsp;<input type="file" id="avatar" name="avatar" /><br /><br />
       				<input type="text" id="realname" name="realname" value="<?php echo $user['realname']?>" placeholder="realname" /><br /><br />
       				<?php echo $cityElement ?><br /><br />
