@@ -31,11 +31,12 @@ class LoginController extends BasicController {
 			$this->setSession('userID', $userID);
 			$this->setSession('username', $username);
 
-			$this->redirect('/user/profile'); // 会令 jsAlert失效
+			echo 1;
 		}else{
-			jsAlert('登录失败, 请检查用户名和密码');
-			jsRedirect('/login');
+			echo 0;
 		}
+
+		die;
 	}
   	
 }
