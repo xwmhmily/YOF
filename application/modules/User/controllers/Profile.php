@@ -62,7 +62,7 @@ class ProfileController extends BasicController {
 		$buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
 		$this->getView()->assign($buffer);
 	}
-
+	
 	public function profileActAction(){
 		$m['realname']   = $this->getPost('realname');
 		$m['provinceID'] = $this->getPost('areaProvince');
@@ -101,6 +101,7 @@ class ProfileController extends BasicController {
 		$this->redirect('/user/profile/edit');
 	}
 
+	// 二维码
 	public function qrcodeAction(){
 		$value = $this->get('value', FALSE);
 		if($value){
@@ -126,6 +127,29 @@ class ProfileController extends BasicController {
 			$Qrcode->createQr();
 
 			$buffer['qrCode'] = '/qrcode/'.$file;
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
+	// phpQuery 采集类
+	public function crawlAction(){
+		$destination = $this->get('destination', FALSE);
+		if($destination){
+			include LIB_PATH.'/phpQuery/phpQuery.php';
+
+			phpQuery::newDocumentFile($destination);
+			$articles = pq('#main_bg .zixunmain .p_lf .p_pad')->find('ul');
+
+			foreach($articles as $article) {
+			   	$m['title']   = pq($article)->find('dl dd a')->html();
+			   	$m['title']   = addslashes($m['title']);
+			   	$m['img']     = pq($article)->find('dl dt a img')->attr('src');
+
+				$final[] = $m;
+			}
+
+			$buffer['articles'] = $final;
 		}
 
 		$this->getView()->assign($buffer);
