@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script src="<?php echo JS_PATH ?>/bootstrap.min.js"></script>
+    <script src="<?php echo JS_PATH ?>/jquery-1.7.min.js"></script>
     <link href="<?php echo CSS_PATH ?>/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -46,6 +47,30 @@
       function home(){
         window.location.href = '/';
       }
+
+      $(function(){
+        $('#submitBtn').click(function(){
+          var username = $('#username').val();
+          if(username == ''){
+            $('#username').focus();
+            return false;
+          }
+
+          var password = $('#password').val();
+          if(password == ''){
+            $('#password').focus();
+            return false;
+          }
+
+          $.post('/login/loginAct', {'username' : username, 'password' : password}, function(data){
+            if(data == '1'){
+              window.location.href = '/user/profile';
+            }else{
+              alert('登陆失败, 请检查用户名和密码');
+            }
+          })
+        });
+      })
     </script>
   </head>
 
@@ -53,12 +78,11 @@
     <div class="container">
       <form class="form-signin" method="post" action="/login/loginAct">
         <h2 class="form-signin-heading">Login</h2>
-        <input type="text" class="input-block-level" name="username" placeholder="Username">
-        <input type="password" class="input-block-level" name="password" placeholder="Password">
-        <button class="btn btn-large btn-primary" type="submit">Submit</button>
+        <input type="text" class="input-block-level" id="username" name="username" placeholder="Username">
+        <input type="password" class="input-block-level" id="password" name="password" placeholder="Password">
+        <button class="btn btn-large btn-primary" id="submitBtn" type="button">Submit</button>
         <button onclick="javascript:home();" class="btn btn-large btn-primary" type="button">Home</button>
       </form>
     </div>
-    <script src="<?php echo JS_PATH ?>/bootstrap.min.js"></script>
   </body>
 </html>
