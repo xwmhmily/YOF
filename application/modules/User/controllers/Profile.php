@@ -100,4 +100,35 @@ class ProfileController extends BasicController {
 
 		$this->redirect('/user/profile/edit');
 	}
+
+	public function qrcodeAction(){
+		$value = $this->get('value', FALSE);
+		if($value){
+			Yaf_Loader::import('L_Qrcode.class.php');
+
+	    	$savePath .= APP_PATH.'/public/qrcode';
+
+	    	if(!file_exists($savePath)){
+	    		Helper::import('File');
+	    		createRDir($savePath);
+	    	}
+
+	    	$err  = 'L';
+			$size = '10';
+			// 有 LOGO 的话去掉下一行的注释
+			//$logo = APP_PATH.'/asset/logo.jpg';
+
+			Helper::import('String');
+			$file = getRandom(6, 1).'.png';
+	        $qr = $savePath.'/'.$file;
+
+	        $Qrcode = new L_Qrcode($value, $qr, $err, $size);
+			$Qrcode->createQr();
+
+			$buffer['qrCode'] = '/qrcode/'.$file;
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
 }
