@@ -116,7 +116,7 @@ class ProfileController extends BasicController {
 
 	    	$err  = 'L';
 			$size = '10';
-			// 有 LOGO 的话去掉下一行的注释
+			// 有 LOGO 的话去掉下一行的注释, 并作为构造函数的第五个参数传入
 			//$logo = APP_PATH.'/asset/logo.jpg';
 
 			Helper::import('String');
@@ -150,6 +150,53 @@ class ProfileController extends BasicController {
 			}
 
 			$buffer['articles'] = $final;
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
+	// Http request
+	// I'm sure you have better soluction ....
+	public function httpAction(){
+		$url = $this->get('url', FALSE);
+		if($url){
+			$buffer['content'] = executeHTTPRequest($url, '');
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
+	// Article list API
+	public function apiAction(){
+		$url = $this->get('url', FALSE);
+		if($url){
+			// 此处为了演示和接近实际环境，将 URL 定死
+			$url = 'http://yof.mylinuxer.com/api/article';
+
+			// Secure your API with CUR_TIMESTAMP and API_KEY
+			$m['time'] = CUR_TIMESTAMP;
+			$m['sign'] = Helper::generateSign($m);
+
+			$buffer['content'] = executeHTTPRequest($url, $m); 
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
+	// Article detail API
+	public function apiDetailAction(){
+		$articleID = $this->get('articleID');
+		$url = $this->get('url', FALSE);
+		if($url){
+			// 此处为了演示和接近实际环境，将 URL 定死
+			$url = 'http://yof.mylinuxer.com/api/article/detail';
+
+			// Secure your API with CUR_TIMESTAMP and API_KEY
+			$m['time'] = CUR_TIMESTAMP;
+			$m['sign'] = Helper::generateSign($m);
+			$m['articleID'] = $articleID;
+
+			$buffer['content'] = executeHTTPRequest($url, $m);
 		}
 
 		$this->getView()->assign($buffer);
