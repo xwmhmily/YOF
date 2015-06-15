@@ -45,6 +45,39 @@
     }
 ###
 
+> 6: Nginx 下配置文件示例
+###
+	server {
+        listen       80;
+        server_name  dev.yof.com;
+        root /usr/www/YOF/public;
+        index index.php;
+
+        location / {
+                if (!-e $request_filename) {
+                   rewrite ^/(.*)$ /index.php?$1 last;
+                }
+        }
+
+        location ~ \.php$ {
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            include fcgi.conf;
+        }
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+                expires      30d;
+        }
+
+        location ~ .*\.(js|css)?$ {
+                expires      12h;
+        }
+
+    }
+###
+
+> 7: 感谢网友 Vampire, 果儿-高级程序猿的建议
+
 <H3>设置</H3>
 > 1: MySQL 参数 application.ini: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
