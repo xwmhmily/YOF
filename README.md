@@ -30,7 +30,13 @@
 
 <H3>安装 [建议在Linux下使用]</H3>
 
-> 1: 安装YAF 扩展
+> 1: 安装YAF 扩展, 然后在 php.ini 里加入如下内容, 重启 WEB 服务
+
+###
+	[YAF]
+	extension = yaf.so
+	yaf.environ = dev
+###
 
 > 2: 配置好 application.ini 里的MySQL参数并将 dym.sql 导入自己的数据库 [导入前记得设置导入编码为UTF8]
 
@@ -47,7 +53,7 @@
     }
 ###
 
-> 6: Nginx 下配置文件示例
+> 6: Nginx 下配置文件示例  [请将 root 指向 public 目录]
 ###
 	server {
         listen       80;
