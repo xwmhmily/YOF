@@ -4,9 +4,9 @@
 
 > 0: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a> 管理后台账号 superAdmin, 密码 123456
 
-> 1: 基于YAF 和 Orange 开发的一个PHP 框架, 简单, 易用, 高效
+> 1: 基于YAF 和 PDO 开发的一个PHP 框架, 简单, 易用, 高效
 
-> 2: 底层使用的鸟哥的 YAF, MySQL 封装使用的是 Orange 的PDO 类, 支持链式操作! 调用非常方便
+> 2: 底层使用的鸟哥的 YAF, MySQL 封装使用的是 PDO 类, 支持链式操作! 调用非常方便
 
 > 3: 支持多种运行环境, 根据运行环境决定域名常量,MySQL参数, 错误报告等
 
@@ -24,7 +24,9 @@
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, 更有逼格!
+> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问.
+
+> 12: 作为入门 DEMO, YOF 中的函数, 类是几年工作累积下来的, 有自己写的, 也有同事写的, 大家有更好的替换或改进即可！
 
 <H3>安装 [建议在Linux下使用]</H3>
 
@@ -54,9 +56,9 @@
         index index.php;
 
         location / {
-                if (!-e $request_filename) {
-                   rewrite ^/(.*)$ /index.php?$1 last;
-                }
+			if (!-e $request_filename) {
+			   rewrite ^/(.*)$ /index.php?$1 last;
+			}
         }
 
         location ~ \.php$ {
@@ -66,11 +68,11 @@
         }
 
         location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
-                expires      30d;
+            expires      30d;
         }
 
         location ~ .*\.(js|css)?$ {
-                expires      12h;
+            expires      12h;
         }
 
     }
