@@ -33,6 +33,13 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         Helper::import('Network');
         
         Yaf_Loader::import('C_Basic.php');
+
+        // header.html and left.html
+        define('HEADER_HTML', APP_PATH.'/public/common/header.html');
+        define('LEFT_HTML',   APP_PATH.'/public/common/left.html');
+
+        // API KEY for api sign
+        define('API_KEY', 'THIS_is_OUR_API_keY');
     }
 
 
