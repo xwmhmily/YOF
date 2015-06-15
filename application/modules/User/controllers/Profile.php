@@ -156,7 +156,7 @@ class ProfileController extends BasicController {
 	}
 
 	// Http request
-	// I'm sure you have better soluction ....
+	// I'm sure you have better solution ....
 	public function httpAction(){
 		$url = $this->get('url', FALSE);
 		if($url){
