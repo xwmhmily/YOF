@@ -22,9 +22,9 @@
 
 > 9: 三个模块:User, Api, Admin 
 
-> 10: 一些常用的函数封装,位于 function 目录
+> 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, 更有逼格!
+> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, 更有逼格!
 
 <H3>安装 [建议在Linux下使用]</H3>
 
