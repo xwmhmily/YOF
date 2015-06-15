@@ -117,6 +117,23 @@ abstract class Helper {
 			Helper::raiseError($traceInfo, $error);
 		}
 	}
+
+	/**
+     * Generate sign
+     * @param array $parameters
+     * @return new sign
+     */
+    public static function generateSign($parameters){
+        $signPars = '';
+        foreach($parameters as $k => $v) {
+            if(isset($v) && 'sign' != $k) {
+                $signPars .= $k . '=' . $v . '&';
+            }
+        }
+
+        $signPars .= 'key='.API_KEY;
+        return strtolower(md5($signPars));
+    }
 	
 	
 	/**
@@ -137,7 +154,8 @@ abstract class Helper {
 				}else if(isset($_REQUEST['ajax'])){
 					$data = JSON($data);
 				}else{
-					pr($data); die; // URL 测试打印数组出来
+					//pr($data); die; // URL 测试打印数组出来
+					echo json_encode($data); die;
 				}
 			break;
 			
