@@ -76,8 +76,8 @@ class BasicController extends Yaf_Controller_Abstract {
     }
   }
 
-  /*
-   *  Response
+  /**
+   *  API Response
    */
   public function response($error){
     switch($error){
