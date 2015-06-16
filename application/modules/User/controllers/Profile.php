@@ -40,6 +40,16 @@ class ProfileController extends BasicController {
         	$this->redirect('/');
         }
 
+        // 如果有 xhprof 则开启跟踪功能
+        if(function_exists('xhprof_disable')){
+	        $data = xhprof_disable();
+	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_lib.php';
+	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_runs.php'; 
+	        $objXhprofRun = new XHProfRuns_Default();
+	        $run_id = $objXhprofRun->save_run($data, 'xhprof');
+	    }
+
+        $buffer['run_id'] = $run_id;
         $this->getView()->assign($buffer);
 	}
 
