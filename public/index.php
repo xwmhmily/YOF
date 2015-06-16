@@ -1,5 +1,10 @@
 <?php
 
+// 如果有 xhprof 则开启跟踪功能
+if(function_exists('xhprof_enable')){
+	xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+}
+
 header('content-Type:text/html;charset=utf-8;');
 define('APP_PATH',  realpath(dirname(__FILE__) . '/../')); 
 
