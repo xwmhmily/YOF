@@ -6,7 +6,7 @@ class ArticleController extends BasicController {
 
 	private function init(){
 		// Verify sign
-		$this->verifySign(); 
+		$this->verifySign();
 		$this->m_article = $this->load('Article');
 	}
 
