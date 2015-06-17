@@ -1,0 +1,57 @@
+<?php include HEADER_HTML ?>
+<link href="/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/uploadify/jquery.uploadify.min.js"></script>
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header">
+            <h1>Uploadify</h1>
+          </div>
+ 
+          <div class="bs-docs-example"> 
+      			<table width="100%" class="table table-striped">
+            <tr>
+              <!--为了安全和方便演示, 仅上传一张-->
+              <input id="file_upload_logo" name="file_upload_logo" type="file" multiple="false" />
+              <script type="text/javascript">
+              $('#file_upload_logo').uploadify({
+                'formData'     : {
+                  'destination' : 'upload',
+                },
+                'width'      : 100,
+                'height'     : 32,
+                'buttonImage': '/uploadify/btn07.png',
+                'swf'        : '/uploadify/uploadify.swf',
+                'uploader'   : '/uploadify/uploadify.php',
+                'auto'       : false,
+                'multi'      : false,
+                'displayData': 'speed',
+                'fileExt'    : '*.jpg;*.jpeg;*.gif;*.png',
+                'sizeLimit'  : 20480,
+                'queueSizeLimit': 30,
+                'onUploadSuccess' : function(file, data, response){
+                  alert('上传成功罗');
+                  $('#cover').attr('src', data);
+                },
+                'onUploadError' : function(data){
+                  
+                }
+              });
+            </script>
+              <input type="button" value="确定上传" class="btn btn-info" onclick="$('#file_upload_logo').uploadify('upload','*');">
+              &nbsp;
+              <input type="button" value="清空上传列表" class="btn btn-info" onclick="$('#file_upload_logo').uploadify('cancel', '*');">
+              <br /><br />
+              <img id="cover" name="cover" src="" /><br />
+            </td>
+            </tr>
+        </table>
+          </div>
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body>
