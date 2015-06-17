@@ -214,21 +214,7 @@ class ProfileController extends BasicController {
 
 	// Uploadify
 	public function uploadifyAction(){
-		$articleID = $this->get('articleID');
-		$url = $this->get('url', FALSE);
-		if($url){
-			// 此处为了演示和接近实际环境，将 URL 定死
-			$url = 'http://yof.mylinuxer.com/api/article/detail';
-
-			// Secure your API with CUR_TIMESTAMP and API_KEY
-			$m['time'] = CUR_TIMESTAMP;
-			$m['sign'] = Helper::generateSign($m);
-			$m['articleID'] = $articleID;
-
-			$buffer['content'] = executeHTTPRequest($url, $m);
-		}
-
-		$this->getView()->assign($buffer);
+		
 	}
 
 }
