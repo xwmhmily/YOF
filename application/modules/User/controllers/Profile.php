@@ -217,4 +217,19 @@ class ProfileController extends BasicController {
 		
 	}
 
+	// xhprof 
+	// 该功能需要安装 prof 扩展, 否则无法运行
+	public function xhprofAction(){
+        if(function_exists('xhprof_disable')){
+	        $data = xhprof_disable();
+	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_lib.php';
+	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_runs.php'; 
+	        $objXhprofRun = new XHProfRuns_Default();
+	        $run_id = $objXhprofRun->save_run($data, 'xhprof');
+
+	        $buffer['run_id'] = $run_id;
+       		$this->getView()->assign($buffer);
+	    }
+	}
+
 }
