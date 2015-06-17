@@ -44,6 +44,16 @@ class BasicController extends Yaf_Controller_Abstract {
     return Yaf_Session::getInstance()->__unset($key);
   }
 
+  // Show error
+  public function showError($error, $tpl, $die = TRUE){
+    $buffer['error'] = $error;
+    $this->display($tpl, $buffer);
+
+    if($die){
+      die;
+    }
+  }
+
   // Load model
   public function load($model){
     return Helper::load($model);
