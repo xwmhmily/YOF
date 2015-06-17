@@ -20,11 +20,16 @@ class RegisterController extends BasicController {
   	public function registerActAction(){
 		$m['username'] = $this->getPost('username');
 		$m['password'] = $this->getPost('password');
+
+		if(!$m['username'] || !$m['password']){
+			$error = 'Username and password are required !';
+			$this->showError($error, 'index');
+		}
 		
 		$userID = $this->m_user->Insert($m);
 		if(!$userID){
-			$msg = '注册失败,请重试';
-			$url = '/register';
+			$error = '注册失败,请重试';
+			$this->showError($error, 'index');
 		}else{
 			$msg = '注册成功,请登录';
 			$url = '/login';
