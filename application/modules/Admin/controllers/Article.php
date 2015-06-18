@@ -34,13 +34,13 @@ class ArticleController extends BasicController {
 		$m['status'] = 1;
 
 		$code = $this->m_article->UpdateByID($m, $articleID);
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 
 	public function delAction(){
 		$articleID = $this->get('articleID');
 		$code = $this->m_article->DeleteByID($articleID);
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 	
 }
