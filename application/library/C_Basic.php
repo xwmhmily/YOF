@@ -7,6 +7,8 @@
  */
 
 class BasicController extends Yaf_Controller_Abstract {
+
+  protected $homeUrl;
   
   public function get($key, $filter = TRUE){
     if($filter){
@@ -42,6 +44,11 @@ class BasicController extends Yaf_Controller_Abstract {
 
   public function unsetSession($key){
     return Yaf_Session::getInstance()->__unset($key);
+  }
+
+  // Go home
+  public function goHome(){
+    jsRedirect($this->homeUrl);
   }
 
   // Show error
