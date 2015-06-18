@@ -97,9 +97,17 @@
 
 >> A: 开发环境请设置为 dev, 此时所有错误将打印出来方便调试
 
->> B: 线上测试环境设置为 test, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
+>> B: 线上测试环境设置为 test, 
+	
+>>> 此时 PHP 的错误将记录在 APP_PATH.'/log/php/' 下的 $当天日期.log
 
->> C: 正式生产环境设置为 product, 此时 PHP 的错误将记录在 APP_PATH 下的 $当天日期_php.log, SQL 的错误将记录在 APP_PATH 下的 $当天日期_sql.log
+>>> SQL 的错误将记录在 APP_PATH.'/log/sql/' 下的 $当天日期.log
+
+>> C: 正式生产环境设置为 product
+
+>>> 此时 PHP 的错误将记录在 APP_PATH.'/log/php/' 下的 $当天日期.log
+
+>>> SQL 的错误将记录在 APP_PATH.'/log/sql/' 下的 $当天日期.log
 
 >> D: 维护情况下设置为 maintaince, 此时访问网站将只显示一句话: 服务器正在维护, 请稍候访问. 
 
