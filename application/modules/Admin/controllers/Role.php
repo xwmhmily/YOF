@@ -59,7 +59,7 @@ class RoleController extends BasicController {
 			jsAlert('添加失败, 请重试');
 		}
 		
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 	
 	
@@ -93,7 +93,7 @@ class RoleController extends BasicController {
 		    jsAlert('添加失败, 请重试');
 		}
 		
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 	
 	
@@ -108,7 +108,7 @@ class RoleController extends BasicController {
 			jsAlert('删除失败');
 		}
 		
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 	
 	
@@ -151,7 +151,7 @@ class RoleController extends BasicController {
 			jsAlert('更新权限失败');
 		}
 		
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 
 }
