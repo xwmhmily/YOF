@@ -232,4 +232,16 @@ class ProfileController extends BasicController {
 	    }
 	}
 
+	// 省市区三级联动
+	public function cityAction(){
+		$buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement(SITE_PROVINCE, SITE_CITY, SITE_REGION, 1);
+		$this->getView()->assign($buffer);
+	}
+
+	// 层级式省市区三级联动
+	public function cityPopAction(){
+		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement(SITE_PROVINCE, SITE_CITY, SITE_REGION, 1);
+		$this->getView()->assign($buffer);
+	}
+
 }
