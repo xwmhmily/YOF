@@ -218,8 +218,8 @@ function executeHTTPRequest($url, $params, $timeout = 0) {
  *  @return string  $message    发送成功或失败消息
  */
 function sendMail($toMail, $subject, $body) {
-	Yaf_loader::import(APP_PATH . '/plugin/PHPMailer/class.phpmailer.php');
-	Yaf_Loader::import(APP_PATH . '/plugin/PHPMailer/class.smtp.php');
+	Yaf_loader::import(LIB_PATH . '/PHPMailer/class.phpmailer.php');
+	Yaf_Loader::import(LIB_PATH . '/PHPMailer/class.smtp.php');
 	$config = Yaf_Application::app()->getConfig();
 
 	$mail = new PHPMailer();
