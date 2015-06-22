@@ -1,0 +1,40 @@
+<?php include HEADER_HTML ?>
+ <style type="text/css">
+  .pageNav{float:right;}
+</style>
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>简易加密解密</h1>
+          </div> 
+          
+          <div class="bs-docs-example">
+            <form id="encryptForm" method="post" action="/user/profile/encrypt">
+            <input type="text" id="str" name="str" value="<?php echo $str?>">
+            <input type="submit" id="encryptBtn" class="btn btn-primary" value="加密"/ >
+            <input type="button" id="decryptBtn" class="btn" value="解密">
+            <input type="text" style="width:600px" id="encryption" value="<?php echo $encryptStr?>" />
+            </form>
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body>
+<script>
+$(function(){
+  $('#decryptBtn').click(function(){
+    var strToDecrypt = $('#encryption').val();
+    if(strToDecrypt == ''){
+      alert('请先加密');
+      return false;
+    }
+
+    window.location.href = '/user/profile/encrypt?strToDecrypt='+strToDecrypt;
+  })
+})
+</script>
