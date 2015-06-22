@@ -1,0 +1,33 @@
+<?php include HEADER_HTML ?>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script> 
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography">
+          <div class="page-header">
+            <h1>请看看url 是否是伪静态</h1>
+          </div>
+ 
+          <div class="bs-docs-example"> 
+      			<form id="editForm" name="editForm" method="post" action="/article/editAct">
+      				<input type="text" id="title" name="title" value="<?php echo $article['title'] ?>" /> <br /><br />
+      				<!-- ueditor -->
+              <script id="editor" type="text/plain" style="width:700px;height:300px;"></script><br /><br />
+      				<a href="/user/profile" class="btn">Back</a>
+      				<input type="hidden" id="articleID" name="articleID" value="<?php echo $article['id'] ?>" />
+      			</form>
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body>
+<script type="text/javascript">
+  var ue = UE.getEditor('editor');
+   ue.ready(function() {
+     ue.setContent('<?php echo $article['content'] ?>');
+    });
+</script>
