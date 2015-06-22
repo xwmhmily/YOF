@@ -1,0 +1,45 @@
+<?php include HEADER_HTML ?>
+ <style type="text/css">
+  .pageNav{float:right;}
+</style>
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>PHPMailer</h1>
+          </div> 
+          
+          <div class="bs-docs-example">
+            <ul>
+              <li>
+                1: 在 application.ini 中配置好 phpmailer 的各个参数
+              </li>
+              <li>
+                2: 若有需要, 修改 application/function/F_Network.php 中的 sendMail 函数或建立一个新类
+              </li>
+              <li>
+                3: 调用 sendMail($toMail, $subject, $body) 或自己的类
+              </li>
+            </ul>
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body>
+<script>
+$(function(){
+  $('#decryptBtn').click(function(){
+    var strToDecrypt = $('#encryption').val();
+    if(strToDecrypt == ''){
+      alert('请先加密');
+      return false;
+    }
+
+    window.location.href = '/user/profile/encrypt?strToDecrypt='+strToDecrypt;
+  })
+})
+</script>
