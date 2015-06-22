@@ -270,4 +270,9 @@ class ProfileController extends BasicController {
 		$this->getView()->assign($buffer);
 	}
 
+	// PHP Mailer
+	public function phpmailerAction(){
+		
+	}
+
 }
