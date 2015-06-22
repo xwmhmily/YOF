@@ -240,7 +240,33 @@ class ProfileController extends BasicController {
 
 	// 层级式省市区三级联动
 	public function cityPopAction(){
-		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement(SITE_PROVINCE, SITE_CITY, SITE_REGION, 1);
+		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement('', SITE_CITY, SITE_REGION, 1);
+		$this->getView()->assign($buffer);
+	}
+
+	// URL Rewrite
+	public function rewriteAction(){
+		$buffer['articles'] = $this->load('Article')->Limit(10)->Select();
+		$this->getView()->assign($buffer);
+	}
+
+	// 简易加密与解密
+	public function encryptAction(){
+		Helper::import('Encryption');
+
+		// Encrypt
+		$str = $this->getPost('str', FALSE);
+		if($str){
+			$buffer['str'] = $str;
+			$buffer['encryptStr'] = encrypt($str);
+		}
+
+		// Decrypt
+		$strToDecrypt = $this->get('strToDecrypt', FALSE);
+		if($strToDecrypt){
+			$buffer['encryptStr'] = decrypt($strToDecrypt);
+		}
+
 		$this->getView()->assign($buffer);
 	}
 
