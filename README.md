@@ -20,13 +20,13 @@
 
 > 7: dev 下MySQL 和PHP 错误全部都打印出来, 方便调试, test , product 下将不打印, 分别记录在对应的文件里 
 
-> 8: 简易省市区三级联动
+> 8: 二种简易省市区三级联动
 
 > 9: 三个模块:User, Api, Admin 
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer等
+> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer, URL伪静态, 简易加密与解密等
 
 > 12: 作为入门 DEMO, YOF 中的函数, 类是几年工作累积下来的, 有自己写的, 也有同事写的, 大家有更好的替换或改进即可！
 
