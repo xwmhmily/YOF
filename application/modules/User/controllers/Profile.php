@@ -240,7 +240,7 @@ class ProfileController extends BasicController {
 
 	// 层级式省市区三级联动
 	public function cityPopAction(){
-		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement('', SITE_CITY, SITE_REGION, 1);
+		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement('', 3);
 		$this->getView()->assign($buffer);
 	}
 
