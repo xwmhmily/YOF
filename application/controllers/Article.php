@@ -72,7 +72,7 @@ class ArticleController extends BasicController {
     $articleID = $this->get('articleID');
     $buffer['article'] = $this->m_article->SelectByID('', $articleID);
 
-    pr($buffer['article']); die;
+    $this->getView()->assign($buffer);
   }
 
 }
