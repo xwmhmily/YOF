@@ -331,6 +331,8 @@ abstract class M_Model {
 	final public function Query($sql) {
 		if($sql){
 			$this->sql = $sql;
+		}else{
+			return NULL;
 		}
 
 		$this->connect();
