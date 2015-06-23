@@ -26,11 +26,13 @@
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer, URL伪静态, 简易加密与解密等
+> 11: 全面使用 Bootstrap, 集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer, URL伪静态, 简易加密与解密, 微信sdk等
 
 > 12: 作为入门 DEMO, YOF 中的函数, 类是几年工作累积下来的, 有自己写的, 也有同事写的, 大家有更好的替换或改进即可！
 
 > 13: 加入 xhprof 对程序运行进行跟踪分析. 关于 xhprof 的安装, 配置请自行处理.
+
+> 14: 感谢 Vampire, 果儿-高级程序猿的建议。
 
 <H3>安装 [建议在Linux下使用]</H3>
 
