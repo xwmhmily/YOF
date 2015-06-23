@@ -1,0 +1,1 @@
+    Helper::loadComponment('Weixin')->oauth();    
