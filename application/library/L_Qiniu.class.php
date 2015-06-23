@@ -3,7 +3,7 @@
  * 七类上传类
  */
 
-class Qiniu{
+class L_Qiniu{
 
     private $bucket;
     private $accessKey;
@@ -12,11 +12,12 @@ class Qiniu{
     function __construct(){
         Yaf_Loader::import('qiniu/io.php');
         Yaf_Loader::import('qiniu/rs.php');
-        Yaf_Loader::import('qiniu/config.php');
+        
+        $config = Yaf_Application::app()->getConfig();
 
-        $this->bucket    = $bucket;
-        $this->accessKey = $accessKey;
-        $this->secretKey = $secretKey;
+        $this->bucket    = $config['qiniu_bucket'];
+        $this->accessKey = $config['qiniu_accessKey'];
+        $this->secretKey = $config['qiniu_secretKey'];
     }
 
     public function upload($key, $source){
