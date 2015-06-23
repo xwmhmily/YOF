@@ -280,4 +280,10 @@ class ProfileController extends BasicController {
 		$buffer['file'] = APP_PATH.'/public/common/weixin.php';
 		$this->getView()->assign($buffer);
 	}
+
+	// 七牛 SDK
+	public function qiniuAction(){
+		$buffer['file'] = APP_PATH.'/public/common/qiniu.php';
+		$this->getView()->assign($buffer);
+	}
 }
