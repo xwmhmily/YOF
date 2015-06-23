@@ -275,4 +275,9 @@ class ProfileController extends BasicController {
 		
 	}
 
+	// Weixin SDK
+	public function weixinAction(){
+		$buffer['file'] = APP_PATH.'/public/common/weixin.php';
+		$this->getView()->assign($buffer);
+	}
 }
