@@ -1,14 +1,10 @@
 <?php
 /**
  * File: Com_weixin.php
- * Functionality:   微信组件，用于处理微信的一些公用事务。
- * @author hao
- * Date: 2014-2-17 16:57:56
+ * Functionality: 微信组件，用于处理微信的一些公用事务。
  */
 
 class Com_weixin {
-
-	const WX_TOKEN = 'ABCDE';
 
 	private $wxSDK;
 	
@@ -17,11 +13,9 @@ class Com_weixin {
 		Yaf_Loader::import('L_Wechat');
 
 		$options = array(
-			'token'        => self::WX_TOKEN,
-			'appid'        => $config['wx_appID'],
-			'appsecret'    => $config['wx_appsecret'],
-			'access_token' => $config['wx_access_token'],
-			'expires'      => $config['wx_expires']
+			'token'     => $config['wx_token'],
+			'appid'     => $config['wx_appID'],
+			'appsecret' => $config['wx_appSecret'],
 		);
 
 		$this->wxSDK = new L_Wechat($options);
@@ -41,7 +35,7 @@ class Com_weixin {
 	  *  2: code 换 token
 	  *  3: token 取得 openID 信息, 写入 SESSION
 	  */
-	public function oauth(){//开启调试模式，可以在浏览器中打开
+	public function oauth(){
 		if(!$_SESSION['wx']){
 			if(isset($_GET['code'])) {
 				//第二次进来通过code拿openid 再写入 session['wx']
@@ -51,7 +45,7 @@ class Com_weixin {
 				if(ENVIRONMENT == 'DEV'){
 					$_SESSION['wx'] = $this->_wxGetOpenIDinUAT();
 				} else {
-					$callback = WX_DOMAIN.$_SERVER['REQUEST_URI'];
+					$callback = SERVER_DOMAIN.$_SERVER['REQUEST_URI'];
 					$url = $this->wxSDK->getOauthRedirect($callback, '', 'snsapi_base');
 					//第一次进来, 取 code
 					redirect($url);
@@ -103,11 +97,11 @@ class Com_weixin {
 			'wx_name'  => $wxName
 		);
 
-		if(!$wxUserData){//如果数据库中没有保存当前微信的openID和token
+		if(!$wxUserData){
 			$code = $m_wxUser->Insert($wxUser);
 		} elseif($token != $wxUserData['wx_token'] || $wxName != $wxUserData['wx_name'] ){//如果token或者微信名和数据库中的不一致，则更新
 			$code = $m_wxUser->Where($where)->Update($wxUser);
-		} else {//如果数据库中存在微信数据，且内容一致，则直接返回
+		} else {
 			$wxUser = $wxUserData;
 		}
 
