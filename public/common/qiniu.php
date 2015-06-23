@@ -12,7 +12,7 @@ if($avatar['name']){
 
     $code = $upload->upload($fileName);
 
-    if($code){
+    if($code == 1){
 		Yaf_Loader::import('L_Qiniu.class.php');
 
 		$img = $fileName . '.' . $upload->extension;
