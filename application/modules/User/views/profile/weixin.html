@@ -1,0 +1,49 @@
+<?php include HEADER_HTML ?>
+ <style type="text/css">
+  .pageNav{float:right;}
+</style>
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>Weixin SDK</h1>
+          </div> 
+          
+          <div class="bs-docs-example">
+            <ul>
+              <li>
+                1: 在 application.ini 中配置好 weixin 的各个参数, 主要是wx_token, wx_appID, wx_secret
+              </li>
+              <li>
+                2: 如果需要用户授权，则在控制器里调用 <br />
+                <?php highlight_file($file) ?>
+              </li>
+              <li>
+                3: library 下的L_Wechat.class.php 并不是最新的sdk，但足于应付大部分的微信接口了
+              </li>
+              <li>
+                4: 由于微信授权需要在微信浏览器才有效, 这里就演示不了了
+              </li>
+            </ul>
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body>
+<script>
+$(function(){
+  $('#decryptBtn').click(function(){
+    var strToDecrypt = $('#encryption').val();
+    if(strToDecrypt == ''){
+      alert('请先加密');
+      return false;
+    }
+
+    window.location.href = '/user/profile/encrypt?strToDecrypt='+strToDecrypt;
+  })
+})
+</script>
