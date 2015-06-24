@@ -7,7 +7,7 @@ class IndexController extends BasicController {
 	}
 
 	public function indexAction() {
-
-  }
+		
+  	}
   	
 }
