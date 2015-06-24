@@ -379,26 +379,24 @@ abstract class M_Model {
 	 * Generate SQL by options
 	 */
 	final protected function generateSQL(){
-		$field = $this->options['field'];
-		if(!$field){
+		if(isset($this->options['field'])){
+			$field = $this->options['field'];
+		}else{
 			$field = '*';
 		}
 
 		$sql = 'SELECT '. $field .' FROM `'. $this->table. '`';
 
-		$where = $this->options['where'];
-		if($where){
-			$sql .= ' WHERE '. $where;
+		if(isset($this->options['where'])){
+			$sql .= ' WHERE '. $this->options['where'];
 		}
 
-		$order = $this->options['order'];
-		if($order){
-			$sql .= ' ORDER BY '. $order;
+		if(isset($this->options['order'])){
+			$sql .= ' ORDER BY '. $this->options['order'];
 		}
 
-		$limit = $this->options['limit'];
-		if($limit){
-			$sql .= ' LIMIT '. $limit;
+		if(isset($this->options['limit'])){
+			$sql .= ' LIMIT '. $this->options['limit'];
 		}
 
 		return $sql;
