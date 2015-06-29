@@ -508,17 +508,18 @@ abstract class M_Model {
 	 * @return FALSE on failure or affected rows on success
 	 */
 	final public function Delete() {
-		$where = $this->options['where'];
-
-		if(!$where){
+		if(!$this->options['where']){
 			return FALSE;
 		}
 
-		$this->sql = 'DELETE FROM `'.$this->table.'` WHERE '.$where;
+		$this->sql = 'DELETE FROM `'.$this->table.'` WHERE '.$this->options['where'];
 
-		$limit = $this->options['limit'];
-		if($limit){
-			$this->sql .= ' LIMIT '.$limit;
+		if(isset($this->options['order'])){
+			$this->sql .= ' ORDER BY '.$this->options['order'];
+		}
+
+		if(isset($this->options['limit'])){
+			$this->sql .= ' LIMIT '.$this->options['limit'];
 		}
 
 		$this->connect();
