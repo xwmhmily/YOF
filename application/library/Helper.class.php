@@ -99,7 +99,12 @@ abstract class Helper {
 			$file    = MODEL_PATH.'/'.$model.'.php';
 		}
 
-		Yaf_Loader::import($file);
+		// 不知道是不是 Yaf_Loader 的 bug, Windows 下有可能报重定义
+		if(PHP_OS == 'Linux'){
+			Yaf_Loader::import($file);
+		}else{
+			require_once $file;
+		}
 
 		try{
 			if($default){
