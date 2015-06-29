@@ -481,14 +481,16 @@ abstract class M_Model {
 
 			$this->sql .= implode(',', $sets). ' ';
 
-			$where = $this->options['where'];
-			if($where){
-				$this->sql .= ' WHERE '.$where;
+			if(isset($this->options['where'])){
+				$this->sql .= ' WHERE '.$this->options['where'];
 			}
 
-			$limit = $this->options['limit'];
-			if($limit){
-				$this->sql .= ' LIMIT '.$limit;
+			if(isset($this->options['order'])){
+				$this->sql .= ' ORDER BY '.$this->options['order'];
+			}
+
+			if(isset($this->options['limit'])){
+				$this->sql .= ' limit '.$this->options['limit'];
 			}
 
 			//echo 'SQL: '.$this->sql;
