@@ -54,8 +54,8 @@ class BasicController extends Yaf_Controller_Abstract {
   /**
    * Set COOKIE
    */
-  public function setCookie($key, $value, $expire = 3600, $domain = ''){
-    setCookie($key, $value, CUR_TIMESTAMP + $expire, '/', $domain);
+  public function setCookie($key, $value, $expire = 3600, $path = '/', $domain = ''){
+    setCookie($key, $value, CUR_TIMESTAMP + $expire, $path, $domain);
   }
 
   /**
