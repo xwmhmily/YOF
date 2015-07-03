@@ -46,6 +46,25 @@ class BasicController extends Yaf_Controller_Abstract {
     return Yaf_Session::getInstance()->__unset($key);
   }
 
+  // Clear cookie
+  public function clearCookie($key){
+    $this->setCookie($key, '');
+  }
+
+  /**
+   * Set COOKIE
+   */
+  public function setCookie($key, $value, $expire = 3600, $domain = ''){
+    setCookie($key, $value, CUR_TIMESTAMP + $expire, '/', $domain);
+  }
+
+  /**
+   * 获取cookie
+   */
+  public function getCookie($key){
+    return trim($_COOKIE[$key]);
+  }
+
   // Go home
   public function goHome(){
     jsRedirect($this->homeUrl);
