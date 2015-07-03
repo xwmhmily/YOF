@@ -51,10 +51,6 @@ switch(ENVIRONMENT) {
         $STATIC_DOMAIN = 'http://static.yof.com';
         $IMG_DOMAIN    = 'http://img.yof.com';
     break;
-
-    case 'MAINTAINCE':
-        echo '<H2>服务器正在维护, 请稍候访问</h2>'; die;
-    break;
 }
 
 define('LOG_FILE', $logFile);
