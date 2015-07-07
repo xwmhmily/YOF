@@ -147,7 +147,7 @@
 <H3>内置常量</H3>
 > APP_PATH => 根目录
 
-> ENVIRONMENT => 运行环境
+> ENV => 运行环境
 
 > TB_PREFIX => 表前缀
 
