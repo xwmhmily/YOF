@@ -214,7 +214,7 @@ abstract class Helper {
         $errorMsg .= '<h2>Please check and correct it, then try again ! Good Luck !</h2><hr />';
         unset($traceInfo, $v, $sql, $i);
 
-        if(ENVIRONMENT == 'DEV'){
+        if(ENV == 'DEV'){
             die($errorMsg);
         }else{
             // PRODUCTION: 500 Error
