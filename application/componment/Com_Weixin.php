@@ -42,7 +42,7 @@ class Com_weixin {
 				$_SESSION['wx'] = $this->_wxCallback();
 			} elseif(!isset($_SESSION['user']['openID'])){
 				// UAT 模式下取设定好的
-				if(ENVIRONMENT == 'DEV'){
+				if(ENV == 'DEV'){
 					$_SESSION['wx'] = $this->_wxGetOpenIDinUAT();
 				} else {
 					$callback = SERVER_DOMAIN.$_SERVER['REQUEST_URI'];
