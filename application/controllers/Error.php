@@ -12,7 +12,7 @@ class ErrorController extends Yaf_Controller_Abstract {
             case YAF_ERR_NOTFOUND_CONTROLLER:
             case YAF_ERR_NOTFOUND_ACTION:
             case YAF_ERR_NOTFOUND_VIEW:
-                if(ENVIRONMENT == 'DEV'){
+                if(ENV == 'DEV'){
                     echo 404, ":", $exception->getMessage();
                 }else{
                     file_put_contents(LOG_FILE, $exception->getMessage().PHP_EOL, FILE_APPEND);
@@ -20,7 +20,7 @@ class ErrorController extends Yaf_Controller_Abstract {
             break;
 
             default :
-                if(ENVIRONMENT == 'DEV'){
+                if(ENV == 'DEV'){
                     echo 0, ":", $exception->getMessage();
                 }else{
                     file_put_contents(LOG_FILE, $exception->getMessage().PHP_EOL, FILE_APPEND);
