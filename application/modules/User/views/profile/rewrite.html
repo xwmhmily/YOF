@@ -9,10 +9,11 @@
       <div class="span9">
         <section id="typography"> 
           <div class="page-header"> 
-            <h1>URL Rewrite</h1> 
+            <h1>URL 路由</h1> 
             <span>点击id 进行查看</span>
-          </div> 
+          </div>
           
+          <div><h5>第一种路由: 对应 rewrite</h5></div>
           <div class="bs-docs-example"> 
             <table data-toggle="table" border="1" width="100%">
               <thead>
@@ -26,6 +27,7 @@
               <?php if($articles){ ?>
                 <tbody>
                 <?php foreach($articles as $key => $val) { ?>
+                  <?php if($key == 0){ ?>
                   <tr align="center">
                     <td>
                       <a href="/article/detail/<?php echo $val['id'] ?>">
@@ -41,7 +43,84 @@
                       <?php } ?>
                     </td>
                     <td><?php echo date('Y-m-d', $val['addTime']) ?></td>
-                  </tr> 
+                  </tr>
+                  <?php } ?>
+                <?php } ?>
+                </tbody>
+              <?php } ?>
+            </table>  
+          </div>
+
+          <div><h5>第二种路由: 对应 rewrite_category, 尽管 categoryID 并没有用到 </h5></div>
+          <div class="bs-docs-example"> 
+            <table data-toggle="table" border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>标题</th>
+                  <th>状态</th>
+                  <th>添加时间</th>
+                </tr>
+              </thead>
+              <?php if($articles){ ?>
+                <tbody>
+                <?php foreach($articles as $key => $val) { ?>
+                  <?php if($key == 1){ ?>
+                  <tr align="center">
+                    <td>
+                      <a href="/article/detail/10/<?php echo $val['id'] ?>">
+                        <?php echo $val['id'] ?>
+                      </a>
+                    </td>
+                    <td><?php echo $val['title'] ?></td>
+                    <td>
+                      <?php if($val['status'] == 0 ) { ?>
+                        待审核
+                      <?php }else{ ?>
+                        正常
+                      <?php } ?>
+                    </td>
+                    <td><?php echo date('Y-m-d', $val['addTime']) ?></td>
+                  </tr>
+                  <?php } ?>
+                <?php } ?>
+                </tbody>
+              <?php } ?>
+            </table>  
+          </div> 
+
+          <div><h5>第三种路由: 对应 regex </h5></div>
+          <div class="bs-docs-example"> 
+            <table data-toggle="table" border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>标题</th>
+                  <th>状态</th>
+                  <th>添加时间</th>
+                </tr>
+              </thead>
+              <?php if($articles){ ?>
+                <tbody>
+                <?php foreach($articles as $key => $val) { ?>
+                  <?php if($key == 2){ ?>
+                  <tr align="center">
+                    <td>
+                      <a href="/article/<?php echo $val['id'] ?>.html">
+                        <?php echo $val['id'] ?>
+                      </a>
+                    </td>
+                    <td><?php echo $val['title'] ?></td>
+                    <td>
+                      <?php if($val['status'] == 0 ) { ?>
+                        待审核
+                      <?php }else{ ?>
+                        正常
+                      <?php } ?>
+                    </td>
+                    <td><?php echo date('Y-m-d', $val['addTime']) ?></td>
+                  </tr>
+                  <?php } ?>
                 <?php } ?>
                 </tbody>
               <?php } ?>
