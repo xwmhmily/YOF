@@ -246,7 +246,7 @@ class ProfileController extends BasicController {
 
 	// URL Rewrite
 	public function rewriteAction(){
-		$buffer['articles'] = $this->load('Article')->Limit(10)->Select();
+		$buffer['articles'] = $this->load('Article')->Limit(3)->Select();
 		$this->getView()->assign($buffer);
 	}
 
