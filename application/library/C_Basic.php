@@ -93,7 +93,7 @@ class BasicController extends Yaf_Controller_Abstract {
     $i['time'] = $this->getRequest()->getPost('time');
 
     // Only valid in 30 seconds
-    if(ENVIRONMENT != 'DEV'){
+    if(ENV != 'DEV'){
       if(CUR_TIMESTAMP - $i['time'] > 30){
         $rep['code']  = 1001;
         $rep['error'] = 'error sign';
