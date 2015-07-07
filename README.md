@@ -92,8 +92,6 @@
     }
 ###
 
-> 7: 感谢网友 Vampire, 果儿-高级程序猿的建议
-
 <H3>设置</H3>
 > 1: MySQL 参数 application.ini: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
@@ -197,7 +195,7 @@
 
 >> B: 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
 
->> C: 基本控制器: APP_PATH.'/controllers/Basic.php', 对 request, session 中的方法进行了简易封装, 令业务控制器可以少写不少的代码!
+>> C: 基本控制器: APP_PATH.'/controllers/Basic.php', 对 request, session, cookie 中的方法进行了简易封装, 令业务控制器可以少写不少的代码!
 
 > 二: 模型
     
