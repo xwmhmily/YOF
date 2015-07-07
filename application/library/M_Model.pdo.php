@@ -34,7 +34,7 @@ abstract class M_Model {
 	 */
 	function __construct() {
 		$this->logFile = APP_PATH. '/log/sql/'.CUR_DATE.'.log';
-		if(!file_exists($this->logFile) && ENVIRONMENT != 'DEV'){
+		if(!file_exists($this->logFile) && ENV != 'DEV'){
 			touch($this->logFile);
 		}
 		
@@ -70,7 +70,7 @@ abstract class M_Model {
 				unset($db, $driver, $host, $port, $user, $pswd, $dsn);
 			}
 		}catch(PDOException $e){
-			if(ENVIRONMENT == 'DEV'){
+			if(ENV == 'DEV'){
 				Helper::raiseError(debug_backtrace(), $e->getMessage());
 			}else{
 				file_put_contents($this->logFile, $e->getMessage().PHP_EOL, FILE_APPEND);
@@ -563,7 +563,7 @@ abstract class M_Model {
 			$error = self::$conn->errorInfo();
 			$traceInfo = debug_backtrace();
 
-			if (ENVIRONMENT == 'DEV') {
+			if (ENV == 'DEV') {
 				Helper::raiseError($traceInfo, $error[2], $this->sql);
 			} else {
 				// Log error SQL and reason for debug
