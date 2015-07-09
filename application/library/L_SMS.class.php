@@ -11,8 +11,9 @@ class L_SMS {
 	private $username;
 	private $password;
 	private $url;
-	private $mobile;
-	private $msg;
+	public  $mobile;
+	public  $msg;
+	public  $count = 1;
 
 	function __construct($mobile = '', $msg = '') {
 		$config = Yaf_Application::app()->getConfig();
@@ -26,16 +27,15 @@ class L_SMS {
 
 	final function send() {
 		$p = '?userId='.$this->username.'&password='.$this->password;
-		$p .= '&pszMobis='.$this->mobile.'&pszMsg='.$this->msg.'&iMobiCount=1';
+		$p .= '&pszMobis='.$this->mobile.'&pszMsg='.$this->msg.'&iMobiCount='.$this->count;
 
 		$this->url .= $p;
 		$content = file_get_contents($this->url);
-		$result = simplexml_load_string($content);
 
 		if(strlen($result) > 10 && strlen($result) < 25){
 			return TRUE;
 		}else{
-			return FALSE;
+			return $content;
 		}
 	}
 
