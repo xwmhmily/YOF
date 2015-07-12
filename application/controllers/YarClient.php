@@ -1,0 +1,95 @@
+<?php
+/**
+ *  Yar client
+ *  Functionality: 演示如何调用 Yar Server
+ *  Remark: 参数以数组形式传过去!
+ */
+
+class YarClientController extends BasicController {
+  
+  private $userURL;
+  private $articleURL;
+
+  private function init(){
+    // Article 和 User 的URL
+    $this->userURL    = 'http://dev.yof.com/yarServer/user';
+    $this->articleURL = 'http://dev.yof.com/yarServer/article';
+  }
+
+  // Call yar article list
+  public function articleAction(){
+    $p['status'] = $p['userID'] = 1;
+    $rep = $this->yarRequest($this->articleURL, 'index', $p);
+
+    $buffer['articles'] = $rep['articles'];
+    $this->getView()->assign($buffer);
+  }
+  
+  // Call yar article detail
+  public function articleDetailAction(){
+    $p['articleID'] = 9;
+    $rep = $this->yarRequest($this->articleURL, 'detail', $p);
+
+    $buffer['article'] = $rep['article'];
+    $this->getView()->assign($buffer);
+  }
+
+  // Call yar user list
+  public function userAction(){
+    $users = $this->yarRequest($this->userURL, 'index');
+    pr($users); die;
+  }
+  
+  // Call yar user detail
+  public function userDetailAction(){
+    $p['userID'] = 9;
+    $user = $this->yarRequest($this->userURL, 'detail', $p);
+    pr($user); die;
+  }
+
+  // 并发调用列表
+  public function concurrentAction(){
+    $buffer = array();
+
+    function userCallback($retval, $callinfo){
+      $GLOBALS['buffer']['users'] = json_decode($retval, TRUE);
+    }
+
+    function articleCallback($retval, $callinfo){
+      $GLOBALS['buffer']['articles'] = json_decode($retval, TRUE);
+    }
+
+    // 指定不同的回调函数, 好区分数据
+    $this->yarConcurrentRequest($this->userURL, 'index', $p, 'userCallback');
+    
+    // 给 article 的 index 传参数
+    $p['status'] = $p['userID'] = 1;
+    $this->yarConcurrentRequest($this->articleURL, 'index', $p, 'articleCallback');
+    $this->yarLoop();
+
+    pr($GLOBALS['buffer']); die;
+  }
+
+  // 并发调用详细
+  public function concurrentDetailAction(){
+    $buffer = array();
+
+    function userCallback($retval, $callinfo){
+      $GLOBALS['buffer']['user'] = json_decode($retval, TRUE);
+    }
+
+    function articleCallback($retval, $callinfo){
+      $GLOBALS['buffer']['article'] = json_decode($retval, TRUE);
+    }
+
+    $p['userID'] = 9;
+    $this->yarConcurrentRequest($this->userURL, 'detail', $p, 'userCallback');
+
+    $a['articleID'] = 9;  
+    $this->yarConcurrentRequest($this->articleURL, 'detail', $a, 'articleCallback');
+    $this->yarLoop();
+
+    pr($GLOBALS['buffer']); die;
+  }
+
+}
