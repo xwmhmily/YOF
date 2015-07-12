@@ -33,6 +33,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         Helper::import('Network');
         
         Yaf_Loader::import('C_Basic.php');
+        Yaf_Loader::import(LIB_PATH.'/yar/Yar_Basic.php');
 
         // header.html and left.html
         define('HEADER_HTML', APP_PATH.'/public/common/header.html');
