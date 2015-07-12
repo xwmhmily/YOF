@@ -85,6 +85,44 @@ class BasicController extends Yaf_Controller_Abstract {
     return Helper::load($model);
   }
 
+  // 将 time 和 sign 拼在 URL 后
+  private function _buildURL($url){
+    $i['time'] = CUR_TIMESTAMP;
+    $i['sign'] = Helper::generateSign($i);
+
+    $url .= '?time='.$i['time'].'&sign='.$i['sign'];
+
+    return $url;
+  }
+
+  // Execute a YAR request
+  // $p 必须是数组键值对
+  protected function yarRequest($url, $function, $p = ''){
+    $url = $this->_buildURL($url);
+    $client = new yar_client($url);
+    $client->SetOpt(YAR_OPT_PACKAGER, 'json');
+    $client->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 1000);
+
+    // 如果没有则令$p为空数组
+    if(!$p){
+      $p = array();
+    }
+
+    $data = $client->call($function, $p);
+    return json_decode($data, TRUE);
+  }
+
+  // Execute concurrent yar reqeust
+  // $p 必须是数组键值对
+  protected function yarConcurrentRequest($url, $function, $p, $callback = 'callback'){
+    $url = $this->_buildURL($url);
+    Yar_Concurrent_Client::call($url, $function, $p, $callback);
+  }
+
+  protected function yarLoop(){
+    return Yar_Concurrent_Client::loop();
+  }
+
   /**
    * Verify API sign
    */
@@ -93,13 +131,11 @@ class BasicController extends Yaf_Controller_Abstract {
     $i['time'] = $this->getRequest()->getPost('time');
 
     // Only valid in 30 seconds
-    if(ENV != 'DEV'){
-      if(CUR_TIMESTAMP - $i['time'] > 30){
-        $rep['code']  = 1001;
-        $rep['error'] = 'error sign';
+    if(CUR_TIMESTAMP - $i['time'] > 30){
+      $rep['code']  = 1001;
+      $rep['error'] = 'error sign';
 
-        Helper::response($rep);
-      }
+      Helper::response($rep);
     }
 
     $newSign = Helper::generateSign($i);
