@@ -12,8 +12,8 @@ class YarClientController extends BasicController {
 
   private function init(){
     // Article 和 User 的URL
-    $this->userURL    = 'http://dev.yof.com/yarServer/user';
-    $this->articleURL = 'http://dev.yof.com/yarServer/article';
+    $this->userURL    = SERVER_DOMAIN.'/yarServer/user';
+    $this->articleURL = SERVER_DOMAIN.'/yarServer/article';
   }
 
   // Call yar article list
