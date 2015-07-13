@@ -47,7 +47,7 @@ switch(ENV) {
         ini_set('log_errors', 'on');
         ini_set('error_log', $logFile);
 
-        $SERVER_DOMAIN = 'http://www.yof.com';
+        $SERVER_DOMAIN = 'http://yof.mylinuxer.com';
         $STATIC_DOMAIN = 'http://static.yof.com';
         $IMG_DOMAIN    = 'http://img.yof.com';
     break;
