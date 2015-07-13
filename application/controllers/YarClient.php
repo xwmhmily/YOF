@@ -11,19 +11,23 @@ class YarClientController extends BasicController {
   private $articleURL;
 
   private function init(){
+    $userID = $this->getSession('userID');
+    
     // Article 和 User 的URL
-    if(ENV == 'PRODUCT'){
-      $this->userURL    = 'http://yof.mylinuxer.com/yarServer/user';
-      $this->articleURL = 'http://yof.mylinuxer.com/yarServer/article';
-    }else{
-      $this->userURL    = SERVER_DOMAIN.'/yarServer/user';
-      $this->articleURL = SERVER_DOMAIN.'/yarServer/article';
-    }
+    $this->userURL    = SERVER_DOMAIN.'/yarServer/user';
+    $this->articleURL = SERVER_DOMAIN.'/yarServer/article';
   }
 
   // Call yar article list
   public function articleAction(){
-    $p['status'] = $p['userID'] = 1;
+    $p['status'] = 1;
+
+    if(ENV == 'DEV'){
+      $p['userID'] = 9;
+    }else{
+      $p['userID'] = 5;
+    }
+
     $rep = $this->yarRequest($this->articleURL, 'index', $p);
 
     $buffer['articles'] = $rep['articles'];
@@ -32,7 +36,7 @@ class YarClientController extends BasicController {
   
   // Call yar article detail
   public function articleDetailAction(){
-    $p['articleID'] = 9;
+    $p['articleID'] = 3;
     $rep = $this->yarRequest($this->articleURL, 'detail', $p);
 
     $buffer['article'] = $rep['article'];
@@ -47,7 +51,12 @@ class YarClientController extends BasicController {
   
   // Call yar user detail
   public function userDetailAction(){
-    $p['userID'] = 9;
+    if(ENV == 'DEV'){
+      $p['userID'] = 9;
+    }else{
+      $p['userID'] = 5;
+    }
+
     $user = $this->yarRequest($this->userURL, 'detail', $p);
     pr($user); die;
   }
@@ -68,7 +77,13 @@ class YarClientController extends BasicController {
     $this->yarConcurrentRequest($this->userURL, 'index', $p, 'userCallback');
     
     // 给 article 的 index 传参数
-    $p['status'] = $p['userID'] = 1;
+    $p['status'] = 1;
+
+    if(ENV == 'DEV'){
+      $p['userID'] = 9;
+    }else{
+      $p['userID'] = 5;
+    }
     $this->yarConcurrentRequest($this->articleURL, 'index', $p, 'articleCallback');
     $this->yarLoop();
 
@@ -87,10 +102,15 @@ class YarClientController extends BasicController {
       $GLOBALS['buffer']['article'] = json_decode($retval, TRUE);
     }
 
-    $p['userID'] = 9;
+    if(ENV == 'DEV'){
+      $p['userID'] = 9;
+    }else{
+      $p['userID'] = 5;
+    }
+
     $this->yarConcurrentRequest($this->userURL, 'detail', $p, 'userCallback');
 
-    $a['articleID'] = 9;  
+    $a['articleID'] = 3;  
     $this->yarConcurrentRequest($this->articleURL, 'detail', $a, 'articleCallback');
     $this->yarLoop();
 
