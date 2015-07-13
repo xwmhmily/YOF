@@ -101,7 +101,7 @@ class BasicController extends Yaf_Controller_Abstract {
     $url = $this->_buildURL($url);
     $client = new yar_client($url);
     $client->SetOpt(YAR_OPT_PACKAGER, 'json');
-    $client->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 1000);
+    $client->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 3000);
 
     // 如果没有则令$p为空数组
     if(!$p){
