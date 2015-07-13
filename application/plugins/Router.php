@@ -19,6 +19,19 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
 
     	if(!in_array($module, $modules)){
             $module = 'index';
+            // 由于 YAF 源码只不支持大小写混写的控制器和 Action名, 这里来满足
+            if($request->controller){
+                if(strtoupper($request->controller) == strtoupper($uriInfo[1])){
+                    $controller = ucfirst($uriInfo[1]);
+                    $request->setControllerName($controller);
+                }
+            }
+
+            if($request->action){
+                if(strtoupper($request->action) == strtoupper($uriInfo[2])){
+                    $request->setActionName($uriInfo[2]);
+                }
+            }
     	}else{
             $request->setModuleName($module);
             $request->setControllerName(ucfirst($uriInfo[2]));
@@ -31,7 +44,7 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
             $request->setActionName($action);
         }
 
-	   // pr($request);
+	   //pr($request);
     }
 
 }
