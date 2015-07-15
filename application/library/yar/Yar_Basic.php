@@ -15,16 +15,16 @@ class Yar_Basic {
         	$rep['code']  = 1001;
         	$rep['error'] = 'error sign';
 
-        	Helper::response($rep);
+        	return json_encode($rep);
       	}
 
 	    $newSign = Helper::generateSign($i);
 
 	    if(strtolower($newSign) != $sign){
-	      $rep['code']  = 1001;
-	      $rep['error'] = 'error sign';
+	      	$rep['code']  = 1001;
+	      	$rep['error'] = 'error sign';
 
-	      Helper::response($rep);
+	      	return json_encode($rep);
 	    }
 	}
 
