@@ -65,6 +65,7 @@ class YarClientController extends BasicController {
   public function concurrentAction(){
     $buffer = array();
 
+    // 指定不同的回调函数, 好区分数据
     function userCallback($retval, $callinfo){
       $GLOBALS['buffer']['users'] = json_decode($retval, TRUE);
     }
@@ -73,7 +74,6 @@ class YarClientController extends BasicController {
       $GLOBALS['buffer']['articles'] = json_decode($retval, TRUE);
     }
 
-    // 指定不同的回调函数, 好区分数据
     $this->yarConcurrentRequest($this->userURL, 'index', $p, 'userCallback');
     
     // 给 article 的 index 传参数
