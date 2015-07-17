@@ -1,0 +1,30 @@
+<?php include HEADER_HTML ?>
+ <style type="text/css">
+  .pageNav{float:right;}
+</style>
+<script>
+  function go(){
+    $.post('/user/profile/renderAjax', function(data){
+      $('#content').html(data);
+    })
+  }
+</script>
+  <div class="container"> 
+    <div class="row">
+      <?php include LEFT_HTML ?>
+
+      <div class="span9">
+        <section id="typography"> 
+          <div class="page-header"> 
+            <h1>类似Smarty 的 Fetch功能</h1>
+          </div> 
+          <div class="page-header"> 
+            <a href="#" onclick="go()">点我吧</a>
+          </div> 
+          <div class="bs-docs-example" id="content">
+          </div> 
+        </section>
+      </div> 
+    </div>
+  </div> 
+</body> 
