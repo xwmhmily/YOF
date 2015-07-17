@@ -181,8 +181,7 @@ class ProfileController extends BasicController {
 		$url = $this->get('url', FALSE);
 		if($url){
 			// 此处为了演示和接近实际环境，将 URL 定死
-			//$url = 'http://yof.mylinuxer.com/api/article';
-			$url = 'http://www.yuefenqi.com/appapi/login';
+			$url = 'http://yof.mylinuxer.com/api/article';
 
 			// Secure your API with CUR_TIMESTAMP and API_KEY
 			$m['time'] = CUR_TIMESTAMP;
