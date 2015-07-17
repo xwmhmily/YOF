@@ -270,6 +270,21 @@ class ProfileController extends BasicController {
 		$this->getView()->assign($buffer);
 	}
 
+	public function renderAction(){
+		
+	}
+
+	// 实现类似 Smarty 的 fetch功能
+	public function renderAjaxAction(){
+		$m_article = $this->load('Article');
+		$where = array('userID' => USER_ID);
+		$buffer['articles'] = $m_article->Where($where)->Limit(10)->Select();
+
+		$this->getView()->assign($buffer);
+		$content = $this->render('renderAjax');
+		echo $content; die;
+	}
+
 	// PHP Mailer
 	public function phpmailerAction(){
 		
