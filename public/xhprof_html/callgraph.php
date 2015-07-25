@@ -31,9 +31,7 @@
 
 // by default assume that xhprof_html & xhprof_lib directories
 // are at the same level.
-$GLOBALS['XHPROF_LIB_ROOT'] = '/usr/www/YOF/application/library/xhprof_lib';
-
-include_once $GLOBALS['XHPROF_LIB_ROOT'].'/display/xhprof.php';
+$GLOBALS['XHPROF_LIB_ROOT'] = $_SERVER['DOCUMENT_ROOT'].'/../application/library/xhprof_lib';
 
 ini_set('max_execution_time', 100);
 
