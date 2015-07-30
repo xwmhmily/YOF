@@ -284,6 +284,29 @@ class ProfileController extends BasicController {
 		echo $content; die;
 	}
 
+	// Multi CURL
+	public function multiCurlAction(){
+		Yaf_Loader::import(LIB_PATH.'/L_Multi_Curl.class.php');
+		$l_multi_curl = new L_Multi_CURL();
+
+		$url = array(
+			'baidu'    => 'http://www.baidu.com',
+			'YOF DEMO' => 'http://yof.mylinuxer.com',
+			'YOF DOC'  => 'http://www.iloveyaf.com',
+		);
+
+		$l_multi_curl->setUrlList($url);
+		$content = $l_multi_curl->exec();
+
+		// 提取 Title
+		foreach($content as $key => $val){
+			preg_match_all('/<title>(.*)<\/title>/', $val, $matches); 
+			$buffer['title'][$key] = $matches[1][0];
+		}
+
+		$this->getView()->assign($buffer);
+	}
+
 	// PHP Mailer
 	public function phpmailerAction(){
 		
