@@ -307,6 +307,11 @@ class ProfileController extends BasicController {
 		$this->getView()->assign($buffer);
 	}
 
+	// Pcntl
+	public function pcntlAction(){
+		
+	}
+
 	// PHP Mailer
 	public function phpmailerAction(){
 		
