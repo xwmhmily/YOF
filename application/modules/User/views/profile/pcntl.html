@@ -1,14 +1,5 @@
 <?php include HEADER_HTML ?>
- <style type="text/css">
-  .pageNav{float:right;}
-</style>
-<script>
-  function go(){
-    $.post('/user/profile/renderAjax', function(data){
-      $('#content').html(data);
-    })
-  }
-</script>
+<body>
   <div class="container"> 
     <div class="row">
       <?php include LEFT_HTML ?>
