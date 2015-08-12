@@ -21,12 +21,12 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `zt_admin`;
 CREATE TABLE `zt_admin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL COMMENT '����Ա��¼��',
-  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT '����Ա����',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '״̬ 0=>������, 1=>����',
+  `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `index_three` (`username`,`password`,`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='����Ա��Ϣ��';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zt_admin
@@ -3389,9 +3389,9 @@ INSERT INTO `zt_role` VALUES ('7', 'ee', 'eeefff', 'e10adc3949ba59abbe56e057f20f
 DROP TABLE IF EXISTS `zt_user`;
 CREATE TABLE `zt_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL COMMENT '�û���',
-  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT '����',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '?? 0=>����, 1=>����',
+  `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `realname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `provinceID` mediumint(8) DEFAULT NULL,
   `province` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -3402,12 +3402,12 @@ CREATE TABLE `zt_user` (
   `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'avatar',
   PRIMARY KEY (`id`),
   KEY `index_three` (`username`,`password`,`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='����Ա��'
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zt_user
 -- ----------------------------
-INSERT INTO `zt_user` VALUES ('1', 'nic', '123456', '1', '7777', '120000', '天津市', '120100', '天津市', '120101', '和平区');
-INSERT INTO `zt_user` VALUES ('2', 'xxx', 'xxx', '1', null, null, null, null, null, null, null);
-INSERT INTO `zt_user` VALUES ('3', 'yyy', 'yyy', '1', null, null, null, null, null, null, null);
-INSERT INTO `zt_user` VALUES ('4', 'zz', 'zzz', '1', null, null, null, null, null, null, null);
+INSERT INTO `zt_user` VALUES ('1', 'nic', '123456', '1', '7777', '120000', '天津市', '120100', '天津市', '120101', '和平区', null);
+INSERT INTO `zt_user` VALUES ('2', 'xxx', 'xxx', '1', null, null, null, null, null, null, null, null);
+INSERT INTO `zt_user` VALUES ('3', 'yyy', 'yyy', '1', null, null, null, null, null, null, null, null);
+INSERT INTO `zt_user` VALUES ('4', 'zz', 'zzz', '1', null, null, null, null, null, null, null, null);
