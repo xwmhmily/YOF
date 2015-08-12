@@ -3,13 +3,11 @@
 class RouterPlugin extends Yaf_Plugin_Abstract {
 
     public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {
-
+        
     }
 
     // 去掉 Module 后的 index
-    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {
-        //pr($request);
-        
+    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {     
         $modules = Yaf_Application::app()->getModules();
 
     	$uri = $request->getRequestUri();
@@ -44,7 +42,7 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
             $request->setActionName($action);
         }
 
-	   //pr($request);
+	    //pr($request);
     }
 
 }
