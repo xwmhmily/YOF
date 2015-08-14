@@ -1,7 +1,6 @@
 <?php
 /**
  * Weixin Controller
- * @package Pet\controller
  */
 
 class WeixinController extends BasicController {
