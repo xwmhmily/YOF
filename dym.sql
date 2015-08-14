@@ -3411,3 +3411,17 @@ INSERT INTO `zt_user` VALUES ('1', 'nic', '123456', '1', '7777', '120000', 'å¤©æ
 INSERT INTO `zt_user` VALUES ('2', 'xxx', 'xxx', '1', null, null, null, null, null, null, null, null);
 INSERT INTO `zt_user` VALUES ('3', 'yyy', 'yyy', '1', null, null, null, null, null, null, null, null);
 INSERT INTO `zt_user` VALUES ('4', 'zz', 'zzz', '1', null, null, null, null, null, null, null, null);
+
+-- ------------------------------
+-- Table structure for zt_wx_user
+-- ------------------------------
+DROP TABLE IF EXISTS `zt_wx_user`;
+CREATE TABLE `zt_wx_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `openID` varchar(150) NOT NULL,
+  `token` varchar(100) NOT NULL,
+  `wxName` varchar(50) NOT NULL,
+  `sex` varchar(4) NOT NULL,
+  `avatar` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
