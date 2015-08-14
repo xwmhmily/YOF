@@ -6,11 +6,16 @@
 class WeixinController extends BasicController {
 
     public function init(){
-        // 验证时请注释此行, 验证完成后需要授权则取消该行注释
+        session_start();
+        
+        /* 
+         * 验证时请注释此行, 验证完成后需要授权则取消该行注释
+         * 拿到用户的微信信息后会保存在 $_SESSION['wx'] 里
+         */
         //Helper::loadComponment('weixin')->oauth();
     }
 
-    // Verify WX
+    // Verify
     public function verifyAction(){
         $echoStr = $this->get('echostr');
 
@@ -37,4 +42,7 @@ class WeixinController extends BasicController {
         }
     }
   	
+    public function indexAction(){
+        echo 'Here is your code ...'; die;
+    }
 }
