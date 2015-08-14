@@ -1,33 +1,24 @@
 <?php
 /**
- * File: Com_weixin.php
- * Functionality: 微信组件，用于处理微信的一些公用事务。
+ * 微信组件，用于处理微信的一些公用事务
  */
 
 class Com_weixin {
 
 	private $wxSDK;
-	
+
 	public function __construct(){
 		$config = Yaf_Application::app()->getConfig();
-		Yaf_Loader::import('L_Wechat');
+		Yaf_Loader::import('L_Wechat.class.php');
 
 		$options = array(
-			'token'     => $config['wx_token'],
-			'appid'     => $config['wx_appID'],
+			'token' => $config['wx_token'],
+			'appid' => $config['wx_appID'],
 			'appsecret' => $config['wx_appSecret'],
 		);
 
 		$this->wxSDK = new L_Wechat($options);
 	}
-
-	/**
-	 * 返回SDK对象
-	 */
-	public function getSDK(){
-		return $this->wxSDK;
-	}
-
 
 	/**
 	  *  SESSION 中没有 WX 时, 向 WX 官方请求 openID 等信息
@@ -41,13 +32,11 @@ class Com_weixin {
 				//第二次进来通过code拿openid 再写入 session['wx']
 				$_SESSION['wx'] = $this->_wxCallback();
 			} elseif(!isset($_SESSION['user']['openID'])){
-				// UAT 模式下取设定好的
 				if(ENV == 'DEV'){
 					$_SESSION['wx'] = $this->_wxGetOpenIDinUAT();
 				} else {
 					$callback = SERVER_DOMAIN.$_SERVER['REQUEST_URI'];
 					$url = $this->wxSDK->getOauthRedirect($callback, '', 'snsapi_base');
-					//第一次进来, 取 code
 					redirect($url);
 				}
 			}
@@ -64,7 +53,7 @@ class Com_weixin {
 		$openid = $tokenArr['openid'];
 
 		$wxInfo = $this->wxSDK->getOauthUserinfo($token, $openid);
-		return $this->_wxSaveData($openid, $token, $wxInfo['nickname']);
+		return $this->_wxSaveData($openid, $token, $wxInfo['nickname'], $wxInfo['sex'], $wxInfo['headimgurl']);
 	}
 
 	/**
@@ -72,10 +61,10 @@ class Com_weixin {
 	 */
 	private function _wxGetOpenIDinUAT(){
 		$openID = 'devopenid';
-		$token = '';
+		$token  = '';
 		$wxName = '微信测试';
 
-		return $this->_wxSaveData($openID, $token, $wxName);
+		return $this->_wxSaveData($openID, $token, $wxName, 1);
 	}
 
 	/**
@@ -85,24 +74,24 @@ class Com_weixin {
 	 * @param type $token
 	 * @param type $wxName
 	 */
-	public function _wxSaveData($openID, $token, $wxName){
-		$m_wxUser = $this->load('WxUser');
+	public function _wxSaveData($openID, $token, $wxName, $sex, $avatar = ''){
+		$wxName = trim($wxName);
+		if(empty($wxName)){
+			$wxName = 'TA';
+		}
+
+		$wxUser['openID'] = $openID;
+		$wxUser['token']  = $token;
+		$wxUser['wxName'] = $wxName;
+		$wxUser['sex']    = $sex;
+		$wxUser['avatar'] = $avatar;
+
+		$m_wxUser = Helper::load('Wx_user');
 		$where = array('openID' => $openID);
-		$wxUserData = $m_wxUser->Where($where)->SelectOne();
+		$total = $m_wxUser->Where($where)->Total();
 
-		$code = 0;
-		$wxUser = array(
-			'openID'   => $openID,
-			'wx_token' => $token,
-			'wx_name'  => $wxName
-		);
-
-		if(!$wxUserData){
-			$code = $m_wxUser->Insert($wxUser);
-		} elseif($token != $wxUserData['wx_token'] || $wxName != $wxUserData['wx_name'] ){//如果token或者微信名和数据库中的不一致，则更新
-			$code = $m_wxUser->Where($where)->Update($wxUser);
-		} else {
-			$wxUser = $wxUserData;
+		if(!$total){
+			$m_wxUser->Insert($wxUser);
 		}
 
 		return $wxUser;
