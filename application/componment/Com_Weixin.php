@@ -36,7 +36,12 @@ class Com_weixin {
 					$_SESSION['wx'] = $this->_wxGetOpenIDinUAT();
 				} else {
 					$callback = SERVER_DOMAIN.$_SERVER['REQUEST_URI'];
+
+					// 只获取基本信息用 snsapi_base [不需要弹出授权页面]
 					$url = $this->wxSDK->getOauthRedirect($callback, '', 'snsapi_base');
+
+					// 获取完全的用户信息则用 snsapi_userinfo [需要弹出授权页面]
+					//$url = $this->wxSDK->getOauthRedirect($callback, '', 'snsapi_userinfo');
 					redirect($url);
 				}
 			}
@@ -63,8 +68,9 @@ class Com_weixin {
 		$openID = 'devopenid';
 		$token  = '';
 		$wxName = '微信测试';
+		$avatar = '';
 
-		return $this->_wxSaveData($openID, $token, $wxName, 1);
+		return $this->_wxSaveData($openID, $token, $wxName, 1, $avatar);
 	}
 
 	/**
