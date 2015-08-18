@@ -328,4 +328,42 @@ class ProfileController extends BasicController {
 		$buffer['file'] = APP_PATH.'/public/common/qiniu.php';
 		$this->getView()->assign($buffer);
 	}
+
+	// Redis MQ
+	public function redisAction(){
+
+	}
+
+	public function redisProducerAction(){
+		$content = $this->getpost('content');
+
+		$config = Yaf_Application::app()->getConfig();
+		
+		$queue = 'test_queue';
+		$host = $config['redis_host'];
+		$port = $config['redis_port'];
+
+		$redis = new Redis();
+		$redis->connect($host, $port);
+
+		$redis->lpush($queue, $content);
+
+		echo 1; die;
+	}
+
+	public function redisConsumerAction(){
+		$config = Yaf_Application::app()->getConfig();
+		
+		$queue = 'test_queue';
+		$host = $config['redis_host'];
+		$port = $config['redis_port'];
+
+		$redis = new Redis();
+		$redis->connect($host, $port);
+
+		$data = $redis->lpop($queue);
+
+		echo $data; die;
+	}
+
 }
