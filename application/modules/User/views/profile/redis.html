@@ -92,16 +92,3 @@
     </div>
   </div> 
 </body>
-<script>
-$(function(){
-  $('#decryptBtn').click(function(){
-    var strToDecrypt = $('#encryption').val();
-    if(strToDecrypt == ''){
-      alert('请先加密');
-      return false;
-    }
-
-    window.location.href = '/user/profile/encrypt?strToDecrypt='+strToDecrypt;
-  })
-})
-</script>
