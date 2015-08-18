@@ -3425,3 +3425,15 @@ CREATE TABLE `zt_wx_user` (
   `avatar` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ------------------------------
+-- Table structure for zt_ticket
+-- ------------------------------
+DROP TABLE IF EXISTS `zt_ticket`;
+CREATE TABLE `zt_ticket` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ticket` varchar(255) NOT NULL,
+  `addTime` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
