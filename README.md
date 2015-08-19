@@ -97,7 +97,7 @@
 <H3>设置</H3>
 > 1: MySQL 参数 application.ini: 默认支持读写分离, 若不分离, 设置为一样的值即可
 
-> 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, product 和 maintaince
+> 2: php.ini 中或调用 ini_set('yaf.environ') 来设置运行环境, 目前支持 dev, test, product
 
 >> A: 开发环境请设置为 dev, 此时所有错误将打印出来方便调试
 
