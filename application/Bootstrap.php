@@ -10,8 +10,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
     // Load libaray, MySQL model, function
     public function _initCore() {
+        define('TB_PK',        'id');  // 表的主键, 用于 SelectByID 等
         define('TB_PREFIX',    'zt_');
-        define('APP_NAME'   ,  'YOF-DEMO');
+        define('APP_NAME',     'YOF-DEMO');
         define('LIB_PATH',     APP_PATH.'/application/library');
         define('MODEL_PATH',   APP_PATH.'/application/model');
         define('FUNC_PATH',    APP_PATH.'/application/function');
