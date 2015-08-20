@@ -37,8 +37,6 @@ abstract class M_Model {
 		if(!file_exists($this->logFile) && ENV != 'DEV'){
 			touch($this->logFile);
 		}
-		
-		$this->connect();
 	}
 
 	/**
@@ -347,14 +345,14 @@ abstract class M_Model {
 	}
 
 	// 根据ID 查询字段:
-	public function SelectByID($field = '', $id){
-		$where = array('id' => $id);
+	public function SelectByID($field, $id){
+		$where = array(TB_PK => $id);
 		return $this->Field($field)->Where($where)->SelectOne();
 	}
 
 	// 根据ID更新某一条记录
 	public function UpdateByID($map, $id){
-		$where = array('id' => $id);
+		$where = array(TB_PK => $id);
 		return $this->Where($where)->Limit(1)->Update($map);
 	}
 
@@ -364,13 +362,13 @@ abstract class M_Model {
 			return FALSE;
 		}
 
-		$where = array('id' => $id);
+		$where = array(TB_PK => $id);
 		return $this->Where($where)->Limit(1)->Delete();
 	}
 
 	// 根据ID获取某个字段
 	public function SelectFieldByID($field, $id){
-		$where = array('id' => $id);
+		$where = array(TB_PK => $id);
 		$data = $this->Field($field)->Where($where)->SelectOne();
 		return $data[$field];
 	}
