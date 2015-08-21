@@ -361,7 +361,7 @@ class ProfileController extends BasicController {
 		$redis = new Redis();
 		$redis->connect($host, $port);
 
-		$data = $redis->lpop($queue);
+		$data = $redis->rpop($queue);
 
 		echo $data; die;
 	}
