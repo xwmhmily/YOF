@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>YOF: 最好的 YAF, YAR 入门 DEMO </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="最好的 YAF, YAR 入门 DEMO !">
+    <meta name="keywords" content="YAF, YOF">
+    <meta name="author" content="大眼猫">
+
+    <!-- Le styles -->
+    <link href="<?php echo CSS_PATH ?>/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>/docs.css" rel="stylesheet">
+    <script src="<?php echo JS_PATH ?>/jquery-1.7.min.js"></script>
+<style>
+body{
+		font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+		padding: 10px;
+	}
+</style>
+  <link href="<?php echo CSS_PATH ?>/prettify.css" rel="stylesheet">
+  </head>
+<body>
+	<h4>Error !</h4>
+	<ul class="nav nav-tabs" id="errorTab"> 
+	  <li class="active"><a href="#general">General</a></li> 
+	  <li><a href="#request">Request</a></li> 
+	  <li><a href="#router">Router</a></li> 
+	  <li><a href="#settings">Settings</a></li> 
+	</ul>
+	<div class="tab-content"> 
+      <div class="tab-pane active" id="general"></div> 
+      <div class="tab-pane" id="request">...</div> 
+      <div class="tab-pane" id="router">...</div> 
+      <div class="tab-pane" id="settings">...</div> 
+    </div> 
+       
+    <script> 
+      $(function(){
+        $('#errorTab a').click(function(e){ 
+        	e.preventDefault();
+        	$('#errorTab a').parent().removeClass('active'); 
+        	$(this).parent().addClass('active');
+        }) 
+      }) 
+    </script>
+</body>
