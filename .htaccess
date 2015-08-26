@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteBase /
+
+if (!-f $request_filename){
+	rewrite (.*) /index.php;
+}
