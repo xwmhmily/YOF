@@ -1,7 +1,6 @@
 <?php
 /**
  * Error.php => Catch and show Yaf Error
- * @package Pet\controller
  */
 
 class ErrorController extends Yaf_Controller_Abstract {
