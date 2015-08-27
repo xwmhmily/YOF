@@ -218,6 +218,10 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
             $configErr = '<ul>';
             foreach($config as $key => $val){
                 if($key != 'application'){
+                    // Hide PSWD of MySQL
+                    if(strpos($key, 'PSWD') !== FALSE){
+                        $val = '******';
+                    }   
                     $configErr .= '<li>'.$key. ' => '.$val.'</li>';
                 }
             }
