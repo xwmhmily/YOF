@@ -17,7 +17,7 @@
       				<input type="submit" id="submit" class="btn btn-primary" name="submit" value="Submit" />
               <a href="/user/profile" class="btn">Back</a>
       			</form>
-            <?php if($qrCode){ ?>
+            <?php if(isset($qrCode)){ ?>
               <img src="<?php echo $qrCode?>" />
             <?php } ?>
           </div> 
