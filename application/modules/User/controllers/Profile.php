@@ -25,13 +25,10 @@ class ProfileController extends BasicController {
             $total = $m_article->Where($where)->Total();
 
             $page = $this->get('page');
-            $page = $page ? $page : 1;
 
-            $size  = 10;
-            $pages = ceil($total/$size);
+            $pages = ceil($total/10);
             $order = array('addTime' => 'DESC');
-            $start = ($page-1)*$size;
-            $limit = $start.','.$size;
+            $limit = $this->getLimit();
 
             $url = '/user/profile';
             $buffer['pageNav'] = generatePageLink($page, $pages, $url, $total);
@@ -49,7 +46,10 @@ class ProfileController extends BasicController {
 	        $run_id = $objXhprofRun->save_run($data, 'xhprof');
 	    }
 
-        $buffer['run_id'] = $run_id;
+	    if($run_id){
+       		$buffer['run_id'] = $run_id;
+       	}
+
         $this->getView()->assign($buffer);
 	}
 
@@ -69,7 +69,9 @@ class ProfileController extends BasicController {
 		$cityID = $buffer['user']['cityID'];
 		$regionID = $buffer['user']['regionID'];
 
-		$buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
+		$l_city = new City();
+
+		$buffer['cityElement'] = $l_city->generateCityElement($provinceID, $cityID, $regionID, 1);
 		$this->getView()->assign($buffer);
 	}
 	
@@ -89,11 +91,8 @@ class ProfileController extends BasicController {
 
 		// Upload avatar if selected
 		if($_FILES['avatar']['name']){
-			Helper::import('File');
-            Yaf_Loader::import('L_Upload.class.php');
-
             $fileName = CUR_TIMESTAMP;
-            $up = new L_Upload($_FILES['avatar'], UPLOAD_PATH.'/');
+            $up = new Upload($_FILES['avatar'], UPLOAD_PATH.'/');
             $result = $up->upload($fileName);
 
             if($result == 1){
@@ -115,9 +114,7 @@ class ProfileController extends BasicController {
 	public function qrcodeAction(){
 		$value = $this->get('value', FALSE);
 		if($value){
-			Yaf_Loader::import('L_Qrcode.class.php');
-
-	    	$savePath .= APP_PATH.'/public/qrcode';
+	    	$savePath = APP_PATH.'/public/qrcode';
 
 	    	if(!file_exists($savePath)){
 	    		Helper::import('File');
@@ -133,20 +130,22 @@ class ProfileController extends BasicController {
 			$file = getRandom(6, 1).'.png';
 	        $qr = $savePath.'/'.$file;
 
-	        $Qrcode = new L_Qrcode($value, $qr, $err, $size);
+	        $Qrcode = new myQrcode($value, $qr, $err, $size);
 			$Qrcode->createQr();
 
 			$buffer['qrCode'] = '/qrcode/'.$file;
 		}
 
-		$this->getView()->assign($buffer);
+		if(isset($buffer)){
+			$this->getView()->assign($buffer);
+		}
 	}
 
 	// phpQuery 采集类
 	public function crawlAction(){
 		$destination = $this->get('destination', FALSE);
 		if($destination){
-			include LIB_PATH.'/phpQuery/phpQuery.php';
+			Yaf_Loader::import(LIB_PATH.'/phpQuery/phpQuery.php');
 
 			phpQuery::newDocumentFile($destination);
 			$articles = pq('#main_bg .zixunmain .p_lf .p_pad')->find('ul');
@@ -233,13 +232,17 @@ class ProfileController extends BasicController {
 
 	// 省市区三级联动
 	public function cityAction(){
-		$buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement(SITE_PROVINCE, SITE_CITY, SITE_REGION, 1);
+		$l_city = new City();
+
+		$buffer['cityElement'] = $l_city->generateCityElement(SITE_PROVINCE, SITE_CITY, SITE_REGION, 1);
 		$this->getView()->assign($buffer);
 	}
 
 	// 层级式省市区三级联动
 	public function cityPopAction(){
-		$buffer['cityElement'] = Helper::loadComponment('City')->generatePopCityElement('', 3);
+		$l_city = new City();
+
+		$buffer['cityElement'] = $l_city->generatePopCityElement('', 3);
 		$this->getView()->assign($buffer);
 	}
 
@@ -286,8 +289,7 @@ class ProfileController extends BasicController {
 
 	// Multi CURL
 	public function multiCurlAction(){
-		Yaf_Loader::import(LIB_PATH.'/L_Multi_Curl.class.php');
-		$l_multi_curl = new L_Multi_CURL();
+		$l_multi_curl = new MultiCURL();
 
 		$url = array(
 			'baidu'    => 'http://www.baidu.com',
