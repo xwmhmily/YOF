@@ -11,10 +11,11 @@
           <div class="page-header"> 
             <h1>我的文章</h1> 
           </div> 
- 
           <div class="bs-docs-example"> 
             <div style="padding: 10px; ">
-              <a target="_blank" href="/xhprof_html/index.php?run=<?php echo $run_id?>">点击查看 xhprof 分析</a>
+              <?php if(isset($run_id)){ ?>
+                <a target="_blank" href="/xhprof_html/index.php?run=<?php echo $run_id?>">点击查看 xhprof 分析</a>
+              <?php } ?>  
             </div>
             <table data-toggle="table" border="1" width="100%">
               <thead>
