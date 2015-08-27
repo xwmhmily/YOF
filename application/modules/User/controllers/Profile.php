@@ -314,11 +314,6 @@ class ProfileController extends BasicController {
 		
 	}
 
-	// PHP Mailer
-	public function phpmailerAction(){
-		
-	}
-
 	// Weixin SDK
 	public function weixinAction(){
 		$buffer['file'] = APP_PATH.'/public/common/weixin.php';
