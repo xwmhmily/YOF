@@ -17,7 +17,9 @@
                 1: 在 application.ini 中配置好 weixin 的各个参数, wx_token, wx_appID, wx_secret
               </li>
               <li>
-                2: 注释掉 weixin 控制器 init 中的 Helper::loadComponment('weixin')->oauth();
+                2: 注释掉 weixin 控制器 init 中的 
+                $l_weixin = new Weixin();
+                $l_weixin->oauth();
               </li>
               <li>
                 3: 将验证的 URL 指向 http://您的域名/weixin/verify
@@ -39,10 +41,12 @@
                 1: 在 application.ini 中配置好 weixin 的各个参数, wx_token, wx_appID, wx_secret
               </li>
               <li>
-                2: weixin 控制器 init 中加入 Helper::loadComponment('weixin')->oauth();
+                2: weixin 控制器 init 中加入 
+                $l_weixin = new Weixin();
+                $l_weixin->oauth();
               </li>
               <li>
-                3: library 下的L_Wechat.class.php 并不是最新的sdk，但足于应付大部分的微信接口了
+                3: library 下的 Wechat.php并不是最新的sdk，但足于应付大部分的微信接口了
               </li>
               <li>
                 4: 由于微信授权需要在微信浏览器才有效, 这里就演示不了了
