@@ -149,33 +149,6 @@ function gotoURL($message = '', $URL = '') {
     echo "<script type='text/javascript'>window.location.href='$URL'</script>";
 }
 
-
-function generatePageLink4($page, $totalPages, $URL, $counts, $query = '') {
-	$URL .= (strpos($URL, '?') === false ? '?' : '&');
-    // First:
-    $first = '首 页';
-    $first = "<a href=".$URL."page=1$query>$first</a>";
-
-    // Prev:
-    $prev = '上一页';
-    $previousPage = ($page > 1) ? $page - 1 : 1;
-    $prev = "<a href=".$URL."page=$previousPage$query>$prev</a>";
-
-    // Next:
-    $next = '下一页';
-    $nextPage = ($page == $totalPages) ? $totalPages : $page + 1;
-    $next = "<a href=".$URL."page=$nextPage$query>$next</a>";
-
-    // Last
-    $last = '末 页';
-    $last = "<a href=".$URL."page=$totalPages$query>$last</a>";
-
-    $pageLink = $first . '&nbsp;&nbsp;' . $prev;
-    $pageLink .= '&nbsp;&nbsp;' . $next . '&nbsp;&nbsp;' . $last;
-
-    return $pageLink;
-}
-
 /*
  *Functionality: Generate Single-language[Chinese-simplified] pagenation navigator
   @Params:
@@ -188,7 +161,9 @@ function generatePageLink4($page, $totalPages, $URL, $counts, $query = '') {
  */
 
 function generatePageLink($page, $totalPages, $URL, $counts, $query = '') {
-	$URL .= (strpos($URL, '?') === false ? '?' : '&');
+	$page = $page ? $page : 1;
+
+    $URL .= (strpos($URL, '?') === false ? '?' : '&');
     // First:
     $first = '首 页';
     $first = "<a href=".$URL."page=1$query>$first</a>";
@@ -216,97 +191,11 @@ function generatePageLink($page, $totalPages, $URL, $counts, $query = '') {
     return $pageLink;
 }
 
-// Functionality: 生成带"转至"第几页的分页导航栏
-function generatePageLink2($page, $totalPages, $URL, $counts, $query = '') {
-	$sign = '?';
-	if(strpos($URL, '?') !== FALSE){
-		$sign = '&';
-	}
-
-    // First:
-    $first = '首 页';
-    $first = '<a href='.$URL.$sign.'page=1'.$query.'>'.$first.'</a>';
-
-    // Prev:
-    $prev = '上一页';
-    $previousPage = ($page > 1) ? $page - 1 : 1;
-    $prev = '<a href='.$URL.$sign.'page='.$previousPage.$query.'>'.$prev.'</a>';
-
-    // Next:
-    $next = '下一页';
-    $nextPage = ($page == $totalPages) ? $totalPages : $page + 1;
-    $next = '<a href='.$URL.$sign.'page='.$nextPage.$query.'>'.$next.'</a>';
-
-    // Last
-    $last = '末 页';
-    $last = '<a href='.$URL.$sign.'page='.$totalPages.$query.'>'.$last.'</a>';
-
-    // Total:
-    $total = '共';
-
-    $pageLink = $total . ' ' . $counts . '&nbsp;&nbsp;' . $first . '&nbsp;&nbsp;' . $prev;
-    $pageLink .= '&nbsp;&nbsp;' . $next . '&nbsp;&nbsp;' . $last . '&nbsp;&nbsp;';
-
-    $pageLink .= '<input type="text" id="txtGoto" name="txtGoto" size="5" maxlength="5" />';
-    $pageLink .= '&nbsp;<input type ="button" class="btn btn-primary" id="btnGoto" name="btnGoto" value="转至" />';
-
-    $pageLink .= '&nbsp;<span id="currentPage">' . $page . '</span>/<span id="totalPages">' . $totalPages . '</span>&nbsp';
-
-    $pageLink .= '<br /><input type="hidden" id="self_url" name="self_url" value="' . $URL . '">';
-
-    return $pageLink;
-}
-
-
-/**
- *  Functionality: 生成供静态化 URL 用并且带有 GOTO 功能的分页导航
- *  Remark: 首页, 上一页, 下一页, 末页中的 href 为 javascript:;
- *          而是赋予了class, 当前页与总页则使用了span, 模板中 JQuery 点击事件触发
- *          $('.pg_index').click(function(){ ... });
- */
-function staticPageLink($page, $totalPages, $URL, $counts, $query = '') {
-
-    // First:
-    $first = '首 页';
-    $first = "<a class='pg_index pointer'>$first</a>";
-
-    // Prev:
-    $prev = '上一页';
-    $previousPage = ($page > 1) ? $page - 1 : 1;
-    $prev = "<a class='pg_prev pointer' >$prev</a>";
-
-    // Next:
-    $next = '下一页';
-    $nextPage = ($page == $totalPages) ? $totalPages : $page + 1;
-    $next = "<a class='pg_next pointer'>$next</a>";
-
-    // Last
-    $last = '末 页';
-    $last = "<a class='pg_last pointer'>$last</a>";
-
-    // Total:
-    $total = '共';
-
-    $pageLink = $total . ' ' . $counts . '&nbsp;&nbsp;' . $first . '&nbsp;&nbsp;' . $prev;
-    $pageLink .= '&nbsp;&nbsp;' . $next . '&nbsp;&nbsp;' . $last . '&nbsp;&nbsp;';
-
-    $pageLink .= '<input type="text" id="txtGoto" name="txtGoto" size="3" maxlength="3" />';
-    $pageLink .= '&nbsp;<input type ="button" id="btnGoto" name="btnGoto" value="转至" />';
-
-    $pageLink .= '&nbsp;<span id="currentPage">' . $page . '</span>/<span id="totalPages">' . $totalPages . '</span>&nbsp';
-
-    $pageLink .= '<br /><input type="hidden" id="self_url" name="self_url" value="' . $URL . '">';
-
-    return $pageLink;
-}
-
-
 // Get current microtime
 function calculateTime() {
     list($usec, $sec) = explode(' ', microtime());
     return ((float) $usec + (float) $sec);
 }
-
 
 /**
  * 裁剪中文
