@@ -11,9 +11,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
     // Load libaray, MySQL model, function
     public function _initCore() {
         define('TB_PK',        'id');  // 表的主键, 用于 SelectByID 等
-        define('TB_PREFIX',    'zt_');
+        define('TB_PREFIX',    'zt_'); // 表前缀
         define('APP_NAME',     'YOF-DEMO');
-        define('LIB_PATH',     APP_PATH.'/application/library');
+        define('LIB_PATH',     APP_PATH.'/application/library/');
         define('MODEL_PATH',   APP_PATH.'/application/model');
         define('FUNC_PATH',    APP_PATH.'/application/function');
         define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
@@ -27,9 +27,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         define('ADMIN_CSS_PATH', '/admin/css');
         define('ADMIN_JS_PATH',  '/admin/js');
 
-        Yaf_Loader::import('M_Model.pdo.php');
-        Yaf_Loader::import('Helper.class.php');
+        // 设置自动加载的目录
+        ini_set('yaf.library', LIB_PATH);
 
+        // 导入 F_Basic.php 与 F_Network.php
         Helper::import('Basic');
         Helper::import('Network');
         
