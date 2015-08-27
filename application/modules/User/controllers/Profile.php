@@ -363,4 +363,30 @@ class ProfileController extends BasicController {
 		echo $data; die;
 	}
 
+	// 演示自定义错误之加载不存在的函数
+	public function functionErrorAction(){
+		Helper::import('NB');
+	}
+
+	// 演示自定义错误之加载不存在的类库
+	public function libraryErrorAction(){
+		$l_nb = new NB();
+	}
+
+	// 演示自定义错误之访问不存的方法
+	public function actionErrorAction(){
+		$url = SERVER_DOMAIN.'/article/abc?pd=1';
+		jsRedirect($url);
+	}
+
+	// 演示自定义错误之MySQL 报错
+	// 最后一个 SQL Tab 输出扫行出错的 SQL 
+	public function mysqlErrorAction(){
+		// 故意让列错误
+		$where = array('userID_xxxxx' => 5);
+        $order = array('addTime' => 'DESC');
+        $limit = $this->getLimit();
+
+        $buffer['articles'] = $this->load('Article')->Where($where)->Order($order)->Limit($limit)->Select();
+	}
 }
