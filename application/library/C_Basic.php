@@ -80,6 +80,21 @@ class BasicController extends Yaf_Controller_Abstract {
     }
   }
 
+  // Get limit
+  public function getLimit($size = 10){
+    $page = $this->get('page');
+    if(!$page){
+      $page = $this->getPost('page');
+    }
+
+    $page = $page ? $page : 1;
+
+    $start = ($page-1)*$size;
+    $limit = $start.','.$size;
+
+    return $limit;
+  }
+
   // Load model
   public function load($model){
     return Helper::load($model);
