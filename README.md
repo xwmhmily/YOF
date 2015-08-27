@@ -2,17 +2,17 @@
 
 <H3>特点</H3>
 
-> -1: <a target="_blank" href="http://www.iloveyaf.com">在线文档</a>
+> 1: <a target="_blank" href="http://www.iloveyaf.com">在线文档</a>
 
-> 0: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a> 管理后台账号 superAdmin, 密码 123456
+> 2: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a> 管理后台账号 superAdmin, 密码 123456
 
 > 1: 基于YAF 和 PDO 开发的一个PHP 框架, 简单, 易用, 高效
 
-> 2: 底层使用的鸟哥的 YAF, MySQL 封装使用的是 PDO 类, 支持链式操作! 调用非常方便
+> 2: 底层使用的鸟哥的 YAF, MySQL 封装使用的是 PDO 类, 支持链式操作, 调用非常方便
 
-> 3: 支持多种运行环境, 根据运行环境决定域名常量,MySQL参数, 错误报告等
+> 3: 支持多种运行环境, 根据运行环境决定域名常量, MySQL参数, 错误报告等
 
-> 4: 支持默认模型 [可以不创建模型文件也能对表进行CURD] 
+> 4: 支持默认模型 [可以不创建模型文件也能对表进行CURD]
 
 > 5: DEMO 中包括用户的简单登录,注册,注销.文章的发布,管理,分页,个人资料修改
 
@@ -34,9 +34,7 @@
 
 > 14: 集成 Yar 及演示示例
 
-> 15: 感谢 Vampire, 果儿-高级程序猿的建议。
-
-> 16: 感谢 黑白 找到的 bug, 赵鹏, 落舞者的帮忙
+> 15: 感谢 Vampire, 果儿-高级程序猿的建议. 感谢 黑白 找到的 bug, 赵鹏, 落舞者的帮忙
 
 <H3>安装 [建议在Linux下使用]</H3>
 
@@ -130,7 +128,7 @@
 
 >> function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
 
->> library => 封装好的类库, 包括助手类 Helper.class.php, 短信示例类 L_SMS.class.php, PDO 类 M_Model.pdo.php
+>> library => 封装好的类库, 包括助手类 Helper.php, 基础控制器 C_Basic.php, PDO 类 Model.php
 
 >> model => 模型文件, 默认一个模型对应一个表
 
@@ -148,6 +146,8 @@
 > APP_PATH => 根目录
 
 > ENV => 运行环境
+
+> TB_PK => 表主键, 默认为 id
 
 > TB_PREFIX => 表前缀
 
@@ -270,13 +270,6 @@
 
 >> 如要导入 F_File.php 里的函数, 使用 Helper::import('File') 即可
 
-> 五: 组件 Componment 的使用
-
->> A; 加载 => 控制器中使用 Helper::loadComponment($组件名), 如示例中修改个人资料的省市区三级联动
-###
-    $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
-###
-
 <H3>模块的调用 </H3>
 
 > 1: 先在 APP_PATH.'/conf/application.ini' 中添加模拟, DEMO 中有 Index,User,Admin,Api 四个模块. 注 Index模块 必不可少
@@ -300,11 +293,11 @@
 
 > Q:如果又有网站, 又有 APP, 还要出手机端网站,如果只调用一次数据就能满足?
 
-> A: 借助 Componment, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Componment 中的方法即可
+> A: 借助 Library, 让其调用模型,出统一的数据. API,网站,手机网站的控制器调用 Library 中的方法即可
 
 > B: 如 APP_PATH.'/application/modules/User/controllers/User.php' 中的 ProfileAction 调用省市区三级联动
 ###
-    $buffer['cityElement'] = Helper::loadComponment('City')->generateCityElement($provinceID, $cityID, $regionID, 1);
+    $buffer['cityElement'] = new City()->generateCityElement($provinceID, $cityID, $regionID, 1);
 ###
 
 <H3>事务支持</H3>
@@ -317,7 +310,7 @@
 
 > 4: 调用 Commit: $m_article->Commit(); 或 Rollback : $m_article->Rollback();
 
-<H3>关于M_Model.pdo.php</H3>
+<H3>关于 Model.php</H3>
 
 > 1:该文件是 MySQL 的PDO 封装类
 
@@ -339,8 +332,6 @@
 ###
 
 <H3>扩展</H3>
-
-> 可自行扩展组件 Componment
 
 > 根据 YAF 规则扩展插件
 
