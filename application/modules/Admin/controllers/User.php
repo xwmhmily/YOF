@@ -8,24 +8,21 @@ class UserController extends BasicController {
 		Yaf_Registry::get('adminPlugin')->checkLogin();
 		
         $this->m_user  = $this->load('User');
+        $this->homeUrl = '/admin/user';
 	}
 
 	public function indexAction(){
 		$total = $this->m_user->Total();
 
 		$page = $this->get('page');
-		$page = $page ? $page : 1;
-
-		$size  = 10;
+		$size = 10;
 		$pages = ceil($total/$size);
 		$order = array('id' => 'DESC');
-		$start = ($page-1)*$size;
-		$limit = $start.','.$size;
+		$limit = $this->getLimit();
 
-		$url = '/admin/user';
-		$buffer['pageNav'] = generatePageLink($page, $pages, $url, $total);
-
+		$buffer['pageNav'] = generatePageLink($page, $pages, $this->homeUrl, $total);
 		$buffer['users'] = $this->m_user->Order($order)->Limit($limit)->Select();
+
 		$this->getView()->assign($buffer);
 	}
 

@@ -15,17 +15,13 @@ class ArticleController extends BasicController {
 		$total = $this->m_article->Total();
 
 		$page = $this->get('page');
-		$page = $page ? $page : 1;
-
-		$size  = 10;
-		$pages = ceil($total/$size);
+		$pages = ceil($total/10);
 		$order = array('id' => 'DESC');
-		$start = ($page-1)*$size;
-		$limit = $start.','.$size;
+		$limit = $this->getLimit();
 
 		$buffer['pageNav'] = generatePageLink($page, $pages, $this->homeUrl, $total);
-
 		$buffer['articles'] = $this->m_article->Order($order)->Limit($limit)->Select();
+
 		$this->getView()->assign($buffer);
 	}
 

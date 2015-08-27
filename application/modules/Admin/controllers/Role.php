@@ -16,20 +16,13 @@ class RoleController extends BasicController {
 	 *  Index : list all roles
 	 */
 	public function indexAction(){
-		$page = $this->get('page');
-		$page = isset($page) ? $page : 1;
-		
 		$total = $this->m_role->Total();
+		$totalPages = ceil($total / 15);		
 		
-		$limit = 15;
-		$totalPages = ceil($total / $limit);
-		
-		$page = verifyPage($page, $totalPages);
-		
-		$start = ($page - 1) * $limit;
-		$buffer['pageNav'] = generatePageLink($page, $totalPages, $this->indexURL, $total);
 		$order = array('id' => 'DESC');
-		$limit = " $start, $limit";
+		$limit = $this->getLimit(15);
+
+		$buffer['pageNav'] = generatePageLink($page, $totalPages, $this->homeUrl, $total);
 		$buffer['roles'] = $this->m_role->Order($order)->Limit($limit)->Select();
 		
 		$this->getView()->assign($buffer);
