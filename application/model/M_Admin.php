@@ -7,7 +7,7 @@
  * Remark:
  */
 
-class M_Admin extends M_Model {
+class M_Admin extends Model {
 
 	function __construct() {
 		$this->table = TB_PREFIX.'admin';

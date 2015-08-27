@@ -7,7 +7,7 @@
  * Remark:
  */
 
-class M_Role extends M_Model {
+class M_Role extends Model {
 
 	function __construct() {
 		$this->table = TB_PREFIX.'role';

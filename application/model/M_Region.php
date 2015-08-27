@@ -6,7 +6,7 @@
  *  Date: 2013-3-24
  */
 
-class M_Region extends M_Model {
+class M_Region extends Model {
 
     function __construct() {
         $this->table = TB_PREFIX.'region';

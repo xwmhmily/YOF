@@ -6,7 +6,7 @@
  *  Date: 2013-1-27
  */
 
-class M_City extends M_Model {
+class M_City extends Model {
 
     function __construct() {
         $this->table = TB_PREFIX.'city';
