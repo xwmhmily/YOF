@@ -148,13 +148,11 @@ class ProfileController extends BasicController {
 			Yaf_Loader::import(LIB_PATH.'/phpQuery/phpQuery.php');
 
 			phpQuery::newDocumentFile($destination);
-			$articles = pq('#main_bg .zixunmain .p_lf .p_pad')->find('ul');
 
+			$articles = pq('.main-content .chief .mod-focus .focus')->find('ul li');
 			foreach($articles as $article) {
-			   	$m['title']   = pq($article)->find('dl dd a')->html();
-			   	$m['title']   = addslashes($m['title']);
-			   	$m['img']     = pq($article)->find('dl dt a img')->attr('src');
-
+				$m['img']   = pq($article)->find('a img')->attr('src');
+			   	$m['title'] = pq($article)->find('a img')->attr('alt');
 				$final[] = $m;
 			}
 
@@ -368,10 +366,6 @@ class ProfileController extends BasicController {
 		Helper::import('NB');
 	}
 
-	// 演示自定义错误之加载不存在的类库
-	public function libraryErrorAction(){
-		$l_nb = new NB();
-	}
 
 	// 演示自定义错误之访问不存的方法
 	public function actionErrorAction(){
