@@ -72,8 +72,7 @@ define('UPLOAD_PATH', APP_PATH.'/public/upload');
  *     若有更好办法, 请告知, 谢谢!
  */
 function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
-    // 不理会 Undefined
-    if($errno == 8 || $errno== 2){
+    if($errno == 2){
         return TRUE;
     }
 
@@ -280,6 +279,5 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
         }
 
         echo $error; die;
-
     }
 }
