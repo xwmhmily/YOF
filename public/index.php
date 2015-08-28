@@ -17,7 +17,7 @@ Yaf_Loader::import(APP_PATH.'/application/init.php');
 
 $app = new Yaf_Application(APP_PATH.'/conf/application.ini');
 
-// 以下设置为自定义错误处理
-$app->getDispatcher()->throwException(FALSE)->setErrorHandler('yofErrorHandler');
+// 以下设置为自定义错误处理, 但不要 NOTICE 错误
+$app->getDispatcher()->throwException(FALSE)->setErrorHandler('yofErrorHandler', E_ALL ^E_NOTICE);
 
 $app->bootstrap()->run();
