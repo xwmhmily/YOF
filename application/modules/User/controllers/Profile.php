@@ -368,7 +368,7 @@ class ProfileController extends BasicController {
 
 	// 演示自定义错误之访问不存的方法
 	public function actionErrorAction(){
-		$url = SERVER_DOMAIN.'/article/abc?pd=1';
+		$url = 'http://yof.mylinuxer.com/article/abc?pd=1';
 		jsRedirect($url);
 	}
 
