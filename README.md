@@ -28,13 +28,15 @@
 
 > 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer, URL伪静态, 简易加密与解密, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, redis 简单队列 等
 
-> 12: 作为入门 DEMO, YOF 中的函数, 类是几年工作累积下来的, 有自己写的, 也有同事写的, 大家有更好的替换或改进即可！
+> 12: 全面使用 yaf.library 来实现类的自动加载
 
-> 13: 加入 xhprof 对程序运行进行跟踪分析. 关于 xhprof 的安装, 配置请自行处理.
+> 13: 加入 xhprof 对程序运行进行跟踪分析.
 
 > 14: 集成 Yar 及演示示例
 
-> 15: 感谢 Vampire, 果儿-高级程序猿的建议. 感谢 黑白 找到的 bug, 赵鹏, 落舞者的帮忙
+> 15: 使用 setErrorHandle 来实现自定义错误输出, 方便 debug
+
+> 16: 感谢 Vampire, 果儿-高级程序猿, 资料空白等的建议. 感谢 黑白, 赵鹏, 落舞者等的帮忙
 
 <H3>安装 [建议在Linux下使用]</H3>
 
@@ -121,8 +123,6 @@
 <H3>目录结构</H3>
 
 > applicatoin => 程序主目录
-
->> componment => 封装好的组件, 现包括 验证码, 省市区三级联动, HTML, 微信, 可自行加入
 
 >> controllers => 不使用modules 情况下的控制器目录
 
