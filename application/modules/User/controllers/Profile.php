@@ -366,11 +366,15 @@ class ProfileController extends BasicController {
 		Helper::import('NB');
 	}
 
-
 	// 演示自定义错误之访问不存的方法
 	public function actionErrorAction(){
 		$url = SERVER_DOMAIN.'/article/abc?pd=1';
 		jsRedirect($url);
+	}
+
+	// 演示自定义错误之加载不存在的类	
+	public function libraryErrorAction(){
+		$l_nb = new NB();
 	}
 
 	// 演示自定义错误之MySQL 报错
