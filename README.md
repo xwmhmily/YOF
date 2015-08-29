@@ -26,7 +26,7 @@
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, PHPMailer, URL伪静态, 简易加密与解密, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, redis 简单队列 等
+> 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 简易加密与解密, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, Redis 简单队列 等
 
 > 12: 全面使用 yaf.library 来实现类的自动加载
 
