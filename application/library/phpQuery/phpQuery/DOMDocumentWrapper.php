@@ -194,10 +194,12 @@ class DOMDocumentWrapper {
 			}
 			phpQuery::debug("Full markup load (HTML), documentCreate('$charset')");
 			$this->documentCreate($charset);
-			// $return = phpQuery::$debug === 2
-			// 	? $this->document->loadHTML($markup)
-			// 	: @$this->document->loadHTML($markup);
-			$return = $this->document->loadHTML($markup);
+
+			// 禁用标准的 libxml 错误, 并启用用户错误处理
+			libxml_use_internal_errors(true);
+			$return = phpQuery::$debug === 2
+				? $this->document->loadHTML($markup)
+				: @$this->document->loadHTML($markup);
 			if ($return)
 				$this->root = $this->document;
 		}
