@@ -72,10 +72,6 @@ define('UPLOAD_PATH', APP_PATH.'/public/upload');
  *     若有更好办法, 请告知, 谢谢!
  */
 function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
-    if($errno == 2){
-        return TRUE;
-    }
-
     if(ENV != 'DEV'){
         if(!file_exists(LOG_FILE)){
             touch(LOG_FILE);
