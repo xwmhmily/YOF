@@ -82,6 +82,19 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         $router->addRoute('regex', $route);
     }
 
+    public function _initRedis() {
+        $config = Yaf_Application::app()->getConfig();
+        
+        $queue = 'test_queue';
+        $host  = $config['redis_host'];
+        $port  = $config['redis_port'];
+
+        $redis = new Redis();
+        $redis->connect($host, $port);
+
+        Yaf_Registry::set('redis', $redis);
+    }
+
     public function _initPlugin(Yaf_Dispatcher $dispatcher) {
         $router = new RouterPlugin();
         $dispatcher->registerPlugin($router);
