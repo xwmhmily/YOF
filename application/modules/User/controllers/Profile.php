@@ -332,31 +332,15 @@ class ProfileController extends BasicController {
 	public function redisProducerAction(){
 		$content = $this->getpost('content');
 
-		$config = Yaf_Application::app()->getConfig();
-		
 		$queue = 'test_queue';
-		$host = $config['redis_host'];
-		$port = $config['redis_port'];
-
-		$redis = new Redis();
-		$redis->connect($host, $port);
-
-		$redis->lpush($queue, $content);
+		Yaf_Registry::get('redis')->lpush($queue, $content);
 
 		echo 1; die;
 	}
 
 	public function redisConsumerAction(){
-		$config = Yaf_Application::app()->getConfig();
-		
 		$queue = 'test_queue';
-		$host = $config['redis_host'];
-		$port = $config['redis_port'];
-
-		$redis = new Redis();
-		$redis->connect($host, $port);
-
-		$data = $redis->rpop($queue);
+		$data = Yaf_Registry::get('redis')->rpop($queue);
 
 		echo $data; die;
 	}
