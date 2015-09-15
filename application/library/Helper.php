@@ -17,8 +17,7 @@ abstract class Helper {
 	 * @return null
 	 */
 	public static function import($file) {
-		$file     = ucfirst($file);
-		$function = 'F_'.$file;
+		$function = 'F_'.ucfirst($file);
 		$f_file   = FUNC_PATH.'/'.$function.'.php';
 
 		if(file_exists($f_file)){
@@ -55,7 +54,7 @@ abstract class Helper {
 		}
 
 		$default = FALSE;
-		$file = MODEL_PATH .$path .'/M_'.$model.'.php';
+		$file = MODEL_PATH .$path .'/M_'.ucfirst($model).'.php';
 		
 		if(!file_exists($file)) {
 			// 加载默认模型, 减少没啥通用方法的模型
