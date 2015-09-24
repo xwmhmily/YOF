@@ -29,13 +29,16 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
         // 设置自动加载的目录
         ini_set('yaf.library', LIB_PATH);
+        
+        // 加载核心组件
+        Yaf_Loader::import(LIB_PATH.'/core/C_Basic.php');
+        Yaf_Loader::import(LIB_PATH.'/core/Helper.php');
+        Yaf_Loader::import(LIB_PATH.'/core/Model.php');
+        Yaf_Loader::import(LIB_PATH.'/yar/Yar_Basic.php');
 
         // 导入 F_Basic.php 与 F_Network.php
         Helper::import('Basic');
         Helper::import('Network');
-        
-        Yaf_Loader::import('C_Basic.php');
-        Yaf_Loader::import(LIB_PATH.'/yar/Yar_Basic.php');
 
         // header.html and left.html
         define('HEADER_HTML', APP_PATH.'/public/common/header.html');
