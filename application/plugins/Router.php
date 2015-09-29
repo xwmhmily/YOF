@@ -36,11 +36,9 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
             $request->setModuleName($module);
             $request->setControllerName(ucfirst($uriInfo[2]));
 
-            if(isset($uriInfo[3])){
-                $action = $uriInfo[3];
-            }
-            
-            if(!isset($action)){
+            if(isset($uriInfo[3]) && $uriInfo[3]){
+                $action = strtolower($uriInfo[3]);
+            }else{
                 $action = 'index';
             }
 
