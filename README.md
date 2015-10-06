@@ -26,13 +26,13 @@
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 简易加密与解密, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, Redis 简单队列 等
+> 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, Redis 简单队列 等
 
 > 12: 全面使用 yaf.library 来实现类的自动加载
 
 > 13: 加入 xhprof 对程序运行进行跟踪分析.
 
-> 14: 集成 Yar 及演示示例
+> 14: 集成 Yar 及演示示例, 支持 CLI 下调用
 
 > 15: 使用 setErrorHandle 来实现自定义错误输出, 方便 debug
 
@@ -128,7 +128,9 @@
 
 >> function => 封装好的函数目录, 包括 F_Array.php , F_Basic.php, F_String.php, F_Network.php, F_File.php,等
 
->> library => 封装好的类库, 包括助手类 Helper.php, 基础控制器 C_Basic.php, PDO 类 Model.php
+>> library => 封装好的类库
+
+>> core  => 核心类目录, 包括助手类 Helper.php, 基础控制器 C_Basic.php, PDO 类 Model.php
 
 >> model => 模型文件, 默认一个模型对应一个表
 
@@ -154,6 +156,8 @@
 > APP_NAME => APP 名称
 
 > LIB_PATH => 类目录, 即 APP_PATH.'/application/library'
+
+> CORE_PATH => 核心类目录, 即 APP_PATH.'/application/library/core'
 
 > MODEL_PATH => 模型目录, 即 APP_PATH.'/application/model'
 
@@ -324,6 +328,12 @@
     $where = ' `id` < "100"'
 ###
 
+> 当然, 你也可以使用 YOF 中的类来写得更优雅些
+###
+    <a target="_blank" href="http://www.iloveyaf.com">请点击这里查看强大的 SQL 拼接方法, 支持Where, ORR, Order 无限次数调用</a>, 或者打开 application/controllers/Test.php 查看测试用例
+###
+
+
 > 3: 特殊的 Update 语句, 比如 id 为 1 的文章的阅读数要加 1, 按如下方式调用
 ###
     $m = array('views' => 'views+1');
@@ -337,4 +347,4 @@
 
 > 自行编写类库
 
-其他: 若发现有BUG 或更好的建议,请联系大眼猫 QQ: 381345509, 谢谢
+其他: 若发现有BUG 或更好的建议,请联系大眼猫 QQ: 381345509, 谢谢!
