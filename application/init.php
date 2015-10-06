@@ -164,7 +164,7 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
         $generalErr .= '<li>URL: http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'</li>';
         $generalErr .= '</ul>';
 
-        $error = str_replace('[ERROR_DESC]', $errstr, $error);
+        $error = str_replace('[ERROR_DESC]',  $errstr, $error);
         $error = str_replace('[GENERAL_ERR]', $generalErr, $error);
 
         // Request
@@ -182,11 +182,12 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
         $router = Yaf_Dispatcher::getInstance()->getRouter();
         $routers = $router->getRoutes();
 
+        // TODO: Convert each route to array !
         // if($routers){
         //     Helper::import('Array');
         //     foreach($routers as $key => $val){
-        //         // $val = object2Array($val);
-        //         pr($key);
+        //         //$val = array($val);
+        //         //pr($key);
         //         pr($val); continue;
         //     }
         // }
@@ -272,6 +273,8 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
             $sqlErr .= '<li>'.$sql.'</li>';
             $sqlErr .= '</ul>';
             $error = str_replace('[SQL_ERR]', $sqlErr, $error);
+        }else{
+            $error = str_replace('[SQL_ERR]', '', $error);
         }
 
         echo $error; die;
