@@ -48,10 +48,10 @@ class IndexController extends BasicController {
 		$t = $this->getPost('t');
 		$m = array();
 		$m['password'] = md5($t['newPass']);
-		$where = ' WHERE `username` = "' . $_SESSION['adminName'] . '" LIMIT 1';
 		
 		if($this->adminAccount == $_SESSION['adminName']){
-			$data = $this->load('Admin')->Update($m, $where);
+			$where = array('username' => $_SESSION['adminName']);
+			$data  = $this->load('Admin')->Where($where)->UpdateOne($m);
 		}
 		
 		if($data !== FALSE){
