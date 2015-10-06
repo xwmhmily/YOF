@@ -1,4 +1,4 @@
-![Index](http://yof.mylinux.com/asset/yof.png "Title")
+![Index](http://yof.mylinuxer.com/img/yof.png "Title")
 
 <H3>特点</H3>
 
