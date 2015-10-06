@@ -33,10 +33,10 @@ class ArticleController extends BasicController {
 		$this->goHome();
 	}
 
-	public function delAction(){
-		$articleID = $this->get('articleID');
-		$code = $this->m_article->DeleteByID($articleID);
-		$this->goHome();
-	}
+	// public function delAction(){
+	// 	$articleID = $this->get('articleID');
+	// 	$code = $this->m_article->DeleteByID($articleID);
+	// 	$this->goHome();
+	// }
 	
 }
