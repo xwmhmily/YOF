@@ -8,44 +8,47 @@ class RouterPlugin extends Yaf_Plugin_Abstract {
 
     // 去掉 Module 后的 index
     public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {     
-        $modules = Yaf_Application::app()->getModules();
+        if(!$request->isCli()){
+            // 非 CLI 下才执行
+            $modules = Yaf_Application::app()->getModules();
 
-    	$uri = $request->getRequestUri();
-    	$uriInfo = explode('/', $uri);
+        	$uri = $request->getRequestUri();
+        	$uriInfo = explode('/', $uri);
 
-    	$module = ucfirst($uriInfo[1]);
+        	$module = ucfirst($uriInfo[1]);
 
-    	if(!in_array($module, $modules)){
-            $module = 'index';
-            // 由于 YAF 源码只不支持大小写混写的控制器和 Action名, 这里来满足
-            if($request->controller){
-                if(strtoupper($request->controller) == strtoupper($uriInfo[1])){
-                    $controller = ucfirst($uriInfo[1]);
-                    $request->setControllerName($controller);
-                }
-            }
-
-            if($request->action){
-                if(isset($uriInfo[2])){
-                    if(strtoupper($request->action) == strtoupper($uriInfo[2])){
-                        $request->setActionName($uriInfo[2]);
+        	if(!in_array($module, $modules)){
+                $module = 'index';
+                // 由于 YAF 源码只不支持大小写混写的控制器和 Action名, 这里来满足
+                if($request->controller){
+                    if(strtoupper($request->controller) == strtoupper($uriInfo[1])){
+                        $controller = ucfirst($uriInfo[1]);
+                        $request->setControllerName($controller);
                     }
                 }
-            }
-    	}else{
-            $request->setModuleName($module);
-            $request->setControllerName(ucfirst($uriInfo[2]));
 
-            if(isset($uriInfo[3]) && $uriInfo[3]){
-                $action = $uriInfo[3];
-            }else{
-                $action = 'index';
+                if($request->action){
+                    if(isset($uriInfo[2])){
+                        if(strtoupper($request->action) == strtoupper($uriInfo[2])){
+                            $request->setActionName($uriInfo[2]);
+                        }
+                    }
+                }
+        	}else{
+                $request->setModuleName($module);
+                $request->setControllerName(ucfirst($uriInfo[2]));
+
+                if(isset($uriInfo[3]) && $uriInfo[3]){
+                    $action = $uriInfo[3];
+                }else{
+                    $action = 'index';
+                }
+
+                $request->setActionName($action);
             }
 
-            $request->setActionName($action);
+	       //pr($request);
         }
-
-	    //pr($request);
     }
 
 }
