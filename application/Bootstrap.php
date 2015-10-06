@@ -10,10 +10,12 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
     // Load libaray, MySQL model, function
     public function _initCore() {
+        define('YOF_VERSION',  '2.0'); // YOF VERSION
         define('TB_PK',        'id');  // 表的主键, 用于 SelectByID 等
         define('TB_PREFIX',    'zt_'); // 表前缀
         define('APP_NAME',     'YOF-DEMO');
-        define('LIB_PATH',     APP_PATH.'/application/library/');
+        define('LIB_PATH',     APP_PATH.'/application/library');
+        define('CORE_PATH',    LIB_PATH.'/core');
         define('MODEL_PATH',   APP_PATH.'/application/model');
         define('FUNC_PATH',    APP_PATH.'/application/function');
         define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
@@ -21,7 +23,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         // CSS, JS, IMG PATH
         define('CSS_PATH', '/css');
         define('JS_PATH',  '/js');
-        define('IMG_PATH',  '/img');
+        define('IMG_PATH', '/img');
 
         // Admin CSS, JS PATH
         define('ADMIN_CSS_PATH', '/admin/css');
@@ -31,9 +33,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         ini_set('yaf.library', LIB_PATH);
         
         // 加载核心组件
-        Yaf_Loader::import(LIB_PATH.'/core/C_Basic.php');
-        Yaf_Loader::import(LIB_PATH.'/core/Helper.php');
-        Yaf_Loader::import(LIB_PATH.'/core/Model.php');
+        Yaf_Loader::import(CORE_PATH.'/C_Basic.php');
+        Yaf_Loader::import(CORE_PATH.'/Helper.php');
+        Yaf_Loader::import(CORE_PATH.'/Model.php');
         Yaf_Loader::import(LIB_PATH.'/yar/Yar_Basic.php');
 
         // 导入 F_Basic.php 与 F_Network.php
@@ -86,16 +88,18 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
     }
 
     public function _initRedis() {
-        $config = Yaf_Application::app()->getConfig();
-        
-        $queue = 'test_queue';
-        $host  = $config['redis_host'];
-        $port  = $config['redis_port'];
+        if(extension_loaded('Redis')){
+            $config = Yaf_Application::app()->getConfig();
+            
+            $queue = 'test_queue';
+            $host  = $config['redis_host'];
+            $port  = $config['redis_port'];
 
-        $redis = new Redis();
-        $redis->connect($host, $port);
+            $redis = new Redis();
+            $redis->connect($host, $port);
 
-        Yaf_Registry::set('redis', $redis);
+            Yaf_Registry::set('redis', $redis);
+        }
     }
 
     public function _initPlugin(Yaf_Dispatcher $dispatcher) {
