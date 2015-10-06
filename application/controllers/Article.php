@@ -46,7 +46,7 @@ class ArticleController extends BasicController {
     $m['title']   = $this->getPost('title');
     $m['content'] = $this->getPost('editorValue', FALSE); // DO NOT FILTER
 
-    $code = $this->m_article->UpdateById($m, $articleID);
+    $code = $this->m_article->UpdateByID($m, $articleID);
 
     if($code){
       $this->redirect('/user/profile');
@@ -58,7 +58,7 @@ class ArticleController extends BasicController {
 
   public function delAction(){
     $articleID = $this->getQuery('articleID');
-    $code = $this->m_article->DeleteById($articleID);
+    $code = $this->m_article->DeleteByID($articleID);
 
     if(!$code){
       jsAlert('删除文章失败, 请重试');
