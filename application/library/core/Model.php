@@ -14,14 +14,14 @@ abstract class Model {
 	private static $obj;
 	private static $conn;
 	private $result = NULL;				
-	protected $table = '';				
-	private $options = '';      // SQL 中的 field, where, orderby, limit
-	private $selectOne = FALSE;
+	protected $table;				
+	private $options;            // SQL 中的 field, where, orderby, limit
+	private $selectOne = FALSE;  // 是否是 SelectOne, 不需要 updateOne, deleteOne
 
 	// success code of PDO
 	private $successCode = '00000';
 
-	// The result of last operation: 0 => failure,  1 => success
+	// The result of last operation: failure OR success
 	private $success = FALSE;
 
 	// SQL log file: Log SQL error for debug if NOT under DEV
@@ -29,7 +29,6 @@ abstract class Model {
 
 	/**
 	 * Constructor
-	 * <br /> 1: Connect to MySQL
 	 */
 	function __construct() {
 		$this->logFile = APP_PATH. '/log/sql/'.CUR_DATE.'.log';
@@ -61,6 +60,30 @@ abstract class Model {
 		$dsn = $driver.':host='.$host.';port='.$port.';dbname='.$db;
 
 		try{
+			// 判断 READ, WRITE 是否是相同的配置, 是则用同一个链接, 不再创建连接
+			$read_host = $config['READ_HOST'];
+			$read_port = $config['READ_PORT'];
+
+			$write_host = $config['WRITE_HOST'];
+			$write_port = $config['WRITE_PORT'];
+
+			if($read_host == $write_host && $read_port == $write_port){
+				$sington = TRUE;
+			}
+
+			if($sington){
+				if(isset(self::$obj)) {
+					if(isset(self::$obj['READ'])) {
+						self::$obj['WRITE'] = self::$obj['READ'];
+					}else{
+						self::$obj['READ'] = self::$obj['WRITE'];
+					}
+
+					self::$conn = self::$obj['WRITE'];
+				}
+			}
+
+			// 读写要分离则创建两个连接
 			if(!isset(self::$obj[$type])) {
 				self::$conn = self::$obj[$type] = new PDO($dsn, $user, $pswd);
 				self::$conn->query('SET NAMES utf8');
@@ -100,14 +123,41 @@ abstract class Model {
 	}
 
 	/**
-	 * Where
+	 * Between 支持多次调用
 	 */
-	final public function Where($where){
+	final public function Between($key, $start, $end){
+		$str = '`'.$key.'` BETWEEN "'.$start.'" AND "'.$end.'"';
+		if(isset($this->options['between'])){
+			$this->options['between'] .= ' AND '.$str;
+		}else{
+			$this->options['between'] = $str;
+		}
+		
+		return $this;
+	}
+
+	/**
+	 * OR 也支持多次调用
+	 * 因为 OR 为PHP 关键字, 不能用 OR 作函数名了
+	 */
+	final public function ORR(){
+		$this->options['or'] = TRUE;
+
+		return $this;
+	}
+
+
+	/**
+	 * Where 支持多次调用
+	 * where 有三种调用方式
+	 */
+	final public function Where($where, $condition = '', $value = ''){
 		if(!$where){
 			return $this;
 		}
 
 		if(is_array($where)){
+			// 1: $where = array('username' => 'yaf'); 这样的形式
 			$total = sizeof($where);
 			$i   = 1;
 			$str = '';
@@ -119,18 +169,55 @@ abstract class Model {
 				$i++;
 			}
 		}else{
-			$str = $where;
+			// 2: $this->Where($where, $condition, $val); 这样的形式
+			// $condition 可为 =, !=, >, >=, <, <=, IN, NOT IN, LIKE, NOT LIKE
+			if($condition){
+				// 此时的 $where 变成了表字段
+				$str .= ' `'.$where.'`'.' '.$condition.' ';
+
+				// 是否是 IN, NOT IN, 是则值带上 (), 支持数组或字符串
+				if(stripos($condition, 'IN') !== FALSE){
+					// 如果是数组, 则 implode
+					if(is_array($value)){
+						$value = implode(',', $value);	
+					}
+					$str .= '("'.$value.'")';
+				}else if(stripos($condition, 'LIKE') !== FALSE){
+					// 是否是 LIKE, NOT LIKE
+					$str .= '"%'.$value.'%"';
+				}else{
+					// =, !=, >, >=, <, <= 等形式
+					$str .= '"'.$value.'"';
+				}
+			}else{
+				// 3: $where = 'username != "yaf"'; 这样的字符串形式
+				$str = $where;
+			}
 		}
 
-		$this->options['where'] = $str;	
-		unset($str, $i, $total, $where);
+		// 无限 WHERE
+		if(isset($this->options['where'])){
+			// 是否是 OR
+			if($this->options['or']){
+				$connector = ' OR ';
+				$this->options['or'] = FALSE;
+			}else{
+				$connector = ' AND ';
+			}
+
+			$this->options['where'] .= $connector.$str;
+		}else{
+			$this->options['where'] = $str;
+		}
+		
+		unset($str, $i, $total, $where, $connector);
 
 		return $this;
 	}
 
 
 	/*
-	 * Order
+	 * Order 支持多次调用
 	 */
 	final public function Order($order){
 		if(!$order){
@@ -152,7 +239,12 @@ abstract class Model {
 			$str = $order;
 		}
 
-		$this->options['order'] = $str;	
+		if(isset($this->options['order'])){
+			$this->options['order'] .= ', '.$str;
+		}else{
+			$this->options['order'] = $str;
+		}
+
 		unset($str, $i, $total, $order);
 
 		return $this;
@@ -160,14 +252,20 @@ abstract class Model {
 
 	/*
 	 * Limit
+	 * 可传一个或二个参数
 	 */
-	final public function Limit($limit){
-		if(!$limit){
+	final public function Limit($start, $end = ''){
+		if(!$start){
 			return $this;
 		}
 
-		$this->options['limit'] = $limit;	
-		unset($limit);
+		$this->options['limit'] = $start;
+
+		if($end){
+			$this->options['limit'] .= ', '.$end;
+		}
+
+		unset($start, $end);
 
 		return $this;
 	}
@@ -179,11 +277,13 @@ abstract class Model {
 	
 
 	/**
-	 * Select all records
+	 * Select records
 	 * @return records on success or FALSE on failure 
 	 */
 	final public function Select(){
 		$this->sql = $this->generateSQL();
+
+		// echo $this->sql; br();
 
 		// 连接DB
 		$this->connect('READ');
@@ -219,13 +319,13 @@ abstract class Model {
 	 * @param Array => Array('field1'=>'value1', 'field2'=>'value2', 'field3'=>'value1')
 	 * @return FALSE on failure or inserted_id on success
 	 */
-	final public function Insert($maps = array()) {
-		if (!$maps || !is_array($maps)) {
+	final public function Insert($map = array()) {
+		if (!$map || !is_array($map)) {
 			return FALSE;
 		} else {
 			$fields = $values = array();
 
-			foreach ($maps as $key => $value) {
+			foreach ($map as $key => $value) {
 				$fields[] = '`' . $key . '`';
 				$values[] = "'$value'";
 			}
@@ -287,13 +387,13 @@ abstract class Model {
 	 * @param Array => Array('field1'=>'value1', 'field2'=>'value2', 'field3'=>'value1')
 	 * @return FALSE on failure or inserted_id on success
 	 */
-	final public function ReplaceInto($maps) {
-		if (!$maps || !is_array($maps)) {
+	final public function ReplaceInto($map) {
+		if (!$map || !is_array($map)) {
 			return FALSE;
 		} else {
 			$fields = $values = array();
 
-			foreach ($maps as $key => $value) {
+			foreach ($map as $key => $value) {
 				$fields[] = '`' . $key . '`';
 				$values[] = "'$value'";
 			}
@@ -343,7 +443,7 @@ abstract class Model {
 	// 根据ID更新某一条记录
 	public function UpdateByID($map, $id){
 		$where = array(TB_PK => $id);
-		return $this->Where($where)->Limit(1)->Update($map);
+		return $this->Where($where)->UpdateOne($map);
 	}
 
 	// 根据ID删除某一条记录
@@ -353,7 +453,7 @@ abstract class Model {
 		}
 
 		$where = array(TB_PK => $id);
-		return $this->Where($where)->Limit(1)->Delete();
+		return $this->Where($where)->DeleteOne();
 	}
 
 	// 根据ID获取某个字段
@@ -364,7 +464,7 @@ abstract class Model {
 	}
 
 	/**
-	 * Generate SQL by options
+	 * Generate SQL by options for Select, SelectOne
 	 */
 	final protected function generateSQL(){
 		if(isset($this->options['field'])){
@@ -377,6 +477,17 @@ abstract class Model {
 
 		if(isset($this->options['where'])){
 			$sql .= ' WHERE '. $this->options['where'];
+		}
+
+		// 是否有 BETWEEN
+		if(isset($this->options['between'])){
+			if(isset($this->options['where'])){
+				$sql .= ' AND ';
+			}else{
+				$sql .= ' WHERE ';
+			}
+
+			$sql .= $this->options['between'];
 		}
 
 		if(isset($this->options['order'])){
@@ -438,19 +549,19 @@ abstract class Model {
 	/**
 	 * Update record(s)
 	 *
-	 * @param array  => $maps = array('field1'=>value1, 'field2'=>value2, 'field3'=>value3))
+	 * @param array  => $map = array('field1'=>value1, 'field2'=>value2, 'field3'=>value3))
 	 * @param string => where condition
 	 * @param boolean $self => self field ?
 	 * @return FALSE on failure or affected rows on success
 	 */
-	final public function Update($maps, $self = FALSE) {
-		if (!$maps) {
+	final public function Update($map, $self = FALSE) {
+		if (!$map) {
 			return FALSE;
 		} else {
-			$this->sql = 'UPDATE ' . $this->table . ' SET ';
+			$this->sql = 'UPDATE `' . $this->table .'` SET ';
 			$sets = array();
 			if($self){
-				foreach ($maps as $key => $value) {
+				foreach ($map as $key => $value) {
 					if (strpos($value, '+') !== FALSE) {
 						list($flag, $v) = explode('+', $value);
 						$sets[] = "`$key` = `$key` + '$v'";
@@ -462,7 +573,7 @@ abstract class Model {
 					}
 				}
 			} else {
-				foreach ($maps as $key => $value) {
+				foreach ($map as $key => $value) {
 					$sets[] = "`$key` = '$value'";
 				}
 			}
@@ -473,20 +584,33 @@ abstract class Model {
 				$this->sql .= ' WHERE '.$this->options['where'];
 			}
 
-			if(isset($this->options['order'])){
-				$this->sql .= ' ORDER BY '.$this->options['order'];
+			// 是否有 BETWEEN
+			if(isset($this->options['between'])){
+				if(isset($this->options['where'])){
+					$this->sql .= ' AND ';
+				}else{
+					$this->sql .= ' WHERE ';
+				}
+
+				$this->sql .= $this->options['between'];
 			}
 
 			if(isset($this->options['limit'])){
-				$this->sql .= ' limit '.$this->options['limit'];
+				$this->sql .= ' LIMIT '.$this->options['limit'];
 			}
-
-			//echo 'SQL: '.$this->sql;
 
 			$this->connect();
 
 			return $this->Exec();
 		}
+	}
+	
+	/*
+     *  Update one record
+     */
+	public function UpdateOne($map, $self = FALSE){
+		$this->options['limit'] = 1;
+		return $this->Update($map, $self);
 	}
 
 
@@ -496,14 +620,25 @@ abstract class Model {
 	 * @return FALSE on failure or affected rows on success
 	 */
 	final public function Delete() {
-		if(!$this->options['where']){
+		if(!$this->options['where'] && !$this->options['between']){
 			return FALSE;
 		}
 
 		$this->sql = 'DELETE FROM `'.$this->table.'` WHERE '.$this->options['where'];
 
+		// 是否有 BETWEEN
+		if(isset($this->options['between'])){
+			if(isset($this->options['where'])){
+				$this->sql .= ' AND ';
+			}else{
+				$this->sql .= ' ';
+			}
+
+			$this->sql .= $this->options['between'];
+		}
+
 		if(isset($this->options['order'])){
-			$this->sql .= ' ORDER BY '.$this->options['order'];
+			$this->sql .= ' ORDER BY '. $this->options['order'];
 		}
 
 		if(isset($this->options['limit'])){
@@ -512,6 +647,16 @@ abstract class Model {
 
 		$this->connect();
 		return $this->Exec();
+	}
+
+	/**
+	 * Delete record(s)
+	 * @param string => where condition for deletion
+	 * @return FALSE on failure or affected rows on success
+	 */
+	final public function DeleteOne() {
+		$this->options['limit'] = 1;
+		return $this->Delete();
 	}
 
 
