@@ -25,6 +25,14 @@ class RegisterController extends BasicController {
 			$error = 'Username and password are required !';
 			$this->showError($error, 'index');
 		}
+
+		// Username exists ?
+		$where = array('username' => $m['username']);
+		$num = $this->m_user->Where($where)->Total();
+		if($num){
+			$msg = '注册名已存在, 请更换';
+			$this->showError($msg, 'index');
+		}
 		
 		$userID = $this->m_user->Insert($m);
 		if(!$userID){
