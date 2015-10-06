@@ -1,4 +1,7 @@
 <?php
+/*
+ *  WEB 的入口文件
+ */
 
 // 如果有 xhprof 则开启跟踪功能
 if(function_exists('xhprof_enable')){
@@ -19,5 +22,4 @@ $app = new Yaf_Application(APP_PATH.'/conf/application.ini');
 
 // 以下设置为自定义错误处理, 但不要 NOTICE 错误
 $app->getDispatcher()->throwException(FALSE)->setErrorHandler('yofErrorHandler', E_ALL ^E_NOTICE);
-
 $app->bootstrap()->run();
