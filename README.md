@@ -145,6 +145,8 @@
 > public => 公用文件, JS, CSS 等一般位于此
 
 <H3>内置常量</H3>
+> YOF_VERSION => YOF 版本, 目前是 2.0
+
 > APP_PATH => 根目录
 
 > ENV => 运行环境
@@ -199,7 +201,7 @@
 
 >> B: 模块下的情况: 在 APP_PATH.'/modules/模块/controllers' 目录下按 YAF 规则创建控制器, 如示例中的 User/controllers/User.php
 
->> C: 基本控制器: APP_PATH.'/controllers/Basic.php', 对 request, session, cookie 中的方法进行了简易封装, 令业务控制器可以少写不少的代码!
+>> C: 基本控制器 APP_PATH.'/controllers/core/C_Basic.php', 对 request, session, cookie 中的方法进行了简易封装, 令业务控制器可以少写不少的代码!
 
 > 二: 模型
     
@@ -329,9 +331,7 @@
 ###
 
 > 当然, 你也可以使用 YOF 中的类来写得更优雅些
-###
     <a target="_blank" href="http://www.iloveyaf.com">请点击这里查看强大的 SQL 拼接方法, 支持Where, ORR, Order 无限次数调用</a>, 或者打开 application/controllers/Test.php 查看测试用例
-###
 
 
 > 3: 特殊的 Update 语句, 比如 id 为 1 的文章的阅读数要加 1, 按如下方式调用
