@@ -246,27 +246,10 @@ class ProfileController extends BasicController {
 
 	// URL Rewrite
 	public function rewriteAction(){
-		$buffer['articles'] = $this->load('Article')->Limit(4)->Select();
-		$this->getView()->assign($buffer);
-	}
-
-	// 简易加密与解密
-	public function encryptAction(){
-		Helper::import('Encryption');
-
-		// Encrypt
-		$str = $this->getPost('str', FALSE);
-		if($str){
-			$buffer['str'] = $str;
-			$buffer['encryptStr'] = encrypt($str);
-		}
-
-		// Decrypt
-		$strToDecrypt = $this->get('strToDecrypt', FALSE);
-		if($strToDecrypt){
-			$buffer['encryptStr'] = decrypt($strToDecrypt);
-		}
-
+		$buffer['articles'] = $this->load('Article')
+								->Order('id DESC')
+								->Limit(4)
+								->Select();
 		$this->getView()->assign($buffer);
 	}
 
@@ -278,7 +261,10 @@ class ProfileController extends BasicController {
 	public function renderAjaxAction(){
 		$m_article = $this->load('Article');
 		$where = array('userID' => USER_ID);
-		$buffer['articles'] = $m_article->Where($where)->Limit(10)->Select();
+		$buffer['articles'] = $m_article->Where($where)
+										->Order(array('id' => 'DESC'))
+										->Limit(10)
+										->Select();
 
 		$this->getView()->assign($buffer);
 		$content = $this->render('renderAjax');
@@ -305,11 +291,6 @@ class ProfileController extends BasicController {
 		}
 
 		$this->getView()->assign($buffer);
-	}
-
-	// Pcntl
-	public function pcntlAction(){
-		
 	}
 
 	// Weixin SDK
