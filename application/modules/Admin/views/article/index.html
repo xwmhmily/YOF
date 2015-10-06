@@ -18,7 +18,6 @@
         <th>Content</th>
         <th>Status</th>
         <th>Add Time</th>
-        <th>_OP_</th>
       </tr>
     </thead>
     <tbody>
@@ -36,9 +35,6 @@
               <?php } ?>
             </td>
             <td><?php echo date('Y-m-d', $val['addTime']) ?></td>
-            <td>
-              <a href="/admin/article/del?articleID=<?php echo $val['id'] ?>">Del</a>
-            </td>
           </tr>
         <?php } ?>
       <?php } ?>
