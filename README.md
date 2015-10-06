@@ -36,7 +36,7 @@
 
 > 15: 使用 setErrorHandle 来实现自定义错误输出, 方便 debug
 
-> 16: 感谢 Vampire, 果儿-高级程序猿, 资料空白等的建议. 感谢 黑白, 赵鹏, 落舞者等的帮忙
+> 16: 感谢 Vampire, 果儿-高级程序猿, 资料空白，藕酥胖胖鱼, 黑白, 赵鹏, 落舞者等的建议和帮忙
 
 <H3>安装 [建议在Linux下使用]</H3>
 
@@ -142,7 +142,7 @@
 
 > conf => 配置文件目录, application.ini
 
-> public => 公用文件, JS, CSS 等一般位于此
+> public => 公用文件, JS, CSS, IMG 等一般位于此
 
 <H3>内置常量</H3>
 > YOF_VERSION => YOF 版本, 目前是 2.0
