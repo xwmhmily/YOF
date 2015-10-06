@@ -31,7 +31,7 @@ class YarClientController extends BasicController {
   
   // Call yar article detail
   public function articleDetailAction(){
-    $p['articleID'] = 2;
+    $p['articleID'] = 11;
     $rep = $this->yarRequest($this->articleURL, 'detail', $p);
 
     $buffer['article'] = $rep['article'];
