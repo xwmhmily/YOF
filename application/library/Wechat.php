@@ -153,25 +153,25 @@ class Wechat {
     {
         $echoStr = isset($_GET["echostr"]) ? $_GET["echostr"]: '';
         if ($return) {
-        		if ($echoStr) {
-        			if ($this->checkSignature()) 
-        				return $echoStr;
-        			else
-        				return false;
-        		} else 
-        			return $this->checkSignature();
-        } else {
-	        	if ($echoStr) {
-	        		if ($this->checkSignature())
-	        			die($echoStr);
-	        		else 
-	        			die('no access');
-	        	}  else {
-	        		if ($this->checkSignature())
-	        			return true;
-	        		else
-	        			die('no access');
-	        	}
+    		if ($echoStr) {
+    			if ($this->checkSignature()) 
+    				return $echoStr;
+    			else
+    				return false;
+    		} else 
+    			return $this->checkSignature();
+    } else {
+        	if ($echoStr) {
+        		if ($this->checkSignature())
+        			die($echoStr);
+        		else 
+        			die('no access');
+        	}  else {
+        		if ($this->checkSignature())
+        			return true;
+        		else
+        			die('no access');
+        	}
         }
         return false;
     }
@@ -182,29 +182,29 @@ class Wechat {
 	 * @param bool $append 是否在原消息数组追加
 	 */
     public function Message($msg = '',$append = false){
-    		if (is_null($msg)) {
-    			$this->_msg =array();
-    		}elseif (is_array($msg)) {
-    			if ($append)
-    				$this->_msg = array_merge($this->_msg,$msg);
-    			else
-    				$this->_msg = $msg;
-    			return $this->_msg;
-    		} else {
-    			return $this->_msg;
-    		}
+		if (is_null($msg)) {
+			$this->_msg =array();
+		}elseif (is_array($msg)) {
+			if ($append)
+				$this->_msg = array_merge($this->_msg,$msg);
+			else
+				$this->_msg = $msg;
+			return $this->_msg;
+		} else {
+			return $this->_msg;
+		}
     }
     
     public function setFuncFlag($flag) {
-    		$this->_funcflag = $flag;
-    		return $this;
+		$this->_funcflag = $flag;
+		return $this;
     }
     
     private function log($log){
-    		if ($this->debug && function_exists($this->_logcallback)) {
-    			if (is_array($log)) $log = print_r($log,true);
-    			return call_user_func($this->_logcallback,$log);
-    		}
+		if ($this->debug && function_exists($this->_logcallback)) {
+			if (is_array($log)) $log = print_r($log,true);
+			return call_user_func($this->_logcallback,$log);
+		}
     }
     
     /**
