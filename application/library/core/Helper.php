@@ -33,7 +33,7 @@ abstract class Helper {
 	/**
 	 * Load model
 	 * <br />After loading a model, the new instance will be added into $obj immediately,
-	 * <br />which is used to make sure that the same model is only loaded once per page !
+	 * <br />which is used to make sure that the same model is only loaded once per request !
 	 *
 	 * @param string => model to be loaded
 	 * @return new instance of $model or raiseError on failure !
