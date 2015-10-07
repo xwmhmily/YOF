@@ -31,7 +31,7 @@ class ProfileController extends BasicController {
             $limit = $this->getLimit();
 
             $url = '/user/profile';
-            $buffer['pageNav'] = generatePageLink($page, $pages, $url, $total);
+            $buffer['pageNav']  = generatePageLink($page, $pages, $url, $total);
             $buffer['articles'] = $m_article->Where($where)->Order($order)->Limit($limit)->Select();
         }else{
         	$this->redirect('/');
