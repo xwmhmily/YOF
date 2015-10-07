@@ -331,7 +331,7 @@
 ###
 
 > 当然, 你也可以使用 YOF 中的类来写得更优雅些
-    <a target="_blank" href="http://www.iloveyaf.com">请点击这里查看强大的 SQL 拼接方法, 支持Where, ORR, Order 无限次数调用</a>, 或者打开 application/controllers/Test.php 查看测试用例
+    <a target="_blank" href="http://www.iloveyaf.com/2015/06/28/16%EF%BC%9Acurd/">请点击这里查看强大的 SQL 拼接方法, 支持Where, ORR, Order 无限次数调用</a>, 或者打开 application/controllers/Test.php 查看测试用例
 
 
 > 3: 特殊的 Update 语句, 比如 id 为 1 的文章的阅读数要加 1, 按如下方式调用
