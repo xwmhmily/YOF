@@ -205,8 +205,10 @@ abstract class Model {
 				$connector = ' AND ';
 			}
 
+			//$this->options['where'] .= $connector.'('.$str.')';
 			$this->options['where'] .= $connector.$str;
 		}else{
+			//$this->options['where'] = '('.$str.')';
 			$this->options['where'] = $str;
 		}
 		
@@ -498,6 +500,7 @@ abstract class Model {
 			$sql .= ' LIMIT '. $this->options['limit'];
 		}
 
+		//echo $sql; br();
 		return $sql;
 	}
 
