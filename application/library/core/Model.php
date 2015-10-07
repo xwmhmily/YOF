@@ -601,11 +601,15 @@ abstract class Model {
 				$this->sql .= $this->options['between'];
 			}
 
+			if(isset($this->options['order'])){
+				$this->sql .= ' ORDER BY '. $this->options['order'];
+			}
+
 			if(isset($this->options['limit'])){
 				$this->sql .= ' LIMIT '.$this->options['limit'];
 			}
 
-			echo $this->sql; die;
+			// echo $this->sql; die;
 			$this->connect();
 
 			return $this->Exec();
