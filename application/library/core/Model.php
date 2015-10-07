@@ -553,11 +553,14 @@ abstract class Model {
 	 * Update record(s)
 	 *
 	 * @param array  => $map = array('field1'=>value1, 'field2'=>value2, 'field3'=>value3))
-	 * @param string => where condition
 	 * @param boolean $self => self field ?
 	 * @return FALSE on failure or affected rows on success
 	 */
 	final public function Update($map, $self = FALSE) {
+		if(!$this->options['where'] && !$this->options['between']){
+			return FALSE;
+		}
+
 		if (!$map) {
 			return FALSE;
 		} else {
@@ -602,6 +605,7 @@ abstract class Model {
 				$this->sql .= ' LIMIT '.$this->options['limit'];
 			}
 
+			echo $this->sql; die;
 			$this->connect();
 
 			return $this->Exec();
