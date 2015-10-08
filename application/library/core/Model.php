@@ -25,16 +25,13 @@ abstract class Model {
 	private $success = FALSE;
 
 	// SQL log file: Log SQL error for debug if NOT under DEV
-	private $logFile = '';
+	private $logFile;
 
 	/**
 	 * Constructor
 	 */
 	function __construct() {
 		$this->logFile = APP_PATH. '/log/sql/'.CUR_DATE.'.log';
-		if(!file_exists($this->logFile) && ENV != 'DEV'){
-			touch($this->logFile);
-		}
 	}
 
 	/**
