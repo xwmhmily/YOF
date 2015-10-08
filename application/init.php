@@ -1,29 +1,24 @@
 <?php
 
+error_reporting(E_ALL ^E_NOTICE);
 date_default_timezone_set('Asia/Chongqing');
 define('CUR_DATE', date('Y-m-d'));
-define('CUR_DATETIME', date('Y-m-d H:I:s'));
+define('CUR_DATETIME', date('Y-m-d H:i:s'));
 define('CUR_TIMESTAMP', time());
 
 define('ENV', strtoupper(ini_get('yaf.environ')));
 
 switch(ENV) {
     case 'DEV':
-        error_reporting(E_ALL ^E_NOTICE);
         ini_set('display_errors', 'on');
 
         $SERVER_DOMAIN = 'http://dev.yof.com';
-        $STATIC_DOMAIN = '';
+        $STATIC_DOMAIN = 'http://devStatic.yof.com';
         $IMG_DOMAIN    = 'http://devImg.yof.com';
     break;
 
     case 'TEST':
-        error_reporting(E_ALL ^E_NOTICE);
         $logFile = APP_PATH.'/log/php/'.CUR_DATE.'.log';
-
-        if(!file_exists($logFile)){
-            touch($logFile);
-        }
 
         ini_set('display_errors', 'off');
         ini_set('log_errors', 'on');
@@ -35,12 +30,7 @@ switch(ENV) {
     break;
 
     case 'PRODUCT':
-        error_reporting(E_ALL ^E_NOTICE);
         $logFile = APP_PATH.'/log/php/'.CUR_DATE.'.log';
-
-        if(!file_exists($logFile)){
-            touch($logFile);
-        }
 
         ini_set('display_errors', 'off');
         ini_set('log_errors', 'on');
@@ -73,12 +63,8 @@ define('UPLOAD_PATH', APP_PATH.'/public/upload');
  */
 function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
     if(ENV != 'DEV'){
-        if(!file_exists(LOG_FILE)){
-            touch(LOG_FILE);
-        }
-
-        file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errno.PHP_EOL, FILE_APPEND);
-        file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errstr.PHP_EOL, FILE_APPEND);
+        file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errno.PHP_EOL,   FILE_APPEND);
+        file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errstr.PHP_EOL,  FILE_APPEND);
         file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errfile.PHP_EOL, FILE_APPEND);
         file_put_contents(LOG_FILE, CUR_DATETIME.' '.$errline.PHP_EOL, FILE_APPEND);
         
