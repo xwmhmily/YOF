@@ -42,9 +42,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         Helper::import('Basic');
         Helper::import('Network');
 
-        // header.html and left.html
-        define('HEADER_HTML', APP_PATH.'/public/common/header.html');
-        define('LEFT_HTML',   APP_PATH.'/public/common/left.html');
+        // COMMON_PATH
+        define('COMMON_PATH', APP_PATH.'/public/common');
 
         // API KEY for api sign
         define('API_KEY', 'THIS_is_OUR_API_keY');
