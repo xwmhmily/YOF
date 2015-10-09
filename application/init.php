@@ -2,8 +2,9 @@
 
 error_reporting(E_ALL ^E_NOTICE);
 date_default_timezone_set('Asia/Chongqing');
-define('CUR_DATE', date('Y-m-d'));
-define('CUR_DATETIME', date('Y-m-d H:i:s'));
+
+define('CUR_DATE',      date('Y-m-d'));
+define('CUR_DATETIME',  date('Y-m-d H:i:s'));
 define('CUR_TIMESTAMP', time());
 
 define('ENV', strtoupper(ini_get('yaf.environ')));
@@ -42,8 +43,36 @@ switch(ENV) {
     break;
 }
 
+// 以下为需要 define 的常量
+define('YOF_VERSION',  '2.0'); // YOF VERSION
+define('TB_PK',        'id');  // 表的主键, 用于 SelectByID 等
+define('TB_PREFIX',    'zt_'); // 表前缀
+define('APP_NAME',     'YOF-DEMO'); // APP 名称
+define('LIB_PATH',     APP_PATH.'/application/library');
+define('CORE_PATH',    LIB_PATH.'/core');
+define('MODEL_PATH',   APP_PATH.'/application/model');
+define('FUNC_PATH',    APP_PATH.'/application/function');
+define('ADMIN_PATH',   APP_PATH.'/application/modules/Admin');
+
+// COMMON_PATH
+define('COMMON_PATH', APP_PATH.'/public/common');
+
+// API KEY for api sign
+define('API_KEY', 'THIS_is_OUR_API_keY');
+
+// CSS, JS, IMG PATH
+define('CSS_PATH', '/css');
+define('JS_PATH',  '/js');
+define('IMG_PATH', '/img');
+
+// Admin CSS, JS PATH
+define('ADMIN_CSS_PATH', '/admin/css');
+define('ADMIN_JS_PATH',  '/admin/js');
+
+// PHP log file
 define('LOG_FILE', $logFile);
 
+// domains for server, static, img
 define('SERVER_DOMAIN', $SERVER_DOMAIN);
 define('STATIC_DOMAIN', $STATIC_DOMAIN);
 define('IMG_DOMAIN',    $IMG_DOMAIN);
@@ -52,6 +81,7 @@ define('SITE_PROVINCE', 440000);
 define('SITE_CITY',     440100);
 define('SITE_REGION',   440106);
 
+// tmp path and upload path
 define('TMP_PATH',    APP_PATH.'/tmp');
 define('UPLOAD_PATH', APP_PATH.'/public/upload');
 
@@ -197,7 +227,7 @@ function yofErrorHandler($errno, $errstr, $errfile, $errline, $sql = ''){
         $error = str_replace('[MODULES_ERR]', $moduleErr, $error);
 
         // Config
-        $config = Yaf_Registry::get('config');
+        $config = Yaf_Application::app()->getConfig();
         $configErr = '<ul>';
         foreach($config as $key => $val){
             if($key != 'application'){
