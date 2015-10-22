@@ -6,6 +6,33 @@ class TestController extends BasicController {
         $userID = $this->getSession('userID');
 	}
 
+	// 测试事务 【不支持跨库的事务】
+	public function transactionAction(){
+		$m_user = $this->load('User');
+		$m['username'] = 'dymdym';
+		$m['password'] = 123456789;
+
+		$m_user->beginTransaction();
+		$userID = $m_user->Insert($m);
+
+		$a['userID']  = 5;
+		$a['title']   = 'test transaction';
+		$a['content'] = 'bbb';
+		$a['addTime'] = CUR_TIMESTAMP;
+
+		$articleID = $this->load('Article')->Insert($a); 
+
+		if($userID && $articleID){
+			echo '__Commit__'; br();
+			$m_user->Commit();
+		}else{
+			echo '__Rollback__'; br();
+			$m_user->Rollback();
+		}
+
+		echo '__DONE__'; die;
+	}
+
 	// 测试拼接 SQL
 	public function indexAction() {
 		$field = array('id', 'userID', 'title', 'status');
