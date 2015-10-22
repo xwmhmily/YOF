@@ -9,7 +9,7 @@ if(function_exists('xhprof_enable')){
 }
 
 header('content-Type:text/html;charset=utf-8;');
-define('APP_PATH',  realpath(dirname(__FILE__) . '/../')); 
+define('APP_PATH',  realpath(dirname(__FILE__) . '/../'));
 
 /*
  * 之所有要先包含 init.php 而不放在Bootstrap.php 里, 
