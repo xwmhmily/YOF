@@ -740,6 +740,7 @@ abstract class Model {
 	 * @return TRUE on success or FALSE on failure
 	 */
 	public function beginTransaction() {
+		$this->connect();
 		self::$conn->beginTransaction();
 	}
 
