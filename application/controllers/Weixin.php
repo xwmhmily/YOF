@@ -74,8 +74,7 @@ class WeixinController extends BasicController {
                 $jsapi_ticket = $m['ticket'] = $ticket;
                 $m['addTime'] = CUR_TIMESTAMP;
 
-                $where = 1;
-                $m_ticket->Delete($where);
+                $m_ticket->Where(1)->Delete();
                 $m_ticket->Insert($m);
             }
         }else{
