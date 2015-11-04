@@ -48,7 +48,7 @@ class BasicController extends Yaf_Controller_Abstract {
 
   // Clear cookie
   public function clearCookie($key){
-    $this->setCookie($key, '');
+    setCookie($key, '');
   }
 
   /**
