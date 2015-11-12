@@ -49,6 +49,13 @@ abstract class Model {
 		$port   = $config[$type.'_PORT'];
 		$user   = $config[$type.'_USER'];
 		$pswd   = $config[$type.'_PSWD'];
+		$persistent = $config['pconnect'];
+
+		if($persistent){
+			$option = array(PDO::ATTR_PERSISTENT => 1);
+		}else{
+			$option = array();
+		}
 
 		if(!$port){
 			$port = 3306;
@@ -82,7 +89,7 @@ abstract class Model {
 
 			// 读写要分离则创建两个连接
 			if(!isset(self::$obj[$type])) {
-				self::$conn = self::$obj[$type] = new PDO($dsn, $user, $pswd);
+				self::$conn = self::$obj[$type] = new PDO($dsn, $user, $pswd, $option);
 				self::$conn->query('SET NAMES utf8');
 				unset($db, $driver, $host, $port, $user, $pswd, $dsn);
 			}
