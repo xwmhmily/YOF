@@ -44,7 +44,7 @@ switch(ENV) {
 }
 
 // 以下为需要 define 的常量
-define('YOF_VERSION',  '2.0'); // YOF VERSION
+define('YOF_VERSION',  '2.1'); // YOF VERSION
 define('TB_PK',        'id');  // 表的主键, 用于 SelectByID 等
 define('TB_PREFIX',    'zt_'); // 表前缀
 define('APP_NAME',     'YOF-DEMO'); // APP 名称
@@ -66,8 +66,9 @@ define('JS_PATH',  '/js');
 define('IMG_PATH', '/img');
 
 // Admin CSS, JS PATH
-define('ADMIN_CSS_PATH', '/admin/css');
-define('ADMIN_JS_PATH',  '/admin/js');
+define('ADMIN_ASSET',  '/admin/assets');
+define('ADMIN_CSS_PATH', '/admin/assets/css');
+define('ADMIN_JS_PATH',  '/admin/assets/js');
 
 // PHP log file
 define('LOG_FILE', $logFile);
