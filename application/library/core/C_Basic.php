@@ -26,6 +26,22 @@ class BasicController extends Yaf_Controller_Abstract {
     }
   }
 
+  public function getParam($key, $filter = TRUE){
+    if($this->getRequest()->isGet()){
+      if($filter){
+        return filterStr($this->getRequest()->get($key));
+      }else{
+        return $this->getRequest()->get($key);
+      }
+    }else{
+      if($filter){
+        return filterStr($this->getRequest()->getPost($key));
+      }else{
+        return $this->getRequest()->getPost($key);
+      }
+    }
+  }
+
   public function getQuery($key, $filter = TRUE){
     if($filter){
       return filterStr($this->getRequest()->getQuery($key));
@@ -54,8 +70,8 @@ class BasicController extends Yaf_Controller_Abstract {
   /**
    * Set COOKIE
    */
-  public function setCookie($key, $value, $expire = 3600, $path = '/', $domain = ''){
-    setCookie($key, $value, CUR_TIMESTAMP + $expire, $path, $domain);
+  public function setCookie($key, $value, $expire = 3600, $path = '/', $domain = '', $httpOnly = FALSE){
+    setCookie($key, $value, CUR_TIMESTAMP + $expire, $path, $domain, $httpOnly);
   }
 
   /**
