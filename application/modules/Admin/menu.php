@@ -35,6 +35,10 @@ $menu = array(
 				'name' => '文章列表',
 				'url' => '/admin/article',
 			),
+			301 => array(
+				'name' => '文章静态化',
+				'url' => '/admin/article/static',
+			),
 		),
 	),
 );
