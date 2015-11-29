@@ -57,45 +57,6 @@ function delRDirectory($dir, $flag = true, $record = false) {
 }
 
 
-/**
- *  Create folder recursively
- */
-function createRDir($folder) {
-    $reval = false;
-    if (!file_exists($folder)) {
-        @umask(0);
-        preg_match_all('/([^\/]*)\/?/i', $folder, $atmp);
-        $base = ($atmp[0][0] == '/') ? '/' : '';
-
-        foreach ($atmp[1] AS $val) {
-            if ('' != $val) {
-                $base .= $val;
-                if ('..' == $val || '.' == $val) {
-                    $base .= '/';
-                    continue;
-                }
-            } else {
-                continue;
-            }
-
-            $base .= '/';
-
-            if (!file_exists($base)) {
-                if (mkdir($base, 0777)) {
-                    chmod($base, 0777);
-                    $reval = true;
-                }
-            }
-        }
-    } else {
-        $reval = is_dir($folder);
-    }
-
-    clearstatcache();
-    return $reval;
-}
-
-
 // Get file extension
 function getExtension($file) {
     $info = pathinfo($file);
@@ -142,27 +103,6 @@ function deleteSVN($dir) {
     }
 }
 
-// Get specific suffix files under a dir
-function getExtensionFiles($dir, $extension) {
-	global $files;
-    $dirs = scandir($dir);
-    // Do not scan current and parent dir:
-    $exceptDirs = array('.',  '..', '.svn');
-    foreach ($dirs as $key => $value) {
-        if (!in_array($value, $exceptDirs)) {
-            if (is_dir($dir . DS . $value)) {
-                $dd = getExtensionFiles($dir . DS . $value, $extension);
-            } else {
-                $ext = getExtension($value);
-                if ($ext == $extension) {
-                   $files[] = $dir.DS.$value;
-                }
-            }
-        }
-    }
-	
-	return $files;
-}
 
 /**
  * 	Define function file_get_contents if not exists
