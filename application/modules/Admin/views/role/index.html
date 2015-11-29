@@ -1,44 +1,154 @@
-<?php include APP_PATH."/public/admin/header.html" ?>
-<?php include APP_PATH."/public/admin/navibar.html" ?>
-<?php include APP_PATH."/public/admin/sidebar.html" ?>
-<div class="breadcrumb">
-    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限
+<?php include APP_PATH.'/public/admin/menutop.html' ?>
+
+<div class="main-container" id="main-container">
+<?php include APP_PATH.'/public/admin/menuleft.html' ?>
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="/admin/dashboard">Home</a>
+				</li>
+
+				<li>
+					<a href="/admin/role">角色权限</a>
+				</li>
+				<li class="active">角色列表</li>
+			</ul>
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="modal-footer no-margin-buttom">
+						<button id="newRole" class="btn btn-sm pull-left btn-success">+新角色</button>
+						<button id="delRole" class="btn btn-sm pull-left btn-danger">X 删除所选</button>
+						<span class="input-icon">
+							<input type="text" placeholder="Search ..." class="nav-search-input" id="keyword" name="keyword" value="<?php echo $keyword?>" >
+							<i id="btnSearch" class="ace-icon fa fa-search nav-search-icon"></i>
+						</span>
+					</div>
+<div>
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th class="center">
+				<label class="pos-rel">
+					<input id="selectAll" type="checkbox" class="ace" />
+					<span class="lbl"></span>
+				</label>
+			</th>
+			<th>角色别名</th>
+			<th>角色账号</th>
+			<th class="hidden-480">添加时间</th>
+			<th>状态</th>
+			<th class="hidden-480">操作</th>
+		</tr>
+	</thead>
+<tbody>
+<?php if($roles){ ?>
+<?php foreach($roles as $val){ ?>
+<tr>
+	<td class="center">
+		<label class="pos-rel">
+			<input type="checkbox" id="<?php echo $val['id'] ?>" class="ace" value="<?php echo $val['id'] ?>" />
+			<span class="lbl"></span>
+		</label>
+	</td>
+	<td>
+		<a href="#"><?php echo $val['alias'] ?></a>
+	</td>
+	<td><?php echo $val['username'] ?></td>
+	<td class="hidden-480">
+		<?php echo date('Y-m-d', $val['addTime']) ?>
+	</td>
+	<td class="hidden-480">
+		<?php if($val['status'] == 0){ ?>
+			<span class="label label-sm label-warning">禁用</span>
+		<?php }else{ ?>
+			<span class="label label-sm label-success">正常</span>
+		<?php } ?>
+	</td>
+	<td>
+		<div class="hidden-sm hidden-xs action-buttons">
+			<a class="blue" href="javascript:alert('保留功能,未实现')">
+				<i class="ace-icon fa fa-search-plus bigger-130"></i>
+			</a>
+			<a class="green" href="/admin/role/edit?roleID=<?php echo $val['id'] ?>">
+				<i class="ace-icon fa fa-pencil bigger-130"></i>
+			</a>
+			<a class="red" href="javascript:del('<?php echo $val['id'] ?>')">
+				<i class="ace-icon fa fa-trash-o bigger-130"></i>
+			</a>
+		</div>
+	</td>
+</tr>
+<?php } ?>
+<?php } ?>
+</tbody>
+</table>
 </div>
-<div class="btn-toolbar" style="padding:10px;">
-	<a href="/admin/role/add" class="btn btn-primary"><i class="icon-plus"></i> 新角色</a>
+
+						<div class="modal-footer no-margin-top">
+							<?php echo $pageNav ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="block">
-    <a href="#page-stats" class="block-heading" data-toggle="collapse">角色列表</a>
-    <div id="page-stats" class="block-body collapse in">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>角色别名</th>
-					<th>角色账号</th>
-					<th>添加时间</th>
-					<th>操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php if($roles) { ?>
-					<?php foreach($roles as $key => $val){ ?>
-						<tr align="center">
-							<td><?php echo $val['id'] ?></td>
-							<td><?php echo $val['alias'] ?></td>
-							<td><?php echo $val['username'] ?></td>
-							<td><?php echo date('Y-m-d', $val['addTime']) ?></td>
-							<td>
-								<a href="/admin/role/edit?roleID=<?php echo $val['id'] ?>" title= "编辑" ><i class="icon-pencil"></i></a> |
-								<a data-toggle="modal" href="#myModal" title= "删除"><i href="/admin/role/delete?roleID=<?php echo $val['id'] ?>" class="icon-trash confirm" tip="确定删除该角色吗？"></i></a> |
-								<a data-toggle="modal" href="/admin/role/assign?roleID=<?php echo $val['id'] ?>" title= "权限" ><i class="icon-edit"></i></a>
-							</td>
-						</tr>
-					<?php } ?>
-				<?php } ?>
-			</tbody>
-		</table>
-		<div class="pagination"><?php echo $pageNav ?></div>
-    </div>
-</div>
-<?php include APP_PATH."/public/admin/jsConfirm.html" ?>
+<script>
+	// 全选功能
+	$('table th input:checkbox').on('click' , function(){
+		var that = this;
+		$(this).closest('table').find('tr > td:first-child input:checkbox').each(function(){
+			this.checked = that.checked;
+			$(this).closest('tr').toggleClass('selected');
+		});
+	});
+
+	// 批量操作
+	$('#delRole').on('click', function(){
+		var str = '';
+		$('#dynamic-table').find('tr > td:first-child input:checkbox').each(function(){
+			if($(this).is(':checked') == true){
+				str += $(this).val() + ',';
+			}
+		});
+
+		// 去掉最后个,
+		str = str.substring(0, str.length - 1);
+	    if(str == ''){
+	    	alert('貌似你没有选择任何东东');
+	    }else{
+	    	if(confirm('确定删除所选?')){
+	    		window.location.href = '/admin/role/delBatch?str=' + str;
+	    	}
+	    }
+	})
+
+	$('#newRole').click(function(){
+		window.location.href = '/admin/role/add';
+	})
+
+	function del(roleID){
+		if(confirm('确定删除此角色?')){
+			window.location.href = '/admin/role/delete?roleID='+roleID;
+		}
+	}
+
+	$('#btnSearch').click(function(){
+		var keyword = $('#keyword').val();
+
+		window.location.href = '/admin/role?keyword='+keyword;
+	})
+</script>
+
+<?php include APP_PATH.'/public/admin/footer.html' ?>

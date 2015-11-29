@@ -1,27 +1,107 @@
-<?php include APP_PATH."/public/admin/header.html" ?>
-<?php include APP_PATH."/public/admin/navibar.html" ?>
-<?php include APP_PATH."/public/admin/sidebar.html" ?>
-<div class="breadcrumb">
-    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;角色权限&nbsp;&nbsp;/&nbsp;&nbsp;编辑角色
-</div>
-<div class="well">
-	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane active in">
-			<form id="myform" name="myform" method="post" action="/admin/role/editAct">
-				<label for="alias">别名:</label>
-				<input type="text" name="alias" id="alias" class="input-xlarge" required="required" value="<?php echo $role['alias'] ?>" />
-				<label for="name">账号:</label>
-				<input type="text" name="name" id="name" class="input-xlarge" required="required" value="<?php echo $role['username'] ?>" />
-				<label for="password">密码:</label>
-				<input type="text" name="password" id="password" class="input-xlarge" value="123456" required="required" />
-				<label><input type="checkbox" id="newPassword" name="newPassword" style="margin-top: -4px;">&nbsp;&nbsp;更改密码</label>
-				<input type="hidden" id="roleID" name="roleID" value="<?php echo $roleID ?>" />
-				<div class="btn-toolbar">
-					<button type="submit" name="dosubmit" id="submitBtn" class="btn btn-primary"><strong>提交</strong></button>
-					<a class="btn" href="/admin/role"><span>返回</span></a>
-					<div class="btn-group"></div>
+<?php include APP_PATH.'/public/admin/menutop.html' ?>
+
+<div class="main-container" id="main-container">
+<?php include APP_PATH.'/public/admin/menuleft.html' ?>
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="/admin/dashboard">Home</a>
+				</li>
+
+				<li>
+					<a href="/admin/role">角色权限</a>
+				</li>
+				<li class="active">编辑角色</li>
+			</ul>
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>编辑角色</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form-horizontal" id="editForm" role="form" action="/admin/role/editAct" method="post">
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">状态</label>
+
+							<div class="checkbox">
+								<label>
+									<input name="status" type="checkbox" class="ace"
+									<?php if($role['status'] == 1) { ?> 
+									checked="checked" 
+									<?php } ?> />
+									<span class="lbl"></span>
+								</label>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">别名</label>
+
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Alias" name="alias" class="col-xs-10 col-sm-5" value="<?php echo $role['alias'] ?>" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">账号</label>
+
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Username" name="name" class="col-xs-10 col-sm-5" value="<?php echo $role['username'] ?>"/>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码</label>
+
+							<div class="col-sm-9">
+								<input type="password" id="form-field-2" placeholder="Password" name="password" class="col-xs-10 col-sm-5" />
+								<span class="help-inline col-xs-12 col-sm-7">
+								</span>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="clearfix">
+							<div class="col-md-offset-3 col-md-9">
+								<button id="btnSubmit" class="btn btn-info" type="button">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Submit
+								</button>
+
+								&nbsp; &nbsp; &nbsp;
+								<button class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Reset
+								</button>
+							</div>
+						</div>
+						<input type="hidden" id="roleID" name="roleID" value="<?php echo $roleID ?>">
+						</form>
+					</div>
 				</div>
-			</form>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
+<script>
+	$('#btnSubmit').click(function(){
+		$('#editForm').submit();
+	})
+</script>
+<?php include APP_PATH.'/public/admin/footer.html' ?>
