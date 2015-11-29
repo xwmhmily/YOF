@@ -1,29 +1,78 @@
-<?php include APP_PATH."/public/admin/header.html" ?>
-<?php include APP_PATH."/public/admin/navibar.html" ?>
-<?php include APP_PATH."/public/admin/sidebar.html" ?>
-<div class="block">
-	<a data-toggle="collapse" class="block-heading" href="#page-stats">修改密码</a>
-	<div class="block-body collapse in" id="page-stats">
-		<form method="post" action="/admin/index/resetAct" id="resetPassForm">
-			<table class="table table-striped" cellspacing="0" cellpadding="0">
-				<tbody>
-					<tr>
-						<th scope="row" width="150"><label>新密码：</label></th>
-						<td><input value="" type="password" name="t[newPass]" id="newPass" class="input-xlarge" /></td>
-					</tr>
-					<tr>
-						<th scope="row"><label>确认密码：</label></th>
-						<td><input value="" type="password" name="t[confirmPass]" id="confirmPass" class="input-xlarge" /></td>
-					</tr>
-					<div style="color:red; margin-left:150px;" id="tips"></div>
-					<tr>
-						<th scope="row">&nbsp;</th>
-						<td>
-							<button class="btn btn-primary" href="javascript:;" id="submit"><span>确定</span></button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
+<?php include APP_PATH.'/public/admin/menutop.html' ?>
+
+<div class="main-container" id="main-container">
+<?php include APP_PATH.'/public/admin/menuleft.html' ?>
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="/admin/index/main">Home</a>
+				</li>
+
+				<li>
+					<a href="#">设置</a>
+				</li>
+				<li class="active">修改密码</li>
+			</ul>
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>修改密码</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form-horizontal" id="addForm" role="form" action="/admin/index/resetAct" method="post">
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">新密码</label>
+
+							<div class="col-sm-9">
+								<input type="password" name="t[newPass]" id="newPass" placeholder="新密码" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">确认密码</label>
+
+							<div class="col-sm-9">
+								<input type="password" placeholder="确认密码" name="t[confirmPass]" id="confirmPass" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="clearfix">
+							<div class="col-md-offset-3 col-md-9">
+								<button id="btnSubmit" class="btn btn-info" type="button">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Submit
+								</button>
+
+								&nbsp; &nbsp; &nbsp;
+								<button class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Reset
+								</button>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+<script>
+	$('#btnSubmit').click(function(){
+		$('#addForm').submit();
+	})
+</script>
+<?php include APP_PATH.'/public/admin/footer.html' ?>
