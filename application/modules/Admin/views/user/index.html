@@ -1,41 +1,105 @@
-<?php include APP_PATH."/public/admin/header.html" ?>
-<?php include APP_PATH."/public/admin/navibar.html" ?>
-<?php include APP_PATH."/public/admin/sidebar.html" ?>
-<div class="breadcrumb">
-    <a href="/admin">管理后台</a>&nbsp;&nbsp;/&nbsp;&nbsp;用户管理
+<?php include APP_PATH.'/public/admin/menutop.html' ?>
+
+<div class="main-container" id="main-container">
+<?php include APP_PATH.'/public/admin/menuleft.html' ?>
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<script type="text/javascript">
+				try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+			</script>
+
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="/admin/dashboard">Home</a>
+				</li>
+
+				<li>
+					<a href="/admin/user">用户管理</a>
+				</li>
+				<li class="active">用户列表</li>
+			</ul>
+		</div>
+
+		<div class="page-content">
+			<div class="row">
+				<div class="col-xs-12">
+<div>
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th class="center">
+				<label class="pos-rel">
+					<input type="checkbox" class="ace" />
+					<span class="lbl"></span>
+				</label>
+			</th>
+			<th>用户名</th>
+	        <th>姓名</th>
+	        <th>省</th>
+	        <th>市</th>
+	        <th>区</th>
+		</tr>
+	</thead>
+
+<tbody>
+<?php if($users){ ?>
+<?php foreach($users as $val){ ?>
+<tr>
+	<td class="center">
+		<label class="pos-rel">
+			<input type="checkbox" class="ace" value="<?php echo $val['id'] ?>" />
+			<span class="lbl"></span>
+		</label>
+	</td>
+
+	<td>
+		<a href="#"><?php echo $val['username'] ?></a>
+	</td>
+	<td><?php echo $val['realname'] ?></td>
+	<td class="hidden-480"><?php echo $val['province'] ?></td>
+	<td class="hidden-480"><?php echo $val['city'] ?></td>
+	<td class="hidden-480"><?php echo $val['region'] ?></td>
+</tr>
+<?php } ?>
+<?php } ?>
+</tbody>
+</table>
 </div>
-<div class="btn-toolbar" style="padding:10px;">
-  <a href="#" class="btn btn-primary"><i class="icon-plus"></i>新用户</a>
+
+						<div class="modal-footer no-margin-top">
+							<?php echo $pageNav ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="block">
-    <a href="#page-stats" class="block-heading" data-toggle="collapse">用户列表</a>
-    <div id="page-stats" class="block-body collapse in">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>用户名</th>
-          <th>姓名</th>
-          <th>省</th>
-          <th>市</th>
-          <th>区</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php if($users) { ?>
-          <?php foreach($users as $key => $val){ ?>
-            <tr align="center">
-              <td><?php echo $val['id'] ?></td>
-              <td><?php echo $val['username'] ?></td>
-              <td><?php echo $val['realname'] ?></td>
-              <td><?php echo $val['province'] ?></td>
-              <td><?php echo $val['city'] ?></td>
-              <td><?php echo $val['region'] ?></td>
-            </tr>
-          <?php } ?>
-        <?php } ?>
-      </tbody>
-    </table>
-    <div class="pagination"><?php echo $pageNav ?></div>
-    </div>
+<div id="dialog-confirm" class="hide">
+	<div class="alert alert-info bigger-110">
+		These items will be permanently deleted and cannot be recovered.
+	</div>
+
+	<div class="space-6"></div>
+
+	<p class="bigger-110 bolder center grey">
+		<i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+		Are you sure?
+	</p>
 </div>
+<script>
+	$('#newRole').click(function(){
+		window.location.href = '/admin/role/add';
+	})
+
+	function del(roleID){
+		if(confirm('确定删除此角色?')){
+			window.location.href = '/admin/role/delete?roleID='+roleID;
+		}
+	}
+</script>
+
+<?php include APP_PATH.'/public/admin/footer.html' ?>
