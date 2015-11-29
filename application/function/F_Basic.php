@@ -78,7 +78,7 @@ function removeXSS($val) {
     }
 
     // now the only remaining whitespace attacks are \t, \n, and \r
-    $ra1 = Array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 
+    $ra1 = array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 
                             'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 
                             'layer', 'bgsound', 'title', 'base');
                             
@@ -128,11 +128,12 @@ function redirect($URL = '', $second = 0) {
     if (!isset($URL)) {
         $URL = $_SERVER['HTTP_REFERER'];
     }
-        ob_start();
-        ob_end_clean();
-        header("Location: ".$URL, TRUE, 302); //header("refresh:$second; url=$URL", TRUE, 302);
-        ob_flush(); //可省略
-        exit;
+
+    ob_start();
+    ob_end_clean();
+    header("Location: ".$URL, TRUE, 302); //header("refresh:$second; url=$URL", TRUE, 302);
+    ob_flush(); //可省略
+    exit;
 }
 
 
@@ -159,113 +160,159 @@ function gotoURL($message = '', $URL = '') {
   String $query: query string for SEARCH
  *  @Return: String pagenation navigator link
  */
-
 function generatePageLink($page, $totalPages, $URL, $counts, $query = '') {
 	$page = $page ? $page : 1;
 
-    $URL .= (strpos($URL, '?') === false ? '?' : '&');
-    // First:
-    $first = '首 页';
-    $first = "<a href=".$URL."page=1$query>$first</a>";
+    $URL .= (strpos($URL, '?') === FALSE ? '?' : '&');
 
-    // Prev:
-    $prev = '上一页';
-    $previousPage = ($page > 1) ? $page - 1 : 1;
-    $prev = "<a href=".$URL."page=$previousPage$query>$prev</a>";
+    $link = '<ul class="pagination pull-right no-margin">';
+    if($page == 1){
+        $link .= '<li class="prev disabled">
+                    <a href="#">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                    </a>
+                </li>';
+    }else{
+        $prev  = $URL.'page='.($page - 1).$query;
+        $link .= '<li class="prev">
+                    <a href="'.$prev.'">
+                        <i class="ace-icon fa fa-angle-double-left"></i>
+                    </a>
+                </li>';
+    }
 
-    // Next:
-    $next = '下一页';
-    $nextPage = ($page == $totalPages) ? $totalPages : $page + 1;
-    $next = "<a href=".$URL."page=$nextPage$query>$next</a>";
+    // 超过 10 页则要考虑前二后二中四
+    if($totalPages > 10){
+        $sep = TRUE;
+    }
 
-    // Last
-    $last = '末 页';
-    $last = "<a href=".$URL."page=$totalPages$query>$last</a>";
+    $first = $URL.'page=1'.$query;
+    if($page == 1){
+        $active = 'active';
+    }else{
+        $active = '';
+    }
 
-    // Total:
-    $total = '共';
+    $link .= '<li class="'.$active.'">
+                <a href="'.$first.'">1</a>
+            </li>';
 
-    $pageLink = $total . ' ' . $counts . '&nbsp;&nbsp;' . $first . '&nbsp;&nbsp;' . $prev;
-    $pageLink .= '&nbsp;&nbsp;' . $next . '&nbsp;&nbsp;' . $last . '&nbsp;&nbsp;' . $page . '/' . $totalPages . '&nbsp';
+    if($totalPages >= 2){
+        $second = $URL.'page=2'.$query;
+        if($page == 2){
+            $active = 'active';
+        }else{
+            $active = '';
+        }
 
-    return $pageLink;
+        $link .= '<li class="'.$active.'">
+                    <a href="'.$second.'">2</a>
+                </li>';
+    }
+
+    if($sep){
+        if(($page - 2) > 3){
+            $link .= '<li>
+                   <a href="#">...</a>
+                </li>';
+        } 
+
+        // 取中间四个
+        for($i = ($page - 2); $i <= ($page + 2); $i++){
+            if($i <= 2 || $i > ($totalPages - 2)){
+                continue;
+            }
+
+            if($i > $totalPages){
+                break;
+            }
+
+            if($page == ($totalPages - 1)){
+                break;
+            }
+
+            $p = $URL.'page='.$i.$query;
+            if($page == $i){
+                $active = 'active';
+            }else{
+                $active = '';
+            }
+
+            $link .= '<li class="'.$active.'">
+                        <a href="'.$p.'">'.$i.'</a>
+                    </li>';
+        }
+
+        if(($page + 2) < ($totalPages - 2)){
+            $link .= '<li>
+                    <a href="#">...</a>
+                </li>';
+        }
+    }else{
+        for($i = 3; $i <= ($totalPages - 2); $i++){
+            $p = $URL.'page='.$i.$query;
+            if($page == $i){
+                $active = 'active';
+            }else{
+                $active = '';
+            }
+
+            $link .= '<li class="'.$active.'">
+                        <a href="'.$p.'">'.$i.'</a>
+                    </li>';
+        }
+    }
+
+    if($totalPages > 2){
+        if(($totalPages - 1) != 2){
+            $p = $URL.'page='.($totalPages-1).$query;
+            if($page == ($totalPages-1)){
+                $active = 'active';
+            }else{
+                $active = '';
+            }
+
+            $link .= '<li class="'.$active.'">
+                    <a href="'.$p.'">'.($totalPages-1).'</a>
+                </li>';
+        }
+
+        $p = $URL.'page='.$totalPages.$query;
+        if($page == $totalPages){
+            $active = 'active';
+        }else{
+            $active = '';
+        }
+
+        $link .= '<li class="'.$active.'">
+                    <a href="'.$p.'">'.$totalPages.'</a>
+                </li>';
+    }
+
+    if($page == $totalPages){
+        $link .= '<li class="next disabled">
+            <a href="#">
+                <i class="ace-icon fa fa-angle-double-right"></i>
+            </a>
+        </li>';
+    }else{
+        $next  = $URL.'page='.($page + 1).$query;
+        $link .= '<li class="next">
+                    <a href="'.$next.'">
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                    </a>
+                </li>';
+    }
+
+    $link .= '</ul>';
+
+    return $link;
 }
 
 // Get current microtime
 function calculateTime() {
     list($usec, $sec) = explode(' ', microtime());
     return ((float) $usec + (float) $sec);
-}
-
-/**
- * 裁剪中文
- * 
- * @param type $string
- * @param type $length
- * @param type $dot
- * @return type
- */
-function cutstr($string, $length, $dot = ' ...') {
-	if(strlen($string) <= $length) {
-		return $string;
-	}
-
-	$pre = chr(1);
-	$end = chr(1);
-	$string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;'), array($pre.'&'.$end, $pre.'"'.$end, $pre.'<'.$end, $pre.'>'.$end), $string);
-
-	$strcut = '';
-	if(strtolower(CHARSET) == 'utf-8') {
-
-		$n = $tn = $noc = 0;
-		while($n < strlen($string)) {
-
-			$t = ord($string[$n]);
-			if($t == 9 || $t == 10 || (32 <= $t && $t <= 126)) {
-				$tn = 1; $n++; $noc++;
-			} elseif(194 <= $t && $t <= 223) {
-				$tn = 2; $n += 2; $noc += 2;
-			} elseif(224 <= $t && $t <= 239) {
-				$tn = 3; $n += 3; $noc += 2;
-			} elseif(240 <= $t && $t <= 247) {
-				$tn = 4; $n += 4; $noc += 2;
-			} elseif(248 <= $t && $t <= 251) {
-				$tn = 5; $n += 5; $noc += 2;
-			} elseif($t == 252 || $t == 253) {
-				$tn = 6; $n += 6; $noc += 2;
-			} else {
-				$n++;
-			}
-
-			if($noc >= $length) {
-				break;
-			}
-
-		}
-		if($noc > $length) {
-			$n -= $tn;
-		}
-
-		$strcut = substr($string, 0, $n);
-
-	} else {
-		$_length = $length - 1;
-		for($i = 0; $i < $length; $i++) {
-			if(ord($string[$i]) <= 127) {
-				$strcut .= $string[$i];
-			} else if($i < $_length) {
-				$strcut .= $string[$i].$string[++$i];
-			}
-		}
-	}
-
-	$strcut = str_replace(array($pre.'&'.$end, $pre.'"'.$end, $pre.'<'.$end, $pre.'>'.$end), array('&amp;', '&quot;', '&lt;', '&gt;'), $strcut);
-
-	$pos = strrpos($strcut, chr(1));
-	if($pos !== false) {
-		$strcut = substr($strcut,0,$pos);
-	}
-	return $strcut.$dot;
 }
 
 
