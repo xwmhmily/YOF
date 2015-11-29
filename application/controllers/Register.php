@@ -18,8 +18,8 @@ class RegisterController extends BasicController {
   	}
   	
   	public function registerActAction(){
-		$m['username'] = $this->getPost('username');
-		$m['password'] = $this->getPost('password');
+		$m['username'] = $this->getParam('username');
+		$m['password'] = $this->getParam('password');
 
 		if(!$m['username'] || !$m['password']){
 			$error = 'Username and password are required !';
