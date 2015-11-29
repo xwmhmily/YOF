@@ -3373,15 +3373,6 @@ CREATE TABLE `zt_role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='角色表';
 
 -- ----------------------------
--- Records of zt_role
--- ----------------------------
-INSERT INTO `zt_role` VALUES ('2', 'aaa', 'aaa', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '1', '1426746477', '100,200,300');
-INSERT INTO `zt_role` VALUES ('3', 'bbb', 'bbb', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '1', '1426746481', '300');
-INSERT INTO `zt_role` VALUES ('4', 'ccc', 'ccc', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '1', '1426746486', '200');
-INSERT INTO `zt_role` VALUES ('5', 'ddd', 'ddd', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '1', '1426746490', '100,200');
-INSERT INTO `zt_role` VALUES ('7', 'ee', 'eeefff', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '1', '1426748781', null);
-
--- ----------------------------
 -- Table structure for zt_user
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_user`;
