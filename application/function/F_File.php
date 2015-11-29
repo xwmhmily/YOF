@@ -83,6 +83,44 @@ function deleteExtensionFiles($dir, $extension) {
     }
 }
 
+/**
+ *  Create folder recursively
+ */
+function createRDir($folder) {
+    $reval = false;
+    if (!file_exists($folder)) {
+        @umask(0);
+        preg_match_all('/([^\/]*)\/?/i', $folder, $atmp);
+        $base = ($atmp[0][0] == '/') ? '/' : '';
+
+        foreach ($atmp[1] AS $val) {
+            if ('' != $val) {
+                $base .= $val;
+                if ('..' == $val || '.' == $val) {
+                    $base .= '/';
+                    continue;
+                }
+            } else {
+                continue;
+            }
+
+            $base .= '/';
+
+            if (!file_exists($base)) {
+                if (mkdir($base, 0777)) {
+                    chmod($base, 0777);
+                    $reval = true;
+                }
+            }
+        }
+    } else {
+        $reval = is_dir($folder);
+    }
+
+    clearstatcache();
+    return $reval;
+}
+
 // Delete .svn recursively under a specific directory
 function deleteSVN($dir) {
     $dirs = scandir($dir);
