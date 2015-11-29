@@ -20,16 +20,10 @@ class LoginController extends BasicController {
 	public function checkLoginAction(){
 		$username = $this->getPost('username');
 		$password = $this->getPost('password');
-		$captcha  = $this->getPost('captcha');
 		
-		if(!$username || !$password || !$captcha){
+		if(!$username || !$password){
 			jsAlert('信息不完整!');
 			jsRedirect($this->homeUrl);
-		}else{
-			if(strtolower($captcha) != strtolower($this->getSession('adminCaptcha'))){
-				jsAlert('验证码不正确!');
-				jsRedirect($this->homeUrl);
-			}
 		}
 		
 		// 管理员登陆
@@ -67,8 +61,36 @@ class LoginController extends BasicController {
 				}
 			}
 		}
-		
-		jsRedirect('/admin/index/main');
+
+		// Privileges
+		include APP_PATH.'/application/modules/Admin/menu.php';
+		if($this->adminAccount != $this->getSession('adminName')){
+			$priv = $this->getSession('priv');
+			$priv = explode(',', $priv['privilege']);
+			
+			// 1: 与大菜单对比, 删除会员没有权限的菜单
+			foreach($menu as $k => $v){
+				foreach($v as $kk => $vv){
+					if(is_array($vv)){
+						foreach($vv as $kkk => $vvv){
+							if(!in_array($kkk, $priv)){
+								unset($menu[$k][$kk][$kkk]);
+							}
+						}
+					}
+				}
+			}
+			
+			// 2: 进一步处理: 删除没有子菜单的项
+			foreach($menu as $k => $v){
+				if(!$v['sub']){
+					unset($menu[$k]);
+				}
+			}
+		}
+
+		$this->setSession('menu', $menu);
+		jsRedirect('/admin/dashboard');
 	}
 
 	public function logoutAction(){
