@@ -69,8 +69,8 @@ class ArticleController extends BasicController {
 
   // 测试URL 路由 [伪静态]
   public function detailAction(){
-    $categoryID = $this->get('categoryID');
-    $articleID = $this->get('articleID');
+    $categoryID = $this->getParam('categoryID');
+    $articleID  = $this->getParam('articleID');
 
     $buffer['article'] = $this->m_article->SelectByID('', $articleID);
 
