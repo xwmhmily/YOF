@@ -183,9 +183,19 @@ abstract class Model {
 				if(stripos($condition, 'IN') !== FALSE){
 					// 如果是数组, 则 implode
 					if(is_array($value)){
-						$value = implode(',', $value);	
+						$str .= '(';
+						foreach($value as $v){
+							$str .= '"'.$v.'",';
+						}
+
+						// 去掉,
+						$str = substr($str, 0, -1);
+						$str .= ')';
+					}else{
+						$error = 'The value of IN MUST BE an array';
+						$trace = debug_backtrace();
+						Helper::raiseError($trace, $error);
 					}
-					$str .= '("'.$value.'")';
 				}else if(stripos($condition, 'LIKE') !== FALSE){
 					// 是否是 LIKE, NOT LIKE
 					$str .= '"%'.$value.'%"';
@@ -209,10 +219,8 @@ abstract class Model {
 				$connector = ' AND ';
 			}
 
-			//$this->options['where'] .= $connector.'('.$str.')';
 			$this->options['where'] .= $connector.$str;
 		}else{
-			//$this->options['where'] = '('.$str.')';
 			$this->options['where'] = $str;
 		}
 		
@@ -660,6 +668,7 @@ abstract class Model {
 			$this->sql .= ' LIMIT '.$this->options['limit'];
 		}
 
+		//echo $this->sql; die;
 		$this->connect();
 		return $this->Exec();
 	}
