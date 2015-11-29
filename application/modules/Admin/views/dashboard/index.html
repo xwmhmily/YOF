@@ -1,0 +1,25 @@
+<?php include APP_PATH.'/public/admin/menutop.html' ?>
+
+<div class="main-container" id="main-container">
+  <script type="text/javascript">
+    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+  </script>
+  <?php include APP_PATH.'/public/admin/menuleft.html' ?>
+  <div class="main-content">
+    <div class="main-content-inner">
+      <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}</script>
+        <ul class="breadcrumb">
+          <li> <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="/admin/index/main">Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="page-content">
+        <div class="page-content-area" data-ajax-content="true">
+          This is Dashboard ! Make it look pretty as you wish !
+        </div>
+      </div>
+    </div>
+  </div>
+<?php include APP_PATH.'/public/admin/footer.html' ?>
