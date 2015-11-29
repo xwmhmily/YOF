@@ -18,8 +18,8 @@ class LoginController extends BasicController {
   	}
 
   	public function loginActAction(){
-		$username = $this->getPost('username');
-		$password = $this->getPost('password');
+		$username = $this->getParam('username');
+		$password = $this->getParam('password');
 
 		$field = array('id');
 		$where = array('username' => $username, 'password' => $password);
