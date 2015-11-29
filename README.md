@@ -26,7 +26,7 @@
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 全面使用 Bootstrap, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 微信sdk, 七牛sdk, multi curl, pcntl 多进程抓取, Redis 简单队列 等
+> 11: 前台使用 Bootstrap, 后台使用 Ace, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 微信sdk, 七牛sdk, multi curl, Redis 简单队列 等示例
 
 > 12: 全面使用 yaf.library 来实现类的自动加载
 
@@ -38,7 +38,7 @@
 
 > 16: 感谢 Vampire, 果儿-高级程序猿, 资料空白，藕酥胖胖鱼, 黑白, 赵鹏, 落舞者等的建议和帮忙
 
-> 17: 当前版本 2.0
+> 17: 当前版本 2.1
 
 <H3>安装 [建议在Linux下使用]</H3>
 
