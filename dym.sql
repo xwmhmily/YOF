@@ -3366,8 +3366,6 @@ CREATE TABLE `zt_role` (
   `username` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '角色别名',
   `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `typeID` tinyint(2) unsigned NOT NULL COMMENT '角色类型: 0=> 总后台, 1 => 驾校',
-  `belongID` int(11) unsigned NOT NULL COMMENT '所属的ID',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态: 0=>禁用，1=>正常',
   `addTime` int(11) unsigned NOT NULL COMMENT '添加时间',
   `privilege` text COLLATE utf8_unicode_ci COMMENT '角色的权限',
