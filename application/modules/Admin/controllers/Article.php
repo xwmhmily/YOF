@@ -33,10 +33,9 @@ class ArticleController extends BasicController {
 		$this->goHome();
 	}
 
-	// public function delAction(){
-	// 	$articleID = $this->get('articleID');
-	// 	$code = $this->m_article->DeleteByID($articleID);
-	// 	$this->goHome();
-	// }
+	public function staticAction(){
+		jsAlert('该菜单功能没有实现,只用于演示多个子菜单如何添加');
+		jsRedirect('/admin/article');
+	}
 	
 }
