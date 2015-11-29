@@ -10,20 +10,34 @@ class RoleController extends BasicController {
         $this->m_role  = $this->load('Role');
         $this->homeUrl = '/admin/role';
 	}
-
 	
 	/**
 	 *  Index : list all roles
 	 */
 	public function indexAction(){
-		$total = $this->m_role->Total();
-		$totalPages = ceil($total / 15);		
+		$keyword = $this->get('keyword');
+		if($keyword){
+			$query = '&keyword='.$keyword;
+			$buffer['keyword'] = $keyword;
+			$total = $this->m_role->Where('username', 'LIKE', $keyword)->Total();
+		}else{
+			$total = $this->m_role->Total();	
+		}
+
+		$totalPages = ceil($total / 10);
 		
 		$order = array('id' => 'DESC');
-		$limit = $this->getLimit(15);
+		$limit = $this->getLimit();
 
-		$buffer['pageNav'] = generatePageLink($page, $totalPages, $this->homeUrl, $total);
-		$buffer['roles'] = $this->m_role->Order($order)->Limit($limit)->Select();
+		$page = $this->get('page');
+		$buffer['pageNav'] = generatePageLink($page, $totalPages, $this->homeUrl, $total, $query);
+		
+		if($keyword){
+			$buffer['roles'] = $this->m_role->Where('username', 'LIKE', $keyword)->
+									Order($order)->Limit($limit)->Select();
+		}else{
+			$buffer['roles'] = $this->m_role->Order($order)->Limit($limit)->Select();
+		}
 		
 		$this->getView()->assign($buffer);
 	}
@@ -36,17 +50,16 @@ class RoleController extends BasicController {
 
 	}
 	
-	
 	/**
 	 * Add new role action
 	 */
 	public function addActAction(){
-		$mapping['username'] = $this->getPost('name');
-		$mapping['password'] = md5($this->getPost('password'));
-		$mapping['alias']    = $this->getPost('alias');
-		$mapping['addTime']  = CUR_TIMESTAMP;
+		$m['username'] = $this->getPost('name');
+		$m['password'] = md5($this->getPost('password'));
+		$m['alias']    = $this->getPost('alias');
+		$m['addTime']  = CUR_TIMESTAMP;
 		
-		$id = $this->m_role->Insert($mapping);
+		$id = $this->m_role->Insert($m);
 		
 		if(!$id){
 			jsAlert('添加失败, 请重试');
@@ -70,17 +83,24 @@ class RoleController extends BasicController {
 	 * Edit role action
 	 */
 	public function editActAction(){
-		$id = $this->getPost('roleID');
+		$roleID        = $this->getPost('roleID');
 		$m['username'] = $this->getPost('name');
 		$m['alias']    = $this->getPost('alias');
-		$resetPassword = $this->getPost('newPassword');
-		
-		// 选择了修改密码
-		if('on' == $resetPassword){
-			$m['password'] = md5($this->getPost('password'));
+
+		$status = $this->getPost('status');
+		if($status == 'on'){
+			$m['status'] = 1;
+		}else{
+			$m['status'] = 0;
 		}
 		
-		$result = $this->m_role->UpdateByID($m, $id);
+		// 选择了修改密码
+		$password = $this->getPost('password');
+		if($password){
+			$m['password'] = md5($password);
+		}
+		
+		$result = $this->m_role->UpdateByID($m, $roleID);
 		
 		if($result === FALSE) {
 		    jsAlert('添加失败, 请重试');
@@ -101,6 +121,22 @@ class RoleController extends BasicController {
 			jsAlert('删除失败');
 		}
 		
+		$this->goHome();
+	}
+
+	// 批量删除 
+	public function delBatchAction(){
+		$str = $this->get('str');
+		$str = explode(',', $str);
+
+		if($str){
+			$row = $this->m_role->Where('id', 'IN', $str)->Delete();
+
+			if(!$row){
+				jsAlert(OPP_FAILURE);
+			}
+		}
+
 		$this->goHome();
 	}
 	
