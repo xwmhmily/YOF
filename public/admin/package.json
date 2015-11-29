@@ -1,0 +1,23 @@
+{
+  "name": "ace-admin-template",
+  "version": "1.3.3",
+  "description": "Responsive admin template based on Bootstrap",
+  "keywords": [
+    "admin",
+    "responsive",
+	"css"
+  ],
+  "author": "Mohsen Hosseini",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-banner": "",
+    "grunt-contrib-clean": "",
+    "grunt-contrib-compress": "",
+    "grunt-contrib-concat": "",
+    "grunt-contrib-copy": "",
+    "grunt-contrib-cssmin": "",
+    "grunt-contrib-less": "",
+    "grunt-contrib-uglify": "",
+    "grunt-exec": ""
+  }
+}

@@ -1,0 +1,13 @@
+{{#site.demo}}
+ <div class="alert alert-info">
+   <i class="ace-icon fa fa-hand-o-right"></i> Please note that demo server is not configured to save uploaded files, therefore you may get an error message.
+   <button class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>
+ </div>
+{{/site.demo}}
+<div>
+<form action="{{{path.base}}}/dummy.html" class="dropzone" id="dropzone">
+  <div class="fallback">
+    <input name="file" type="file" multiple />
+  </div>
+</form>
+</div>

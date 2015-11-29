@@ -1,0 +1,23 @@
+{{#site.remote_jquery}}
+<!--[if !IE]> -->
+<script src="{{{site.protocol}}}//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery{{{path.minified}}}.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="{{{site.protocol}}}//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery{{{path.minified}}}.js"></script>
+<![endif]-->
+{{/site.remote_jquery}}
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='{{{path.assets}}}/js/jquery{{{path.minified}}}.js'>"+"<"+"/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='{{{path.assets}}}/js/jquery1x{{{path.minified}}}.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+	if('ontouchstart' in document.documentElement) document.write("<script src='{{{path.assets}}}/js/jquery.mobile.custom{{{path.minified}}}.js'>"+"<"+"/script>");
+</script>

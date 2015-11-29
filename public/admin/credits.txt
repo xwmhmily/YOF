@@ -1,0 +1,135 @@
+v1.3.3:
+  PACE progress bars
+	*  http://github.hubspot.com/pace/
+
+v1.3.2:
+  jQuery raty
+	*  http://wbotelhos.com/raty/
+  Dual listbox
+	*  http://www.virtuosoft.eu/code/bootstrap-duallistbox/
+  Multiselect
+	*  https://github.com/davidstutz/bootstrap-multiselect
+  jQuery mousewheel
+	*  https://github.com/jquery/jquery-mousewheel
+  Grunt
+	*  http://gruntjs.com/
+
+v1.3.1:
+  typeahead.js
+	*  https://github.com/twitter/typeahead.js
+  CodeMirror:
+	*  http://codemirror.net/
+
+v1.3:
+  Bootstrap datetime picker:
+	*  http://eonasdan.github.io/bootstrap-datetimepicker/
+  UglifyJS:
+	*  https://github.com/mishoo/UglifyJS2
+  Rainbow (used in documentation)
+	*  http://craig.is/making/rainbows
+
+v1.1.3:
+  jqGrid
+	*  http://www.trirand.com/
+  Dropzone.js
+	*  http://www.dropzonejs.com/
+  Nestable lists
+	*  http://dbushell.github.io/Nestable/
+
+v1.1.2:
+  X-editable
+    * http://vitalets.github.io/x-editable
+  Bootstrap Tags
+    * https://github.com/fdeschenes/bootstrap-tag
+  Select2
+    * http://ivaynberg.github.io/select2/
+  jQuery Mobile
+    * http://jquerymobile.com/
+
+v1.1:
+  LESS
+    * http://lesscss.org/
+  Mustache.js
+    * https://github.com/janl/mustache.js/
+  Hogan.js
+    * http://twitter.github.io/hogan.js/
+  Mustache for PHP
+    * https://github.com/bobthecow/mustache.php
+  Mindmup Wysiwyg Editor
+    * http://mindmup.github.io/bootstrap-wysiwyg/
+  Toopay Markdown Editor
+    * http://toopay.github.io/bootstrap-markdown/
+  Markdown Parser
+    * https://github.com/cadorn/markdown-js
+  jQuery hotKeys
+    * https://github.com/jeresig/jquery.hotkeys
+
+v1.0:
+  jQuery
+    * http://www.jquery.com/
+  jQuery UI (Custom Build)
+    * http://www.jqueryui.com/
+  Twitter Bootstrap
+    * http://twitter.github.io/bootstrap/
+  FontAwesome
+    * http://fortawesome.github.io/Font-Awesome/
+  "Open Sans" Google Font
+    * http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans
+
+  jQuery Flot Charts
+    * http://www.flotcharts.org/
+  jQuery Sparklines
+    * http://omnipotent.net/jquery.sparkline/
+  Easy Pie Chart
+    * http://rendro.github.io/easy-pie-chart/
+  jQuery Knob
+    * http://anthonyterrien.com/knob/
+
+  jQuery Validate
+    * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
+  FuelUX
+    * http://exacttarget.github.io/fuelux/
+
+  FullCalendar
+    * http://arshaw.com/fullcalendar/
+  jQuery ColorBox
+    * http://www.jacklmoore.com/colorbox/
+  jQuery dataTables
+    * http://www.datatables.net/
+
+  jQuery Masked Input
+    * http://digitalbush.com/projects/masked-input-plugin/
+  jQuery Chosen
+    * http://harvesthq.github.io/chosen/
+  jQuery Input Limiter
+    * http://rustyjeans.com/jquery-plugins/input-limiter
+  jQuery AutoSize
+    * http://www.jacklmoore.com/autosize/
+
+
+  Bootstrap Colorpicker
+    * http://www.eyecon.ro/bootstrap-colorpicker
+  Bootstrap Datepicker
+    * http://eternicode.github.io/bootstrap-datepicker/
+  Bootstrap Timepicker
+    * http://jdewit.github.io/bootstrap-timepicker/
+  Bootstrap DateRange Picker
+    * https://github.com/dangrossman/bootstrap-daterangepicker
+
+  Bootbox.js
+    * http://bootboxjs.com
+  jQuery Gritter
+    * http://boedesign.com/2009/07/11/growl-for-jquery-gritter/
+
+  jQuery slimScroll
+    * http://rocha.la/jQuery-slimScroll
+  Spin.js 
+    * http://fgnass.github.io/spin.js/
+
+  jQuery UI Touch Punch
+    * http://touchpunch.furf.com/
+
+  Prettify
+    * http://code.google.com/p/google-code-prettify/
+  ExplorerCanvas
+    * http://code.google.com/p/explorercanvas/

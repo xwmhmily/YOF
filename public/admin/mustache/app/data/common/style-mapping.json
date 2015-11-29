@@ -1,0 +1,37 @@
+{
+ "chosen" : "chosen.css",
+ 
+ "colorbox" : "colorbox.css",
+
+ "colorpicker" : "colorpicker.css",
+
+ "timepicker" : "bootstrap-timepicker.css",
+
+ "datepicker" : "datepicker.css",
+
+ "daterangepicker" : "daterangepicker.css",
+ 
+ "datetimepicker" : "bootstrap-datetimepicker.css",
+
+ "fullcalendar" : "fullcalendar.css",
+
+ "gritter" : "jquery.gritter.css",
+
+ "jquery-ui" : "jquery-ui.custom.css",
+ 
+ "jquery-ui-full" : "jquery-ui.css",
+ 
+ "jqgrid" : "ui.jqgrid.css",
+
+ "prettify" : "prettify.css",
+
+ "x-editable" : "bootstrap-editable.css",
+
+ "select2" : "select2.css",
+ 
+ "dropzone" : "dropzone.css",
+ 
+ "duallistbox": "bootstrap-duallistbox.css",
+ 
+ "multiselect": "bootstrap-multiselect.css"
+}

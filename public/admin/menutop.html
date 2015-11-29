@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="utf-8" />
+  <title>后台管理中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+</head>
+<body class="no-skin">
+  <div id="navbar" class="navbar navbar-default">
+    <div class="navbar-container" id="navbar-container">
+      <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+        <span class="sr-only">Toggle sidebar</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-header pull-left">
+        <a href="<?php echo SERVER_DOMAIN?>" target="_blank" class="navbar-brand">
+          <small> <i class="fa fa-leaf"></i>
+           <?php echo APP_NAME ?> ADMIN CENTER
+          </small>
+        </a>
+      </div>
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/pace.css" />
+<script src="<?php echo ADMIN_JS_PATH ?>/pace.js"></script>
+<!-- <![endif]-->
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/bootstrap.css" />
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/font-awesome.css" />
+<!-- text fonts -->
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/ace-fonts.css" />
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/ace-part2.css" class="ace-main-stylesheet" />
+<![endif]-->
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="<?php echo ADMIN_CSS_PATH ?>/ace-ie.css" />
+<![endif]-->
+<script src="<?php echo ADMIN_JS_PATH ?>/ace-extra.js"></script>
+<!--[if lte IE 8]>
+<script src="<?php echo ADMIN_JS_PATH ?>/html5shiv.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/respond.js"></script>
+<![endif]-->
+<!--[if !IE]>
+-->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='<?php echo ADMIN_JS_PATH ?>/jquery.js'>"+"<"+"/script>");</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='<?php echo ADMIN_JS_PATH ?>/jquery1x.js'>"+"<"+"/script>");</script>
+<![endif]-->
+<script type="text/javascript">
+      if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo ADMIN_JS_PATH ?>/jquery.mobile.custom.js'>"+"<"+"/script>");</script>
+<script src="<?php echo ADMIN_JS_PATH ?>/bootstrap.js"></script>
+  <!-- ace scripts -->
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.scroller.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.colorpicker.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.fileinput.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.typeahead.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.wysiwyg.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.spinner.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.treeview.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.wizard.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/elements.aside.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.ajax-content.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.touch-drag.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.sidebar.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.sidebar-scroll-1.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.submenu-hover.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.widget-box.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.settings.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.settings-rtl.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.settings-skin.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.widget-on-reload.js"></script>
+<script src="<?php echo ADMIN_JS_PATH ?>/ace/ace.searchbox-autocomplete.js"></script>
+<script type="text/javascript">try{ace.settings.check('sidebar' , 'fixed')}catch(e){}</script>
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+  <ul class="nav ace-nav">
+    <li class="light-blue">
+      <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <img class="nav-user-photo" src="<?php echo ADMIN_ASSET ?>/avatars/avatar2.png" alt="Jason's Photo" />
+        <span class="user-info">
+          <small>Welcome,</small>
+          <?php echo $_SESSION['adminName'] ?>
+        </span>
+        <i class="ace-icon fa fa-caret-down"></i>
+      </a>
+
+      <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <!-- <li>
+          <a href="#">
+            <i class="ace-icon fa fa-cog"></i>
+            Settings
+          </a>
+        </li> -->
+        <li>
+          <a href="/admin/index/reset">
+            <i class="ace-icon fa fa-user"></i>
+            修改密码
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="/admin/login/logout">
+            <i class="ace-icon fa fa-power-off"></i>
+            退出
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+</div>

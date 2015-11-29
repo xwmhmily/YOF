@@ -1,0 +1,11 @@
+{
+	"name": "ace-builder",
+	"version": "0.0.1",
+	"description": "build ace html files using Hogan.js",
+	"dependencies": {
+		"hogan.js": "",
+		"htmlparser2": "",
+		"require-csv": "",
+		"xtend": ""
+	}
+}

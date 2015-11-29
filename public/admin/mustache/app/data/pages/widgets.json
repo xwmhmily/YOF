@@ -1,0 +1,9 @@
+{
+ "title" : "Widgets"
+ ,
+ "description" : "Draggabble Widget Boxes & Containers"
+ ,
+ "styles" : ["jquery-ui"]
+ ,
+ "scripts" : ["jquery-ui"]
+}

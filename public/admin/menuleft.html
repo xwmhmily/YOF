@@ -1,0 +1,77 @@
+<script src="<?php echo JS_PATH ?>/jquery-1.7.min.js"></script>
+<script src="<?php echo JS_PATH ?>/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+  try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+</script>
+<div id="sidebar" class="sidebar responsive">
+<script type="text/javascript">
+  try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
+
+<!--四个快捷键留着自定义-->
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+  <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+    <button class="btn btn-success">
+      <i class="ace-icon fa fa-signal"></i>
+    </button>
+
+    <button class="btn btn-info">
+      <i class="ace-icon fa fa-pencil"></i>
+    </button>
+
+    <button class="btn btn-warning">
+      <i class="ace-icon fa fa-users"></i>
+    </button>
+
+    <button class="btn btn-danger">
+      <i class="ace-icon fa fa-cogs"></i>
+    </button>
+  </div>
+</div>
+<ul class="nav nav-list">
+  <li class="<?php if($_COOKIE['parentKey'] == '0'){ ?> open <?php } ?>">
+    <a data-url="#" href="javascript:menu('0', '0', '/admin/dashboard')">
+      <i class="menu-icon fa fa-tachometer"></i>
+      <span class="menu-text">Dashboard</span>
+    </a> <b class="arrow"></b>
+  </li>
+
+  <?php foreach($_SESSION['menu'] as $key => $val) {?>
+    <li class="<?php if($_COOKIE['parentKey'] == $key){ ?> open <?php } ?>">
+      <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text">
+          <?php echo $val['name'] ?></span> 
+          <b class="arrow fa fa-angle-down"></b>
+      </a>
+
+      <b class="arrow"></b>
+
+      <?php if($val['sub']) { ?>
+        <ul class="submenu">
+          <?php foreach($val['sub'] as $k => $v) {?>
+            <li class="<?php if($_COOKIE['key'] == $k && $_COOKIE['parentKey'] != '0'){ ?> active <?php } ?>">
+              <a href="javascript:menu('<?php echo $key ?>', '<?php echo $k ?>', '<?php echo $v['url'] ?>');">
+                <i class="menu-icon fa fa-caret-right"></i>
+                  <?php echo $v['name'] ?>
+              </a>
+            </li>
+          <?php } ?>
+        </ul>
+      <?php } ?>
+    </li>
+  <?php } ?>
+</ul>
+
+<script type="text/javascript">
+  try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+
+  // 菜单点击, 用 COOKIE 保存父子菜单
+  function menu(parentKey, key, url){
+    $.cookie("parentKey", parentKey);
+    $.cookie("key", key);
+    window.location.href = url;
+  }
+</script>
+</div>
