@@ -15,7 +15,6 @@
 					<i class="ace-icon fa fa-home home-icon"></i>
 					<a href="/admin/dashboard">Home</a>
 				</li>
-
 				<li>
 					<a href="/admin/role">角色权限</a>
 				</li>
@@ -77,7 +76,7 @@
 	</td>
 	<td>
 		<div class="hidden-sm hidden-xs action-buttons">
-			<a class="blue" href="javascript:alert('保留功能,未实现')">
+			<a class="blue" href="/admin/role/assign?roleID=<?php echo $val['id'] ?>">
 				<i class="ace-icon fa fa-search-plus bigger-130"></i>
 			</a>
 			<a class="green" href="/admin/role/edit?roleID=<?php echo $val['id'] ?>">
