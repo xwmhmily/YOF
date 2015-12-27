@@ -97,6 +97,6 @@ class LoginController extends BasicController {
 		$this->unsetSession('adminID');
 		$this->unsetSession('adminName');
 
-		jsRedirect($this->homeUrl);
+		$this->goHome();
 	}
 }
