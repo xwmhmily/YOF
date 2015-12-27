@@ -17,9 +17,12 @@ class IndexController extends BasicController {
 		$m = array();
 		$m['password'] = md5($t['newPass']);
 		
+		$where = array('username' => $_SESSION['adminName']);
+		
 		if($this->adminAccount == $_SESSION['adminName']){
-			$where = array('username' => $_SESSION['adminName']);
-			$data  = $this->load('Admin')->Where($where)->UpdateOne($m);
+			$data = $this->load('Admin')->Where($where)->UpdateOne($m);
+		}else{
+			$data = $this->load('Role')->Where($where)->UpdateOne($m);
 		}
 		
 		if($data !== FALSE){
