@@ -69,8 +69,11 @@
 
   // 菜单点击, 用 COOKIE 保存父子菜单
   function menu(parentKey, key, url){
-    $.cookie("parentKey", parentKey);
-    $.cookie("key", key);
+    $.cookie("parentKey", null, {path : '/'});
+    $.cookie("key", null, {path : '/'});
+
+    $.cookie("parentKey", parentKey, {expire : 7, path : '/'});
+    $.cookie("key", key, {expire : 7, path : '/'});
     window.location.href = url;
   }
 </script>
