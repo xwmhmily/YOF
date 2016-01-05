@@ -4,7 +4,6 @@ class LoginController extends BasicController {
 
 	private $m_admin;
 	private $m_role;
-  	private $adminAccount = 'superAdmin';
 
 	private function init(){
 		$this->m_admin = $this->load('Admin');
@@ -27,7 +26,7 @@ class LoginController extends BasicController {
 		}
 		
 		// 管理员登陆
-		if($this->adminAccount == $username){
+		if(SUPER_ADMIN == $username){
 			$data = $this->m_admin->checkLogin($username, $password);
 		}else{
 			// 普通角色登陆
@@ -45,7 +44,7 @@ class LoginController extends BasicController {
 			$this->setSession('adminName', $username);
 			
 			// admin 拥有所有的权限
-			if($this->adminAccount == $username){
+			if(SUPER_ADMIN == $username){
 				$this->setSession('priv', 'ALL');
 			}else{
 				// 不是管理员, 记录其 roleID, 用于查找权限
@@ -64,7 +63,7 @@ class LoginController extends BasicController {
 
 		// Privileges
 		include APP_PATH.'/application/modules/Admin/menu.php';
-		if($this->adminAccount != $this->getSession('adminName')){
+		if(SUPER_ADMIN != $this->getSession('adminName')){
 			$priv = $this->getSession('priv');
 			$priv = explode(',', $priv['privilege']);
 			
