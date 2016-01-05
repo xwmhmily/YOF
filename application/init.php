@@ -86,6 +86,9 @@ define('SITE_REGION',   440106);
 define('TMP_PATH',    APP_PATH.'/tmp');
 define('UPLOAD_PATH', APP_PATH.'/public/upload');
 
+// Super admin account
+define('SUPER_ADMIN', 'superAdmin');
+
 /*
  * DEV 下我们使用自定义输出错误, 这样能更好的 debug
  * PRODUCT 下则报 500, 记录错误至指定日志
