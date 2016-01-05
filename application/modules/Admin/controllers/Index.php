@@ -2,8 +2,6 @@
 
 class IndexController extends BasicController {
 
-  	private $adminAccount = 'superAdmin';
-
 	private function init(){
 		Yaf_Registry::get('adminPlugin')->checkLogin();
 	}
@@ -19,7 +17,7 @@ class IndexController extends BasicController {
 		
 		$where = array('username' => $_SESSION['adminName']);
 		
-		if($this->adminAccount == $_SESSION['adminName']){
+		if(SUPER_ADMIN == $_SESSION['adminName']){
 			$data = $this->load('Admin')->Where($where)->UpdateOne($m);
 		}else{
 			$data = $this->load('Role')->Where($where)->UpdateOne($m);
