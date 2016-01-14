@@ -26,14 +26,14 @@ class Html {
 			$html .= ' onchange="javascript:'.$id.'Change();"';
 		}
 		
-		$html .= '>'. NL;
+		$html .= '>';
 		
 		foreach($arr as $key => $val){
 			$html .= '<option value="'.$key.'"';
 			if(isset($selectID) && $selectID == $key){
 				$html .= " selected=\"selected\" ";
 			}
-			$html .= '>'.$val.'</option>'. NL;
+			$html .= '>'.$val.'</option>';
 		}
 		$html .= '</select>';
 		
