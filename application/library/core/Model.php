@@ -102,7 +102,6 @@ abstract class Model {
 		}
 	}
 
-
 	/**
 	 * Field
 	 */
@@ -114,7 +113,12 @@ abstract class Model {
 		$str = '';
 		if(is_array($field)){
 			foreach($field as $val){
-				$str .= '`'.$val.'`, ';
+				// 判断有没有 AS
+				if(strpos($val, strtoupper('as')) !== FALSE){
+					$str .= $val.',';
+				}else{
+					$str .= '`'.$val.'`, ';
+				}
 			}
 
 			$this->options['field'] = substr($str, 0, strlen($str)-2); // 2:　Cos there is a BLANK
@@ -297,7 +301,7 @@ abstract class Model {
 	final public function Select(){
 		$this->sql = $this->generateSQL();
 
-		// echo $this->sql; br();
+		//echo $this->sql; br();
 
 		// 连接DB
 		$this->connect('READ');
