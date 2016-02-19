@@ -2,10 +2,11 @@
 
 class LoginController extends BasicController {
 
-	private $m_admin;
 	private $m_role;
+	private $m_admin;
 
 	private function init(){
+		session_start();
 		$this->m_admin = $this->load('Admin');
 		$this->m_role  = $this->load('Role');
 
@@ -19,10 +20,25 @@ class LoginController extends BasicController {
 	public function checkLoginAction(){
 		$username = $this->getPost('username');
 		$password = $this->getPost('password');
+		$captcha  = $this->getPost('captcha');
 		
 		if(!$username || !$password){
 			jsAlert('信息不完整!');
 			jsRedirect($this->homeUrl);
+
+			if(ENV != 'DEV'){
+				if(!$captcha){
+					jsAlert('信息不完整!');
+					jsRedirect($this->homeUrl);
+				}
+			}
+		}
+
+		if(ENV != 'DEV'){
+			if(strtolower($captcha) != strtolower($_SESSION['adminCaptcha'])){
+				jsAlert('验证码不正确!');
+				jsRedirect($this->homeUrl);
+			}
 		}
 		
 		// 管理员登陆
@@ -32,7 +48,7 @@ class LoginController extends BasicController {
 			// 普通角色登陆
 			$data = $this->m_role->checkRole($username, $password);
 		}
-		
+
 		if(!$data){
 			// Login fail
 			$log['status'] = 0;
