@@ -13,6 +13,8 @@ $codelen   = 4; //验证码长度
 $fontsize  = 20; //字体大小
 $charset   = 'abcdefghkmnprstuvwxyzABCDEFGHKMNPRSTUVWXYZ23456789';
 $font      = '/asset/msyh.ttf';
+
+// $font      = '/fonts/glyphicons/flat-ui-icons-regular.ttf';
 $im = imagecreatetruecolor($imgwidth, $imgheight);
 $while = imageColorAllocate($im, 255, 255, 255);
 imagefill($im, 0, 0, $while); //填充图像
