@@ -47,11 +47,10 @@
             <span class="red"><?php echo APP_NAME ?></span>
             <span class="white" id="id-text2">AdminCP</span>
         </h1>
-        <h4 class="blue" id="id-company-text">&copy; YAF Inc</h4>
+        <h4 class="blue" id="id-company-text">&copy;YAF. INC</h4>
     </div>
 
     <div class="space-6"></div>
-
     <div class="position-relative">
     <div id="login-box" class="login-box visible widget-box no-border">
         <div class="widget-body">
@@ -60,7 +59,6 @@
                     <i class="ace-icon fa fa-coffee green"></i>
                     Please Enter Your Information
                 </h4>
-
                 <div class="space-6"></div>
 
                 <form id="loginForm" method="post" action="/admin/login/checkLogin">
@@ -79,7 +77,21 @@
                             </span>
                         </label>
 
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="输入下图验证码" name="captcha" id="captcha" />
+                                <i class="ace-icon fa"></i>
+                            </span>
+                        </label>
                         <div class="space"></div>
+
+                        <div class="clearfix">
+                            <a href="#">
+                                <img title="验证码" id="verify_code" src="/captcha.php?t=admin" style="vertical-align:top">
+                            </a>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="space-4"></div>
 
                         <div class="clearfix">
                             <button type="button" class="width-100 pull-right btn btn-sm btn-primary">
@@ -87,7 +99,6 @@
                                 <span class="bigger-110">Login</span>
                             </button>
                         </div>
-
                         <div class="space-4"></div>
                     </fieldset>
                 </form>
@@ -178,6 +189,12 @@
                     var password = $('#password').val();
                     if(password == ''){
                         $('#password').focus();
+                        return false;
+                    }
+
+                    var captcha = $('#captcha').val();
+                    if(captcha == ''){
+                        $('#captcha').focus();
                         return false;
                     }
 
