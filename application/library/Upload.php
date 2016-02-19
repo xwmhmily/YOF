@@ -106,14 +106,61 @@ class Upload{
 		
 		if($valid){
 			if($this->copyFile()){
-				return 1;
+				$result['code'] = 1;
+				$result['img']  = $this->saveName;
+
+				return $result;
 			}else{
 				return $this->errorArr[4];
 			}
 		}else{
 			return $this->error;
 		}
-	
+	}
+
+	/**
+	 * Upload file to qiniu
+	 */
+	function uploadToQiniu($targetName){	
+		$this->saveName = $targetName;
+		// Check before upload
+		$valid = $this->checkFileInfo();
+		
+		// Create target folder
+		$this->createDir($this->savePath);
+		
+		if($valid){
+			$result = $this->copyFile();
+			if($result['code'] == 1){
+				$l_qiniu = new Qiniu();
+
+				$key = $targetName.'.'.$this->extension;
+				$source = $this->savePath.$this->saveName;
+				list($ret, $err) = $l_qiniu->upload($key, $source);
+
+				if ($err === NULL) {
+					$config = Yaf_Application::app()->getConfig();
+        			$IMG_DOMAIN = $config['qiniu_img_domain'];
+
+        			$img = $IMG_DOMAIN.'/'.$key;
+        			unlink($source);
+
+        			$rep['code'] = 1;
+        			$rep['img'] = $img;
+        		}else{
+        			$rep['code'] = 0;
+        			$rep['error'] = $err;
+        		}
+			}else{
+				$rep['code']  = 0;
+        		$rep['error'] = $this->errorArr[4];
+			}
+		}else{
+			$rep['code'] = 0;
+			$rep['error'] = $this->error;
+		}
+
+		return $rep;
 	}
 	
 	
