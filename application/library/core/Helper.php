@@ -162,4 +162,15 @@ abstract class Helper {
 		yofErrorHandler($errno, $error, $errFile, $errLine, $sql);
 	}
 
+	public static function getConfig($file){
+		$f = APP_PATH.'/conf/'.$file;
+		if(file_exists($f)){
+			return include $f;
+		}else{
+			$traceInfo = debug_backtrace();
+			$error = 'File '.$f.' NOT FOUND ';
+			self::raiseError($traceInfo, $error);
+		}
+	}
+
 }

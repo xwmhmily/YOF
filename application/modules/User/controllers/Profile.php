@@ -37,19 +37,6 @@ class ProfileController extends BasicController {
         	$this->redirect('/');
         }
 
-        // 如果有 xhprof 则开启跟踪功能
-        if(function_exists('xhprof_disable')){
-	        $data = xhprof_disable();
-	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_lib.php';
-	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_runs.php'; 
-	        $objXhprofRun = new XHProfRuns_Default();
-	        $run_id = $objXhprofRun->save_run($data, 'xhprof');
-	    }
-
-	    if($run_id){
-       		$buffer['run_id'] = $run_id;
-       	}
-
         $this->getView()->assign($buffer);
 	}
 
@@ -141,91 +128,9 @@ class ProfileController extends BasicController {
 		}
 	}
 
-	// phpQuery 采集类
-	public function crawlAction(){
-		$destination = $this->get('destination', FALSE);
-		if($destination){
-			Yaf_Loader::import(LIB_PATH.'/phpQuery/phpQuery.php');
-
-			phpQuery::newDocumentFile($destination);
-
-			$articles = pq('.main-content .chief .mod-focus .focus')->find('ul li');
-			foreach($articles as $article) {
-				$m['img']   = pq($article)->find('a img')->attr('src');
-			   	$m['title'] = pq($article)->find('a img')->attr('alt');
-				$final[] = $m;
-			}
-
-			$buffer['articles'] = $final;
-		}
-
-		$this->getView()->assign($buffer);
-	}
-
-	// Http request
-	// I'm sure you have better solution ....
-	public function httpAction(){
-		$url = $this->get('url', FALSE);
-		if($url){
-			$buffer['content'] = executeHTTPRequest($url, '');
-		}
-
-		$this->getView()->assign($buffer);
-	}
-
-	// Article list API
-	public function apiAction(){
-		$url = $this->get('url', FALSE);
-		if($url){
-			// 此处为了演示和接近实际环境，将 URL 定死
-			$url = 'http://yof.mylinuxer.com/api/article';
-
-			// Secure your API with CUR_TIMESTAMP and API_KEY
-			$m['time'] = CUR_TIMESTAMP;
-			$m['sign'] = Helper::generateSign($m);
-			$buffer['content'] = executeHTTPRequest($url, $m); 
-		}
-
-		$this->getView()->assign($buffer);
-	}
-
-	// Article detail API
-	public function apiDetailAction(){
-		$articleID = $this->get('articleID');
-		$url = $this->get('url', FALSE);
-		if($url){
-			// 此处为了演示和接近实际环境，将 URL 定死
-			$url = 'http://yof.mylinuxer.com/api/article/detail';
-
-			// Secure your API with CUR_TIMESTAMP and API_KEY
-			$m['time'] = CUR_TIMESTAMP;
-			$m['sign'] = Helper::generateSign($m);
-			$m['articleID'] = $articleID;
-
-			$buffer['content'] = executeHTTPRequest($url, $m);
-		}
-
-		$this->getView()->assign($buffer);
-	}
-
 	// Uploadify
 	public function uploadifyAction(){
 		
-	}
-
-	// xhprof 
-	// 该功能需要安装 prof 扩展, 否则无法运行
-	public function xhprofAction(){
-        if(function_exists('xhprof_disable')){
-	        $data = xhprof_disable();
-	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_lib.php';
-	        include_once LIB_PATH.'/xhprof_lib/utils/xhprof_runs.php'; 
-	        $objXhprofRun = new XHProfRuns_Default();
-	        $run_id = $objXhprofRun->save_run($data, 'xhprof');
-
-	        $buffer['run_id'] = $run_id;
-       		$this->getView()->assign($buffer);
-	    }
 	}
 
 	// 省市区三级联动
@@ -269,61 +174,6 @@ class ProfileController extends BasicController {
 		$this->getView()->assign($buffer);
 		$content = $this->render('renderAjax');
 		echo $content; die;
-	}
-
-	// Multi CURL
-	public function multiCurlAction(){
-		$l_multi_curl = new MultiCURL();
-
-		$url = array(
-			'baidu'    => 'http://www.baidu.com',
-			'YOF DEMO' => 'http://yof.mylinuxer.com',
-			'YOF DOC'  => 'http://www.iloveyaf.com',
-		);
-
-		$l_multi_curl->setUrlList($url);
-		$content = $l_multi_curl->exec();
-
-		// 提取 Title
-		foreach($content as $key => $val){
-			preg_match_all('/<title>(.*)<\/title>/', $val, $matches); 
-			$buffer['title'][$key] = $matches[1][0];
-		}
-
-		$this->getView()->assign($buffer);
-	}
-
-	// Weixin SDK
-	public function weixinAction(){
-		$buffer['file'] = APP_PATH.'/public/common/weixin.php';
-		$this->getView()->assign($buffer);
-	}
-
-	// 七牛 SDK
-	public function qiniuAction(){
-		$buffer['file'] = APP_PATH.'/public/common/qiniu.php';
-		$this->getView()->assign($buffer);
-	}
-
-	// Redis MQ
-	public function redisAction(){
-
-	}
-
-	public function redisProducerAction(){
-		$content = $this->getpost('content');
-
-		$queue = 'test_queue';
-		Yaf_Registry::get('redis')->lpush($queue, $content);
-
-		echo 1; die;
-	}
-
-	public function redisConsumerAction(){
-		$queue = 'test_queue';
-		$data = Yaf_Registry::get('redis')->rpop($queue);
-
-		echo $data; die;
 	}
 
 	// 演示自定义错误之加载不存在的函数

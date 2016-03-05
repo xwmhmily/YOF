@@ -192,11 +192,13 @@
                         return false;
                     }
 
-                    var captcha = $('#captcha').val();
-                    if(captcha == ''){
-                        $('#captcha').focus();
-                        return false;
-                    }
+                    <?php if(ENV != 'DEV'){ ?>
+                        var captcha = $('#captcha').val();
+                        if(captcha == ''){
+                            $('#captcha').focus();
+                            return false;
+                        }
+                    <?php } ?>
 
                     $('#loginForm').submit();
                 })

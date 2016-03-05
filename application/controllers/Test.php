@@ -6,6 +6,27 @@ class TestController extends BasicController {
         $userID = $this->getSession('userID');
 	}
 
+	public function excelAction(){
+		$host = '202.104.208.168';
+		$user = 'root';
+		$pswd = 'anlaigz2015';
+		$db   = 'yuefenqi';
+
+		$dsn  = 'mysql:host='.$host.';port=3306;dbname='.$db;
+		$conn = new PDO($dsn, $user, $pswd);
+		
+		$sql = 'SELECT realname, idcardno, mobile, addTime 
+					FROM sys_user WHERE `status` = 4 LIMIT 2580, 200';
+		$result = $conn->query($sql);
+		$data = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		//pr($data); die;
+		
+		// 导出 Excel
+		$l_excel = new Excel;
+		$l_excel->export($data, 'user', '贷款申请信息'); die;
+	}
+
 	// 测试事务 【不支持跨库的事务】
 	public function transactionAction(){
 		$m_user = $this->load('User');
@@ -35,20 +56,20 @@ class TestController extends BasicController {
 
 	// 测试拼接 SQL
 	public function indexAction() {
-		$field = array('id', 'userID', 'title', 'status');
+		$field = array('id AS articleID', 'userID', 'title', 'status');
 
 		$userID = $this->getSession('userID');
 		$m_article = $this->load('Article');
 
-		// $field = array('id', 'author', 'title');
-		// $where = array('userID' => $userID, 'status' => 1);
-		// $data = $m_article->Field($field)
-		// 				  ->Where($where)
-		// 				  ->ORR()
-		// 				  ->Where('id', '>', 30)
-		// 				  ->Select();
+		//$field = array('id', 'author', 'title');
+		$where = array('userID' => $userID, 'status' => 1);
+		$data = $m_article->Field($field)
+						  ->Where($where)
+						  ->ORR()
+						  ->Where('id', '>', 30)
+						  ->Select();
 
-		// pr($data); die;
+		pr($data); die;
 
 		// 测试 UpdateOne
 		$m['status'] = 1;
