@@ -23,23 +23,19 @@
 
 > 8: 二种简易省市区三级联动
 
-> 9: 三个模块:User, Api, Admin 
+> 9: 二个模块:User, Admin 
 
 > 10: 一些常用的函数封装, 位于 function 目录
 
-> 11: 前台使用 Bootstrap, 后台使用 Ace, 响应式布局。集成 UEditor, 上传, 二维码生成功能, phpQuery采集类, http类, api安全与访问, uploadify, URL伪静态, 微信sdk, 七牛sdk, multi curl, Redis 简单队列 等示例
+> 11: 前台使用 Bootstrap, 后台使用 Ace, 响应式布局。集成 UEditor, 上传, 二维码生成功能, uploadify, URL伪静态示例，删除了复杂的示例
 
 > 12: 全面使用 yaf.library 来实现类的自动加载
-
-> 13: 加入 xhprof 对程序运行进行跟踪分析.
-
-> 14: 集成 Yar 及演示示例, 支持 CLI 下调用
 
 > 15: 使用 setErrorHandle 来实现自定义错误输出, 方便 debug
 
 > 16: 感谢 Vampire, 果儿-高级程序猿, 资料空白，藕酥胖胖鱼, 黑白, 赵鹏, 落舞者等的建议和帮忙
 
-> 17: 当前版本 2.1
+> 17: 当前版本 2.2
 
 <H3>安装 [建议在Linux下使用]</H3>
 
@@ -137,7 +133,7 @@
 
 >> model => 模型文件, 默认一个模型对应一个表
 
->> modules => YAF 默认的模块文件, 示例有三个:User, Api, Admin
+>> modules => YAF 默认的模块文件, 示例有二个:User, Admin
 
 >> plugins => YAF 默认的插件位置, 示例有 Router.php, Admin.php
 
@@ -148,7 +144,7 @@
 > public => 公用文件, JS, CSS, IMG 等一般位于此
 
 <H3>内置常量</H3>
-> YOF_VERSION => YOF 版本, 目前是 2.0
+> YOF_VERSION => YOF 版本, 目前是 2.2
 
 > APP_PATH => 根目录
 
