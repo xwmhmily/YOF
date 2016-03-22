@@ -272,18 +272,14 @@ abstract class Model {
 	 * Limit
 	 * 可传一个或二个参数
 	 */
-	final public function Limit($start, $end = ''){
-		if(!$start){
-			return $this;
-		}
-
+	final public function Limit($start, $size = ''){
 		$this->options['limit'] = $start;
 
-		if($end){
-			$this->options['limit'] .= ', '.$end;
+		if($size){
+			$this->options['limit'] .= ', '.$size;
 		}
 
-		unset($start, $end);
+		unset($start, $size);
 
 		return $this;
 	}
