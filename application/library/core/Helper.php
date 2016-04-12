@@ -124,7 +124,7 @@ abstract class Helper {
 					$data = JSON($data);
 				}else{
 					//pr($data); die; // URL 测试打印数组出来
-					echo json_encode($data); die;
+					echo json_encode($data, JSON_UNESCAPED_UNICODE); die;
 				}
 			break;
 			
