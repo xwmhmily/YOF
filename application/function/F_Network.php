@@ -179,12 +179,16 @@ function httpRequest($url, $params, $timeout = 0) {
 /**
  *  Submit HTTP request via CURL
  */
-function executeHTTPRequest($url, $params, $timeout = 0) {
+function executeHTTPRequest($url, $params, $timeout = 0, $header = '') {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_FAILONERROR, FALSE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+
+	if($header){
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+	}
 
 	/**
 	 *  Post ?
