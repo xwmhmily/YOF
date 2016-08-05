@@ -3,7 +3,7 @@
 
 <H3>特点</H3>
 
-> 1: <a target="_blank" href="http://www.iloveyaf.com">在线文档</a>
+> 1: <a target="_blank" href="http://yaf.cmsphp.com/">在线文档</a>
 
 > 2: <a target="_blank" href="http://yof.mylinuxer.com/">在线DEMO</a> 管理后台账号 superAdmin, 密码 123456
 
