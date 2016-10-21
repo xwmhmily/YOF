@@ -159,9 +159,15 @@ abstract class Model {
 	 * Where 支持多次调用
 	 * where 有三种调用方式
 	 */
-	final public function Where($where, $condition = '', $value = ''){
+	final public function Where($where, $condition = '', $value = '', $notEmptyValue = FALSE){
 		if(!$where){
 			return $this;
+		}
+
+		if($notEmptyValue){
+			if(!$value){
+				return $this;
+			}
 		}
 
 		if(is_array($where)){
