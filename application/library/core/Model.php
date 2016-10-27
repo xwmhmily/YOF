@@ -633,6 +633,18 @@ abstract class Model {
 			return $this->Exec();
 		}
 	}
+
+	// 根据ID 给字段累加或减
+	public function IncrByID($field, $id, $step = 1, $op = '+'){
+		$this->sql = 'UPDATE `' . $this->table .'` SET ';
+		$this->sql .= "`$field` = `$field` $op $step ";
+		$this->sql .= ' WHERE `'.TB_PK.'` = "'.$id.'" LIMIT 1';
+
+		// echo $this->sql; die;
+		$this->connect();
+
+		return $this->Exec();
+	}
 	
 	/*
      *  Update one record
